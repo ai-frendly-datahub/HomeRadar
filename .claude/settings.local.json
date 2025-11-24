@@ -4,7 +4,9 @@
       "Bash(tree:*)",
       "Bash(git add:*)",
       "Bash(python -m pytest:*)",
-      "Bash(python demo_rss.py:*)"
+      "Bash(python demo_rss.py:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nfeat: Initialize HomeRadar project with RSS collector\n\n- Set up project structure following WineRadar pattern\n- Implement RSS collector for real estate news sources\n- Add comprehensive test suite (10 unit tests, all passing)\n- Configure 15 data sources (3 enabled, tested successfully)\n- Create demo script to validate RSS collection\n\nKey components:\n- collectors/: BaseCollector, RSSCollector, CollectorRegistry\n- config/sources.yaml: 15 data sources across 3 tiers\n- tests/: Unit and integration tests with 80.95% coverage\n- docs/: DATA_SOURCES.md with detailed source documentation\n\nData sources:\n- T1: MOLIT APIs (ready), Korea.kr RSS feeds (working)\n- T2: Korean news RSS (Hankyung, Herald, Chosun)\n- T3: Market platforms (planned)\n\nVerified with live feeds:\n- Korea Economic Daily: 50 articles\n- Korea Gov Policy: 50 articles\n- Korea Gov Economy: 42 articles\n\n🤖 Generated with Claude Code\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(python demo_pipeline.py:*)"
     ],
     "deny": [],
     "ask": []
