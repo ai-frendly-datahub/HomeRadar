@@ -7,8 +7,9 @@ This demonstrates the complete data flow from RSS feeds to database storage.
 import yaml
 from datetime import datetime
 
+from analyzers import EntityExtractor
 from collectors.rss_collector import RSSCollector
-from graph import GraphStore, get_view, get_sources_stats, search_by_keyword
+from graph import GraphStore, get_view, get_sources_stats, search_by_keyword, get_trending_entities
 
 
 def load_sources():
@@ -46,16 +47,36 @@ def collect_all_rss():
 
 
 def store_items(items):
-    """Store items in graph database"""
-    print(f"\n[2/4] Storing {len(items)} items in database...")
+    """Store items in graph database with entity extraction"""
+    print(f"\n[2/4] Storing {len(items)} items and extracting entities...")
     print("=" * 80)
 
     store = GraphStore()  # Uses default path: data/homeradar.duckdb
+    extractor = EntityExtractor()
 
+    # Store items
     result = store.add_items(items)
-
     print(f"  - Inserted: {result['inserted']}")
     print(f"  - Updated: {result['updated']}")
+
+    # Extract and store entities
+    print(f"\n  Extracting entities...")
+    total_entities = 0
+
+    for item in items:
+        # Convert RawItem to dict for extract_from_item
+        item_dict = {
+            "title": item.title,
+            "summary": item.summary,
+        }
+
+        entities = extractor.extract_from_item(item_dict)
+
+        if entities:
+            count = store.add_entities(item.url, entities)
+            total_entities += count
+
+    print(f"  - Entities extracted: {total_entities}")
 
     return store
 
@@ -72,6 +93,12 @@ def query_data(store):
     print(f"  - Total entities: {stats['total_entities']}")
     print(f"  - Sources: {len(stats['sources'])}")
 
+    # Show entity types
+    if stats['entity_types']:
+        print(f"\n  Entity Types:")
+        for entity_type, unique_count in stats['entity_types'].items():
+            print(f"    - {entity_type}: {unique_count} unique values")
+
     # Show source distribution
     print(f"\n  Source Distribution:")
     for source_id, count in sorted(stats['sources'].items(), key=lambda x: x[1], reverse=True):
@@ -83,6 +110,18 @@ def query_data(store):
     for i, item in enumerate(recent, 1):
         print(f"    {i}. [{item['source_id']}] {item['title'][:60]}...")
         print(f"       Published: {item['published_at']}")
+
+    # Show trending entities
+    if stats['total_entities'] > 0:
+        print(f"\n  Trending Districts (top 5):")
+        trending_districts = get_trending_entities(store, "district", limit=5)
+        for entity, count in trending_districts:
+            print(f"    - {entity}: {count} mentions")
+
+        print(f"\n  Trending Keywords (top 5):")
+        trending_keywords = get_trending_entities(store, "keyword", limit=5)
+        for entity, count in trending_keywords:
+            print(f"    - {entity}: {count} mentions")
 
     # Search by keyword
     print(f"\n  Keyword Search ('부동산'):")

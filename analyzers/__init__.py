@@ -7,4 +7,6 @@ This module analyzes real estate data:
 - Market signal scoring (rent-to-price gap, transaction volume)
 """
 
-__all__ = []
+from analyzers.entity_extractor import EntityExtractor, extract_entities
+
+__all__ = ["EntityExtractor", "extract_entities"]
