@@ -7,6 +7,7 @@ Maps source types to collector classes and provides factory methods.
 from typing import Any
 
 from collectors.base import BaseCollector
+from collectors.molit_collector import MOLITCollector
 from collectors.rss_collector import RSSCollector
 
 
@@ -17,7 +18,7 @@ class CollectorRegistry:
 
     _COLLECTORS = {
         "rss": RSSCollector,
-        # "api": APICollector,  # To be implemented
+        "api": MOLITCollector,
         # "html": HTMLCollector,  # To be implemented
     }
 

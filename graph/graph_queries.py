@@ -148,3 +148,124 @@ def search_by_keyword(
         result = conn.execute(query, [search_pattern, search_pattern, limit])
         columns = [desc[0] for desc in result.description]
         return [dict(zip(columns, row)) for row in result.fetchall()]
+
+
+def get_transactions(
+    store: GraphStore,
+    region: str | None = None,
+    property_type: str | None = None,
+    min_price: float | None = None,
+    max_price: float | None = None,
+    start_date: str | None = None,
+    end_date: str | None = None,
+    limit: int = 100,
+) -> list[dict[str, Any]]:
+    """
+    Query transaction data with various filters.
+
+    Args:
+        store: GraphStore instance
+        region: Filter by region (e.g., "강남구")
+        property_type: Filter by property type (e.g., "아파트")
+        min_price: Minimum price filter (in 만원)
+        max_price: Maximum price filter (in 만원)
+        start_date: Start date for transactions (ISO format or YYYY-MM-DD)
+        end_date: End date for transactions (ISO format or YYYY-MM-DD)
+        limit: Maximum number of results
+
+    Returns:
+        List of transaction records
+    """
+    with store._connection() as conn:
+        conditions = ["price IS NOT NULL"]
+        params = []
+
+        if region:
+            conditions.append("region LIKE ?")
+            params.append(f"%{region}%")
+
+        if property_type:
+            conditions.append("property_type = ?")
+            params.append(property_type)
+
+        if min_price is not None:
+            conditions.append("price >= ?")
+            params.append(min_price)
+
+        if max_price is not None:
+            conditions.append("price <= ?")
+            params.append(max_price)
+
+        if start_date:
+            conditions.append("published_at >= ?")
+            params.append(start_date)
+
+        if end_date:
+            conditions.append("published_at <= ?")
+            params.append(end_date)
+
+        where_clause = " AND ".join(conditions)
+        query = f"""
+            SELECT * FROM urls
+            WHERE {where_clause}
+            ORDER BY published_at DESC
+            LIMIT ?
+        """
+        params.append(limit)
+
+        result = conn.execute(query, params)
+        columns = [desc[0] for desc in result.description]
+        return [dict(zip(columns, row)) for row in result.fetchall()]
+
+
+def get_price_statistics(
+    store: GraphStore,
+    region: str | None = None,
+    property_type: str | None = None,
+) -> dict[str, Any]:
+    """
+    Get price statistics for transactions.
+
+    Args:
+        store: GraphStore instance
+        region: Filter by region
+        property_type: Filter by property type
+
+    Returns:
+        Dictionary with avg_price, min_price, max_price, count
+    """
+    with store._connection() as conn:
+        conditions = ["price IS NOT NULL"]
+        params = []
+
+        if region:
+            conditions.append("region LIKE ?")
+            params.append(f"%{region}%")
+
+        if property_type:
+            conditions.append("property_type = ?")
+            params.append(property_type)
+
+        where_clause = " AND ".join(conditions)
+        query = f"""
+            SELECT
+                AVG(price) as avg_price,
+                MIN(price) as min_price,
+                MAX(price) as max_price,
+                COUNT(*) as count
+            FROM urls
+            WHERE {where_clause}
+        """
+
+        result = conn.execute(query, params)
+        row = result.fetchone()
+
+        if row:
+            return {
+                "avg_price": row[0],
+                "min_price": row[1],
+                "max_price": row[2],
+                "count": row[3],
+            }
+
+        return {"avg_price": None, "min_price": None, "max_price": None, "count": 0}

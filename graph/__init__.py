@@ -9,7 +9,9 @@ This module manages graph-based storage for:
 """
 
 from graph.graph_queries import (
+    get_price_statistics,
     get_sources_stats,
+    get_transactions,
     get_trending_entities,
     get_view,
     search_by_keyword,
@@ -24,4 +26,6 @@ __all__ = [
     "get_trending_entities",
     "get_sources_stats",
     "search_by_keyword",
+    "get_transactions",
+    "get_price_statistics",
 ]

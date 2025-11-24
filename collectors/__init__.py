@@ -8,6 +8,7 @@ This module contains data collectors for various real estate sources:
 """
 
 from collectors.base import BaseCollector, CollectorError, RawItem
+from collectors.molit_collector import MOLITCollector
 from collectors.registry import CollectorRegistry
 from collectors.rss_collector import RSSCollector
 
@@ -16,5 +17,6 @@ __all__ = [
     "CollectorError",
     "RawItem",
     "RSSCollector",
+    "MOLITCollector",
     "CollectorRegistry",
 ]
