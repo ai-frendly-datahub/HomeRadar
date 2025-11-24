@@ -1,0 +1,1 @@
+"""HomeRadar configuration module."""
