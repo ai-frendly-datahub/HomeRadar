@@ -27,6 +27,8 @@ import yaml
 from analyzers import EntityExtractor
 from collectors import CollectorRegistry, RawItem
 from graph import GraphStore
+from graph.search_index import SearchIndex
+from raw_logger import RawLogger
 
 # Logger (configured in setup_logging())
 logger = logging.getLogger(__name__)
@@ -92,6 +94,7 @@ def collect_from_sources(
         filtered_sources = [s for s in filtered_sources if s['id'] in source_filter]
 
     logger.info(f"Collecting from {len(filtered_sources)} sources...")
+    raw_logger = RawLogger(Path("data") / "raw")
 
     for source in filtered_sources:
         source_id = source['id']
@@ -112,6 +115,7 @@ def collect_from_sources(
                 items = collector.collect()
 
             logger.info(f"    Collected {len(items)} items")
+            raw_logger.log(items, source_name=source_id)
             all_items.extend(items)
 
         except Exception as e:
@@ -175,6 +179,11 @@ def store_and_extract(items: list[RawItem], store: GraphStore) -> dict[str, int]
     # Store items
     result = store.add_items(items)
     logger.info(f"  Inserted: {result['inserted']}, Updated: {result['updated']}")
+
+    search_index_path = Path(os.getenv("HOMERADAR_SEARCH_DB_PATH", "data/search_index.db"))
+    search_index = SearchIndex(search_index_path)
+    for item in items:
+        search_index.upsert(item.url, item.title, item.summary)
 
     # Extract and store entities
     logger.info("Extracting entities...")

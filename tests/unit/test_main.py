@@ -76,6 +76,10 @@ class TestCollectFromSources:
                 summary='Summary 1',
                 source_id='test_rss',
                 published_at=datetime.now(),
+                region=None,
+                property_type=None,
+                price=None,
+                area=None,
             ),
             RawItem(
                 url='http://example.com/2',
@@ -83,6 +87,10 @@ class TestCollectFromSources:
                 summary='Summary 2',
                 source_id='test_rss',
                 published_at=datetime.now(),
+                region=None,
+                property_type=None,
+                price=None,
+                area=None,
             ),
         ]
 
@@ -125,6 +133,21 @@ class TestCollectFromSources:
             items = collect_from_sources(sample_sources, enabled_only=True)
 
             assert items == []
+
+    def test_collect_logs_raw_items_per_source(self, sample_sources, sample_items):
+        """Test that raw logger is called per source collection."""
+        with patch('main.CollectorRegistry.create_collector') as mock_create:
+            mock_collector = Mock()
+            mock_collector.collect.return_value = sample_items
+            mock_create.return_value = mock_collector
+
+            with patch('main.RawLogger') as mock_logger_class:
+                mock_logger = Mock()
+                mock_logger_class.return_value = mock_logger
+
+                _ = collect_from_sources(sample_sources, enabled_only=True)
+
+                mock_logger.log.assert_called_once_with(sample_items, source_name='test_rss')
 
 
 class TestCollectMOLIT:
@@ -208,6 +231,10 @@ class TestStoreAndExtract:
                 summary='가격이 상승했습니다',
                 source_id='test',
                 published_at=datetime.now(),
+                region=None,
+                property_type=None,
+                price=None,
+                area=None,
             ),
         ]
 
@@ -259,6 +286,29 @@ class TestStoreAndExtract:
             assert stats['stored'] == 1
             assert stats['entities'] == 0
 
+    def test_store_and_extract_syncs_items_to_search_index(self, sample_items):
+        """Test that stored items are upserted into search index."""
+        mock_store = Mock()
+        mock_store.add_items.return_value = {'inserted': 1, 'updated': 0}
+        mock_store.add_entities.return_value = 0
+
+        with patch('main.EntityExtractor') as mock_extractor_class:
+            mock_extractor = Mock()
+            mock_extractor.extract_from_item.return_value = {}
+            mock_extractor_class.return_value = mock_extractor
+
+            with patch('main.SearchIndex') as mock_index_class:
+                mock_index = Mock()
+                mock_index_class.return_value = mock_index
+
+                _ = store_and_extract(sample_items, mock_store)
+
+                mock_index.upsert.assert_called_once_with(
+                    sample_items[0].url,
+                    sample_items[0].title,
+                    sample_items[0].summary,
+                )
+
 
 class TestRunCollectionCycle:
     """Tests for run_collection_cycle function."""
@@ -287,6 +337,10 @@ class TestRunCollectionCycle:
                 summary='Summary',
                 source_id='test',
                 published_at=datetime.now(),
+                region=None,
+                property_type=None,
+                price=None,
+                area=None,
             )
         ]
 
