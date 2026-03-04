@@ -8,9 +8,12 @@ Provides high-level query interfaces for common use cases:
 - View by source trust tier
 """
 
+import os
+from pathlib import Path
 from typing import Any
 
 from graph.graph_store import GraphStore
+from graph.search_index import SearchIndex
 
 
 def get_view(
@@ -124,7 +127,10 @@ def get_sources_stats(store: GraphStore) -> list[dict[str, Any]]:
 
 
 def search_by_keyword(
-    store: GraphStore, keyword: str, limit: int = 50
+    store: GraphStore,
+    keyword: str,
+    limit: int = 50,
+    search_db_path: Path | None = None,
 ) -> list[dict[str, Any]]:
     """
     Search items by keyword in title or summary.
@@ -137,17 +143,52 @@ def search_by_keyword(
     Returns:
         List of matching items
     """
+    if not keyword.strip() or limit <= 0:
+        return []
+
+    resolved_search_db = search_db_path or Path(
+        os.getenv("HOMERADAR_SEARCH_DB_PATH", "data/search_index.db")
+    )
+    index = SearchIndex(resolved_search_db)
+    hits = index.search(keyword, limit=limit)
+
+    if not hits:
+        return []
+
+    links = [hit.link for hit in hits]
+    placeholders = ", ".join("?" for _ in links)
+
     with store._connection() as conn:
-        query = """
-            SELECT * FROM urls
-            WHERE title LIKE ? OR summary LIKE ?
-            ORDER BY published_at DESC
-            LIMIT ?
-        """
-        search_pattern = f"%{keyword}%"
-        result = conn.execute(query, [search_pattern, search_pattern, limit])
-        columns = [desc[0] for desc in result.description]
-        return [dict(zip(columns, row)) for row in result.fetchall()]
+        rows = conn.execute(
+            f"""
+            SELECT url, title, summary, source_id, published_at, region, property_type, price, area
+            FROM urls
+            WHERE url IN ({placeholders})
+            """,
+            links,
+        ).fetchall()
+
+    row_map = {str(row[0]): row for row in rows}
+    result: list[dict[str, Any]] = []
+    for hit in hits:
+        row = row_map.get(hit.link)
+        if row is None:
+            continue
+        result.append(
+            {
+                "url": str(row[0]),
+                "title": str(row[1]),
+                "summary": str(row[2]),
+                "source_id": row[3],
+                "published_at": row[4],
+                "region": row[5],
+                "property_type": row[6],
+                "price": row[7],
+                "area": row[8],
+                "search_rank": hit.rank,
+            }
+        )
+    return result
 
 
 def get_transactions(
