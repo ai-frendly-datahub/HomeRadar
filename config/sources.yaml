@@ -245,3 +245,25 @@ info_purposes:
   development:
     bonus: 90
     description: "Redevelopment and urban planning"
+
+  - id: onbid_auction
+    name: "Onbid - Public Auction Properties"
+    type: onbid
+    enabled: true
+    trust_tier: T1_official
+    info_purpose: transaction
+    region: korea
+    api_doc: "https://www.data.go.kr/data/15101046/openapi.do"
+    description: "Onbid public auction property listings and results"
+    notes: "Requires ONBID_API_KEY environment variable. Real-time auction data."
+
+  - id: subscription_apt
+    name: "Apartment Subscription Information"
+    type: subscription
+    enabled: true
+    trust_tier: T1_official
+    info_purpose: subscription
+    region: korea
+    api_doc: "https://www.data.go.kr/data/15101046/openapi.do"
+    description: "Apartment subscription (청약) and pre-sale information"
+    notes: "Requires SUBSCRIPTION_API_KEY environment variable. Includes competition rates and schedules."

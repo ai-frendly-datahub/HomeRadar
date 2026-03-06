@@ -8,7 +8,9 @@ from typing import Any
 
 from collectors.base import BaseCollector
 from collectors.molit_collector import MOLITCollector
+from collectors.onbid_collector import OnbidCollector
 from collectors.rss_collector import RSSCollector
+from collectors.subscription_collector import SubscriptionCollector
 
 
 class CollectorRegistry:
@@ -19,6 +21,8 @@ class CollectorRegistry:
     _COLLECTORS = {
         "rss": RSSCollector,
         "api": MOLITCollector,
+        "onbid": OnbidCollector,
+        "subscription": SubscriptionCollector,
         # "html": HTMLCollector,  # To be implemented
     }
 
