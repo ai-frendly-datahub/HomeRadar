@@ -8,6 +8,7 @@ from typing import Any
 
 from collectors.base import BaseCollector
 from collectors.molit_collector import MOLITCollector
+from collectors.naver_land_collector import NaverLandCollector
 from collectors.onbid_collector import OnbidCollector
 from collectors.rss_collector import RSSCollector
 from collectors.subscription_collector import SubscriptionCollector
@@ -23,6 +24,7 @@ class CollectorRegistry:
         "api": MOLITCollector,
         "onbid": OnbidCollector,
         "subscription": SubscriptionCollector,
+        "naver_land": NaverLandCollector,
         # "html": HTMLCollector,  # To be implemented
     }
 

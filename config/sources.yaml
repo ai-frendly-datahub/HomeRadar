@@ -267,3 +267,20 @@ info_purposes:
     api_doc: "https://www.data.go.kr/data/15101046/openapi.do"
     description: "Apartment subscription (청약) and pre-sale information"
     notes: "Requires SUBSCRIPTION_API_KEY environment variable. Includes competition rates and schedules."
+
+  - id: naver_land_main
+    name: "Naver Land - Property Listings"
+    type: naver_land
+    enabled: true
+    trust_tier: T3_aggregator
+    info_purpose: listing
+    region: korea
+    base_url: "https://land.naver.com"
+    search_url: "https://land.naver.com/search/result"
+    timeout: 30
+    max_items: 50
+    max_pages: 3
+    request_delay_min: 2.0
+    request_delay_max: 5.0
+    description: "Naver Land property listings with anti-bot scraping"
+    notes: "Uses random user agents and natural delays to avoid detection. Collects 50+ properties per run."
