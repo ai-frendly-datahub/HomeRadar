@@ -29,6 +29,7 @@ from collectors import CollectorRegistry, RawItem
 from graph import GraphStore
 from graph.search_index import SearchIndex
 from raw_logger import RawLogger
+from reporters.html_reporter import HtmlReporter
 
 # Logger (configured in setup_logging())
 logger = logging.getLogger(__name__)
@@ -37,15 +38,15 @@ logger = logging.getLogger(__name__)
 def setup_logging():
     """Configure logging with file and console handlers."""
     # Create logs directory
-    Path('logs').mkdir(exist_ok=True)
+    Path("logs").mkdir(exist_ok=True)
 
     logging.basicConfig(
         level=logging.INFO,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
         handlers=[
             logging.StreamHandler(sys.stdout),
-            logging.FileHandler('logs/homeradar.log', encoding='utf-8'),
-        ]
+            logging.FileHandler("logs/homeradar.log", encoding="utf-8"),
+        ],
     )
 
 
@@ -60,7 +61,7 @@ def load_sources(config_path: str = "config/sources.yaml") -> dict[str, Any]:
         Configuration dictionary
     """
     try:
-        with open(config_path, 'r', encoding='utf-8') as f:
+        with open(config_path, "r", encoding="utf-8") as f:
             config = yaml.safe_load(f)
         return config
     except Exception as e:
@@ -89,17 +90,17 @@ def collect_from_sources(
     # Filter sources
     filtered_sources = sources
     if enabled_only:
-        filtered_sources = [s for s in filtered_sources if s.get('enabled', False)]
+        filtered_sources = [s for s in filtered_sources if s.get("enabled", False)]
     if source_filter:
-        filtered_sources = [s for s in filtered_sources if s['id'] in source_filter]
+        filtered_sources = [s for s in filtered_sources if s["id"] in source_filter]
 
     logger.info(f"Collecting from {len(filtered_sources)} sources...")
     raw_logger = RawLogger(Path("data") / "raw")
 
     for source in filtered_sources:
-        source_id = source['id']
-        source_name = source.get('name', source_id)
-        source_type = source['type']
+        source_id = source["id"]
+        source_name = source.get("name", source_id)
+        source_type = source["type"]
 
         logger.info(f"  [{source_type}] {source_name} ({source_id})")
 
@@ -108,7 +109,7 @@ def collect_from_sources(
             collector = CollectorRegistry.create_collector(source_id, source)
 
             # Special handling for MOLIT API (requires parameters)
-            if source_type == 'api' and source_id.startswith('molit'):
+            if source_type == "api" and source_id.startswith("molit"):
                 items = collect_molit(collector, source)
             else:
                 # Regular collection (RSS, etc.)
@@ -138,16 +139,16 @@ def collect_molit(collector: Any, source: dict[str, Any]) -> list[RawItem]:
         List of collected items
     """
     # Get MOLIT-specific config
-    lawd_cd = source.get('lawd_cd', '11680')  # Default: Gangnam-gu
-    deal_ymd = source.get('deal_ymd', datetime.now().strftime('%Y%m'))
+    lawd_cd = source.get("lawd_cd", "11680")  # Default: Gangnam-gu
+    deal_ymd = source.get("deal_ymd", datetime.now().strftime("%Y%m"))
 
     # Check for service key
-    if 'service_key' not in source:
-        service_key = os.environ.get('MOLIT_SERVICE_KEY')
+    if "service_key" not in source:
+        service_key = os.environ.get("MOLIT_SERVICE_KEY")
         if not service_key:
             logger.warning(f"    Skipping MOLIT: MOLIT_SERVICE_KEY not set")
             return []
-        source['service_key'] = service_key
+        source["service_key"] = service_key
 
     logger.info(f"    Region: {lawd_cd}, Period: {deal_ymd}")
 
@@ -172,7 +173,7 @@ def store_and_extract(items: list[RawItem], store: GraphStore) -> dict[str, int]
     """
     if not items:
         logger.info("No items to store")
-        return {'stored': 0, 'entities': 0}
+        return {"stored": 0, "entities": 0}
 
     logger.info(f"Storing {len(items)} items...")
 
@@ -194,8 +195,8 @@ def store_and_extract(items: list[RawItem], store: GraphStore) -> dict[str, int]
         try:
             # Convert RawItem to dict
             item_dict = {
-                'title': item.title,
-                'summary': item.summary,
+                "title": item.title,
+                "summary": item.summary,
             }
 
             entities = extractor.extract_from_item(item_dict)
@@ -211,14 +212,15 @@ def store_and_extract(items: list[RawItem], store: GraphStore) -> dict[str, int]
     logger.info(f"  Entities extracted: {total_entities}")
 
     return {
-        'stored': result['inserted'] + result['updated'],
-        'entities': total_entities,
+        "stored": result["inserted"] + result["updated"],
+        "entities": total_entities,
     }
 
 
 def run_collection_cycle(
     config: dict[str, Any],
     source_filter: list[str] | None = None,
+    generate_report: bool = False,
 ) -> dict[str, Any]:
     """
     Run one complete collection cycle.
@@ -226,6 +228,7 @@ def run_collection_cycle(
     Args:
         config: Configuration dictionary
         source_filter: Optional source filter
+        generate_report: Whether to generate HTML report after collection
 
     Returns:
         Statistics dictionary
@@ -240,7 +243,7 @@ def run_collection_cycle(
         store = GraphStore()
 
         # Collect from sources
-        sources = config.get('sources', [])
+        sources = config.get("sources", [])
         items = collect_from_sources(sources, enabled_only=True, source_filter=source_filter)
 
         # Store and extract
@@ -249,27 +252,46 @@ def run_collection_cycle(
         # Get database stats
         db_stats = store.get_stats()
 
+        # Generate report if requested
+        report_path = None
+        if generate_report:
+            try:
+                logger.info("Generating HTML report...")
+                reporter = HtmlReporter()
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                report_file = Path("reports") / f"daily_{timestamp}.html"
+                report_path = reporter.generate_report(store, report_file, stats=stats)
+                logger.info(f"  Report saved to {report_path}")
+            except Exception as e:
+                logger.error(f"Failed to generate report: {e}")
+
         cycle_end = datetime.now()
         duration = (cycle_end - cycle_start).total_seconds()
 
         result = {
-            'start_time': cycle_start.isoformat(),
-            'end_time': cycle_end.isoformat(),
-            'duration_seconds': duration,
-            'items_collected': len(items),
-            'items_stored': stats['stored'],
-            'entities_extracted': stats['entities'],
-            'total_urls': db_stats['total_urls'],
-            'total_entities': db_stats['total_entities'],
-            'success': True,
+            "start_time": cycle_start.isoformat(),
+            "end_time": cycle_end.isoformat(),
+            "duration_seconds": duration,
+            "items_collected": len(items),
+            "items_stored": stats["stored"],
+            "entities_extracted": stats["entities"],
+            "total_urls": db_stats["total_urls"],
+            "total_entities": db_stats["total_entities"],
+            "success": True,
         }
+        if report_path:
+            result["report_path"] = str(report_path)
 
         logger.info("=" * 80)
         logger.info(f"Collection cycle completed in {duration:.1f}s")
         logger.info(f"  Items collected: {result['items_collected']}")
         logger.info(f"  Items stored: {result['items_stored']}")
         logger.info(f"  Entities extracted: {result['entities_extracted']}")
-        logger.info(f"  Total in DB: {result['total_urls']} URLs, {result['total_entities']} entities")
+        logger.info(
+            f"  Total in DB: {result['total_urls']} URLs, {result['total_entities']} entities"
+        )
+        if report_path:
+            logger.info(f"  Report: {report_path}")
         logger.info("=" * 80)
 
         return result
@@ -277,29 +299,55 @@ def run_collection_cycle(
     except Exception as e:
         logger.error(f"Collection cycle failed: {e}", exc_info=True)
         return {
-            'start_time': cycle_start.isoformat(),
-            'end_time': datetime.now().isoformat(),
-            'success': False,
-            'error': str(e),
+            "start_time": cycle_start.isoformat(),
+            "end_time": datetime.now().isoformat(),
+            "success": False,
+            "error": str(e),
+        }
+
+        logger.info("=" * 80)
+        logger.info(f"Collection cycle completed in {duration:.1f}s")
+        logger.info(f"  Items collected: {result['items_collected']}")
+        logger.info(f"  Items stored: {result['items_stored']}")
+        logger.info(f"  Entities extracted: {result['entities_extracted']}")
+        logger.info(
+            f"  Total in DB: {result['total_urls']} URLs, {result['total_entities']} entities"
+        )
+        logger.info("=" * 80)
+
+        return result
+
+    except Exception as e:
+        logger.error(f"Collection cycle failed: {e}", exc_info=True)
+        return {
+            "start_time": cycle_start.isoformat(),
+            "end_time": datetime.now().isoformat(),
+            "success": False,
+            "error": str(e),
         }
 
 
-def run_once(config: dict[str, Any], source_filter: list[str] | None = None) -> int:
+def run_once(
+    config: dict[str, Any],
+    source_filter: list[str] | None = None,
+    generate_report: bool = False,
+) -> int:
     """
     Run collection once and exit.
 
     Args:
         config: Configuration dictionary
         source_filter: Optional source filter
+        generate_report: Whether to generate HTML report
 
     Returns:
         Exit code (0 = success, 1 = failure)
     """
     logger.info("Running in ONCE mode")
 
-    result = run_collection_cycle(config, source_filter)
+    result = run_collection_cycle(config, source_filter, generate_report)
 
-    if result.get('success'):
+    if result.get("success"):
         return 0
     else:
         return 1
@@ -309,6 +357,7 @@ def run_scheduler(
     config: dict[str, Any],
     interval_hours: int = 24,
     source_filter: list[str] | None = None,
+    generate_report: bool = False,
 ) -> None:
     """
     Run collection on a schedule.
@@ -317,12 +366,13 @@ def run_scheduler(
         config: Configuration dictionary
         interval_hours: Hours between collection cycles
         source_filter: Optional source filter
+        generate_report: Whether to generate HTML report after each cycle
     """
     logger.info(f"Running in SCHEDULER mode (interval: {interval_hours}h)")
 
     while True:
         try:
-            result = run_collection_cycle(config, source_filter)
+            result = run_collection_cycle(config, source_filter, generate_report)
 
             # Wait for next cycle
             sleep_seconds = interval_hours * 3600
@@ -345,7 +395,7 @@ def run_scheduler(
 def main():
     """Main entry point."""
     parser = argparse.ArgumentParser(
-        description='HomeRadar - Real Estate Market Data Collector',
+        description="HomeRadar - Real Estate Market Data Collector",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -361,31 +411,34 @@ Examples:
   # Run with MOLIT API key
   set MOLIT_SERVICE_KEY=your_key_here
   python main.py --mode once
-        """
+        """,
     )
 
     parser.add_argument(
-        '--mode',
-        choices=['once', 'scheduler'],
-        default='once',
-        help='Execution mode (default: once)'
+        "--mode",
+        choices=["once", "scheduler"],
+        default="once",
+        help="Execution mode (default: once)",
     )
     parser.add_argument(
-        '--interval',
+        "--interval",
         type=int,
         default=24,
-        help='Hours between collection cycles in scheduler mode (default: 24)'
+        help="Hours between collection cycles in scheduler mode (default: 24)",
     )
     parser.add_argument(
-        '--sources',
+        "--sources",
         type=str,
-        help='Comma-separated list of source IDs to collect from (default: all enabled)'
+        help="Comma-separated list of source IDs to collect from (default: all enabled)",
     )
     parser.add_argument(
-        '--config',
+        "--config",
         type=str,
-        default='config/sources.yaml',
-        help='Path to sources configuration file (default: config/sources.yaml)'
+        default="config/sources.yaml",
+        help="Path to sources configuration file (default: config/sources.yaml)",
+    )
+    parser.add_argument(
+        "--generate-report", action="store_true", help="Generate HTML report after collection"
     )
 
     args = parser.parse_args()
@@ -403,17 +456,17 @@ Examples:
     # Parse source filter
     source_filter = None
     if args.sources:
-        source_filter = [s.strip() for s in args.sources.split(',')]
+        source_filter = [s.strip() for s in args.sources.split(",")]
         logger.info(f"Source filter: {source_filter}")
 
     # Run based on mode
-    if args.mode == 'once':
-        exit_code = run_once(config, source_filter)
+    if args.mode == "once":
+        exit_code = run_once(config, source_filter, args.generate_report)
         return exit_code
-    elif args.mode == 'scheduler':
-        run_scheduler(config, args.interval, source_filter)
+    elif args.mode == "scheduler":
+        run_scheduler(config, args.interval, source_filter, args.generate_report)
         return 0
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     sys.exit(main())

@@ -144,21 +144,11 @@ def init_database(db_path: Path | str | None = None) -> DatabasePaths:
         )
 
         # Create indexes for common queries
-        conn.execute(
-            "CREATE INDEX IF NOT EXISTS idx_urls_published ON urls(published_at DESC)"
-        )
-        conn.execute(
-            "CREATE INDEX IF NOT EXISTS idx_urls_source ON urls(source_id)"
-        )
-        conn.execute(
-            "CREATE INDEX IF NOT EXISTS idx_urls_region ON urls(region)"
-        )
-        conn.execute(
-            "CREATE INDEX IF NOT EXISTS idx_entities_type ON url_entities(entity_type)"
-        )
-        conn.execute(
-            "CREATE INDEX IF NOT EXISTS idx_entities_value ON url_entities(entity_value)"
-        )
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_urls_published ON urls(published_at DESC)")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_urls_source ON urls(source_id)")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_urls_region ON urls(region)")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_entities_type ON url_entities(entity_type)")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_entities_value ON url_entities(entity_value)")
 
     return DatabasePaths(path=path)
 
@@ -274,9 +264,7 @@ class GraphStore:
 
         return {"inserted": inserted, "updated": updated}
 
-    def add_entities(
-        self, url: str, entities: dict[str, list[str]], weight: float = 1.0
-    ) -> int:
+    def add_entities(self, url: str, entities: dict[str, list[str]], weight: float = 1.0) -> int:
         """
         Add entity relationships for a URL.
 
@@ -312,7 +300,9 @@ class GraphStore:
 
         return count
 
-    def get_recent_items(self, limit: int = 50, source_id: str | None = None) -> list[dict[str, Any]]:
+    def get_recent_items(
+        self, limit: int = 50, source_id: str | None = None
+    ) -> list[dict[str, Any]]:
         """
         Get recent items, optionally filtered by source.
 
@@ -402,9 +392,7 @@ class GraphStore:
         with self._connection() as conn:
             # Total counts
             url_count = conn.execute("SELECT COUNT(*) FROM urls").fetchone()[0]
-            entity_count = conn.execute(
-                "SELECT COUNT(*) FROM url_entities"
-            ).fetchone()[0]
+            entity_count = conn.execute("SELECT COUNT(*) FROM url_entities").fetchone()[0]
 
             # Source distribution
             source_dist = conn.execute(
@@ -444,3 +432,21 @@ class GraphStore:
                 "regions": dict(region_dist),
                 "entity_types": dict(entity_types),
             }
+
+    def get_sources_stats(self) -> list[dict[str, Any]]:
+        """
+        Get statistics for each source.
+
+        Returns:
+            List of dictionaries with source_id and count
+        """
+        with self._connection() as conn:
+            result = conn.execute(
+                """
+                SELECT source_id, COUNT(*) as count
+                FROM urls
+                GROUP BY source_id
+                ORDER BY count DESC
+                """
+            ).fetchall()
+            return [{"source_id": row[0], "count": row[1]} for row in result]
