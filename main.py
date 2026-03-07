@@ -20,14 +20,23 @@ import sys
 import time
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Optional
 
 import yaml
+import duckdb
 
 from analyzers import EntityExtractor
 from collectors import CollectorRegistry, RawItem
 from graph import GraphStore
 from graph.search_index import SearchIndex
+from homeradar.common.validators import (
+    validate_area,
+    validate_article,
+    validate_location,
+    validate_price,
+)
+from config_loader import load_notification_config
+from notifier import Notifier, detect_home_notifications
 from raw_logger import RawLogger
 from reporters.html_reporter import HtmlReporter
 
@@ -72,7 +81,7 @@ def load_sources(config_path: str = "config/sources.yaml") -> dict[str, Any]:
 def collect_from_sources(
     sources: list[dict[str, Any]],
     enabled_only: bool = True,
-    source_filter: list[str] | None = None,
+    source_filter: Optional[list[str]] = None,
 ) -> list[RawItem]:
     """
     Collect data from all configured sources.
@@ -219,8 +228,9 @@ def store_and_extract(items: list[RawItem], store: GraphStore) -> dict[str, int]
 
 def run_collection_cycle(
     config: dict[str, Any],
-    source_filter: list[str] | None = None,
+    source_filter: Optional[list[str]] = None,
     generate_report: bool = False,
+    notifier: Optional[Notifier] = None,
 ) -> dict[str, Any]:
     """
     Run one complete collection cycle.
@@ -246,8 +256,49 @@ def run_collection_cycle(
         sources = config.get("sources", [])
         items = collect_from_sources(sources, enabled_only=True, source_filter=source_filter)
 
+        known_urls = _get_existing_urls(store)
+        previous_region_prices = _get_region_price_baseline(store)
+
+        validated_items: list[RawItem] = []
+        for item in items:
+            is_valid, validation_errors = validate_article(item)
+
+            normalized_price = int(item.price) if item.price is not None else None
+            if not validate_price(normalized_price):
+                validation_errors.append(f"price out of range: {item.price}")
+            if not validate_area(item.area):
+                validation_errors.append(f"area out of range: {item.area}")
+            if item.region is not None and not validate_location(item.region):
+                validation_errors.append(f"invalid location: {item.region}")
+
+            if validation_errors:
+                logger.warning(
+                    "Skipping invalid item %s: %s",
+                    item.url,
+                    "; ".join(validation_errors),
+                )
+                continue
+
+            if is_valid:
+                validated_items.append(item)
+
         # Store and extract
-        stats = store_and_extract(items, store)
+        stats = store_and_extract(validated_items, store)
+
+        if notifier is not None and validated_items:
+            events = detect_home_notifications(
+                validated_items,
+                previous_region_prices=previous_region_prices,
+                known_urls=known_urls,
+                rules=notifier.config.rules,
+            )
+            for event in events:
+                notifier.send(
+                    title=event.title,
+                    message=event.message,
+                    priority=event.priority,
+                    metadata=event.metadata,
+                )
 
         # Get database stats
         db_stats = store.get_stats()
@@ -305,32 +356,12 @@ def run_collection_cycle(
             "error": str(e),
         }
 
-        logger.info("=" * 80)
-        logger.info(f"Collection cycle completed in {duration:.1f}s")
-        logger.info(f"  Items collected: {result['items_collected']}")
-        logger.info(f"  Items stored: {result['items_stored']}")
-        logger.info(f"  Entities extracted: {result['entities_extracted']}")
-        logger.info(
-            f"  Total in DB: {result['total_urls']} URLs, {result['total_entities']} entities"
-        )
-        logger.info("=" * 80)
-
-        return result
-
-    except Exception as e:
-        logger.error(f"Collection cycle failed: {e}", exc_info=True)
-        return {
-            "start_time": cycle_start.isoformat(),
-            "end_time": datetime.now().isoformat(),
-            "success": False,
-            "error": str(e),
-        }
-
 
 def run_once(
     config: dict[str, Any],
-    source_filter: list[str] | None = None,
+    source_filter: Optional[list[str]] = None,
     generate_report: bool = False,
+    notifier: Optional[Notifier] = None,
 ) -> int:
     """
     Run collection once and exit.
@@ -345,7 +376,7 @@ def run_once(
     """
     logger.info("Running in ONCE mode")
 
-    result = run_collection_cycle(config, source_filter, generate_report)
+    result = run_collection_cycle(config, source_filter, generate_report, notifier)
 
     if result.get("success"):
         return 0
@@ -356,8 +387,9 @@ def run_once(
 def run_scheduler(
     config: dict[str, Any],
     interval_hours: int = 24,
-    source_filter: list[str] | None = None,
+    source_filter: Optional[list[str]] = None,
     generate_report: bool = False,
+    notifier: Optional[Notifier] = None,
 ) -> None:
     """
     Run collection on a schedule.
@@ -372,7 +404,7 @@ def run_scheduler(
 
     while True:
         try:
-            result = run_collection_cycle(config, source_filter, generate_report)
+            result = run_collection_cycle(config, source_filter, generate_report, notifier)
 
             # Wait for next cycle
             sleep_seconds = interval_hours * 3600
@@ -438,6 +470,12 @@ Examples:
         help="Path to sources configuration file (default: config/sources.yaml)",
     )
     parser.add_argument(
+        "--notifications-config",
+        type=str,
+        default="config/notifications.yaml",
+        help="Path to notifications configuration file",
+    )
+    parser.add_argument(
         "--generate-report", action="store_true", help="Generate HTML report after collection"
     )
 
@@ -453,6 +491,9 @@ Examples:
         logger.error(f"Failed to load configuration: {e}")
         return 1
 
+    notification_config = load_notification_config(Path(args.notifications_config))
+    notifier = Notifier(notification_config)
+
     # Parse source filter
     source_filter = None
     if args.sources:
@@ -461,11 +502,36 @@ Examples:
 
     # Run based on mode
     if args.mode == "once":
-        exit_code = run_once(config, source_filter, args.generate_report)
+        exit_code = run_once(config, source_filter, args.generate_report, notifier)
         return exit_code
     elif args.mode == "scheduler":
-        run_scheduler(config, args.interval, source_filter, args.generate_report)
+        run_scheduler(config, args.interval, source_filter, args.generate_report, notifier)
         return 0
+
+
+def _get_existing_urls(store: GraphStore) -> set[str]:
+    try:
+        with duckdb.connect(str(store.db_path)) as conn:
+            rows = conn.execute("SELECT url FROM urls").fetchall()
+        return {str(row[0]) for row in rows}
+    except Exception:
+        return set()
+
+
+def _get_region_price_baseline(store: GraphStore) -> dict[str, float]:
+    try:
+        with duckdb.connect(str(store.db_path)) as conn:
+            rows = conn.execute(
+                """
+                SELECT region, AVG(price)
+                FROM urls
+                WHERE region IS NOT NULL AND price IS NOT NULL
+                GROUP BY region
+                """
+            ).fetchall()
+        return {str(region): float(avg_price) for region, avg_price in rows}
+    except Exception:
+        return {}
 
 
 if __name__ == "__main__":
