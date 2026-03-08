@@ -1,6 +1,8 @@
 # HomeRadar
 
-[![GitHub Actions](https://github.com/<username>/HomeRadar/workflows/HomeRadar%20Crawler/badge.svg)](https://github.com/<username>/HomeRadar/actions)
+**🌐 Live Report**: https://ai-frendly-datahub.github.io/HomeRadar/
+
+[![GitHub Actions](https://github.com/ai-frendly-datahub/HomeRadar/workflows/HomeRadar%20Crawler/badge.svg)](https://github.com/ai-frendly-datahub/HomeRadar/actions)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -31,7 +33,7 @@ HomeRadar는 **Radar 시리즈**의 일원으로, WineRadar와 동일한 아키�
 
 ## 데모
 
-- **[📊 Live Daily Reports](https://[username].github.io/HomeRadar/)** – GitHub Pages에 게시되는 일일 HTML 리포트 (매일 자동 업데이트, 준비 중)
+- **[📊 Live Daily Reports](https://ai-frendly-datahub.github.io/HomeRadar/)** – GitHub Pages에 게시되는 일일 HTML 리포트 (매일 자동 업데이트)
 
 ## 기술적 특징
 
