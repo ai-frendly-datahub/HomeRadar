@@ -103,7 +103,9 @@ def handle_sql(*, db_path: Path, query: str) -> str:
     except Exception as exc:  # noqa: BLE001
         return json.dumps({"ok": False, "error": str(exc)}, ensure_ascii=False)
 
-    return json.dumps({"ok": True, "columns": columns, "rows": rows}, ensure_ascii=False, default=str)
+    return json.dumps(
+        {"ok": True, "columns": columns, "rows": rows}, ensure_ascii=False, default=str
+    )
 
 
 def handle_price_watch(
@@ -115,38 +117,21 @@ def handle_price_watch(
     limit: int = 20,
 ) -> str:
     with duckdb.connect(str(db_path), read_only=True) as conn:
-        tx_columns = _table_columns(conn, "transactions")
-        if {"url", "deal_date"}.issubset(tx_columns):
-            rows = conn.execute(
-                """
-                SELECT t.complex_name, t.district, t.price, t.area, t.floor, t.deal_date,
-                       u.title, u.url
-                FROM transactions t
-                JOIN urls u ON u.url = t.url
-                WHERE (?1 IS NULL OR t.district LIKE '%' || ?1 || '%')
-                  AND (?2 IS NULL OR t.price >= ?2)
-                  AND (?3 IS NULL OR t.price <= ?3)
-                ORDER BY t.deal_date DESC
-                LIMIT ?4
-                """,
-                [region, min_price, max_price, limit],
-            ).fetchall()
-        else:
-            rows = conn.execute(
-                """
-                SELECT t.complex_name, t.district, t.price, t.area, t.floor,
-                       CAST(t.transaction_date AS VARCHAR) AS deal_date,
-                       NULL AS title,
-                       NULL AS url
-                FROM transactions t
-                WHERE (?1 IS NULL OR t.district LIKE '%' || ?1 || '%')
-                  AND (?2 IS NULL OR t.price >= ?2)
-                  AND (?3 IS NULL OR t.price <= ?3)
-                ORDER BY t.transaction_date DESC
-                LIMIT ?4
-                """,
-                [region, min_price, max_price, limit],
-            ).fetchall()
+        rows = conn.execute(
+            """
+            SELECT NULL AS complex_name, u.district, u.price, u.area, NULL AS floor,
+                   CAST(u.published_at AS VARCHAR) AS deal_date,
+                   u.title, u.url
+            FROM urls u
+            WHERE u.price IS NOT NULL
+              AND (?1 IS NULL OR u.district LIKE '%' || ?1 || '%')
+              AND (?2 IS NULL OR u.price >= ?2)
+              AND (?3 IS NULL OR u.price <= ?3)
+            ORDER BY u.published_at DESC
+            LIMIT ?4
+            """,
+            [region, min_price, max_price, limit],
+        ).fetchall()
 
     payload = {
         "ok": True,
@@ -183,10 +168,7 @@ def handle_top_trends(
         "entity_type": entity_type,
         "days": days,
         "limit": limit,
-        "results": [
-            {"entity_value": row[0], "mention_count": row[1]}
-            for row in rows
-        ],
+        "results": [{"entity_value": row[0], "mention_count": row[1]} for row in rows],
     }
     return json.dumps(payload, ensure_ascii=False, default=str)
 

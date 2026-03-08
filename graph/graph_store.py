@@ -63,7 +63,6 @@ def init_database(db_path: Path | str | None = None) -> DatabasePaths:
     Creates:
     - urls: Main content table
     - url_entities: Entity relationships
-    - transactions: Real estate transaction data (optional)
 
     Args:
         db_path: Optional database path
@@ -118,27 +117,6 @@ def init_database(db_path: Path | str | None = None) -> DatabasePaths:
                 last_seen_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 PRIMARY KEY (url, entity_type, entity_value),
                 FOREIGN KEY (url) REFERENCES urls(url)
-            )
-            """
-        )
-
-        # Optional: Real estate transactions table
-        conn.execute(
-            """
-            CREATE TABLE IF NOT EXISTS transactions (
-                id TEXT PRIMARY KEY,
-                complex_name TEXT,        -- 단지명
-                district TEXT,            -- 구/군
-                dong TEXT,                -- 법정동
-                price INTEGER,            -- 거래금액 (만원)
-                area DOUBLE,              -- 전용면적 (m²)
-                floor INTEGER,            -- 층
-                build_year INTEGER,       -- 건축년도
-                transaction_date DATE,    -- 거래일
-                transaction_type TEXT,    -- 매매, 전세, 월세
-                rent_price INTEGER,       -- 보증금/월세 (만원)
-                source_id TEXT,           -- 데이터 소스
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
             """
         )

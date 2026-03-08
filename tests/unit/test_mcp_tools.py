@@ -34,31 +34,9 @@ def _seed_homeradar_db(db_path: Path) -> GraphStore:
         raw_data={"district": "강남구"},
     )
     store.add_items([item])
-    store.add_entities(item.url, {"district": ["강남구"], "complex": ["래미안"], "project": ["재건축"]})
-
-    with duckdb.connect(str(db_path)) as conn:
-        conn.execute(
-            """
-            INSERT INTO transactions (
-                id, complex_name, district, dong, price, area, floor,
-                build_year, transaction_date, transaction_type, rent_price, source_id
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            """,
-            [
-                "tx-1",
-                "래미안",
-                "강남구",
-                "역삼동",
-                150000,
-                84.9,
-                12,
-                2010,
-                "2026-03-03",
-                "매매",
-                None,
-                "molit_apt_transaction",
-            ],
-        )
+    store.add_entities(
+        item.url, {"district": ["강남구"], "complex": ["래미안"], "project": ["재건축"]}
+    )
 
     return store
 
@@ -136,7 +114,9 @@ def test_handle_top_trends_uses_trending_entities(tmp_path: Path) -> None:
     db_path = tmp_path / "homeradar.duckdb"
     _seed_homeradar_db(db_path)
 
-    payload = json.loads(handle_top_trends(db_path=db_path, entity_type="district", days=7, limit=5))
+    payload = json.loads(
+        handle_top_trends(db_path=db_path, entity_type="district", days=7, limit=5)
+    )
 
     assert payload["ok"] is True
     assert payload["results"]
