@@ -28,6 +28,9 @@ jobs:
         env:
           MOLIT_SERVICE_KEY: ${{ secrets.MOLIT_SERVICE_KEY }}
         run: python main.py --mode once
+      - name: Generate index.html
+        run: |
+          python -c "from reporters.html_reporter import generate_index_html; from pathlib import Path; generate_index_html(Path('docs/reports'))"
       - name: Run Quality Checks
         if: always()
         run: |

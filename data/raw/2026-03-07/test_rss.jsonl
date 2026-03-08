@@ -1,0 +1,2 @@
+{"url": "http://example.com/1", "title": "Test 1", "summary": "Summary 1", "source_id": "test_rss", "published_at": "2026-03-07T12:47:49.074868", "collected_at": "2026-03-07T12:47:49.075806", "raw_data": {}, "region": null, "property_type": null, "price": null, "area": null}
+{"url": "http://example.com/2", "title": "Test 2", "summary": "Summary 2", "source_id": "test_rss", "published_at": "2026-03-07T12:47:49.075970", "collected_at": "2026-03-07T12:47:49.075972", "raw_data": {}, "region": null, "property_type": null, "price": null, "area": null}
