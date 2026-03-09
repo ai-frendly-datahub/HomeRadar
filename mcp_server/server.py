@@ -1,4 +1,5 @@
 from __future__ import annotations
+from typing import Optional
 
 import asyncio
 import os
@@ -40,7 +41,7 @@ def _as_int(value: object, default: int) -> int:
     return default
 
 
-def _as_float(value: object) -> float | None:
+def _as_float(value: object) -> Optional[float]:
     if value is None or isinstance(value, bool):
         return None
     if isinstance(value, (int, float)):

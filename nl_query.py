@@ -1,4 +1,5 @@
 from __future__ import annotations
+from typing import Optional
 
 import re
 from dataclasses import dataclass
@@ -11,7 +12,7 @@ DEFAULT_LIMIT = 20
 class ParsedQuery:
     original_query: str
     search_text: str
-    days: int | None
+    days: Optional[int]
     limit: int
 
 
@@ -30,7 +31,7 @@ def parse_query(query: str) -> ParsedQuery:
     )
 
 
-def _extract_days(text: str) -> tuple[int | None, str]:
+def _extract_days(text: str) -> tuple[Optional[int], str]:
     korean_match = re.search(r"(?:최근|지난)\s*(\d+)\s*(일|주|개월)", text)
     if korean_match:
         amount = int(korean_match.group(1))

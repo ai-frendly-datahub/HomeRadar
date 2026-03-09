@@ -1,4 +1,5 @@
 from __future__ import annotations
+from typing import Optional
 
 from datetime import datetime
 
@@ -166,7 +167,7 @@ def test_validate_article_invalid_cases(article: dict[str, str]) -> None:
         (100_000_000_001, False),
     ],
 )
-def test_validate_price(price: int | None, expected: bool) -> None:
+def test_validate_price(price: Optional[int], expected: bool) -> None:
     assert validate_price(price) is expected
 
 
@@ -181,7 +182,7 @@ def test_validate_price(price: int | None, expected: bool) -> None:
         (10_000.1, False),
     ],
 )
-def test_validate_area(area: float | None, expected: bool) -> None:
+def test_validate_area(area: Optional[float], expected: bool) -> None:
     assert validate_area(area) is expected
 
 

@@ -11,7 +11,7 @@ import os
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Any
+from typing import Optional, Any
 
 import duckdb
 
@@ -29,7 +29,7 @@ class DatabasePaths:
     path: Path
 
 
-def _resolve_db_path(db_path: Path | str | None = None) -> Path:
+def _resolve_db_path(db_path: Optional[Path | str] = None) -> Path:
     """
     Resolve database path from arguments or environment.
 
@@ -56,7 +56,7 @@ def _resolve_db_path(db_path: Path | str | None = None) -> Path:
     return path
 
 
-def init_database(db_path: Path | str | None = None) -> DatabasePaths:
+def init_database(db_path: Optional[Path | str] = None) -> DatabasePaths:
     """
     Initialize DuckDB database with required tables.
 
@@ -139,7 +139,7 @@ class GraphStore:
     and transaction data.
     """
 
-    def __init__(self, db_path: Path | str | None = None):
+    def __init__(self, db_path: Optional[Path | str] = None):
         """
         Initialize GraphStore.
 
@@ -279,7 +279,7 @@ class GraphStore:
         return count
 
     def get_recent_items(
-        self, limit: int = 50, source_id: str | None = None
+        self, limit: int = 50, source_id: Optional[str] = None
     ) -> list[dict[str, Any]]:
         """
         Get recent items, optionally filtered by source.
