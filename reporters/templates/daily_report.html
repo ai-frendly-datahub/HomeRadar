@@ -278,6 +278,45 @@
       .panel-bd{padding:14px 16px 16px}
       .chart-wrap{position:relative; height: 290px}
       .chart-wrap.tall{height: 320px}
+      .map-wrap{
+        position:relative;
+        min-height: 360px;
+      }
+      .map-wrap .plotly-graph-div,
+      .map-wrap .js-plotly-plot{
+        width:100% !important;
+        min-height: 360px;
+      }
+      .region-table-wrap{
+        border:1px solid rgba(150,190,255,.12);
+        border-radius:14px;
+        overflow:hidden;
+        background: rgba(10,16,30,.44);
+      }
+      .region-table{
+        width:100%;
+        border-collapse:collapse;
+        font-size:13px;
+      }
+      .region-table th,
+      .region-table td{
+        padding:10px 12px;
+        border-bottom:1px solid rgba(150,190,255,.10);
+        text-align:left;
+      }
+      .region-table th{
+        font-family:var(--mono);
+        font-weight:600;
+        font-size:12px;
+        color: rgba(233,238,251,.74);
+      }
+      .region-table tr:last-child td{border-bottom:none}
+      .region-bar-cell{width:52%}
+      .region-bar{
+        display:block;
+        height:10px;
+        border-radius:999px;
+      }
       canvas{max-width:100%}
 
       .section{
@@ -438,6 +477,9 @@
         .btn{width:100%}
         .chart-wrap{height: 260px}
         .chart-wrap.tall{height: 300px}
+        .map-wrap,
+        .map-wrap .plotly-graph-div,
+        .map-wrap .js-plotly-plot{min-height: 320px}
       }
       @media (prefers-reduced-motion: reduce){
         *{scroll-behavior:auto !important}
@@ -462,6 +504,7 @@
 
         <nav class="nav" aria-label="Jump links">
           <a class="pill" href="#charts">Charts</a>
+          <a class="pill" href="#regions">Regions</a>
           <a class="pill" href="#entities">Entities</a>
           <a class="pill" href="#articles">Articles</a>
         </nav>
@@ -530,6 +573,7 @@
           <h2>Visuals</h2>
           <div class="right">
             <span class="kbd">Chart.js 4.4.3</span>
+            <span class="kbd">Plotly choropleth_mapbox</span>
             <span class="kbd">dark editorial</span>
             <span class="kbd">responsive</span>
           </div>
@@ -613,6 +657,45 @@
             </div>
           </article>
         </div>
+      </section>
+
+      <section id="regions" class="section" aria-label="Regional distribution">
+        <div class="section-hd">
+          <h2>Regional Real Estate Distribution</h2>
+          <div class="right">
+            {% if regional_distribution %}
+            <span class="kbd">top {{ regional_distribution[0].sido|e }}</span>
+            {% endif %}
+            <span class="kbd">sido level</span>
+            <span class="kbd">geojson fallback ready</span>
+          </div>
+        </div>
+
+        <article class="panel" aria-label="Korea regional choropleth map">
+          <header class="panel-hd">
+            <div>
+              <p class="panel-title">Korea Choropleth</p>
+              <p class="panel-sub">Regional concentration of collected real estate signals</p>
+            </div>
+            <div class="pill" aria-hidden="true">map</div>
+          </header>
+          <div class="panel-bd">
+            {% if regional_distribution %}
+            <div class="map-wrap" role="img" aria-label="Korea map showing regional real estate distribution">
+              {{ regional_distribution_html|safe }}
+            </div>
+            {% if regional_distribution_fallback %}
+            <p class="muted small" style="margin:12px 0 0">
+              GeoJSON map rendering is unavailable. Showing color-coded HTML table fallback.
+            </p>
+            {% endif %}
+            {% else %}
+            <p class="muted" style="margin:0; font-size:13px; line-height:1.6">
+              No regional distribution data is available for this run.
+            </p>
+            {% endif %}
+          </div>
+        </article>
       </section>
 
       <section id="entities" class="section" aria-label="Entity table">
