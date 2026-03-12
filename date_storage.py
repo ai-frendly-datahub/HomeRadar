@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import shutil
-from datetime import date, datetime, timedelta
+from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
 
 
@@ -14,7 +14,7 @@ def snapshot_database(
     if not db_path.exists():
         return None
 
-    target_date = snapshot_date or datetime.now().date()
+    target_date = snapshot_date or datetime.now(UTC).date()
     target_root = snapshot_root or db_path.parent / "snapshots"
     target_dir = target_root / target_date.isoformat()
     target_dir.mkdir(parents=True, exist_ok=True)
@@ -28,13 +28,13 @@ def cleanup_date_directories(base_dir: Path, *, keep_days: int, today: date | No
     if keep_days < 0 or not base_dir.exists():
         return 0
 
-    cutoff = (today or datetime.now().date()) - timedelta(days=keep_days)
+    cutoff = (today or datetime.now(UTC).date()) - timedelta(days=keep_days)
     removed = 0
     for child in base_dir.iterdir():
         if not child.is_dir():
             continue
         try:
-            child_date = datetime.strptime(child.name, "%Y-%m-%d").date()
+            child_date = date.fromisoformat(child.name)
         except ValueError:
             continue
 
@@ -48,7 +48,7 @@ def cleanup_dated_reports(report_dir: Path, *, keep_days: int, today: date | Non
     if keep_days < 0 or not report_dir.exists():
         return 0
 
-    cutoff = (today or datetime.now().date()) - timedelta(days=keep_days)
+    cutoff = (today or datetime.now(UTC).date()) - timedelta(days=keep_days)
     removed = 0
     for html_file in report_dir.glob("*.html"):
         if html_file.name == "index.html":
@@ -58,12 +58,12 @@ def cleanup_dated_reports(report_dir: Path, *, keep_days: int, today: date | Non
         stem = html_file.stem
         if len(stem) >= 8 and stem[-8:].isdigit():
             try:
-                stamp = datetime.strptime(stem[-8:], "%Y%m%d").date()
+                stamp = date.fromisoformat(f"{stem[-8:-4]}-{stem[-4:-2]}-{stem[-2:]}")
             except ValueError:
                 stamp = None
         elif len(stem) == 10:
             try:
-                stamp = datetime.strptime(stem, "%Y-%m-%d").date()
+                stamp = date.fromisoformat(stem)
             except ValueError:
                 stamp = None
 
