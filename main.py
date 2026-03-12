@@ -42,6 +42,7 @@ from config_loader import load_notification_config
 from notifier import (
     CompositeNotifier,
     EmailNotifier,
+    NotificationSender,
     NotificationConfig,
     NotificationPayload,
     WebhookNotifier,
@@ -628,7 +629,7 @@ Examples:
 
 
 def _build_notifier(config: NotificationConfig) -> CompositeNotifier:
-    notifiers: list[object] = []
+    notifiers: list[NotificationSender] = []
     if not config.enabled:
         return CompositeNotifier(notifiers)
 
