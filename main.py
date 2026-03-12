@@ -14,6 +14,7 @@ Usage:
 """
 
 import argparse
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import logging
 import os
 import sys
@@ -27,6 +28,7 @@ import duckdb
 
 from analyzers import EntityExtractor
 from collectors import CollectorRegistry, RawItem
+from collectors.base import resolve_max_workers
 from graph import GraphStore
 from graph.search_index import SearchIndex
 from homeradar.common.validators import (
@@ -36,7 +38,14 @@ from homeradar.common.validators import (
     validate_price,
 )
 from config_loader import load_notification_config
-from notifier import Notifier, detect_home_notifications
+from notifier import (
+    CompositeNotifier,
+    EmailNotifier,
+    NotificationConfig,
+    NotificationPayload,
+    WebhookNotifier,
+    detect_home_notifications,
+)
 from raw_logger import RawLogger
 from reporters.html_reporter import HtmlReporter
 
@@ -106,31 +115,41 @@ def collect_from_sources(
     logger.info(f"Collecting from {len(filtered_sources)} sources...")
     raw_logger = RawLogger(Path("data") / "raw")
 
-    for source in filtered_sources:
+    workers = resolve_max_workers()
+
+    def _collect_for_source(
+        source: dict[str, Any],
+    ) -> tuple[str, str, str, list[RawItem], Optional[str]]:
         source_id = source["id"]
         source_name = source.get("name", source_id)
         source_type = source["type"]
-
-        logger.info(f"  [{source_type}] {source_name} ({source_id})")
-
         try:
-            # Create collector
             collector = CollectorRegistry.create_collector(source_id, source)
-
-            # Special handling for MOLIT API (requires parameters)
             if source_type == "api" and source_id.startswith("molit"):
                 items = collect_molit(collector, source)
             else:
-                # Regular collection (RSS, etc.)
                 items = collector.collect()
+            return source_id, source_name, source_type, items, None
+        except Exception as exc:
+            return source_id, source_name, source_type, [], str(exc)
 
-            logger.info(f"    Collected {len(items)} items")
-            raw_logger.log(items, source_name=source_id)
-            all_items.extend(items)
+    if workers == 1:
+        results = [_collect_for_source(source) for source in filtered_sources]
+    else:
+        results = []
+        with ThreadPoolExecutor(max_workers=workers) as executor:
+            futures = [executor.submit(_collect_for_source, source) for source in filtered_sources]
+            for future in as_completed(futures):
+                results.append(future.result())
 
-        except Exception as e:
-            logger.error(f"    Failed to collect from {source_id}: {e}")
+    for source_id, source_name, source_type, items, error in results:
+        logger.info(f"  [{source_type}] {source_name} ({source_id})")
+        if error is not None:
+            logger.error(f"    Failed to collect from {source_id}: {error}")
             continue
+        logger.info(f"    Collected {len(items)} items")
+        raw_logger.log(items, source_name=source_id)
+        all_items.extend(items)
 
     logger.info(f"Total items collected: {len(all_items)}")
     return all_items
@@ -230,7 +249,9 @@ def run_collection_cycle(
     config: dict[str, Any],
     source_filter: Optional[list[str]] = None,
     generate_report: bool = False,
-    notifier: Optional[Notifier] = None,
+    notifier: Optional[CompositeNotifier] = None,
+    notification_rules: Optional[dict[str, Any]] = None,
+    keep_days: int = 90,
 ) -> dict[str, Any]:
     """
     Run one complete collection cycle.
@@ -285,19 +306,27 @@ def run_collection_cycle(
         # Store and extract
         stats = store_and_extract(validated_items, store)
 
+        deleted = store.delete_older_than(keep_days)
+        if deleted:
+            logger.info(f"Deleted {deleted} records older than {keep_days} days")
+
         if notifier is not None and validated_items:
             events = detect_home_notifications(
                 validated_items,
                 previous_region_prices=previous_region_prices,
                 known_urls=known_urls,
-                rules=notifier.config.rules,
+                rules=notification_rules or {},
             )
             for event in events:
                 notifier.send(
-                    title=event.title,
-                    message=event.message,
-                    priority=event.priority,
-                    metadata=event.metadata,
+                    NotificationPayload(
+                        category_name=event.title,
+                        sources_count=0,
+                        collected_count=0,
+                        matched_count=0,
+                        errors_count=0,
+                        timestamp=datetime.now(),
+                    )
                 )
 
         # Get database stats
@@ -309,8 +338,7 @@ def run_collection_cycle(
             try:
                 logger.info("Generating HTML report...")
                 reporter = HtmlReporter()
-                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                report_file = Path("reports") / f"daily_{timestamp}.html"
+                report_file = Path("reports") / "daily_report.html"
                 report_path = reporter.generate_report(store, report_file, stats=stats)
                 logger.info(f"  Report saved to {report_path}")
             except Exception as e:
@@ -361,7 +389,9 @@ def run_once(
     config: dict[str, Any],
     source_filter: Optional[list[str]] = None,
     generate_report: bool = False,
-    notifier: Optional[Notifier] = None,
+    notifier: Optional[CompositeNotifier] = None,
+    notification_rules: Optional[dict[str, Any]] = None,
+    keep_days: int = 90,
 ) -> int:
     """
     Run collection once and exit.
@@ -376,7 +406,14 @@ def run_once(
     """
     logger.info("Running in ONCE mode")
 
-    result = run_collection_cycle(config, source_filter, generate_report, notifier)
+    result = run_collection_cycle(
+        config,
+        source_filter,
+        generate_report,
+        notifier,
+        notification_rules,
+        keep_days,
+    )
 
     if result.get("success"):
         return 0
@@ -389,7 +426,9 @@ def run_scheduler(
     interval_hours: int = 24,
     source_filter: Optional[list[str]] = None,
     generate_report: bool = False,
-    notifier: Optional[Notifier] = None,
+    notifier: Optional[CompositeNotifier] = None,
+    notification_rules: Optional[dict[str, Any]] = None,
+    keep_days: int = 90,
 ) -> None:
     """
     Run collection on a schedule.
@@ -404,7 +443,14 @@ def run_scheduler(
 
     while True:
         try:
-            result = run_collection_cycle(config, source_filter, generate_report, notifier)
+            result = run_collection_cycle(
+                config,
+                source_filter,
+                generate_report,
+                notifier,
+                notification_rules,
+                keep_days,
+            )
 
             # Wait for next cycle
             sleep_seconds = interval_hours * 3600
@@ -470,6 +516,12 @@ Examples:
         help="Path to sources configuration file (default: config/sources.yaml)",
     )
     parser.add_argument(
+        "--keep-days",
+        type=int,
+        default=90,
+        help="Retention period in days (default: 90)",
+    )
+    parser.add_argument(
         "--notifications-config",
         type=str,
         default="config/notifications.yaml",
@@ -492,7 +544,7 @@ Examples:
         return 1
 
     notification_config = load_notification_config(Path(args.notifications_config))
-    notifier = Notifier(notification_config)
+    notifier = _build_notifier(notification_config)
 
     # Parse source filter
     source_filter = None
@@ -502,11 +554,59 @@ Examples:
 
     # Run based on mode
     if args.mode == "once":
-        exit_code = run_once(config, source_filter, args.generate_report, notifier)
+        exit_code = run_once(
+            config,
+            source_filter,
+            args.generate_report,
+            notifier,
+            notification_config.rules,
+            args.keep_days,
+        )
         return exit_code
     elif args.mode == "scheduler":
-        run_scheduler(config, args.interval, source_filter, args.generate_report, notifier)
+        run_scheduler(
+            config,
+            args.interval,
+            source_filter,
+            args.generate_report,
+            notifier,
+            notification_config.rules,
+            args.keep_days,
+        )
         return 0
+
+
+def _build_notifier(config: NotificationConfig) -> CompositeNotifier:
+    notifiers: list[object] = []
+    if not config.enabled:
+        return CompositeNotifier(notifiers)
+
+    channels = {channel.strip().lower() for channel in config.channels}
+    email_settings = config.email_settings
+    if "email" in channels and email_settings:
+        to_addresses = email_settings.get("to_addresses", email_settings.get("to_addrs", []))
+        if isinstance(to_addresses, list):
+            notifiers.append(
+                EmailNotifier(
+                    smtp_host=str(email_settings.get("smtp_host", "")),
+                    smtp_port=int(email_settings.get("smtp_port", 587)),
+                    smtp_user=str(
+                        email_settings.get("username", email_settings.get("smtp_user", ""))
+                    ),
+                    smtp_password=str(
+                        email_settings.get("password", email_settings.get("smtp_password", ""))
+                    ),
+                    from_addr=str(
+                        email_settings.get("from_address", email_settings.get("from_addr", ""))
+                    ),
+                    to_addrs=[str(address) for address in to_addresses],
+                )
+            )
+
+    if "webhook" in channels and config.webhook_url:
+        notifiers.append(WebhookNotifier(url=config.webhook_url))
+
+    return CompositeNotifier(notifiers)
 
 
 def _get_existing_urls(store: GraphStore) -> set[str]:
