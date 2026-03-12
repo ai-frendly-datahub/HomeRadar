@@ -29,6 +29,7 @@ import duckdb
 from analyzers import EntityExtractor
 from collectors import CollectorRegistry, RawItem
 from collectors.base import resolve_max_workers
+from date_storage import apply_date_storage_policy
 from graph import GraphStore
 from graph.search_index import SearchIndex
 from homeradar.common.validators import (
@@ -252,6 +253,9 @@ def run_collection_cycle(
     notifier: Optional[CompositeNotifier] = None,
     notification_rules: Optional[dict[str, Any]] = None,
     keep_days: int = 90,
+    keep_raw_days: int = 180,
+    keep_report_days: int = 90,
+    snapshot_db: bool = False,
 ) -> dict[str, Any]:
     """
     Run one complete collection cycle.
@@ -344,6 +348,18 @@ def run_collection_cycle(
             except Exception as e:
                 logger.error(f"Failed to generate report: {e}")
 
+        date_storage = apply_date_storage_policy(
+            database_path=Path(store.db_path),
+            raw_data_dir=Path("data") / "raw",
+            report_dir=Path("reports"),
+            keep_raw_days=keep_raw_days,
+            keep_report_days=keep_report_days,
+            snapshot_db=snapshot_db,
+        )
+        snapshot_path = date_storage.get("snapshot_path")
+        if isinstance(snapshot_path, str) and snapshot_path:
+            logger.info("Snapshot saved to %s", snapshot_path)
+
         cycle_end = datetime.now()
         duration = (cycle_end - cycle_start).total_seconds()
 
@@ -392,6 +408,9 @@ def run_once(
     notifier: Optional[CompositeNotifier] = None,
     notification_rules: Optional[dict[str, Any]] = None,
     keep_days: int = 90,
+    keep_raw_days: int = 180,
+    keep_report_days: int = 90,
+    snapshot_db: bool = False,
 ) -> int:
     """
     Run collection once and exit.
@@ -413,6 +432,9 @@ def run_once(
         notifier,
         notification_rules,
         keep_days,
+        keep_raw_days,
+        keep_report_days,
+        snapshot_db,
     )
 
     if result.get("success"):
@@ -429,6 +451,9 @@ def run_scheduler(
     notifier: Optional[CompositeNotifier] = None,
     notification_rules: Optional[dict[str, Any]] = None,
     keep_days: int = 90,
+    keep_raw_days: int = 180,
+    keep_report_days: int = 90,
+    snapshot_db: bool = False,
 ) -> None:
     """
     Run collection on a schedule.
@@ -450,6 +475,9 @@ def run_scheduler(
                 notifier,
                 notification_rules,
                 keep_days,
+                keep_raw_days,
+                keep_report_days,
+                snapshot_db,
             )
 
             # Wait for next cycle
@@ -522,6 +550,23 @@ Examples:
         help="Retention period in days (default: 90)",
     )
     parser.add_argument(
+        "--keep-raw-days",
+        type=int,
+        default=180,
+        help="Retention period for dated raw JSONL directories (default: 180)",
+    )
+    parser.add_argument(
+        "--keep-report-days",
+        type=int,
+        default=90,
+        help="Retention period for dated HTML reports (default: 90)",
+    )
+    parser.add_argument(
+        "--snapshot-db",
+        action="store_true",
+        help="Create a dated DuckDB snapshot after each collection cycle",
+    )
+    parser.add_argument(
         "--notifications-config",
         type=str,
         default="config/notifications.yaml",
@@ -561,6 +606,9 @@ Examples:
             notifier,
             notification_config.rules,
             args.keep_days,
+            args.keep_raw_days,
+            args.keep_report_days,
+            args.snapshot_db,
         )
         return exit_code
     elif args.mode == "scheduler":
@@ -572,6 +620,9 @@ Examples:
             notifier,
             notification_config.rules,
             args.keep_days,
+            args.keep_raw_days,
+            args.keep_report_days,
+            args.snapshot_db,
         )
         return 0
 
