@@ -9,13 +9,14 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Optional, Any
 
 import duckdb
 
 from collectors.base import RawItem
+from exceptions import StorageError
 
 
 DB_ENV_VAR = "HOMERADAR_DB_PATH"
@@ -169,51 +170,15 @@ class GraphStore:
         inserted = 0
         updated = 0
 
-        with self._connection() as conn:
-            for item in items:
-                # Check if URL exists
-                existing = conn.execute(
-                    "SELECT url, created_at FROM urls WHERE url = ?", [item.url]
-                ).fetchone()
+        try:
+            with self._connection() as conn:
+                conn.execute("BEGIN TRANSACTION")
+                for item in items:
+                    existing = conn.execute(
+                        "SELECT url FROM urls WHERE url = ?", [item.url]
+                    ).fetchone()
+                    now = datetime.now()
 
-                now = datetime.now()
-
-                if existing:
-                    # Update existing item
-                    conn.execute(
-                        """
-                        UPDATE urls SET
-                            title = ?,
-                            summary = ?,
-                            source_id = ?,
-                            published_at = ?,
-                            region = ?,
-                            district = ?,
-                            property_type = ?,
-                            price = ?,
-                            area = ?,
-                            updated_at = ?,
-                            last_seen_at = ?
-                        WHERE url = ?
-                        """,
-                        [
-                            item.title,
-                            item.summary,
-                            item.source_id,
-                            item.published_at,
-                            item.region,
-                            item.raw_data.get("district"),
-                            item.property_type,
-                            item.price,
-                            item.area,
-                            now,
-                            now,
-                            item.url,
-                        ],
-                    )
-                    updated += 1
-                else:
-                    # Insert new item
                     conn.execute(
                         """
                         INSERT INTO urls (
@@ -221,6 +186,18 @@ class GraphStore:
                             region, district, property_type, price, area,
                             created_at, updated_at, last_seen_at
                         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        ON CONFLICT (url) DO UPDATE SET
+                            title = EXCLUDED.title,
+                            summary = EXCLUDED.summary,
+                            source_id = EXCLUDED.source_id,
+                            published_at = EXCLUDED.published_at,
+                            region = EXCLUDED.region,
+                            district = EXCLUDED.district,
+                            property_type = EXCLUDED.property_type,
+                            price = EXCLUDED.price,
+                            area = EXCLUDED.area,
+                            updated_at = EXCLUDED.updated_at,
+                            last_seen_at = EXCLUDED.last_seen_at
                         """,
                         [
                             item.url,
@@ -238,7 +215,15 @@ class GraphStore:
                             now,
                         ],
                     )
-                    inserted += 1
+
+                    if existing:
+                        updated += 1
+                    else:
+                        inserted += 1
+
+                conn.execute("COMMIT")
+        except duckdb.Error as exc:
+            raise StorageError(f"Failed to upsert HomeRadar items: {exc}") from exc
 
         return {"inserted": inserted, "updated": updated}
 
@@ -259,22 +244,26 @@ class GraphStore:
         count = 0
         now = datetime.now()
 
-        with self._connection() as conn:
-            for entity_type, values in entities.items():
-                for value in values:
-                    # Upsert entity
-                    conn.execute(
-                        """
-                        INSERT INTO url_entities (url, entity_type, entity_value, weight, first_seen_at, last_seen_at)
-                        VALUES (?, ?, ?, ?, ?, ?)
-                        ON CONFLICT (url, entity_type, entity_value)
-                        DO UPDATE SET
-                            weight = EXCLUDED.weight,
-                            last_seen_at = EXCLUDED.last_seen_at
-                        """,
-                        [url, entity_type, value, weight, now, now],
-                    )
-                    count += 1
+        try:
+            with self._connection() as conn:
+                conn.execute("BEGIN TRANSACTION")
+                for entity_type, values in entities.items():
+                    for value in values:
+                        conn.execute(
+                            """
+                            INSERT INTO url_entities (url, entity_type, entity_value, weight, first_seen_at, last_seen_at)
+                            VALUES (?, ?, ?, ?, ?, ?)
+                            ON CONFLICT (url, entity_type, entity_value)
+                            DO UPDATE SET
+                                weight = EXCLUDED.weight,
+                                last_seen_at = EXCLUDED.last_seen_at
+                            """,
+                            [url, entity_type, value, weight, now, now],
+                        )
+                        count += 1
+                conn.execute("COMMIT")
+        except duckdb.Error as exc:
+            raise StorageError(f"Failed to upsert HomeRadar entities for '{url}': {exc}") from exc
 
         return count
 
@@ -410,6 +399,34 @@ class GraphStore:
                 "regions": dict(region_dist),
                 "entity_types": dict(entity_types),
             }
+
+    def delete_older_than(self, days: int) -> int:
+        cutoff = datetime.now(timezone.utc).replace(tzinfo=None) - timedelta(days=days)
+        try:
+            with self._connection() as conn:
+                conn.execute("BEGIN TRANSACTION")
+                count_row = conn.execute(
+                    "SELECT COUNT(*) FROM urls WHERE COALESCE(published_at, last_seen_at) < ?",
+                    [cutoff],
+                ).fetchone()
+                to_delete = int(count_row[0]) if count_row else 0
+                conn.execute(
+                    """
+                    DELETE FROM url_entities
+                    WHERE url IN (
+                        SELECT url FROM urls WHERE COALESCE(published_at, last_seen_at) < ?
+                    )
+                    """,
+                    [cutoff],
+                )
+                conn.execute(
+                    "DELETE FROM urls WHERE COALESCE(published_at, last_seen_at) < ?",
+                    [cutoff],
+                )
+                conn.execute("COMMIT")
+                return to_delete
+        except duckdb.Error as exc:
+            raise StorageError(f"Failed to delete expired HomeRadar records: {exc}") from exc
 
     def get_sources_stats(self) -> list[dict[str, Any]]:
         """
