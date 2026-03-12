@@ -44,26 +44,22 @@ class SubscriptionCollector(BaseCollector):
         super().__init__(source_id, source)
 
         # Get API key from env or config
-        self.api_key = source.get('api_key') or os.getenv('SUBSCRIPTION_API_KEY') or ''
+        self.api_key = source.get("api_key") or os.getenv("SUBSCRIPTION_API_KEY") or ""
         if not self.api_key:
             raise ValueError(
                 "Subscription collector requires 'api_key' in source config or SUBSCRIPTION_API_KEY env var"
             )
 
         # API endpoint
-        self.base_url = source.get(
-            'base_url',
-            'https://api.odcloud.kr/api/15101046/v1'
-        )
-        self.endpoint = 'getAPTLttotPblancDetail'
+        self.base_url = source.get("base_url", "https://api.odcloud.kr/api/15101046/v1")
+        self.endpoint = "getAPTLttotPblancDetail"
 
         # Default parameters
-        self.num_of_rows = source.get('num_of_rows', 100)
-        self.page_no = source.get('page_no', 1)
+        self.num_of_rows = source.get("num_of_rows", 100)
+        self.page_no = source.get("page_no", 1)
 
     @retry(
-        stop=stop_after_attempt(3),
-        wait=wait_exponential(multiplier=1, min=2, max=10)
+        stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=2, max=10), reraise=True
     )
     def _make_request(self, params: dict[str, Any]) -> dict[str, Any]:
         """
@@ -79,11 +75,10 @@ class SubscriptionCollector(BaseCollector):
             CollectorError: If request fails after retries
         """
         url = f"{self.base_url}/{self.endpoint}"
-        params['serviceKey'] = self.api_key
+        params["serviceKey"] = self.api_key
 
         try:
-            response = requests.get(url, params=params, timeout=30)
-            response.raise_for_status()
+            response = self._request("GET", url, params=params, timeout=30)
             return response.json()
         except requests.exceptions.RequestException as e:
             raise CollectorError(f"Subscription API request failed: {e}")
@@ -105,18 +100,18 @@ class SubscriptionCollector(BaseCollector):
         try:
             # Fetch subscription data
             params: dict[str, Any] = {
-                'numOfRows': self.num_of_rows,
-                'pageNo': self.page_no,
+                "numOfRows": self.num_of_rows,
+                "pageNo": self.page_no,
             }
 
             response = self._make_request(params)
 
             # Parse response
-            if not response or 'response' not in response:
+            if not response or "response" not in response:
                 return items
 
-            body = response.get('response', {}).get('body', {})
-            items_data = body.get('items', [])
+            body = response.get("response", {}).get("body", {})
+            items_data = body.get("items", [])
 
             if not isinstance(items_data, list):
                 items_data = [items_data] if items_data else []
@@ -149,37 +144,37 @@ class SubscriptionCollector(BaseCollector):
             RawItem object or None if parsing fails
         """
         # Extract essential fields
-        prj_no = item_data.get('prjNo', '')
+        prj_no = item_data.get("prjNo", "")
         if isinstance(prj_no, str):
             prj_no = prj_no.strip()
-        prj_nm = item_data.get('prjNm', '')
+        prj_nm = item_data.get("prjNm", "")
         if isinstance(prj_nm, str):
             prj_nm = prj_nm.strip()
-        notice_date = item_data.get('noticeDate', '')
+        notice_date = item_data.get("noticeDate", "")
 
         # Skip if essential fields are missing
         if not prj_no or not prj_nm:
             return None
 
         # Extract subscription info
-        subscription_start = item_data.get('subscriptionStartDate', '')
-        subscription_end = item_data.get('subscriptionEndDate', '')
-        competition_rate = item_data.get('competitionRate', '')  # 경쟁률
-        
+        subscription_start = item_data.get("subscriptionStartDate", "")
+        subscription_end = item_data.get("subscriptionEndDate", "")
+        competition_rate = item_data.get("competitionRate", "")  # 경쟁률
+
         # Extract location and property info
-        location = item_data.get('location', '')
+        location = item_data.get("location", "")
         if isinstance(location, str):
             location = location.strip()
-        region = item_data.get('region', '')
+        region = item_data.get("region", "")
         if isinstance(region, str):
             region = region.strip()
-        property_type = item_data.get('propertyType', '')
+        property_type = item_data.get("propertyType", "")
         if isinstance(property_type, str):
             property_type = property_type.strip()
-        
+
         # Extract price info
-        supply_price = item_data.get('supplyPrice', '')  # 공급가격
-        area = self._parse_area(item_data.get('area', ''))
+        supply_price = item_data.get("supplyPrice", "")  # 공급가격
+        area = self._parse_area(item_data.get("area", ""))
 
         # Parse date
         published_at = self._parse_date(notice_date)
@@ -213,17 +208,17 @@ class SubscriptionCollector(BaseCollector):
 
         # Build raw data
         raw_data: dict[str, Any] = {
-            'prjNo': prj_no,
-            'prjNm': prj_nm,
-            'location': location,
-            'region': region,
-            'propertyType': property_type,
-            'noticeDate': notice_date,
-            'subscriptionStartDate': subscription_start,
-            'subscriptionEndDate': subscription_end,
-            'competitionRate': competition_rate,
-            'supplyPrice': supply_price,
-            'area': item_data.get('area', ''),
+            "prjNo": prj_no,
+            "prjNm": prj_nm,
+            "location": location,
+            "region": region,
+            "propertyType": property_type,
+            "noticeDate": notice_date,
+            "subscriptionStartDate": subscription_start,
+            "subscriptionEndDate": subscription_end,
+            "competitionRate": competition_rate,
+            "supplyPrice": supply_price,
+            "area": item_data.get("area", ""),
         }
 
         # Create RawItem
@@ -234,7 +229,7 @@ class SubscriptionCollector(BaseCollector):
             source_id=self.source_id,
             published_at=published_at,
             region=region or location,
-            property_type=property_type or '아파트',
+            property_type=property_type or "아파트",
             price=price,
             area=area,
             raw_data=raw_data,
@@ -257,7 +252,7 @@ class SubscriptionCollector(BaseCollector):
 
         try:
             # Remove common units
-            cleaned = str(area_str).replace('㎡', '').replace('m²', '').strip()
+            cleaned = str(area_str).replace("㎡", "").replace("m²", "").strip()
             return float(cleaned) if cleaned else None
         except (ValueError, TypeError):
             return None
@@ -279,11 +274,11 @@ class SubscriptionCollector(BaseCollector):
 
         # Try common date formats
         formats = [
-            '%Y-%m-%d',
-            '%Y/%m/%d',
-            '%Y%m%d',
-            '%d-%m-%Y',
-            '%d/%m/%Y',
+            "%Y-%m-%d",
+            "%Y/%m/%d",
+            "%Y%m%d",
+            "%d-%m-%Y",
+            "%d/%m/%Y",
         ]
 
         for fmt in formats:
@@ -307,20 +302,20 @@ class SubscriptionCollector(BaseCollector):
             List of RawItem objects
         """
         params: dict[str, Any] = {
-            'numOfRows': self.num_of_rows,
-            'pageNo': self.page_no,
-            'region': region,
+            "numOfRows": self.num_of_rows,
+            "pageNo": self.page_no,
+            "region": region,
         }
 
         items: list[RawItem] = []
         try:
             response = self._make_request(params)
 
-            if not response or 'response' not in response:
+            if not response or "response" not in response:
                 return items
 
-            body = response.get('response', {}).get('body', {})
-            items_data = body.get('items', [])
+            body = response.get("response", {}).get("body", {})
+            items_data = body.get("items", [])
 
             if not isinstance(items_data, list):
                 items_data = [items_data] if items_data else []

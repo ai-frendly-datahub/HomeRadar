@@ -45,27 +45,23 @@ class OnbidCollector(BaseCollector):
         super().__init__(source_id, source)
 
         # Get API key from env or config
-        self.api_key = source.get('api_key') or os.getenv('ONBID_API_KEY') or ''
+        self.api_key = source.get("api_key") or os.getenv("ONBID_API_KEY") or ""
         if not self.api_key:
             raise ValueError(
                 "Onbid collector requires 'api_key' in source config or ONBID_API_KEY env var"
             )
 
         # API endpoints
-        self.base_url = source.get(
-            'base_url',
-            'https://api.go.kr/B010003'
-        )
-        self.bid_result_endpoint = 'OnbidCltrBidRsltListSrvc'
-        self.property_detail_endpoint = 'UnifyUsageCltr'
+        self.base_url = source.get("base_url", "https://api.go.kr/B010003")
+        self.bid_result_endpoint = "OnbidCltrBidRsltListSrvc"
+        self.property_detail_endpoint = "UnifyUsageCltr"
 
         # Default parameters
-        self.num_of_rows = source.get('num_of_rows', 100)
-        self.page_no = source.get('page_no', 1)
+        self.num_of_rows = source.get("num_of_rows", 100)
+        self.page_no = source.get("page_no", 1)
 
     @retry(
-        stop=stop_after_attempt(3),
-        wait=wait_exponential(multiplier=1, min=2, max=10)
+        stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=2, max=10), reraise=True
     )
     def _make_request(self, endpoint: str, params: dict[str, Any]) -> dict[str, Any]:
         """
@@ -82,12 +78,11 @@ class OnbidCollector(BaseCollector):
             CollectorError: If request fails after retries
         """
         url = f"{self.base_url}/{endpoint}"
-        params['serviceKey'] = self.api_key
-        params['type'] = 'json'
+        params["serviceKey"] = self.api_key
+        params["type"] = "json"
 
         try:
-            response = requests.get(url, params=params, timeout=30)
-            response.raise_for_status()
+            response = self._request("GET", url, params=params, timeout=30)
             return response.json()
         except requests.exceptions.RequestException as e:
             raise CollectorError(f"Onbid API request failed: {e}")
@@ -109,18 +104,18 @@ class OnbidCollector(BaseCollector):
         try:
             # Fetch auction results
             params: dict[str, Any] = {
-                'numOfRows': self.num_of_rows,
-                'pageNo': self.page_no,
+                "numOfRows": self.num_of_rows,
+                "pageNo": self.page_no,
             }
 
             response = self._make_request(self.bid_result_endpoint, params)
 
             # Parse response
-            if not response or 'response' not in response:
+            if not response or "response" not in response:
                 return items
 
-            body = response.get('response', {}).get('body', {})
-            items_data = body.get('items', [])
+            body = response.get("response", {}).get("body", {})
+            items_data = body.get("items", [])
 
             if not isinstance(items_data, list):
                 items_data = [items_data] if items_data else []
@@ -153,15 +148,15 @@ class OnbidCollector(BaseCollector):
             RawItem object or None if parsing fails
         """
         # Extract essential fields
-        cltr_no = item_data.get('cltrNo', '')
+        cltr_no = item_data.get("cltrNo", "")
         if isinstance(cltr_no, str):
             cltr_no = cltr_no.strip()
-        cltr_nm = item_data.get('cltrNm', '')
+        cltr_nm = item_data.get("cltrNm", "")
         if isinstance(cltr_nm, str):
             cltr_nm = cltr_nm.strip()
-        appraisal_price = item_data.get('appraisalPrice', '')  # 감정가
-        min_bid_price = item_data.get('minBidPrice', '')  # 최저입찰가
-        winning_bid_price = item_data.get('winningBidPrice', '')  # 낙찰가
+        appraisal_price = item_data.get("appraisalPrice", "")  # 감정가
+        min_bid_price = item_data.get("minBidPrice", "")  # 최저입찰가
+        winning_bid_price = item_data.get("winningBidPrice", "")  # 낙찰가
 
         # Skip if essential fields are missing
         if not cltr_no or not cltr_nm:
@@ -181,16 +176,16 @@ class OnbidCollector(BaseCollector):
         price = winning_bid or appraisal or min_bid
 
         # Extract location and property info
-        location = item_data.get('location', '')
+        location = item_data.get("location", "")
         if isinstance(location, str):
             location = location.strip()
-        property_type = item_data.get('propertyType', '')
+        property_type = item_data.get("propertyType", "")
         if isinstance(property_type, str):
             property_type = property_type.strip()
-        area = self._parse_area(item_data.get('area', ''))
+        area = self._parse_area(item_data.get("area", ""))
 
         # Parse date
-        bid_date_str = item_data.get('bidDate', '')
+        bid_date_str = item_data.get("bidDate", "")
         published_at = self._parse_date(bid_date_str)
 
         # Build title
@@ -216,15 +211,15 @@ class OnbidCollector(BaseCollector):
 
         # Build raw data
         raw_data: dict[str, Any] = {
-            'cltrNo': cltr_no,
-            'cltrNm': cltr_nm,
-            'location': location,
-            'propertyType': property_type,
-            'appraisalPrice': appraisal_price,
-            'minBidPrice': min_bid_price,
-            'winningBidPrice': winning_bid_price,
-            'area': item_data.get('area', ''),
-            'bidDate': bid_date_str,
+            "cltrNo": cltr_no,
+            "cltrNm": cltr_nm,
+            "location": location,
+            "propertyType": property_type,
+            "appraisalPrice": appraisal_price,
+            "minBidPrice": min_bid_price,
+            "winningBidPrice": winning_bid_price,
+            "area": item_data.get("area", ""),
+            "bidDate": bid_date_str,
         }
 
         # Create RawItem
@@ -235,7 +230,7 @@ class OnbidCollector(BaseCollector):
             source_id=self.source_id,
             published_at=published_at,
             region=location,
-            property_type=property_type or '부동산',
+            property_type=property_type or "부동산",
             price=price,
             area=area,
             raw_data=raw_data,
@@ -258,7 +253,7 @@ class OnbidCollector(BaseCollector):
 
         try:
             # Remove common units
-            cleaned = str(area_str).replace('㎡', '').replace('m²', '').strip()
+            cleaned = str(area_str).replace("㎡", "").replace("m²", "").strip()
             return float(cleaned) if cleaned else None
         except (ValueError, TypeError):
             return None
@@ -280,11 +275,11 @@ class OnbidCollector(BaseCollector):
 
         # Try common date formats
         formats = [
-            '%Y-%m-%d',
-            '%Y/%m/%d',
-            '%Y%m%d',
-            '%d-%m-%Y',
-            '%d/%m/%Y',
+            "%Y-%m-%d",
+            "%Y/%m/%d",
+            "%Y%m%d",
+            "%d-%m-%Y",
+            "%d/%m/%Y",
         ]
 
         for fmt in formats:
@@ -308,20 +303,20 @@ class OnbidCollector(BaseCollector):
             List of RawItem objects
         """
         params: dict[str, Any] = {
-            'numOfRows': self.num_of_rows,
-            'pageNo': self.page_no,
-            'regionCode': region_code,
+            "numOfRows": self.num_of_rows,
+            "pageNo": self.page_no,
+            "regionCode": region_code,
         }
 
         items: list[RawItem] = []
         try:
             response = self._make_request(self.bid_result_endpoint, params)
 
-            if not response or 'response' not in response:
+            if not response or "response" not in response:
                 return items
 
-            body = response.get('response', {}).get('body', {})
-            items_data = body.get('items', [])
+            body = response.get("response", {}).get("body", {})
+            items_data = body.get("items", [])
 
             if not isinstance(items_data, list):
                 items_data = [items_data] if items_data else []

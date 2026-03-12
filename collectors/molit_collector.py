@@ -36,21 +36,16 @@ class MOLITCollector(BaseCollector):
         super().__init__(source_id, source)
 
         # Validate required fields
-        if 'service_key' not in source:
+        if "service_key" not in source:
             raise ValueError(f"MOLIT collector requires 'service_key' in source config")
 
-        self.service_key = source['service_key']
-        self.api_url = source.get('url', '')
+        self.service_key = source["service_key"]
+        self.api_url = source.get("url", "")
 
         # Default parameters
-        self.num_of_rows = source.get('num_of_rows', 1000)
+        self.num_of_rows = source.get("num_of_rows", 1000)
 
-    def collect(
-        self,
-        lawd_cd: str,
-        deal_ymd: str,
-        page_no: int = 1
-    ) -> list[RawItem]:
+    def collect(self, lawd_cd: str, deal_ymd: str, page_no: int = 1) -> list[RawItem]:
         """
         Collect apartment transaction data for a specific region and month.
 
@@ -64,17 +59,16 @@ class MOLITCollector(BaseCollector):
         """
         # Build request parameters
         params = {
-            'serviceKey': self.service_key,
-            'LAWD_CD': lawd_cd,
-            'DEAL_YMD': deal_ymd,
-            'numOfRows': self.num_of_rows,
-            'pageNo': page_no,
+            "serviceKey": self.service_key,
+            "LAWD_CD": lawd_cd,
+            "DEAL_YMD": deal_ymd,
+            "numOfRows": self.num_of_rows,
+            "pageNo": page_no,
         }
 
         # Make API request
         try:
-            response = requests.get(self.api_url, params=params, timeout=30)
-            response.raise_for_status()
+            response = self._request("GET", self.api_url, params=params, timeout=30)
         except requests.exceptions.RequestException as e:
             raise RuntimeError(f"MOLIT API request failed: {e}")
 
@@ -85,24 +79,22 @@ class MOLITCollector(BaseCollector):
             raise RuntimeError(f"Failed to parse MOLIT API response: {e}")
 
         # Check response header
-        header = root.find('.//header')
+        header = root.find(".//header")
         if header is not None:
-            result_code = header.findtext('resultCode', '')
-            result_msg = header.findtext('resultMsg', '')
+            result_code = header.findtext("resultCode", "")
+            result_msg = header.findtext("resultMsg", "")
 
-            if result_code != '00':
-                raise RuntimeError(
-                    f"MOLIT API error: {result_code} - {result_msg}"
-                )
+            if result_code != "00":
+                raise RuntimeError(f"MOLIT API error: {result_code} - {result_msg}")
 
         # Parse items
         items = []
-        body = root.find('.//body')
+        body = root.find(".//body")
 
         if body is None:
             return items
 
-        item_nodes = body.findall('.//item')
+        item_nodes = body.findall(".//item")
 
         for item_node in item_nodes:
             try:
@@ -116,12 +108,7 @@ class MOLITCollector(BaseCollector):
 
         return items
 
-    def _parse_item(
-        self,
-        item_node: ET.Element,
-        lawd_cd: str,
-        deal_ymd: str
-    ) -> Optional[RawItem]:
+    def _parse_item(self, item_node: ET.Element, lawd_cd: str, deal_ymd: str) -> Optional[RawItem]:
         """
         Parse a single transaction item from XML.
 
@@ -134,55 +121,47 @@ class MOLITCollector(BaseCollector):
             RawItem object or None if parsing fails
         """
         # Extract fields
-        apt_name = self._get_text(item_node, 'aptNm', '').strip()
-        deal_amount = self._get_text(item_node, 'dealAmount', '').strip()
+        apt_name = self._get_text(item_node, "aptNm", "").strip()
+        deal_amount = self._get_text(item_node, "dealAmount", "").strip()
 
         # Skip if essential fields are missing
         if not apt_name or not deal_amount:
             return None
 
         # Parse date
-        deal_year = self._get_text(item_node, 'dealYear', '')
-        deal_month = self._get_text(item_node, 'dealMonth', '').zfill(2)
-        deal_day = self._get_text(item_node, 'dealDay', '').zfill(2)
+        deal_year = self._get_text(item_node, "dealYear", "")
+        deal_month = self._get_text(item_node, "dealMonth", "").zfill(2)
+        deal_day = self._get_text(item_node, "dealDay", "").zfill(2)
 
         # Build transaction date
         try:
             deal_date = datetime(
-                int(deal_year),
-                int(deal_month),
-                int(deal_day),
-                tzinfo=timezone.utc
+                int(deal_year), int(deal_month), int(deal_day), tzinfo=timezone.utc
             )
         except (ValueError, TypeError):
             # Use deal_ymd as fallback
-            deal_date = datetime(
-                int(deal_ymd[:4]),
-                int(deal_ymd[4:6]),
-                1,
-                tzinfo=timezone.utc
-            )
+            deal_date = datetime(int(deal_ymd[:4]), int(deal_ymd[4:6]), 1, tzinfo=timezone.utc)
 
         # Parse amount (remove commas and convert to integer)
         try:
-            amount = int(deal_amount.replace(',', '').strip())
+            amount = int(deal_amount.replace(",", "").strip())
         except ValueError:
             amount = None
 
         # Parse area
-        exclu_use_ar = self._get_text(item_node, 'excluUseAr', '').strip()
+        exclu_use_ar = self._get_text(item_node, "excluUseAr", "").strip()
         try:
             area = float(exclu_use_ar) if exclu_use_ar else None
         except ValueError:
             area = None
 
         # Build location string
-        umd_nm = self._get_text(item_node, 'umdNm', '').strip()
-        jibun = self._get_text(item_node, 'jibun', '').strip()
+        umd_nm = self._get_text(item_node, "umdNm", "").strip()
+        jibun = self._get_text(item_node, "jibun", "").strip()
         location = f"{umd_nm} {jibun}".strip()
 
         # Build title
-        floor = self._get_text(item_node, 'floor', '').strip()
+        floor = self._get_text(item_node, "floor", "").strip()
         floor_text = f"{floor}층" if floor else ""
         area_text = f"{exclu_use_ar}㎡" if exclu_use_ar else ""
 
@@ -204,20 +183,20 @@ class MOLITCollector(BaseCollector):
 
         # Build raw data with all fields
         raw_data = {
-            'sggCd': self._get_text(item_node, 'sggCd', ''),
-            'umdNm': umd_nm,
-            'jibun': jibun,
-            'aptNm': apt_name,
-            'aptDong': self._get_text(item_node, 'aptDong', ''),
-            'excluUseAr': exclu_use_ar,
-            'dealYear': deal_year,
-            'dealMonth': deal_month,
-            'dealDay': deal_day,
-            'dealAmount': deal_amount,
-            'floor': floor,
-            'buildYear': self._get_text(item_node, 'buildYear', ''),
-            'lawd_cd': lawd_cd,
-            'deal_ymd': deal_ymd,
+            "sggCd": self._get_text(item_node, "sggCd", ""),
+            "umdNm": umd_nm,
+            "jibun": jibun,
+            "aptNm": apt_name,
+            "aptDong": self._get_text(item_node, "aptDong", ""),
+            "excluUseAr": exclu_use_ar,
+            "dealYear": deal_year,
+            "dealMonth": deal_month,
+            "dealDay": deal_day,
+            "dealAmount": deal_amount,
+            "floor": floor,
+            "buildYear": self._get_text(item_node, "buildYear", ""),
+            "lawd_cd": lawd_cd,
+            "deal_ymd": deal_ymd,
         }
 
         # Create RawItem
@@ -228,7 +207,7 @@ class MOLITCollector(BaseCollector):
             source_id=self.source_id,
             published_at=deal_date,
             region=umd_nm,
-            property_type='아파트',
+            property_type="아파트",
             price=amount,
             area=area,
             raw_data=raw_data,
@@ -236,7 +215,7 @@ class MOLITCollector(BaseCollector):
 
         return raw_item
 
-    def _get_text(self, node: ET.Element, tag: str, default: str = '') -> str:
+    def _get_text(self, node: ET.Element, tag: str, default: str = "") -> str:
         """
         Safely extract text from XML element.
 
@@ -254,11 +233,7 @@ class MOLITCollector(BaseCollector):
         return default
 
     def collect_multiple_months(
-        self,
-        lawd_cd: str,
-        start_ym: str,
-        end_ym: str,
-        delay: float = 0.5
+        self, lawd_cd: str, start_ym: str, end_ym: str, delay: float = 0.5
     ) -> list[RawItem]:
         """
         Collect data for multiple consecutive months.
@@ -284,9 +259,7 @@ class MOLITCollector(BaseCollector):
         current_year = start_year
         current_month = start_month
 
-        while (current_year < end_year or
-               (current_year == end_year and current_month <= end_month)):
-
+        while current_year < end_year or (current_year == end_year and current_month <= end_month):
             deal_ymd = f"{current_year}{current_month:02d}"
 
             try:
