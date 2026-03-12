@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 """
 Entity extractor for HomeRadar.
 
@@ -8,7 +10,8 @@ Extracts real estate-related entities from text:
 - Keywords (급등, 전세, etc.)
 """
 
-from typing import Any
+import re
+from typing import Any, Optional
 
 from analyzers.realestate_entities_data import (
     COMPLEX_BRANDS,
@@ -19,6 +22,27 @@ from analyzers.realestate_entities_data import (
     REGION_NORMALIZATION,
     REGIONS_ALL,
 )
+
+
+_keyword_pattern_cache: dict[str, Optional[re.Pattern[str]]] = {}
+
+
+def _is_ascii_only(keyword: str) -> bool:
+    return all(ord(char) < 128 for char in keyword)
+
+
+def _get_keyword_pattern(keyword: str) -> Optional[re.Pattern[str]]:
+    cached = _keyword_pattern_cache.get(keyword)
+    if keyword in _keyword_pattern_cache:
+        return cached
+
+    pattern = (
+        re.compile(r"\b" + re.escape(keyword) + r"\b", re.IGNORECASE)
+        if _is_ascii_only(keyword)
+        else None
+    )
+    _keyword_pattern_cache[keyword] = pattern
+    return pattern
 
 
 class EntityExtractor:
@@ -73,9 +97,7 @@ class EntityExtractor:
 
         return results
 
-    def _extract_entities(
-        self, text: str, text_lower: str, entity_dict: set[str]
-    ) -> list[str]:
+    def _extract_entities(self, text: str, text_lower: str, entity_dict: set[str]) -> list[str]:
         """
         Extract entities from text using dictionary.
 
@@ -90,11 +112,13 @@ class EntityExtractor:
         found = []
 
         for entity in entity_dict:
-            # Case-insensitive search
-            if entity.lower() in text_lower:
-                found.append(entity)
-            # Also try exact match in original text
-            elif entity in text:
+            normalized = entity.lower()
+            if not normalized:
+                continue
+
+            pattern = _get_keyword_pattern(normalized)
+            matched = pattern.search(text) if pattern is not None else normalized in text_lower
+            if matched or entity in text:
                 found.append(entity)
 
         return found
@@ -113,9 +137,7 @@ class EntityExtractor:
 
         for region in regions:
             # Apply normalization map
-            normalized_region = self.region_normalization.get(
-                region.lower(), region
-            )
+            normalized_region = self.region_normalization.get(region.lower(), region)
             normalized.append(normalized_region)
 
         return normalized
@@ -134,9 +156,7 @@ class EntityExtractor:
 
         for keyword in keywords:
             # Apply normalization map
-            normalized_keyword = self.keyword_normalization.get(
-                keyword.lower(), keyword
-            )
+            normalized_keyword = self.keyword_normalization.get(keyword.lower(), keyword)
             normalized.append(normalized_keyword)
 
         return normalized

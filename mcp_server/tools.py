@@ -4,7 +4,7 @@ import json
 import re
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Optional, Any
+from typing import Optional, cast
 
 import duckdb
 
@@ -119,10 +119,12 @@ def handle_price_watch(
     with duckdb.connect(str(db_path), read_only=True) as conn:
         rows = conn.execute(
             """
-            SELECT NULL AS complex_name, u.district, u.price, u.area, NULL AS floor,
+            SELECT e.entity_value AS complex_name, u.district, u.price, u.area, NULL AS floor,
                    CAST(u.published_at AS VARCHAR) AS deal_date,
-                   u.title, u.url
+                    u.title, u.url
             FROM urls u
+            LEFT JOIN url_entities e
+              ON e.url = u.url AND e.entity_type = 'complex'
             WHERE u.price IS NOT NULL
               AND (?1 IS NULL OR u.district LIKE '%' || ?1 || '%')
               AND (?2 IS NULL OR u.price >= ?2)
@@ -181,21 +183,20 @@ def _is_read_only_query(query: str) -> bool:
     return True
 
 
-def _table_columns(conn: duckdb.DuckDBPyConnection, table_name: str) -> set[str]:
-    rows = conn.execute(f"PRAGMA table_info('{table_name}')").fetchall()
-    return {str(row[1]) for row in rows}
-
-
 def _filter_results_by_days(
     *, db_path: Path, results: list[SearchResult], days: int
 ) -> list[SearchResult]:
     if not results:
         return []
 
-    cutoff = datetime.now() - timedelta(days=days)
     links = [result.link for result in results]
     placeholders = ", ".join("?" for _ in links)
     with duckdb.connect(str(db_path), read_only=True) as conn:
+        latest_row = conn.execute("SELECT MAX(published_at) FROM urls").fetchone()
+        latest_published = latest_row[0] if latest_row else None
+        if latest_published is None or not isinstance(latest_published, datetime):
+            return []
+        cutoff = latest_published - timedelta(days=days)
         rows = conn.execute(
             f"""
             SELECT url
@@ -204,5 +205,5 @@ def _filter_results_by_days(
             """,
             [cutoff, *links],
         ).fetchall()
-    allowed = {str(row[0]) for row in rows}
+    allowed = {str(cast(tuple[object, ...], row)[0]) for row in rows}
     return [result for result in results if result.link in allowed]
