@@ -344,6 +344,18 @@ def run_collection_cycle(
             except Exception as e:
                 logger.error(f"Failed to generate report: {e}")
 
+        date_storage = apply_date_storage_policy(
+            database_path=Path(store.db_path),
+            raw_data_dir=Path("data") / "raw",
+            report_dir=Path("reports"),
+            keep_raw_days=keep_raw_days,
+            keep_report_days=keep_report_days,
+            snapshot_db=snapshot_db,
+        )
+        snapshot_path = date_storage.get("snapshot_path")
+        if isinstance(snapshot_path, str) and snapshot_path:
+            logger.info("Snapshot saved to %s", snapshot_path)
+
         cycle_end = datetime.now()
         duration = (cycle_end - cycle_start).total_seconds()
 

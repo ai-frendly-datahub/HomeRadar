@@ -27,7 +27,7 @@ jobs:
       - name: Run collection
         env:
           MOLIT_SERVICE_KEY: ${{ secrets.MOLIT_SERVICE_KEY }}
-        run: python main.py --mode once
+        run: python main.py --mode once --snapshot-db --keep-days 90 --keep-raw-days 180 --keep-report-days 90
       - name: Generate index.html
         run: |
           python -c "from reporters.html_reporter import generate_index_html; from pathlib import Path; generate_index_html(Path('docs/reports'))"

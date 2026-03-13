@@ -209,7 +209,7 @@ class WebhookNotifier:
 class CompositeNotifier:
     """Send notifications to multiple notifiers."""
 
-    def __init__(self, notifiers: list[object]) -> None:
+    def __init__(self, notifiers: list[NotificationSender]) -> None:
         """Initialize composite notifier.
 
         Args:
@@ -229,10 +229,10 @@ class CompositeNotifier:
         if not self.notifiers:
             return True
 
-        results = []
+        results: list[bool] = []
         for notifier in self.notifiers:
             try:
-                result = getattr(notifier, "send")(payload)
+                result = notifier.send(payload)
                 results.append(result)
             except Exception:
                 results.append(False)
