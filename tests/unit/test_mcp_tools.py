@@ -1,122 +1,195 @@
 from __future__ import annotations
 
 import json
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
-import pytest
+import duckdb
 
-from collectors.base import RawItem
-from graph.graph_store import GraphStore
-from graph.search_index import SearchIndex
-from mcp_server.tools import (
-    handle_price_watch,
-    handle_recent_updates,
-    handle_search,
-    handle_sql,
-    handle_top_trends,
-)
+from homeradar.search_index import SearchIndex
 
 
-def _seed_homeradar_db(db_path: Path) -> GraphStore:
-    store = GraphStore(db_path)
-    item = RawItem(
-        url="https://example.com/news-1",
-        title="강남구 아파트 거래 증가",
-        summary="실거래가 상승",
-        source_id="molit_apt_transaction",
-        published_at=datetime(2026, 3, 4, 10, 0, 0, tzinfo=UTC),
-        region="강남구",
-        property_type="아파트",
-        price=150000.0,
-        area=84.9,
-        raw_data={"district": "강남구"},
-    )
-    store.add_items([item])
-    store.add_entities(
-        item.url, {"district": ["강남구"], "complex": ["래미안"], "project": ["재건축"]}
-    )
-
-    return store
-
-
-@pytest.mark.unit
-def test_handle_search_parses_query_and_returns_fts_results(tmp_path: Path) -> None:
-    db_path = tmp_path / "homeradar.duckdb"
-    _seed_homeradar_db(db_path)
-
-    search_db = tmp_path / "search.db"
-    index = SearchIndex(search_db)
-    index.upsert("https://example.com/news-1", "강남구 아파트 거래 증가", "실거래가 상승")
-
-    result = handle_search(
-        search_db_path=search_db,
-        db_path=db_path,
-        query="최근 7일 강남구 5개",
-        limit=20,
-    )
-    payload = json.loads(result)
-
-    assert payload["ok"] is True
-    assert payload["days"] == 7
-    assert payload["limit"] == 5
-    assert payload["results"][0]["url"] == "https://example.com/news-1"
-
-
-@pytest.mark.unit
-def test_handle_recent_updates_returns_latest_urls(tmp_path: Path) -> None:
-    db_path = tmp_path / "homeradar.duckdb"
-    _seed_homeradar_db(db_path)
-
-    payload = json.loads(handle_recent_updates(db_path=db_path, days=30, limit=10))
-
-    assert payload["ok"] is True
-    assert payload["results"]
-    assert payload["results"][0]["url"] == "https://example.com/news-1"
-
-
-@pytest.mark.unit
-def test_handle_sql_allows_select_only(tmp_path: Path) -> None:
-    db_path = tmp_path / "homeradar.duckdb"
-    _seed_homeradar_db(db_path)
-
-    blocked = json.loads(handle_sql(db_path=db_path, query="DELETE FROM urls"))
-    allowed = json.loads(handle_sql(db_path=db_path, query="SELECT COUNT(*) AS cnt FROM urls"))
-
-    assert blocked["ok"] is False
-    assert allowed["ok"] is True
-    assert allowed["rows"][0][0] == 1
-
-
-@pytest.mark.unit
-def test_handle_price_watch_filters_by_region_and_price(tmp_path: Path) -> None:
-    db_path = tmp_path / "homeradar.duckdb"
-    _seed_homeradar_db(db_path)
-
-    payload = json.loads(
-        handle_price_watch(
-            db_path=db_path,
-            region="강남",
-            min_price=140000,
-            max_price=160000,
-            limit=10,
+def _init_articles_table(db_path: Path) -> None:
+    conn = duckdb.connect(str(db_path))
+    try:
+        _ = conn.execute(
+            """
+            CREATE TABLE articles (
+                id BIGINT PRIMARY KEY,
+                category TEXT NOT NULL,
+                source TEXT NOT NULL,
+                title TEXT NOT NULL,
+                link TEXT NOT NULL UNIQUE,
+                summary TEXT,
+                published TIMESTAMP,
+                collected_at TIMESTAMP NOT NULL,
+                entities_json TEXT
+            )
+            """
         )
+    finally:
+        conn.close()
+
+
+def _seed_article(
+    *,
+    db_path: Path,
+    article_id: int,
+    title: str,
+    link: str,
+    collected_at: datetime,
+    entities: dict[str, list[str]] | None = None,
+) -> None:
+    conn = duckdb.connect(str(db_path))
+    try:
+        _ = conn.execute(
+            """
+            INSERT INTO articles (id, category, source, title, link, summary, published, collected_at, entities_json)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            [
+                article_id,
+                "coffee",
+                "Test Source",
+                title,
+                link,
+                "summary",
+                None,
+                collected_at,
+                json.dumps(entities or {}, ensure_ascii=False),
+            ],
+        )
+    finally:
+        conn.close()
+
+
+def test_handle_search(tmp_path: Path) -> None:
+    from mcp_server.tools import handle_search
+
+    db_path = tmp_path / "radar.duckdb"
+    search_db_path = tmp_path / "search.db"
+    _init_articles_table(db_path)
+
+    now = datetime.now(UTC)
+    recent_link = "https://example.com/recent"
+    old_link = "https://example.com/old"
+
+    _seed_article(
+        db_path=db_path,
+        article_id=1,
+        title="Recent coffee demand",
+        link=recent_link,
+        collected_at=now - timedelta(days=2),
+    )
+    _seed_article(
+        db_path=db_path,
+        article_id=2,
+        title="Old coffee demand",
+        link=old_link,
+        collected_at=now - timedelta(days=20),
     )
 
-    assert payload["ok"] is True
-    assert len(payload["results"]) == 1
-    assert payload["results"][0]["complex_name"] == "래미안"
+    with SearchIndex(search_db_path) as idx:
+        idx.upsert(recent_link, "Recent coffee demand", "Demand is rising")
+        idx.upsert(old_link, "Old coffee demand", "Demand was low")
 
-
-@pytest.mark.unit
-def test_handle_top_trends_uses_trending_entities(tmp_path: Path) -> None:
-    db_path = tmp_path / "homeradar.duckdb"
-    _seed_homeradar_db(db_path)
-
-    payload = json.loads(
-        handle_top_trends(db_path=db_path, entity_type="district", days=7, limit=5)
+    output = handle_search(
+        search_db_path=search_db_path,
+        db_path=db_path,
+        query="last 7 days coffee",
+        limit=10,
     )
 
-    assert payload["ok"] is True
-    assert payload["results"]
-    assert payload["results"][0]["entity_value"] == "강남구"
+    assert "Recent coffee demand" in output
+    assert "Old coffee demand" not in output
+
+
+def test_handle_recent_updates(tmp_path: Path) -> None:
+    from mcp_server.tools import handle_recent_updates
+
+    db_path = tmp_path / "radar.duckdb"
+    _init_articles_table(db_path)
+    now = datetime.now(UTC)
+
+    _seed_article(
+        db_path=db_path,
+        article_id=1,
+        title="Most recent",
+        link="https://example.com/1",
+        collected_at=now - timedelta(hours=1),
+    )
+    _seed_article(
+        db_path=db_path,
+        article_id=2,
+        title="Older",
+        link="https://example.com/2",
+        collected_at=now - timedelta(days=2),
+    )
+
+    output = handle_recent_updates(db_path=db_path, days=1, limit=10)
+
+    assert "Most recent" in output
+    assert "Older" not in output
+
+
+def test_handle_sql_select(tmp_path: Path) -> None:
+    from mcp_server.tools import handle_sql
+
+    db_path = tmp_path / "radar.duckdb"
+    _init_articles_table(db_path)
+
+    output = handle_sql(db_path=db_path, query="SELECT COUNT(*) AS total FROM articles")
+
+    assert "total" in output
+    assert "0" in output
+
+
+def test_handle_sql_blocked(tmp_path: Path) -> None:
+    from mcp_server.tools import handle_sql
+
+    db_path = tmp_path / "radar.duckdb"
+    _init_articles_table(db_path)
+
+    output = handle_sql(db_path=db_path, query="DROP TABLE articles")
+
+    assert "Only SELECT/WITH/EXPLAIN queries are allowed" in output
+
+
+def test_handle_top_trends(tmp_path: Path) -> None:
+    from mcp_server.tools import handle_top_trends
+
+    db_path = tmp_path / "radar.duckdb"
+    _init_articles_table(db_path)
+    now = datetime.now(UTC)
+
+    _seed_article(
+        db_path=db_path,
+        article_id=1,
+        title="a",
+        link="https://example.com/a",
+        collected_at=now - timedelta(days=1),
+        entities={"Region": ["ethiopia", "kenya"], "Roaster": ["blue bottle"]},
+    )
+    _seed_article(
+        db_path=db_path,
+        article_id=2,
+        title="b",
+        link="https://example.com/b",
+        collected_at=now - timedelta(days=1),
+        entities={"Region": ["brazil"]},
+    )
+
+    output = handle_top_trends(db_path=db_path, days=7, limit=10)
+
+    assert "Region" in output
+    assert "3" in output
+    assert "Roaster" in output
+    assert "1" in output
+
+
+def test_handle_price_watch_stub() -> None:
+    from mcp_server.tools import handle_price_watch
+
+    output = handle_price_watch(threshold=10.0)
+
+    assert "Not available in template project" in output

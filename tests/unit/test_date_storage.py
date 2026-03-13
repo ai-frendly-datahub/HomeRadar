@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 def test_snapshot_database_creates_file(tmp_path: Path) -> None:
-    from graph.date_storage import snapshot_database
+    from homeradar.date_storage import snapshot_database
 
     db_file = tmp_path / "radar_data.duckdb"
     db_file.write_text("fake-db-content")
@@ -21,7 +21,7 @@ def test_snapshot_database_creates_file(tmp_path: Path) -> None:
 
 
 def test_snapshot_database_with_custom_date(tmp_path: Path) -> None:
-    from graph.date_storage import snapshot_database
+    from homeradar.date_storage import snapshot_database
 
     db_file = tmp_path / "radar_data.duckdb"
     db_file.write_text("fake-db")
@@ -34,7 +34,7 @@ def test_snapshot_database_with_custom_date(tmp_path: Path) -> None:
 
 
 def test_snapshot_database_returns_none_for_missing_source(tmp_path: Path) -> None:
-    from graph.date_storage import snapshot_database
+    from homeradar.date_storage import snapshot_database
 
     missing_db = tmp_path / "nonexistent.duckdb"
     result = snapshot_database(missing_db)
@@ -42,7 +42,7 @@ def test_snapshot_database_returns_none_for_missing_source(tmp_path: Path) -> No
 
 
 def test_snapshot_database_custom_snapshot_root(tmp_path: Path) -> None:
-    from graph.date_storage import snapshot_database
+    from homeradar.date_storage import snapshot_database
 
     db_file = tmp_path / "radar_data.duckdb"
     db_file.write_text("content")
@@ -55,9 +55,10 @@ def test_snapshot_database_custom_snapshot_root(tmp_path: Path) -> None:
 
 
 def test_cleanup_date_directories_removes_old(tmp_path: Path) -> None:
-    from graph.date_storage import cleanup_date_directories
+    from homeradar.date_storage import cleanup_date_directories
 
     today = date(2026, 3, 13)
+    # given: old dir (100 days ago) + recent dir (2 days ago)
     old_dir = tmp_path / "2025-12-03"
     old_dir.mkdir()
     (old_dir / "some_file.txt").write_text("old")
@@ -74,9 +75,10 @@ def test_cleanup_date_directories_removes_old(tmp_path: Path) -> None:
 
 
 def test_cleanup_date_directories_keeps_recent(tmp_path: Path) -> None:
-    from graph.date_storage import cleanup_date_directories
+    from homeradar.date_storage import cleanup_date_directories
 
     today = date(2026, 3, 13)
+    # given: all directories within 30 days
     for offset in range(5):
         d = today - timedelta(days=offset)
         (tmp_path / d.isoformat()).mkdir()
@@ -88,7 +90,7 @@ def test_cleanup_date_directories_keeps_recent(tmp_path: Path) -> None:
 
 
 def test_cleanup_date_directories_ignores_non_date_dirs(tmp_path: Path) -> None:
-    from graph.date_storage import cleanup_date_directories
+    from homeradar.date_storage import cleanup_date_directories
 
     today = date(2026, 3, 13)
     (tmp_path / "not-a-date").mkdir()
@@ -101,7 +103,7 @@ def test_cleanup_date_directories_ignores_non_date_dirs(tmp_path: Path) -> None:
 
 
 def test_cleanup_date_directories_missing_base_dir(tmp_path: Path) -> None:
-    from graph.date_storage import cleanup_date_directories
+    from homeradar.date_storage import cleanup_date_directories
 
     missing = tmp_path / "nonexistent"
     removed = cleanup_date_directories(missing, keep_days=7)
@@ -109,9 +111,10 @@ def test_cleanup_date_directories_missing_base_dir(tmp_path: Path) -> None:
 
 
 def test_cleanup_dated_reports(tmp_path: Path) -> None:
-    from graph.date_storage import cleanup_dated_reports
+    from homeradar.date_storage import cleanup_dated_reports
 
     today = date(2026, 3, 13)
+    # given: old report, recent report, and non-matching file
     old_report = tmp_path / "tech_20251203.html"
     old_report.write_text("<html>old</html>")
 
@@ -130,7 +133,7 @@ def test_cleanup_dated_reports(tmp_path: Path) -> None:
 
 
 def test_cleanup_dated_reports_missing_dir(tmp_path: Path) -> None:
-    from graph.date_storage import cleanup_dated_reports
+    from homeradar.date_storage import cleanup_dated_reports
 
     missing = tmp_path / "nonexistent"
     removed = cleanup_dated_reports(missing, keep_days=7)
@@ -138,45 +141,53 @@ def test_cleanup_dated_reports_missing_dir(tmp_path: Path) -> None:
 
 
 def test_storage_create_daily_snapshot(tmp_path: Path) -> None:
-    from graph.graph_store import GraphStore
+    from homeradar.storage import RadarStorage
 
-    db_path = tmp_path / "data" / "homeradar.duckdb"
-    store = GraphStore(db_path)
+    db_path = tmp_path / "data" / "radar_data.duckdb"
+    storage = RadarStorage(db_path)
+    try:
+        result = storage.create_daily_snapshot()
 
-    result = store.create_daily_snapshot()
-
-    assert result is not None
-    assert result.exists()
-    today_iso = datetime.now(UTC).date().isoformat()
-    assert result.name == f"{today_iso}.duckdb"
-    assert result.parent == db_path.parent / "daily"
+        assert result is not None
+        assert result.exists()
+        today_iso = datetime.now(UTC).date().isoformat()
+        assert result.name == f"{today_iso}.duckdb"
+        assert result.parent == db_path.parent / "daily"
+    finally:
+        storage.close()
 
 
 def test_storage_create_daily_snapshot_custom_dir(tmp_path: Path) -> None:
-    from graph.graph_store import GraphStore
+    from homeradar.storage import RadarStorage
 
-    db_path = tmp_path / "data" / "homeradar.duckdb"
+    db_path = tmp_path / "data" / "radar_data.duckdb"
     custom_dir = str(tmp_path / "custom_snapshots")
-    store = GraphStore(db_path)
+    storage = RadarStorage(db_path)
+    try:
+        result = storage.create_daily_snapshot(snapshot_dir=custom_dir)
 
-    result = store.create_daily_snapshot(snapshot_dir=custom_dir)
-
-    assert result is not None
-    assert result.parent == Path(custom_dir)
+        assert result is not None
+        assert result.parent == Path(custom_dir)
+    finally:
+        storage.close()
 
 
 def test_storage_cleanup_old_snapshots(tmp_path: Path) -> None:
-    from graph.graph_store import GraphStore
+    from homeradar.storage import RadarStorage
 
-    db_path = tmp_path / "data" / "homeradar.duckdb"
-    store = GraphStore(db_path)
+    db_path = tmp_path / "data" / "radar_data.duckdb"
+    storage = RadarStorage(db_path)
 
+    # given: old snapshot directory beyond keep_days
     snapshot_root = db_path.parent / "daily"
     snapshot_root.mkdir(parents=True, exist_ok=True)
     old_dir = snapshot_root / "2025-01-01"
     old_dir.mkdir()
     (old_dir / "data.txt").write_text("old")
 
-    removed = store.cleanup_old_snapshots(keep_days=30)
-    assert removed == 1
-    assert not old_dir.exists()
+    try:
+        removed = storage.cleanup_old_snapshots(keep_days=30)
+        assert removed == 1
+        assert not old_dir.exists()
+    finally:
+        storage.close()

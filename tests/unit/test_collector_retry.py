@@ -1,232 +1,185 @@
-# pyright: reportPrivateUsage=false
 from __future__ import annotations
 
+import time
 from unittest.mock import Mock, patch
 
+# pyright: reportPrivateUsage=false
 import pytest
 import requests
 
-from collectors.base import CollectorError
-from collectors.naver_land_collector import NaverLandCollector
-from collectors.onbid_collector import OnbidCollector
-from collectors.subscription_collector import SubscriptionCollector
+from homeradar.collector import RateLimiter, _collect_single, collect_sources
+from homeradar.exceptions import NetworkError, SourceError
+from homeradar.models import Article, Source
 
 
-class _JsonResponse:
-    def __init__(self, payload: dict[str, object], error: Exception | None = None) -> None:
-        self._payload: dict[str, object] = payload
-        self._error: Exception | None = error
+class TestCollectorRetryLogic:
+    """Test HTTP retry logic with exponential backoff."""
 
-    def raise_for_status(self) -> None:
-        if self._error:
-            raise self._error
+    def test_retry_on_timeout(self) -> None:
+        """Should retry on request timeout and eventually succeed."""
+        source = Source(name="test_feed", type="rss", url="http://example.com/feed")
 
-    def json(self) -> dict[str, object]:
-        return self._payload
+        with patch("radar.collector.requests.get") as mock_get:
+            mock_response = Mock()
+            mock_response.content = b"""<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <item>
+            <title>Test Article</title>
+            <link>http://example.com/article</link>
+            <description>Test summary</description>
+            <pubDate>Mon, 01 Jan 2024 12:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>"""
+            mock_response.raise_for_status = Mock()
 
+            mock_get.side_effect = [
+                requests.exceptions.Timeout("timeout"),
+                requests.exceptions.Timeout("timeout"),
+                mock_response,
+            ]
 
-class _HtmlResponse:
-    def __init__(self, text: str, error: Exception | None = None) -> None:
-        self.text: str = text
-        self.encoding: str = "utf-8"
-        self._error: Exception | None = error
+            articles = _collect_single(source, category="test", limit=10, timeout=15)
 
-    def raise_for_status(self) -> None:
-        if self._error:
-            raise self._error
+            assert len(articles) == 1
+            assert articles[0].title == "Test Article"
+            assert isinstance(articles[0], Article)
+            assert mock_get.call_count == 3
+            assert collect_sources([], category="test") == ([], [])
 
+    def test_retry_on_5xx_error(self) -> None:
+        """Should retry on 5xx server errors."""
+        source = Source(name="test_feed", type="rss", url="http://example.com/feed")
 
-class TestOnbidCollectorRetry:
-    @staticmethod
-    def _create_collector() -> OnbidCollector:
-        return OnbidCollector("onbid_test", {"api_key": "test_key"})
+        with patch("radar.collector.requests.get") as mock_get:
+            mock_response = Mock()
+            mock_response.content = b"""<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <item>
+            <title>Test Article</title>
+            <link>http://example.com/article</link>
+            <description>Test summary</description>
+            <pubDate>Mon, 01 Jan 2024 12:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>"""
+            mock_response.raise_for_status = Mock()
 
-    @patch("collectors.onbid_collector.requests.get")
-    def test_retry_on_timeout(self, mock_get: Mock) -> None:
-        collector = self._create_collector()
+            error_response = Mock()
+            error_response.status_code = 503
+            error_response.raise_for_status = Mock(
+                side_effect=requests.exceptions.HTTPError("503 Service Unavailable")
+            )
 
-        mock_get.side_effect = [
-            requests.exceptions.Timeout("timeout"),
-            requests.exceptions.Timeout("timeout"),
-            _JsonResponse({"response": {"body": {"items": []}}}),
+            mock_get.side_effect = [
+                error_response,
+                error_response,
+                mock_response,
+            ]
+
+            articles = _collect_single(source, category="test", limit=10, timeout=15)
+
+            assert len(articles) == 1
+            assert articles[0].title == "Test Article"
+            assert mock_get.call_count == 3
+
+    def test_4xx_error_retries_and_raises(self) -> None:
+        """Should retry on 4xx errors (RequestException) and raise after max retries."""
+        source = Source(name="test_feed", type="rss", url="http://example.com/feed")
+
+        with patch("radar.collector.requests.get") as mock_get:
+            mock_get.side_effect = requests.exceptions.HTTPError("404 Not Found")
+
+            with pytest.raises(SourceError):
+                _ = _collect_single(source, category="test", limit=10, timeout=15)
+
+            assert mock_get.call_count == 3
+
+    def test_max_retries_exceeded(self) -> None:
+        """Should raise after 3 failed attempts."""
+        source = Source(name="test_feed", type="rss", url="http://example.com/feed")
+
+        with patch("radar.collector.requests.get") as mock_get:
+            mock_get.side_effect = requests.exceptions.Timeout("timeout")
+
+            with pytest.raises(NetworkError):
+                _ = _collect_single(source, category="test", limit=10, timeout=15)
+
+            assert mock_get.call_count == 3
+
+    def test_connection_error_retry(self) -> None:
+        """Should retry on connection errors."""
+        source = Source(name="test_feed", type="rss", url="http://example.com/feed")
+
+        with patch("radar.collector.requests.get") as mock_get:
+            mock_response = Mock()
+            mock_response.content = b"""<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <item>
+            <title>Test Article</title>
+            <link>http://example.com/article</link>
+            <description>Test summary</description>
+            <pubDate>Mon, 01 Jan 2024 12:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>"""
+            mock_response.raise_for_status = Mock()
+
+            mock_get.side_effect = [
+                requests.exceptions.ConnectionError("connection failed"),
+                requests.exceptions.ConnectionError("connection failed"),
+                mock_response,
+            ]
+
+            articles = _collect_single(source, category="test", limit=10, timeout=15)
+
+            assert len(articles) == 1
+            assert mock_get.call_count == 3
+
+    def test_session_reuse(self) -> None:
+        sources = [
+            Source(name="feed_1", type="rss", url="http://host1.example.com/feed"),
+            Source(name="feed_2", type="rss", url="http://host2.example.com/feed"),
+            Source(name="feed_3", type="rss", url="http://host3.example.com/feed"),
         ]
 
-        with patch("time.sleep", return_value=None):
-            result = collector._make_request("endpoint", {"pageNo": 1})
+        mock_breaker = Mock()
+        mock_breaker.call.side_effect = lambda func, *args, **kwargs: func(*args, **kwargs)
+        mock_manager = Mock()
+        mock_manager.get_breaker.return_value = mock_breaker
 
-        assert result == {"response": {"body": {"items": []}}}
-        assert mock_get.call_count == 3
+        with (
+            patch("radar.collector.requests.Session.get") as mock_get,
+            patch("radar.collector.get_circuit_breaker_manager", return_value=mock_manager),
+        ):
+            mock_response = Mock()
+            mock_response.content = b"""<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <item>
+            <title>Test Article</title>
+            <link>http://example.com/article</link>
+            <description>Test summary</description>
+            <pubDate>Mon, 01 Jan 2024 12:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>"""
+            mock_response.raise_for_status = Mock()
+            mock_get.return_value = mock_response
 
-    @patch("collectors.onbid_collector.requests.get")
-    def test_retry_on_5xx_error(self, mock_get: Mock) -> None:
-        collector = self._create_collector()
+            collect_sources(sources, category="test", limit_per_source=10)
+            assert mock_get.call_count == 3
 
-        fail_response = _JsonResponse(
-            {"response": {"body": {"items": []}}},
-            error=requests.exceptions.HTTPError("500 Server Error"),
-        )
-        success_response = _JsonResponse({"response": {"body": {"items": []}}})
+    def test_rate_limiter_enforces_delay(self) -> None:
+        limiter = RateLimiter(min_interval=0.3)
 
-        mock_get.side_effect = [fail_response, fail_response, success_response]
+        start = time.monotonic()
+        limiter.acquire()
+        limiter.acquire()
+        limiter.acquire()
+        elapsed = time.monotonic() - start
 
-        with patch("time.sleep", return_value=None):
-            result = collector._make_request("endpoint", {"pageNo": 1})
-
-        assert result == {"response": {"body": {"items": []}}}
-        assert mock_get.call_count == 3
-
-    @patch("collectors.onbid_collector.requests.get")
-    def test_max_retries_exceeded(self, mock_get: Mock) -> None:
-        collector = self._create_collector()
-        mock_get.side_effect = requests.exceptions.Timeout("timeout")
-
-        with patch("time.sleep", return_value=None):
-            with pytest.raises(CollectorError, match="Onbid API request failed"):
-                _ = collector._make_request("endpoint", {"pageNo": 1})
-
-        assert mock_get.call_count == 3
-
-    @patch("collectors.onbid_collector.requests.get")
-    def test_connection_error_recovery(self, mock_get: Mock) -> None:
-        collector = self._create_collector()
-
-        mock_get.side_effect = [
-            requests.exceptions.ConnectionError("connection error"),
-            _JsonResponse({"response": {"body": {"items": []}}}),
-        ]
-
-        with patch("time.sleep", return_value=None):
-            result = collector._make_request("endpoint", {"pageNo": 1})
-
-        assert result == {"response": {"body": {"items": []}}}
-        assert mock_get.call_count == 2
-
-
-class TestNaverLandCollectorRetry:
-    @staticmethod
-    def _create_collector() -> NaverLandCollector:
-        return NaverLandCollector("naver_land_test", {"timeout": 1})
-
-    @patch("collectors.naver_land_collector.requests.get")
-    def test_retry_on_timeout(self, mock_get: Mock) -> None:
-        collector = self._create_collector()
-
-        mock_get.side_effect = [
-            requests.exceptions.Timeout("timeout"),
-            requests.exceptions.Timeout("timeout"),
-            _HtmlResponse("<html>ok</html>"),
-        ]
-
-        with patch("time.sleep", return_value=None):
-            result = collector._fetch_html("https://land.naver.com/search/result?page=1")
-
-        assert result == "<html>ok</html>"
-        assert mock_get.call_count == 3
-
-    @patch("collectors.naver_land_collector.requests.get")
-    def test_retry_on_5xx_error(self, mock_get: Mock) -> None:
-        collector = self._create_collector()
-
-        fail_response = _HtmlResponse(
-            "<html>fail</html>",
-            error=requests.exceptions.HTTPError("500 Server Error"),
-        )
-        success_response = _HtmlResponse("<html>ok</html>")
-        mock_get.side_effect = [fail_response, fail_response, success_response]
-
-        with patch("time.sleep", return_value=None):
-            result = collector._fetch_html("https://land.naver.com/search/result?page=1")
-
-        assert result == "<html>ok</html>"
-        assert mock_get.call_count == 3
-
-    @patch("collectors.naver_land_collector.requests.get")
-    def test_max_retries_exceeded(self, mock_get: Mock) -> None:
-        collector = self._create_collector()
-        mock_get.side_effect = requests.exceptions.Timeout("timeout")
-
-        with patch("time.sleep", return_value=None):
-            with pytest.raises(requests.exceptions.Timeout):
-                _ = collector._fetch_html("https://land.naver.com/search/result?page=1")
-
-        assert mock_get.call_count == 3
-
-    @patch("collectors.naver_land_collector.requests.get")
-    def test_connection_error_recovery(self, mock_get: Mock) -> None:
-        collector = self._create_collector()
-
-        mock_get.side_effect = [
-            requests.exceptions.ConnectionError("connection error"),
-            _HtmlResponse("<html>ok</html>"),
-        ]
-
-        with patch("time.sleep", return_value=None):
-            result = collector._fetch_html("https://land.naver.com/search/result?page=1")
-
-        assert result == "<html>ok</html>"
-        assert mock_get.call_count == 2
-
-
-class TestSubscriptionCollectorRetry:
-    @staticmethod
-    def _create_collector() -> SubscriptionCollector:
-        return SubscriptionCollector("subscription_test", {"api_key": "test_key"})
-
-    @patch("collectors.subscription_collector.requests.get")
-    def test_retry_on_timeout(self, mock_get: Mock) -> None:
-        collector = self._create_collector()
-
-        mock_get.side_effect = [
-            requests.exceptions.Timeout("timeout"),
-            requests.exceptions.Timeout("timeout"),
-            _JsonResponse({"response": {"body": {"items": []}}}),
-        ]
-
-        with patch("time.sleep", return_value=None):
-            result = collector._make_request({"pageNo": 1})
-
-        assert result == {"response": {"body": {"items": []}}}
-        assert mock_get.call_count == 3
-
-    @patch("collectors.subscription_collector.requests.get")
-    def test_retry_on_5xx_error(self, mock_get: Mock) -> None:
-        collector = self._create_collector()
-
-        fail_response = _JsonResponse(
-            {"response": {"body": {"items": []}}},
-            error=requests.exceptions.HTTPError("500 Server Error"),
-        )
-        success_response = _JsonResponse({"response": {"body": {"items": []}}})
-        mock_get.side_effect = [fail_response, fail_response, success_response]
-
-        with patch("time.sleep", return_value=None):
-            result = collector._make_request({"pageNo": 1})
-
-        assert result == {"response": {"body": {"items": []}}}
-        assert mock_get.call_count == 3
-
-    @patch("collectors.subscription_collector.requests.get")
-    def test_max_retries_exceeded(self, mock_get: Mock) -> None:
-        collector = self._create_collector()
-        mock_get.side_effect = requests.exceptions.Timeout("timeout")
-
-        with patch("time.sleep", return_value=None):
-            with pytest.raises(CollectorError, match="Subscription API request failed"):
-                _ = collector._make_request({"pageNo": 1})
-
-        assert mock_get.call_count == 3
-
-    @patch("collectors.subscription_collector.requests.get")
-    def test_connection_error_recovery(self, mock_get: Mock) -> None:
-        collector = self._create_collector()
-
-        mock_get.side_effect = [
-            requests.exceptions.ConnectionError("connection error"),
-            _JsonResponse({"response": {"body": {"items": []}}}),
-        ]
-
-        with patch("time.sleep", return_value=None):
-            result = collector._make_request({"pageNo": 1})
-
-        assert result == {"response": {"body": {"items": []}}}
-        assert mock_get.call_count == 2
+        assert elapsed >= 0.6
