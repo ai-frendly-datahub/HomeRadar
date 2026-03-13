@@ -9,7 +9,7 @@ Provides:
 
 from __future__ import annotations
 
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 import pytest
@@ -42,7 +42,7 @@ def sample_molit_items() -> list[RawItem]:
     Returns:
         List of RawItem objects representing real estate transactions
     """
-    base_date = datetime(2024, 11, 15, 10, 0, 0)
+    base_date = datetime(2024, 11, 15, 10, 0, 0, tzinfo=UTC)
 
     return [
         RawItem(
@@ -125,7 +125,7 @@ def sample_rss_items() -> list[RawItem]:
     Returns:
         List of RawItem objects representing real estate news
     """
-    base_date = datetime(2024, 11, 15, 12, 0, 0)
+    base_date = datetime(2024, 11, 15, 12, 0, 0, tzinfo=UTC)
 
     return [
         RawItem(

@@ -12,7 +12,7 @@ Before running:
 """
 
 import os
-from datetime import datetime
+from datetime import UTC, datetime
 
 from collectors.molit_collector import MOLITCollector
 from graph import GraphStore, get_price_statistics, get_transactions
@@ -151,7 +151,7 @@ def main():
     """Run MOLIT API demo."""
     print("HomeRadar MOLIT API Demo")
     print("=" * 80)
-    print(f"Started at: {datetime.now()}\n")
+    print(f"Started at: {datetime.now(tz=UTC)}\n")
 
     try:
         # Step 1: Collect transactions
@@ -184,7 +184,7 @@ def main():
 
         traceback.print_exc()
 
-    print(f"\nFinished at: {datetime.now()}")
+    print(f"\nFinished at: {datetime.now(tz=UTC)}")
     print("=" * 80)
 
 

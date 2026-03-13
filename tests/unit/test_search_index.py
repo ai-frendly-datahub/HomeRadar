@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
@@ -48,7 +48,7 @@ def test_search_by_keyword_uses_fts_index(tmp_path: Path) -> None:
         title="테스트 기사",
         summary="요약",
         source_id="rss_source",
-        published_at=datetime(2026, 3, 4, 11, 0, 0),
+        published_at=datetime(2026, 3, 4, 11, 0, 0, tzinfo=UTC),
         region="서울",
         property_type="아파트",
     )

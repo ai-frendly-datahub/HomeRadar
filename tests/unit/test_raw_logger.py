@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
@@ -19,7 +19,7 @@ def test_log_writes_pydantic_items_as_jsonl(tmp_path: Path) -> None:
             title="강남 거래",
             summary="요약",
             source_id="molit_apt_transaction",
-            published_at=datetime(2026, 3, 4, 10, 0, 0),
+            published_at=datetime(2026, 3, 4, 10, 0, 0, tzinfo=UTC),
             region="강남구",
             property_type="아파트",
             price=125000.0,

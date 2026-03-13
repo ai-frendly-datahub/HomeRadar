@@ -19,7 +19,7 @@ import os
 import sys
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -169,7 +169,7 @@ def collect_molit(collector: Any, source: dict[str, Any]) -> list[RawItem]:
     """
     # Get MOLIT-specific config
     lawd_cd = source.get("lawd_cd", "11680")  # Default: Gangnam-gu
-    deal_ymd = source.get("deal_ymd", datetime.now().strftime("%Y%m"))
+    deal_ymd = source.get("deal_ymd", datetime.now(tz=UTC).strftime("%Y%m"))
 
     # Check for service key
     if "service_key" not in source:
@@ -265,7 +265,7 @@ def run_collection_cycle(
     Returns:
         Statistics dictionary
     """
-    cycle_start = datetime.now()
+    cycle_start = datetime.now(tz=UTC)
     logger.info("=" * 80)
     logger.info(f"Starting collection cycle at {cycle_start}")
     logger.info("=" * 80)
@@ -326,7 +326,7 @@ def run_collection_cycle(
                         collected_count=0,
                         matched_count=0,
                         errors_count=0,
-                        timestamp=datetime.now(),
+                        timestamp=datetime.now(tz=UTC),
                     )
                 )
 
@@ -357,7 +357,7 @@ def run_collection_cycle(
         if isinstance(snapshot_path, str) and snapshot_path:
             logger.info("Snapshot saved to %s", snapshot_path)
 
-        cycle_end = datetime.now()
+        cycle_end = datetime.now(tz=UTC)
         duration = (cycle_end - cycle_start).total_seconds()
 
         result = {
@@ -392,7 +392,7 @@ def run_collection_cycle(
         logger.error(f"Collection cycle failed: {e}", exc_info=True)
         return {
             "start_time": cycle_start.isoformat(),
-            "end_time": datetime.now().isoformat(),
+            "end_time": datetime.now(tz=UTC).isoformat(),
             "success": False,
             "error": str(e),
         }
@@ -456,7 +456,7 @@ def run_scheduler(
 
     while True:
         try:
-            result = run_collection_cycle(
+            _ = run_collection_cycle(
                 config,
                 source_filter,
                 generate_report,
@@ -467,9 +467,9 @@ def run_scheduler(
 
             # Wait for next cycle
             sleep_seconds = interval_hours * 3600
-            next_run = datetime.now().timestamp() + sleep_seconds
+            next_run = datetime.now(tz=UTC).timestamp() + sleep_seconds
 
-            logger.info(f"Next run scheduled at {datetime.fromtimestamp(next_run)}")
+            logger.info(f"Next run scheduled at {datetime.fromtimestamp(next_run, tz=UTC)}")
             logger.info(f"Sleeping for {interval_hours} hours...")
 
             time.sleep(sleep_seconds)

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 from unittest.mock import patch
 
@@ -95,7 +95,7 @@ def test_detect_home_notifications_classifies_priority() -> None:
         title="서울 강남 신규 매물",
         summary="주택 정책 변경 포함",
         source_id="test",
-        published_at=datetime.now(),
+        published_at=datetime.now(tz=UTC),
         region="서울",
         property_type="아파트",
         price=120000.0,

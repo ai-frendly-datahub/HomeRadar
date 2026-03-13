@@ -2,7 +2,7 @@
 Unit tests for main.py orchestration.
 """
 
-from datetime import datetime
+from datetime import UTC, datetime
 from unittest.mock import Mock, mock_open, patch
 
 import pytest
@@ -75,7 +75,7 @@ class TestCollectFromSources:
                 title="Test 1",
                 summary="Summary 1",
                 source_id="test_rss",
-                published_at=datetime.now(),
+                published_at=datetime.now(tz=UTC),
                 region=None,
                 property_type=None,
                 price=None,
@@ -86,7 +86,7 @@ class TestCollectFromSources:
                 title="Test 2",
                 summary="Summary 2",
                 source_id="test_rss",
-                published_at=datetime.now(),
+                published_at=datetime.now(tz=UTC),
                 region=None,
                 property_type=None,
                 price=None,
@@ -114,7 +114,7 @@ class TestCollectFromSources:
             mock_collector.collect.return_value = sample_items
             mock_create.return_value = mock_collector
 
-            items = collect_from_sources(
+            _ = collect_from_sources(
                 sample_sources, enabled_only=False, source_filter=["test_disabled"]
             )
 
@@ -184,7 +184,7 @@ class TestCollectMOLIT:
         mock_collector.collect.return_value = []
 
         with patch.dict("os.environ", {"MOLIT_SERVICE_KEY": "env_key"}):
-            items = collect_molit(mock_collector, source)
+            _ = collect_molit(mock_collector, source)
 
             # Should add service_key from environment
             assert source["service_key"] == "env_key"
@@ -228,7 +228,7 @@ class TestStoreAndExtract:
                 title="강남구 래미안 아파트 급등",
                 summary="가격이 상승했습니다",
                 source_id="test",
-                published_at=datetime.now(),
+                published_at=datetime.now(tz=UTC),
                 region=None,
                 property_type=None,
                 price=None,
@@ -334,7 +334,7 @@ class TestRunCollectionCycle:
                 title="Test",
                 summary="Summary",
                 source_id="test",
-                published_at=datetime.now(),
+                published_at=datetime.now(tz=UTC),
                 region=None,
                 property_type=None,
                 price=None,

@@ -177,7 +177,7 @@ class GraphStore:
                     existing = conn.execute(
                         "SELECT url FROM urls WHERE url = ?", [item.url]
                     ).fetchone()
-                    now = datetime.now()
+                    now = datetime.now(tz=UTC)
 
                     conn.execute(
                         """
@@ -242,7 +242,7 @@ class GraphStore:
             Number of entity relationships added
         """
         count = 0
-        now = datetime.now()
+        now = datetime.now(tz=UTC)
 
         try:
             with self._connection() as conn:

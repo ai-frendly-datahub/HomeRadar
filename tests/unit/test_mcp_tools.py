@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
@@ -25,7 +25,7 @@ def _seed_homeradar_db(db_path: Path) -> GraphStore:
         title="강남구 아파트 거래 증가",
         summary="실거래가 상승",
         source_id="molit_apt_transaction",
-        published_at=datetime(2026, 3, 4, 10, 0, 0),
+        published_at=datetime(2026, 3, 4, 10, 0, 0, tzinfo=UTC),
         region="강남구",
         property_type="아파트",
         price=150000.0,

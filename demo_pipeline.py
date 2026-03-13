@@ -4,7 +4,7 @@ Demo script to test full pipeline: RSS collection → Graph storage → Queries
 This demonstrates the complete data flow from RSS feeds to database storage.
 """
 
-from datetime import datetime
+from datetime import UTC, datetime
 
 import yaml
 
@@ -142,7 +142,7 @@ def main():
     """Run full pipeline demo"""
     print("HomeRadar Full Pipeline Demo")
     print("=" * 80)
-    print(f"Started at: {datetime.now()}\n")
+    print(f"Started at: {datetime.now(tz=UTC)}\n")
 
     try:
         # Step 1: Collect RSS data
@@ -173,7 +173,7 @@ def main():
 
         traceback.print_exc()
 
-    print(f"\nFinished at: {datetime.now()}")
+    print(f"\nFinished at: {datetime.now(tz=UTC)}")
     print("=" * 80)
 
 

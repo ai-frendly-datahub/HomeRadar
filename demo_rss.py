@@ -4,7 +4,7 @@ Demo script to test RSS collector with live feeds.
 This script tests the RSS collector with actual feeds from sources.yaml
 """
 
-from datetime import datetime
+from datetime import UTC, datetime
 
 import yaml
 
@@ -110,7 +110,7 @@ def test_rss_sources():
 if __name__ == "__main__":
     print("HomeRadar RSS Collector Demo")
     print("=" * 80)
-    print(f"Started at: {datetime.now()}")
+    print(f"Started at: {datetime.now(tz=UTC)}")
     print()
 
     try:
@@ -123,5 +123,5 @@ if __name__ == "__main__":
 
         traceback.print_exc()
 
-    print(f"\nFinished at: {datetime.now()}")
+    print(f"\nFinished at: {datetime.now(tz=UTC)}")
     print("=" * 80)

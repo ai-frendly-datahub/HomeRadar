@@ -11,11 +11,11 @@ Extracts real estate-related entities from text:
 - Keywords (급등, 전세, etc.)
 """
 
-import re
-from importlib import import_module
-from typing import Any, Protocol, cast
+import re  # noqa: E402
+from importlib import import_module  # noqa: E402
+from typing import Any, Protocol, cast  # noqa: E402
 
-from analyzers.realestate_entities_data import (
+from analyzers.realestate_entities_data import (  # noqa: E402
     ENTITY_TYPES,
     KEYWORD_NORMALIZATION,
     REGION_NORMALIZATION,

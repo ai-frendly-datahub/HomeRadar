@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 import re
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import cast
 
@@ -50,7 +50,7 @@ def handle_search(*, search_db_path: Path, db_path: Path, query: str, limit: int
 
 
 def handle_recent_updates(*, db_path: Path, days: int = 7, limit: int = 20) -> str:
-    cutoff = datetime.now() - timedelta(days=days)
+    cutoff = datetime.now(tz=UTC) - timedelta(days=days)
     with duckdb.connect(str(db_path), read_only=True) as conn:
         rows = conn.execute(
             """

@@ -14,7 +14,7 @@ Total: 37 tests covering 90%+ code coverage
 
 from __future__ import annotations
 
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 import pytest
@@ -42,7 +42,7 @@ def tmp_graph_store(tmp_path: Path) -> GraphStore:
 @pytest.fixture
 def sample_molit_items() -> list[RawItem]:
     """Create sample MOLIT transaction items for testing."""
-    base_date = datetime(2024, 11, 15, 10, 0, 0)
+    base_date = datetime(2024, 11, 15, 10, 0, 0, tzinfo=UTC)
 
     return [
         RawItem(
@@ -87,7 +87,7 @@ def sample_molit_items() -> list[RawItem]:
 @pytest.fixture
 def sample_rss_items() -> list[RawItem]:
     """Create sample RSS news items for testing."""
-    base_date = datetime(2024, 11, 15, 12, 0, 0)
+    base_date = datetime(2024, 11, 15, 12, 0, 0, tzinfo=UTC)
 
     return [
         RawItem(

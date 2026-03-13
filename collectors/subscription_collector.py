@@ -283,7 +283,7 @@ class SubscriptionCollector(BaseCollector):
 
         for fmt in formats:
             try:
-                dt = datetime.strptime(date_str_str, fmt)
+                dt = datetime.strptime(date_str_str, fmt).replace(tzinfo=UTC)
                 return dt.replace(tzinfo=UTC)
             except ValueError:
                 continue

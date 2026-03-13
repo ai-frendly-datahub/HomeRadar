@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import UTC, datetime
 
 import pytest
 
@@ -113,7 +113,7 @@ def test_validate_article_with_raw_item() -> None:
         title="서울 아파트",
         summary="요약",
         source_id="rss",
-        published_at=datetime.now(),
+        published_at=datetime.now(tz=UTC),
         region=None,
         property_type="아파트",
         price=None,
