@@ -48,10 +48,7 @@ class NaverLandCollector(BaseCollector):
         super().__init__(source_id, source_config)
 
         self.base_url = source_config.get("base_url", "https://land.naver.com")
-        self.search_url = source_config.get(
-            "search_url",
-            "https://land.naver.com/search/result"
-        )
+        self.search_url = source_config.get("search_url", "https://land.naver.com/search/result")
         self.timeout = source_config.get("timeout", 30)
         self.max_items = source_config.get("max_items", 50)
         self.max_pages = source_config.get("max_pages", 3)
@@ -118,11 +115,7 @@ class NaverLandCollector(BaseCollector):
         items: list[RawItem] = []
 
         # Find property listing elements
-        property_elements = soup.select(
-            "div.item_list > div.item, "
-            "div.list_item, "
-            "article.item"
-        )
+        property_elements = soup.select("div.item_list > div.item, div.list_item, article.item")
 
         for prop_elem in property_elements:
             item = self._parse_property(prop_elem)
@@ -134,6 +127,7 @@ class NaverLandCollector(BaseCollector):
     @retry(
         stop=stop_after_attempt(3),
         wait=wait_exponential(multiplier=1, min=2, max=10),
+        reraise=True,
     )
     def _fetch_html(self, url: str) -> Optional[str]:
         """
@@ -157,13 +151,13 @@ class NaverLandCollector(BaseCollector):
         }
 
         try:
-            response = requests.get(
+            response = self._request(
+                "GET",
                 url,
                 headers=headers,
                 timeout=self.timeout,
                 allow_redirects=True,
             )
-            response.raise_for_status()
             response.encoding = "utf-8"
             return response.text
 

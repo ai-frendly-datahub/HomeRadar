@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 import html
 import json
 from pathlib import Path
+import shutil
 from typing import Any, Optional
 from urllib.request import urlopen
 
@@ -162,8 +163,25 @@ class HtmlReporter:
             stats=stats,
         )
 
-        output_path.write_text(rendered, encoding="utf-8")
+        now = datetime.now(timezone.utc)
+        date_stamp = now.strftime("%Y%m%d")
+        category_name = output_path.stem.split("_")[0] or "daily"
+        dated_path = output_path.parent / f"{category_name}_{date_stamp}.html"
+
+        dated_path.write_text(rendered, encoding="utf-8")
+        if dated_path != output_path:
+            shutil.copy2(dated_path, output_path)
+        self._copy_static_assets(output_path.parent)
         return output_path
+
+    def _copy_static_assets(self, report_dir: Path) -> None:
+        static_src = self.template_dir / "static"
+        static_dst = report_dir / "static"
+        if not static_src.is_dir():
+            return
+        if static_dst.exists():
+            shutil.rmtree(static_dst)
+        shutil.copytree(static_src, static_dst)
 
     def _generate_chart_data(
         self,

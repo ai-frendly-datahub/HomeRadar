@@ -4,6 +4,7 @@ Unit tests for EntityExtractor.
 
 import pytest
 
+import analyzers.entity_extractor as entity_extractor_module
 from analyzers.entity_extractor import EntityExtractor, extract_entities
 
 
@@ -187,6 +188,30 @@ class TestConvenienceFunction:
         assert "complex" in entities
         assert "district" in entities
         assert "keyword" in entities
+
+
+def test_non_ascii_keyword_uses_kiwi_when_available(monkeypatch):
+    class _KiwiAnalyzerStub:
+        def __init__(self) -> None:
+            self._kiwi = object()
+            self.called = False
+
+        def match_keyword(self, text: str, keyword: str) -> bool:
+            self.called = True
+            return keyword == "투기과열지구" and "투기 과열 지구" in text
+
+    kiwi_stub = _KiwiAnalyzerStub()
+    monkeypatch.setattr(entity_extractor_module, "_korean_analyzer", kiwi_stub, raising=False)
+    monkeypatch.setattr(
+        entity_extractor_module, "_korean_analyzer_initialized", True, raising=False
+    )
+
+    extractor = EntityExtractor()
+    entities = extractor.extract("정부가 투기 과열 지구 규제를 강화했다")
+
+    assert kiwi_stub.called is True
+    assert "keyword" in entities
+    assert "투기과열지구" in entities["keyword"]
 
 
 class TestRealWorldExamples:

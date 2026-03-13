@@ -47,8 +47,7 @@ class RSSCollector(BaseCollector):
 
     def _default_fetcher(self, url: str) -> bytes:
         """Fetch RSS feed content."""
-        response = requests.get(url, timeout=15)
-        response.raise_for_status()
+        response = self._request("GET", url, timeout=15)
         return response.content
 
     def collect(self) -> list[RawItem]:
@@ -118,9 +117,7 @@ class RSSCollector(BaseCollector):
 
         if published:
             # Convert time.struct_time to datetime
-            return datetime.fromtimestamp(
-                calendar.timegm(published), tz=timezone.utc
-            )
+            return datetime.fromtimestamp(calendar.timegm(published), tz=timezone.utc)
 
         return None
 

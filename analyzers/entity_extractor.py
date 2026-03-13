@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 """
 Entity extractor for HomeRadar.
 
@@ -8,7 +10,9 @@ Extracts real estate-related entities from text:
 - Keywords (급등, 전세, etc.)
 """
 
-from typing import Any
+import re
+from importlib import import_module
+from typing import Any, Optional, Protocol, cast
 
 from analyzers.realestate_entities_data import (
     COMPLEX_BRANDS,
@@ -19,6 +23,73 @@ from analyzers.realestate_entities_data import (
     REGION_NORMALIZATION,
     REGIONS_ALL,
 )
+
+
+_keyword_pattern_cache: dict[str, Optional[re.Pattern[str]]] = {}
+
+
+class _KoreanAnalyzerLike(Protocol):
+    _kiwi: object | None
+
+    def match_keyword(self, text: str, keyword: str) -> bool: ...
+
+
+def _load_korean_analyzer_constructor() -> type[_KoreanAnalyzerLike] | None:
+    try:
+        korean_analyzer_module = import_module("radar_core.common.korean_analyzer")
+    except ModuleNotFoundError:
+        return None
+
+    korean_analyzer_constructor = getattr(korean_analyzer_module, "KoreanAnalyzer", None)
+    if korean_analyzer_constructor is None:
+        return None
+
+    return cast(type[_KoreanAnalyzerLike], korean_analyzer_constructor)
+
+
+_KOREAN_ANALYZER_CONSTRUCTOR = _load_korean_analyzer_constructor()
+_korean_analyzer: _KoreanAnalyzerLike | None = None
+_korean_analyzer_initialized = False
+
+
+def _is_ascii_only(keyword: str) -> bool:
+    return all(ord(char) < 128 for char in keyword)
+
+
+def _get_keyword_pattern(keyword: str) -> Optional[re.Pattern[str]]:
+    cached = _keyword_pattern_cache.get(keyword)
+    if keyword in _keyword_pattern_cache:
+        return cached
+
+    pattern = (
+        re.compile(r"\b" + re.escape(keyword) + r"\b", re.IGNORECASE)
+        if _is_ascii_only(keyword)
+        else None
+    )
+    _keyword_pattern_cache[keyword] = pattern
+    return pattern
+
+
+def _get_korean_analyzer() -> _KoreanAnalyzerLike | None:
+    global _korean_analyzer
+    global _korean_analyzer_initialized
+
+    if _korean_analyzer_initialized:
+        return _korean_analyzer
+
+    _korean_analyzer_initialized = True
+    if _KOREAN_ANALYZER_CONSTRUCTOR is not None:
+        _korean_analyzer = _KOREAN_ANALYZER_CONSTRUCTOR()
+
+    return _korean_analyzer
+
+
+def _matches_non_ascii_keyword(text: str, text_lower: str, keyword: str) -> bool:
+    korean_analyzer = _get_korean_analyzer()
+    if korean_analyzer is not None and getattr(korean_analyzer, "_kiwi", None) is not None:
+        return korean_analyzer.match_keyword(text, keyword)
+
+    return keyword in text_lower
 
 
 class EntityExtractor:
@@ -73,9 +144,7 @@ class EntityExtractor:
 
         return results
 
-    def _extract_entities(
-        self, text: str, text_lower: str, entity_dict: set[str]
-    ) -> list[str]:
+    def _extract_entities(self, text: str, text_lower: str, entity_dict: set[str]) -> list[str]:
         """
         Extract entities from text using dictionary.
 
@@ -90,11 +159,17 @@ class EntityExtractor:
         found = []
 
         for entity in entity_dict:
-            # Case-insensitive search
-            if entity.lower() in text_lower:
-                found.append(entity)
-            # Also try exact match in original text
-            elif entity in text:
+            normalized = entity.lower()
+            if not normalized:
+                continue
+
+            pattern = _get_keyword_pattern(normalized)
+            matched = (
+                pattern.search(text)
+                if pattern is not None
+                else _matches_non_ascii_keyword(text, text_lower, normalized)
+            )
+            if matched or entity in text:
                 found.append(entity)
 
         return found
@@ -113,9 +188,7 @@ class EntityExtractor:
 
         for region in regions:
             # Apply normalization map
-            normalized_region = self.region_normalization.get(
-                region.lower(), region
-            )
+            normalized_region = self.region_normalization.get(region.lower(), region)
             normalized.append(normalized_region)
 
         return normalized
@@ -134,9 +207,7 @@ class EntityExtractor:
 
         for keyword in keywords:
             # Apply normalization map
-            normalized_keyword = self.keyword_normalization.get(
-                keyword.lower(), keyword
-            )
+            normalized_keyword = self.keyword_normalization.get(keyword.lower(), keyword)
             normalized.append(normalized_keyword)
 
         return normalized

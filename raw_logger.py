@@ -1,26 +1,63 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Iterable, Optional
 
 
 class RawLogger:
     def __init__(self, raw_dir: Path):
         self.raw_dir = raw_dir
 
-    def log(self, items: Iterable[Any], *, source_name: str) -> Path:
+    def log(
+        self,
+        items: Iterable[Any],
+        *,
+        source_name: str,
+        run_id: Optional[str] = None,
+    ) -> Path:
         """Log RawItem-like dicts to JSONL with date-partitioned path."""
-        date_dir = self.raw_dir / datetime.now().strftime("%Y-%m-%d")
+        now = datetime.now(timezone.utc)
+        date_dir = self.raw_dir / now.strftime("%Y-%m-%d")
         date_dir.mkdir(parents=True, exist_ok=True)
-        output_path = date_dir / f"{source_name}.jsonl"
+        safe_source_name = source_name.replace("/", "_").replace("\\", "_")
+        output_path = (
+            date_dir / f"{safe_source_name}_{run_id}.jsonl"
+            if run_id is not None
+            else date_dir / f"{safe_source_name}.jsonl"
+        )
 
-        with output_path.open("a", encoding="utf-8") as file:
+        existing_links: set[str] = set()
+        if run_id is not None and output_path.exists():
+            try:
+                with output_path.open("r", encoding="utf-8") as file_obj:
+                    for line in file_obj:
+                        if not line.strip():
+                            continue
+                        record = json.loads(line)
+                        link = record.get("link") or record.get("url")
+                        if isinstance(link, str) and link:
+                            existing_links.add(link)
+            except (json.JSONDecodeError, OSError):
+                pass
+
+        with output_path.open("a", encoding="utf-8") as file_obj:
             for item in items:
                 payload = self._normalize_item(item)
-                file.write(json.dumps(payload, ensure_ascii=False, default=str))
-                file.write("\n")
+                link: Optional[str] = None
+                if run_id is not None:
+                    candidate = payload.get("link") or payload.get("url")
+                    if isinstance(candidate, str):
+                        link = candidate
+                    if isinstance(link, str) and link in existing_links:
+                        continue
+
+                file_obj.write(json.dumps(payload, ensure_ascii=False, default=str))
+                file_obj.write("\n")
+
+                if run_id is not None and link:
+                    existing_links.add(link)
 
         return output_path
 

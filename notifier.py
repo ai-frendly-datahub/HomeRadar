@@ -45,7 +45,7 @@ class NotificationPayload:
         }
 
 
-class Notifier(Protocol):
+class NotificationSender(Protocol):
     """Protocol for notification delivery."""
 
     def send(self, payload: NotificationPayload) -> bool:
@@ -209,7 +209,7 @@ class WebhookNotifier:
 class CompositeNotifier:
     """Send notifications to multiple notifiers."""
 
-    def __init__(self, notifiers: list[object]) -> None:
+    def __init__(self, notifiers: list[NotificationSender]) -> None:
         """Initialize composite notifier.
 
         Args:
@@ -229,14 +229,102 @@ class CompositeNotifier:
         if not self.notifiers:
             return True
 
-        results = []
+        results: list[bool] = []
         for notifier in self.notifiers:
             try:
-                result = getattr(notifier, "send")(payload)
+                result = notifier.send(payload)
                 results.append(result)
             except Exception:
                 results.append(False)
         return all(results) if results else True
+
+
+class Notifier:
+    def __init__(self, config: NotificationConfig):
+        self.config = config
+
+    def send(
+        self,
+        title: str,
+        message: str,
+        *,
+        priority: str = "normal",
+        metadata: dict[str, Any] | None = None,
+    ) -> None:
+        if not self.config.enabled:
+            return
+
+        payload = {
+            "title": title,
+            "message": message,
+            "priority": priority,
+            "metadata": metadata or {},
+        }
+        channels = {channel.strip().lower() for channel in self.config.channels}
+
+        if "email" in channels:
+            self._send_email(payload)
+        if "webhook" in channels:
+            self._send_webhook(payload)
+        if "telegram" in channels:
+            self._send_telegram(payload)
+
+    def _send_email(self, payload: dict[str, Any]) -> None:
+        settings = self.config.email_settings
+        smtp_host = str(settings.get("smtp_host", "")).strip()
+        smtp_port = int(settings.get("smtp_port", 587) or 587)
+        from_address = str(settings.get("from_address", "")).strip()
+        to_addresses = settings.get("to_addresses", [])
+        username = str(settings.get("username", "")).strip()
+        password = str(settings.get("password", "")).strip()
+
+        if (
+            not smtp_host
+            or not from_address
+            or not isinstance(to_addresses, list)
+            or not to_addresses
+        ):
+            return
+
+        try:
+            msg = MIMEText(str(payload["message"]), "plain")
+            msg["Subject"] = str(payload["title"])
+            msg["From"] = from_address
+            msg["To"] = ", ".join(str(addr) for addr in to_addresses)
+
+            with smtplib.SMTP(smtp_host, smtp_port) as server:
+                server.starttls()
+                if username and password:
+                    server.login(username, password)
+                server.send_message(msg)
+            logger.info("home_notifier_email_sent", to_count=len(to_addresses))
+        except Exception as exc:
+            logger.error("home_notifier_email_failed", error=str(exc))
+
+    def _send_webhook(self, payload: dict[str, Any]) -> None:
+        if not self.config.webhook_url:
+            return
+        try:
+            requests.post(self.config.webhook_url, json=payload, timeout=10)
+            logger.info("home_notifier_webhook_sent", url=self.config.webhook_url)
+        except Exception as exc:
+            logger.error("home_notifier_webhook_failed", error=str(exc))
+
+    def _send_telegram(self, payload: dict[str, Any]) -> None:
+        token = self.config.telegram_config.get("bot_token", "")
+        chat_id = self.config.telegram_config.get("chat_id", "")
+        if not token or not chat_id:
+            return
+        try:
+            text = f"[{payload['priority'].upper()}] {payload['title']}\n{payload['message']}"
+            requests.post(
+                f"https://api.telegram.org/bot{token}/sendMessage",
+                json={"chat_id": chat_id, "text": text},
+                timeout=10,
+            )
+            logger.info("home_notifier_telegram_sent", chat_id=chat_id)
+        except Exception as exc:
+            logger.error("home_notifier_telegram_failed", error=str(exc))
 
 
 # Domain-specific configuration and event classes (preserved from original)
