@@ -1,5 +1,4 @@
 from __future__ import annotations
-from typing import Optional
 
 import asyncio
 import os
@@ -16,6 +15,7 @@ from mcp_server.tools import (
     handle_sql,
     handle_top_trends,
 )
+
 
 app = Server("homeradar")
 
@@ -41,7 +41,7 @@ def _as_int(value: object, default: int) -> int:
     return default
 
 
-def _as_float(value: object) -> Optional[float]:
+def _as_float(value: object) -> float | None:
     if value is None or isinstance(value, bool):
         return None
     if isinstance(value, (int, float)):
@@ -139,7 +139,9 @@ async def call_tool(name: str, arguments: dict[str, object] | None) -> list[Text
     elif name == "price_watch":
         result = handle_price_watch(
             db_path=_db_path(),
-            region=str(args["region"]) if "region" in args and args.get("region") is not None else None,
+            region=str(args["region"])
+            if "region" in args and args.get("region") is not None
+            else None,
             min_price=_as_float(args.get("min_price")),
             max_price=_as_float(args.get("max_price")),
             limit=_as_int(args.get("limit"), 20),
@@ -152,7 +154,7 @@ async def call_tool(name: str, arguments: dict[str, object] | None) -> list[Text
             limit=_as_int(args.get("limit"), 10),
         )
     else:
-        result = f"{{\"ok\": false, \"error\": \"Unknown tool: {name}\"}}"
+        result = f'{{"ok": false, "error": "Unknown tool: {name}"}}'
 
     return [TextContent(type="text", text=result)]
 

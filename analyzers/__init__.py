@@ -9,4 +9,5 @@ This module analyzes real estate data:
 
 from analyzers.entity_extractor import EntityExtractor, extract_entities
 
+
 __all__ = ["EntityExtractor", "extract_entities"]

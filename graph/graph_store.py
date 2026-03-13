@@ -9,9 +9,9 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from typing import Optional, Any
+from typing import Any
 
 import duckdb
 
@@ -30,7 +30,7 @@ class DatabasePaths:
     path: Path
 
 
-def _resolve_db_path(db_path: Optional[Path | str] = None) -> Path:
+def _resolve_db_path(db_path: Path | str | None = None) -> Path:
     """
     Resolve database path from arguments or environment.
 
@@ -57,7 +57,7 @@ def _resolve_db_path(db_path: Optional[Path | str] = None) -> Path:
     return path
 
 
-def init_database(db_path: Optional[Path | str] = None) -> DatabasePaths:
+def init_database(db_path: Path | str | None = None) -> DatabasePaths:
     """
     Initialize DuckDB database with required tables.
 
@@ -140,7 +140,7 @@ class GraphStore:
     and transaction data.
     """
 
-    def __init__(self, db_path: Optional[Path | str] = None):
+    def __init__(self, db_path: Path | str | None = None):
         """
         Initialize GraphStore.
 
@@ -268,7 +268,7 @@ class GraphStore:
         return count
 
     def get_recent_items(
-        self, limit: int = 50, source_id: Optional[str] = None
+        self, limit: int = 50, source_id: str | None = None
     ) -> list[dict[str, Any]]:
         """
         Get recent items, optionally filtered by source.
@@ -401,7 +401,7 @@ class GraphStore:
             }
 
     def delete_older_than(self, days: int) -> int:
-        cutoff = datetime.now(timezone.utc).replace(tzinfo=None) - timedelta(days=days)
+        cutoff = datetime.now(UTC).replace(tzinfo=None) - timedelta(days=days)
         try:
             with self._connection() as conn:
                 conn.execute("BEGIN TRANSACTION")
@@ -428,7 +428,7 @@ class GraphStore:
         except duckdb.Error as exc:
             raise StorageError(f"Failed to delete expired HomeRadar records: {exc}") from exc
 
-    def create_daily_snapshot(self, snapshot_dir: Optional[str] = None) -> Optional[Path]:
+    def create_daily_snapshot(self, snapshot_dir: str | None = None) -> Path | None:
         """Create a daily snapshot of the database.
 
         Args:
@@ -444,7 +444,7 @@ class GraphStore:
         snapshot_root = Path(snapshot_dir) if snapshot_dir else self.db_path.parent / "daily"
         return snapshot_database(self.db_path, snapshot_root=snapshot_root)
 
-    def cleanup_old_snapshots(self, snapshot_dir: Optional[str] = None, keep_days: int = 90) -> int:
+    def cleanup_old_snapshots(self, snapshot_dir: str | None = None, keep_days: int = 90) -> int:
         """Remove snapshot date-directories older than *keep_days*.
 
         Args:

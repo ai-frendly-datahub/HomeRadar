@@ -4,17 +4,18 @@ Demo script to test full pipeline: RSS collection → Graph storage → Queries
 This demonstrates the complete data flow from RSS feeds to database storage.
 """
 
-import yaml
 from datetime import datetime
+
+import yaml
 
 from analyzers import EntityExtractor
 from collectors.rss_collector import RSSCollector
-from graph import GraphStore, get_view, get_sources_stats, search_by_keyword, get_trending_entities
+from graph import GraphStore, get_sources_stats, get_trending_entities, get_view, search_by_keyword
 
 
 def load_sources():
     """Load source configuration from sources.yaml"""
-    with open("config/sources.yaml", "r", encoding="utf-8")  as f:
+    with open("config/sources.yaml", encoding="utf-8") as f:
         config = yaml.safe_load(f)
     return config["sources"]
 
@@ -60,7 +61,7 @@ def store_items(items):
     print(f"  - Updated: {result['updated']}")
 
     # Extract and store entities
-    print(f"\n  Extracting entities...")
+    print("\n  Extracting entities...")
     total_entities = 0
 
     for item in items:
@@ -88,49 +89,49 @@ def query_data(store):
 
     # Get stats
     stats = store.get_stats()
-    print(f"\n  Database Statistics:")
+    print("\n  Database Statistics:")
     print(f"  - Total URLs: {stats['total_urls']}")
     print(f"  - Total entities: {stats['total_entities']}")
     print(f"  - Sources: {len(stats['sources'])}")
 
     # Show entity types
-    if stats['entity_types']:
-        print(f"\n  Entity Types:")
-        for entity_type, unique_count in stats['entity_types'].items():
+    if stats["entity_types"]:
+        print("\n  Entity Types:")
+        for entity_type, unique_count in stats["entity_types"].items():
             print(f"    - {entity_type}: {unique_count} unique values")
 
     # Show source distribution
-    print(f"\n  Source Distribution:")
-    for source_id, count in sorted(stats['sources'].items(), key=lambda x: x[1], reverse=True):
+    print("\n  Source Distribution:")
+    for source_id, count in sorted(stats["sources"].items(), key=lambda x: x[1], reverse=True):
         print(f"    - {source_id}: {count} items")
 
     # Get recent items
-    print(f"\n  Recent Items (top 5):")
+    print("\n  Recent Items (top 5):")
     recent = get_view(store, "recent", limit=5)
     for i, item in enumerate(recent, 1):
         print(f"    {i}. [{item['source_id']}] {item['title'][:60]}...")
         print(f"       Published: {item['published_at']}")
 
     # Show trending entities
-    if stats['total_entities'] > 0:
-        print(f"\n  Trending Districts (top 5):")
+    if stats["total_entities"] > 0:
+        print("\n  Trending Districts (top 5):")
         trending_districts = get_trending_entities(store, "district", limit=5)
         for entity, count in trending_districts:
             print(f"    - {entity}: {count} mentions")
 
-        print(f"\n  Trending Keywords (top 5):")
+        print("\n  Trending Keywords (top 5):")
         trending_keywords = get_trending_entities(store, "keyword", limit=5)
         for entity, count in trending_keywords:
             print(f"    - {entity}: {count} mentions")
 
     # Search by keyword
-    print(f"\n  Keyword Search ('부동산'):")
+    print("\n  Keyword Search ('부동산'):")
     results = search_by_keyword(store, "부동산", limit=3)
     for i, item in enumerate(results, 1):
         print(f"    {i}. {item['title'][:60]}...")
 
     # Source stats
-    print(f"\n  Source Statistics:")
+    print("\n  Source Statistics:")
     source_stats = get_sources_stats(store)
     for stat in source_stats[:3]:
         print(f"    - {stat['source_id']}: {stat['item_count']} items")
@@ -160,7 +161,7 @@ def main():
         # Step 4: Summary
         print("\n[4/4] Summary")
         print("=" * 80)
-        print(f"  [OK] Pipeline completed successfully!")
+        print("  [OK] Pipeline completed successfully!")
         print(f"  [OK] Data stored in: {store.db_path}")
         print(f"  [OK] {len(items)} items collected and stored")
 
@@ -169,6 +170,7 @@ def main():
     except Exception as e:
         print(f"\n\n[ERROR] Fatal error: {e}")
         import traceback
+
         traceback.print_exc()
 
     print(f"\nFinished at: {datetime.now()}")

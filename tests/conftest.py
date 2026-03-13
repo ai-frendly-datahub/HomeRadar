@@ -8,6 +8,7 @@ from pathlib import Path
 import pytest
 import structlog
 
+
 # Ensure the project root is in the path
 project_root = Path(__file__).parent.parent
 if str(project_root) not in sys.path:

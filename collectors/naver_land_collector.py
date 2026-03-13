@@ -15,8 +15,8 @@ from __future__ import annotations
 
 import random
 import time
-from datetime import datetime, timezone
-from typing import Any, Optional
+from datetime import UTC, datetime
+from typing import Any
 
 import requests
 from bs4 import BeautifulSoup
@@ -129,7 +129,7 @@ class NaverLandCollector(BaseCollector):
         wait=wait_exponential(multiplier=1, min=2, max=10),
         reraise=True,
     )
-    def _fetch_html(self, url: str) -> Optional[str]:
+    def _fetch_html(self, url: str) -> str | None:
         """
         Fetch HTML with anti-bot measures.
 
@@ -165,7 +165,7 @@ class NaverLandCollector(BaseCollector):
             print(f"[{self.source_id}] HTML 가져오기 실패 ({url}): {e}")
             raise
 
-    def _parse_property(self, prop_elem: Any) -> Optional[RawItem]:
+    def _parse_property(self, prop_elem: Any) -> RawItem | None:
         """
         Parse property element to RawItem.
 
@@ -195,14 +195,14 @@ class NaverLandCollector(BaseCollector):
 
         # Extract price
         price_elem = prop_elem.select_one("span.item_price, span.price, em.price")
-        price: Optional[float] = None
+        price: float | None = None
         if price_elem:
             price_text = price_elem.get_text(strip=True)
             price = self._parse_price(price_text)
 
         # Extract area
         area_elem = prop_elem.select_one("span.item_area, span.area")
-        area: Optional[float] = None
+        area: float | None = None
         if area_elem:
             area_text = area_elem.get_text(strip=True)
             area = self._parse_area(area_text)
@@ -224,8 +224,8 @@ class NaverLandCollector(BaseCollector):
             title=title,
             summary=summary,
             source_id=self.source_id,
-            published_at=datetime.now(timezone.utc),
-            collected_at=datetime.now(timezone.utc),
+            published_at=datetime.now(UTC),
+            collected_at=datetime.now(UTC),
             region=region if region else None,
             property_type=property_type if property_type else None,
             price=price,
@@ -237,7 +237,7 @@ class NaverLandCollector(BaseCollector):
             },
         )
 
-    def _parse_price(self, price_text: str) -> Optional[float]:
+    def _parse_price(self, price_text: str) -> float | None:
         """
         Parse price from text.
 
@@ -272,7 +272,7 @@ class NaverLandCollector(BaseCollector):
 
         return None
 
-    def _parse_area(self, area_text: str) -> Optional[float]:
+    def _parse_area(self, area_text: str) -> float | None:
         """
         Parse area from text.
 

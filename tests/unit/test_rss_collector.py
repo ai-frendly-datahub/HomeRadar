@@ -2,13 +2,13 @@
 Unit tests for RSS collector.
 """
 
-from datetime import datetime, timezone
+from datetime import datetime
 from unittest.mock import Mock, patch
 
 import pytest
 
-from collectors.rss_collector import RSSCollector
 from collectors.base import CollectorError
+from collectors.rss_collector import RSSCollector
 
 
 # Sample RSS feed XML
@@ -798,7 +798,7 @@ class TestRSSCollectorEdgeCases:
             </item>
           </channel>
         </rss>
-        """.encode("utf-8")
+        """.encode()
         mock_fetcher = Mock(return_value=feed)
         collector = RSSCollector("test_source", source_config, fetcher=mock_fetcher)
         items = collector.collect()
@@ -905,7 +905,6 @@ class TestRSSCollectorEdgeCases:
 
     def test_default_fetcher_makes_request(self, source_config):
         """Test that default fetcher uses requests library."""
-        import requests
 
         with patch("requests.get") as mock_get:
             mock_response = Mock()

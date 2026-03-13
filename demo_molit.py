@@ -20,7 +20,7 @@ from graph import GraphStore, get_price_statistics, get_transactions
 
 def get_service_key() -> str:
     """Get MOLIT API service key from environment."""
-    service_key = os.environ.get('MOLIT_SERVICE_KEY')
+    service_key = os.environ.get("MOLIT_SERVICE_KEY")
 
     if not service_key:
         print("[!] MOLIT_SERVICE_KEY environment variable not set.")
@@ -44,29 +44,29 @@ def collect_transactions():
 
     # Configure source
     source = {
-        'service_key': service_key,
-        'url': 'http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev',
-        'num_of_rows': 1000,
+        "service_key": service_key,
+        "url": "http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev",
+        "num_of_rows": 1000,
     }
 
-    collector = MOLITCollector('molit_apt_transaction', source)
+    collector = MOLITCollector("molit_apt_transaction", source)
 
     # Test with Gangnam-gu (11680), November 2024
-    lawd_cd = '11680'  # Seoul Gangnam-gu
-    deal_ymd = '202411'  # November 2024
+    lawd_cd = "11680"  # Seoul Gangnam-gu
+    deal_ymd = "202411"  # November 2024
 
     print(f"  Region: Gangnam-gu (법정동코드: {lawd_cd})")
     print(f"  Period: {deal_ymd[:4]}년 {deal_ymd[4:6]}월")
     print()
 
     try:
-        print(f"  Fetching data...", end=" ")
+        print("  Fetching data...", end=" ")
         items = collector.collect(lawd_cd, deal_ymd)
         print(f"[OK] {len(items)} transactions collected")
 
         if items:
             # Show sample
-            print(f"\n  Sample Transaction:")
+            print("\n  Sample Transaction:")
             sample = items[0]
             print(f"    Title: {sample.title}")
             print(f"    Price: {sample.price:,}만원")
@@ -110,36 +110,40 @@ def query_transactions(store):
         return
 
     # Get all transactions
-    transactions = get_transactions(store, property_type='아파트', limit=10)
+    transactions = get_transactions(store, property_type="아파트", limit=10)
 
-    print(f"\n  Recent Transactions (top 10):")
+    print("\n  Recent Transactions (top 10):")
     for i, tx in enumerate(transactions, 1):
         print(f"    {i}. {tx['title'][:50]}...")
-        print(f"       Price: {tx['price']:,}만원 | Area: {tx['area']}㎡ | Date: {tx['published_at']}")
+        print(
+            f"       Price: {tx['price']:,}만원 | Area: {tx['area']}㎡ | Date: {tx['published_at']}"
+        )
 
     # Get price statistics
-    stats = get_price_statistics(store, property_type='아파트')
+    stats = get_price_statistics(store, property_type="아파트")
 
-    print(f"\n  Price Statistics:")
+    print("\n  Price Statistics:")
     print(f"    - Total transactions: {stats['count']}")
-    if stats['avg_price']:
+    if stats["avg_price"]:
         print(f"    - Average price: {stats['avg_price']:,.0f}만원")
         print(f"    - Min price: {stats['min_price']:,.0f}만원")
         print(f"    - Max price: {stats['max_price']:,.0f}만원")
 
     # Get price range distribution
-    print(f"\n  Price Range Distribution:")
+    print("\n  Price Range Distribution:")
 
     # Under 50,000만원
-    low = get_transactions(store, property_type='아파트', max_price=50000, limit=1000)
+    low = get_transactions(store, property_type="아파트", max_price=50000, limit=1000)
     print(f"    - Under 5억: {len(low)} transactions")
 
     # 50,000 - 100,000만원
-    mid = get_transactions(store, property_type='아파트', min_price=50000, max_price=100000, limit=1000)
+    mid = get_transactions(
+        store, property_type="아파트", min_price=50000, max_price=100000, limit=1000
+    )
     print(f"    - 5억 ~ 10억: {len(mid)} transactions")
 
     # Over 100,000만원
-    high = get_transactions(store, property_type='아파트', min_price=100000, limit=1000)
+    high = get_transactions(store, property_type="아파트", min_price=100000, limit=1000)
     print(f"    - Over 10억: {len(high)} transactions")
 
 
@@ -177,6 +181,7 @@ def main():
     except Exception as e:
         print(f"\n\n[ERROR] Fatal error: {e}")
         import traceback
+
         traceback.print_exc()
 
     print(f"\nFinished at: {datetime.now()}")

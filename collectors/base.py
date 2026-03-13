@@ -5,18 +5,18 @@ Defines the common data model (RawItem) and collector interface
 for various real estate data sources.
 """
 
-from abc import ABC, abstractmethod
-from datetime import datetime
 import os
 import threading
 import time
-from typing import Any, Optional, Union
+from abc import ABC, abstractmethod
+from datetime import datetime
+from typing import Any
 from urllib.parse import urlparse
 
 import requests
+from pydantic import BaseModel, Field
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
-from pydantic import BaseModel, Field
 
 from resilience import SourceCircuitBreakerManager
 
@@ -39,12 +39,10 @@ class RawItem(BaseModel):
         default_factory=dict, description="Original raw data from source"
     )
 
-    region: Optional[str] = Field(None, description="Region/district (서울, 경기 등)")
-    property_type: Optional[str] = Field(
-        None, description="Property type (아파트, 빌라, 오피스텔 등)"
-    )
-    price: Optional[float] = Field(None, description="Transaction or listing price")
-    area: Optional[float] = Field(None, description="Area in square meters")
+    region: str | None = Field(None, description="Region/district (서울, 경기 등)")
+    property_type: str | None = Field(None, description="Property type (아파트, 빌라, 오피스텔 등)")
+    price: float | None = Field(None, description="Transaction or listing price")
+    area: float | None = Field(None, description="Area in square meters")
 
 
 class BaseCollector(ABC):
@@ -104,12 +102,12 @@ class BaseCollector(ABC):
     def _fetch(self, url: str) -> requests.Response:
         return self._request("GET", url)
 
-    def _fetch_html(self, url: str) -> Optional[str]:
+    def _fetch_html(self, url: str) -> str | None:
         response = self._request("GET", url)
         response.encoding = response.apparent_encoding or "utf-8"
         return response.text
 
-    def _fetch_json(self, url: str) -> Union[dict[str, Any], list[Any]]:
+    def _fetch_json(self, url: str) -> dict[str, Any] | list[Any]:
         response = self._request("GET", url)
         return response.json()
 
@@ -158,7 +156,7 @@ class RateLimiter:
             self._last_request = time.monotonic()
 
 
-def resolve_max_workers(max_workers: Optional[int] = None) -> int:
+def resolve_max_workers(max_workers: int | None = None) -> int:
     if max_workers is None:
         raw_value = os.environ.get("RADAR_MAX_WORKERS", "5")
         try:

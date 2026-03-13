@@ -3,7 +3,6 @@ Unit tests for MOLITCollector.
 """
 
 import xml.etree.ElementTree as ET
-from datetime import datetime, timezone
 from unittest.mock import Mock, patch
 
 import pytest

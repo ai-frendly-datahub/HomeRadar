@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+
 """
 Entity extractor for HomeRadar.
 
@@ -12,20 +13,16 @@ Extracts real estate-related entities from text:
 
 import re
 from importlib import import_module
-from typing import Any, Optional, Protocol, cast
+from typing import Any, Protocol, cast
 
 from analyzers.realestate_entities_data import (
-    COMPLEX_BRANDS,
-    DEVELOPMENT_PROJECTS,
     ENTITY_TYPES,
     KEYWORD_NORMALIZATION,
-    KEYWORDS_ALL,
     REGION_NORMALIZATION,
-    REGIONS_ALL,
 )
 
 
-_keyword_pattern_cache: dict[str, Optional[re.Pattern[str]]] = {}
+_keyword_pattern_cache: dict[str, re.Pattern[str] | None] = {}
 
 
 class _KoreanAnalyzerLike(Protocol):
@@ -56,7 +53,7 @@ def _is_ascii_only(keyword: str) -> bool:
     return all(ord(char) < 128 for char in keyword)
 
 
-def _get_keyword_pattern(keyword: str) -> Optional[re.Pattern[str]]:
+def _get_keyword_pattern(keyword: str) -> re.Pattern[str] | None:
     cached = _keyword_pattern_cache.get(keyword)
     if keyword in _keyword_pattern_cache:
         return cached

@@ -10,9 +10,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[2]
 CONFIG_PATH = ROOT / "config" / "sources.yaml"
-HEADERS = {
-    "User-Agent": "HomeRadar/0.1 (tests; +https://github.com/<username>/HomeRadar)"
-}
+HEADERS = {"User-Agent": "HomeRadar/0.1 (tests; +https://github.com/<username>/HomeRadar)"}
 
 
 def _load_rss_sources() -> list[dict]:

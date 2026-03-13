@@ -1,6 +1,5 @@
 # pyright: reportPrivateUsage=false
 from __future__ import annotations
-from typing import Optional
 
 from unittest.mock import Mock, patch
 
@@ -14,9 +13,9 @@ from collectors.subscription_collector import SubscriptionCollector
 
 
 class _JsonResponse:
-    def __init__(self, payload: dict[str, object], error: Optional[Exception] = None) -> None:
+    def __init__(self, payload: dict[str, object], error: Exception | None = None) -> None:
         self._payload: dict[str, object] = payload
-        self._error: Optional[Exception] = error
+        self._error: Exception | None = error
 
     def raise_for_status(self) -> None:
         if self._error:
@@ -27,10 +26,10 @@ class _JsonResponse:
 
 
 class _HtmlResponse:
-    def __init__(self, text: str, error: Optional[Exception] = None) -> None:
+    def __init__(self, text: str, error: Exception | None = None) -> None:
         self.text: str = text
         self.encoding: str = "utf-8"
-        self._error: Optional[Exception] = error
+        self._error: Exception | None = error
 
     def raise_for_status(self) -> None:
         if self._error:

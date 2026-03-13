@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
@@ -17,7 +17,7 @@ def tmp_store(tmp_path: Path) -> GraphStore:
 
 @pytest.fixture
 def sample_region_items() -> list[RawItem]:
-    published_at = datetime(2026, 3, 1, tzinfo=timezone.utc)
+    published_at = datetime(2026, 3, 1, tzinfo=UTC)
     return [
         RawItem(
             url="https://example.com/region/seoul-1",

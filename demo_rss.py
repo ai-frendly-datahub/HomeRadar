@@ -4,15 +4,16 @@ Demo script to test RSS collector with live feeds.
 This script tests the RSS collector with actual feeds from sources.yaml
 """
 
-import yaml
 from datetime import datetime
+
+import yaml
 
 from collectors.rss_collector import RSSCollector
 
 
 def load_sources():
     """Load source configuration from sources.yaml"""
-    with open("config/sources.yaml", "r", encoding="utf-8") as f:
+    with open("config/sources.yaml", encoding="utf-8") as f:
         config = yaml.safe_load(f)
     return config["sources"]
 
@@ -45,27 +46,31 @@ def test_rss_sources():
             if items:
                 # Show first item as sample
                 first_item = items[0]
-                print(f"\n    Sample Article:")
+                print("\n    Sample Article:")
                 print(f"      Title: {first_item.title[:80]}...")
                 print(f"      URL: {first_item.url}")
                 print(f"      Published: {first_item.published_at}")
                 print(f"      Summary: {first_item.summary[:120]}...")
 
-            results.append({
-                "source_id": source_id,
-                "source_name": source_name,
-                "status": "success",
-                "count": len(items),
-            })
+            results.append(
+                {
+                    "source_id": source_id,
+                    "source_name": source_name,
+                    "status": "success",
+                    "count": len(items),
+                }
+            )
 
         except Exception as e:
             print(f"    [ERROR] {str(e)}")
-            results.append({
-                "source_id": source_id,
-                "source_name": source_name,
-                "status": "error",
-                "error": str(e),
-            })
+            results.append(
+                {
+                    "source_id": source_id,
+                    "source_name": source_name,
+                    "status": "error",
+                    "error": str(e),
+                }
+            )
 
         print("-" * 80)
 
@@ -115,6 +120,7 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"\n\n[ERROR] Fatal error: {e}")
         import traceback
+
         traceback.print_exc()
 
     print(f"\nFinished at: {datetime.now()}")

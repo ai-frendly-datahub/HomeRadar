@@ -29,9 +29,7 @@ class CollectorRegistry:
     }
 
     @classmethod
-    def create_collector(
-        cls, source_id: str, source_config: dict[str, Any]
-    ) -> BaseCollector:
+    def create_collector(cls, source_id: str, source_config: dict[str, Any]) -> BaseCollector:
         """
         Create a collector instance based on source configuration.
 

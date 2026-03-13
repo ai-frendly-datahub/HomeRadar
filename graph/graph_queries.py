@@ -12,7 +12,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-from typing import Optional, Any
+from typing import Any
 
 from graph.graph_store import GraphStore
 from graph.search_index import SearchIndex
@@ -21,7 +21,7 @@ from graph.search_index import SearchIndex
 def get_view(
     store: GraphStore,
     view_type: str,
-    view_value: Optional[str] = None,
+    view_value: str | None = None,
     limit: int = 50,
 ) -> list[dict[str, Any]]:
     """
@@ -132,7 +132,7 @@ def search_by_keyword(
     store: GraphStore,
     keyword: str,
     limit: int = 50,
-    search_db_path: Optional[Path] = None,
+    search_db_path: Path | None = None,
 ) -> list[dict[str, Any]]:
     """
     Search items by keyword in title or summary.
@@ -195,12 +195,12 @@ def search_by_keyword(
 
 def get_transactions(
     store: GraphStore,
-    region: Optional[str] = None,
-    property_type: Optional[str] = None,
-    min_price: Optional[float] = None,
-    max_price: Optional[float] = None,
-    start_date: Optional[str] = None,
-    end_date: Optional[str] = None,
+    region: str | None = None,
+    property_type: str | None = None,
+    min_price: float | None = None,
+    max_price: float | None = None,
+    start_date: str | None = None,
+    end_date: str | None = None,
     limit: int = 100,
 ) -> list[dict[str, Any]]:
     """
@@ -263,8 +263,8 @@ def get_transactions(
 
 def get_price_statistics(
     store: GraphStore,
-    region: Optional[str] = None,
-    property_type: Optional[str] = None,
+    region: str | None = None,
+    property_type: str | None = None,
 ) -> dict[str, Any]:
     """
     Get price statistics for transactions.

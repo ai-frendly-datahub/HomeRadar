@@ -12,6 +12,7 @@ from collectors.molit_collector import MOLITCollector
 from collectors.registry import CollectorRegistry
 from collectors.rss_collector import RSSCollector
 
+
 __all__ = [
     "BaseCollector",
     "CollectorError",

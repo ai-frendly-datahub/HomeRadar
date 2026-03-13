@@ -18,6 +18,7 @@ from graph.graph_queries import (
 )
 from graph.graph_store import DatabasePaths, GraphStore, init_database
 
+
 __all__ = [
     "GraphStore",
     "init_database",

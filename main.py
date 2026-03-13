@@ -14,21 +14,22 @@ Usage:
 """
 
 import argparse
-from concurrent.futures import ThreadPoolExecutor, as_completed
 import logging
 import os
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
-import yaml
 import duckdb
+import yaml
 
 from analyzers import EntityExtractor
 from collectors import CollectorRegistry, RawItem
 from collectors.base import resolve_max_workers
+from config_loader import load_notification_config
 from graph import GraphStore
 from graph.search_index import SearchIndex
 from homeradar.common.validators import (
@@ -37,7 +38,6 @@ from homeradar.common.validators import (
     validate_location,
     validate_price,
 )
-from config_loader import load_notification_config
 from notifier import (
     CompositeNotifier,
     EmailNotifier,
@@ -48,6 +48,7 @@ from notifier import (
 )
 from raw_logger import RawLogger
 from reporters.html_reporter import HtmlReporter
+
 
 # Logger (configured in setup_logging())
 logger = logging.getLogger(__name__)
@@ -79,7 +80,7 @@ def load_sources(config_path: str = "config/sources.yaml") -> dict[str, Any]:
         Configuration dictionary
     """
     try:
-        with open(config_path, "r", encoding="utf-8") as f:
+        with open(config_path, encoding="utf-8") as f:
             config = yaml.safe_load(f)
         return config
     except Exception as e:
@@ -90,7 +91,7 @@ def load_sources(config_path: str = "config/sources.yaml") -> dict[str, Any]:
 def collect_from_sources(
     sources: list[dict[str, Any]],
     enabled_only: bool = True,
-    source_filter: Optional[list[str]] = None,
+    source_filter: list[str] | None = None,
 ) -> list[RawItem]:
     """
     Collect data from all configured sources.
@@ -119,7 +120,7 @@ def collect_from_sources(
 
     def _collect_for_source(
         source: dict[str, Any],
-    ) -> tuple[str, str, str, list[RawItem], Optional[str]]:
+    ) -> tuple[str, str, str, list[RawItem], str | None]:
         source_id = source["id"]
         source_name = source.get("name", source_id)
         source_type = source["type"]
@@ -174,7 +175,7 @@ def collect_molit(collector: Any, source: dict[str, Any]) -> list[RawItem]:
     if "service_key" not in source:
         service_key = os.environ.get("MOLIT_SERVICE_KEY")
         if not service_key:
-            logger.warning(f"    Skipping MOLIT: MOLIT_SERVICE_KEY not set")
+            logger.warning("    Skipping MOLIT: MOLIT_SERVICE_KEY not set")
             return []
         source["service_key"] = service_key
 
@@ -247,10 +248,10 @@ def store_and_extract(items: list[RawItem], store: GraphStore) -> dict[str, int]
 
 def run_collection_cycle(
     config: dict[str, Any],
-    source_filter: Optional[list[str]] = None,
+    source_filter: list[str] | None = None,
     generate_report: bool = False,
-    notifier: Optional[CompositeNotifier] = None,
-    notification_rules: Optional[dict[str, Any]] = None,
+    notifier: CompositeNotifier | None = None,
+    notification_rules: dict[str, Any] | None = None,
     keep_days: int = 90,
 ) -> dict[str, Any]:
     """
@@ -399,10 +400,10 @@ def run_collection_cycle(
 
 def run_once(
     config: dict[str, Any],
-    source_filter: Optional[list[str]] = None,
+    source_filter: list[str] | None = None,
     generate_report: bool = False,
-    notifier: Optional[CompositeNotifier] = None,
-    notification_rules: Optional[dict[str, Any]] = None,
+    notifier: CompositeNotifier | None = None,
+    notification_rules: dict[str, Any] | None = None,
     keep_days: int = 90,
 ) -> int:
     """
@@ -436,10 +437,10 @@ def run_once(
 def run_scheduler(
     config: dict[str, Any],
     interval_hours: int = 24,
-    source_filter: Optional[list[str]] = None,
+    source_filter: list[str] | None = None,
     generate_report: bool = False,
-    notifier: Optional[CompositeNotifier] = None,
-    notification_rules: Optional[dict[str, Any]] = None,
+    notifier: CompositeNotifier | None = None,
+    notification_rules: dict[str, Any] | None = None,
     keep_days: int = 90,
 ) -> None:
     """

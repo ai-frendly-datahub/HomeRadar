@@ -12,8 +12,8 @@ API Documentation: https://www.data.go.kr/data/15101046/openapi.do
 from __future__ import annotations
 
 import os
-from datetime import datetime, timezone
-from typing import Any, Optional
+from datetime import UTC, datetime
+from typing import Any
 
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
@@ -137,7 +137,7 @@ class OnbidCollector(BaseCollector):
 
         return items
 
-    def _parse_item(self, item_data: dict[str, Any]) -> Optional[RawItem]:
+    def _parse_item(self, item_data: dict[str, Any]) -> RawItem | None:
         """
         Parse a single auction item from API response.
 
@@ -238,7 +238,7 @@ class OnbidCollector(BaseCollector):
 
         return raw_item
 
-    def _parse_area(self, area_str: Any) -> Optional[float]:
+    def _parse_area(self, area_str: Any) -> float | None:
         """
         Parse area value from string.
 
@@ -269,7 +269,7 @@ class OnbidCollector(BaseCollector):
             datetime object in UTC
         """
         if not date_str:
-            return datetime.now(timezone.utc)
+            return datetime.now(UTC)
 
         date_str_str = str(date_str).strip()
 
@@ -285,12 +285,12 @@ class OnbidCollector(BaseCollector):
         for fmt in formats:
             try:
                 dt = datetime.strptime(date_str_str, fmt)
-                return dt.replace(tzinfo=timezone.utc)
+                return dt.replace(tzinfo=UTC)
             except ValueError:
                 continue
 
         # If no format matches, return current time
-        return datetime.now(timezone.utc)
+        return datetime.now(UTC)
 
     def collect_by_region(self, region_code: str) -> list[RawItem]:
         """

@@ -4,7 +4,7 @@ import json
 import re
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Optional, cast
+from typing import cast
 
 import duckdb
 
@@ -12,6 +12,7 @@ from graph.graph_queries import get_trending_entities
 from graph.graph_store import GraphStore
 from graph.search_index import SearchIndex, SearchResult
 from nl_query import parse_query
+
 
 _READ_ONLY_SQL = re.compile(r"^\s*(SELECT|WITH|EXPLAIN)\b", re.IGNORECASE)
 
@@ -111,9 +112,9 @@ def handle_sql(*, db_path: Path, query: str) -> str:
 def handle_price_watch(
     *,
     db_path: Path,
-    region: Optional[str] = None,
-    min_price: Optional[float] = None,
-    max_price: Optional[float] = None,
+    region: str | None = None,
+    min_price: float | None = None,
+    max_price: float | None = None,
     limit: int = 20,
 ) -> str:
     with duckdb.connect(str(db_path), read_only=True) as conn:

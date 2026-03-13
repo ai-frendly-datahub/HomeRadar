@@ -10,16 +10,9 @@ Tests cover:
 
 from __future__ import annotations
 
-from datetime import datetime
-from pathlib import Path
-from unittest.mock import Mock, patch
-
 import pytest
 
-from analyzers.entity_extractor import EntityExtractor
 from collectors.base import RawItem
-from collectors.molit_collector import MOLITCollector
-from collectors.rss_collector import RSSCollector
 from graph.graph_store import GraphStore
 
 

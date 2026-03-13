@@ -2,7 +2,7 @@
 Unit tests for OnbidCollector.
 """
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from unittest.mock import Mock, patch
 
 import pytest
@@ -137,13 +137,7 @@ class TestOnbidCollectorCollect:
 
     def test_collect_returns_empty_list_for_no_items(self, collector):
         """Test that empty response returns empty list."""
-        empty_response = {
-            "response": {
-                "body": {
-                    "items": []
-                }
-            }
-        }
+        empty_response = {"response": {"body": {"items": []}}}
 
         with patch("requests.get") as mock_get:
             mock_response = Mock()
@@ -373,14 +367,14 @@ class TestOnbidCollectorDateParsing:
         result = collector._parse_date("")
 
         assert isinstance(result, datetime)
-        assert result.tzinfo == timezone.utc
+        assert result.tzinfo == UTC
 
     def test_parse_date_with_invalid_format(self, collector):
         """Test parsing invalid date format returns current time."""
         result = collector._parse_date("invalid_date")
 
         assert isinstance(result, datetime)
-        assert result.tzinfo == timezone.utc
+        assert result.tzinfo == UTC
 
 
 class TestOnbidCollectorAreaParsing:

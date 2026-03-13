@@ -16,7 +16,6 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Any
 
 import pytest
 
@@ -225,9 +224,7 @@ class TestGetView:
         with pytest.raises(ValueError, match="view_value required"):
             get_view(tmp_graph_store, "region")
 
-    def test_get_view_limit(
-        self, tmp_graph_store: GraphStore, sample_items: list[RawItem]
-    ) -> None:
+    def test_get_view_limit(self, tmp_graph_store: GraphStore, sample_items: list[RawItem]) -> None:
         """Test get_view respects limit parameter."""
         tmp_graph_store.add_items(sample_items)
 
@@ -362,9 +359,7 @@ class TestSearchByKeyword:
         tmp_graph_store.add_items(sample_items)
         search_db = tmp_path / "search_index.db"
 
-        result = search_by_keyword(
-            tmp_graph_store, "강남", limit=10, search_db_path=search_db
-        )
+        result = search_by_keyword(tmp_graph_store, "강남", limit=10, search_db_path=search_db)
 
         # Result may be empty if search index not populated, but should not error
         assert isinstance(result, list)
@@ -376,9 +371,7 @@ class TestSearchByKeyword:
         tmp_graph_store.add_items(sample_items)
         search_db = tmp_path / "search_index.db"
 
-        result = search_by_keyword(
-            tmp_graph_store, "강남", limit=2, search_db_path=search_db
-        )
+        result = search_by_keyword(tmp_graph_store, "강남", limit=2, search_db_path=search_db)
 
         assert len(result) <= 2
 
@@ -422,9 +415,7 @@ class TestSearchByKeyword:
         tmp_graph_store.add_items(sample_items)
         search_db = tmp_path / "search_index.db"
 
-        result = search_by_keyword(
-            tmp_graph_store, "강남", limit=10, search_db_path=search_db
-        )
+        result = search_by_keyword(tmp_graph_store, "강남", limit=10, search_db_path=search_db)
 
         if result:
             assert all("search_rank" in item for item in result)
@@ -470,9 +461,7 @@ class TestGetTransactions:
         """Test get_transactions filters by price range."""
         tmp_graph_store.add_items(sample_items)
 
-        result = get_transactions(
-            tmp_graph_store, min_price=50000.0, max_price=100000.0, limit=100
-        )
+        result = get_transactions(tmp_graph_store, min_price=50000.0, max_price=100000.0, limit=100)
 
         assert all(
             50000.0 <= item.get("price", 0) <= 100000.0 for item in result if item.get("price")
@@ -572,9 +561,7 @@ class TestGetPriceStatistics:
         """Test get_price_statistics with multiple filters."""
         tmp_graph_store.add_items(sample_items)
 
-        result = get_price_statistics(
-            tmp_graph_store, region="서울", property_type="아파트"
-        )
+        result = get_price_statistics(tmp_graph_store, region="서울", property_type="아파트")
 
         assert isinstance(result, dict)
         assert "avg_price" in result

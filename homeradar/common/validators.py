@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import re
 from difflib import SequenceMatcher
-from typing import Any, Optional
+from typing import Any
 from urllib.parse import urlparse
 
 
@@ -112,13 +112,13 @@ def validate_article(article: Any) -> tuple[bool, list[str]]:
     return len(errors) == 0, errors
 
 
-def validate_price(price: Optional[float]) -> bool:
+def validate_price(price: float | None) -> bool:
     if price is None:
         return True
     return 1_000_000 <= price <= 100_000_000_000
 
 
-def validate_area(area: Optional[float]) -> bool:
+def validate_area(area: float | None) -> bool:
     if area is None:
         return True
     return 1.0 <= area <= 10000.0

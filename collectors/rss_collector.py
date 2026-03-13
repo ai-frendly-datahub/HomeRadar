@@ -8,8 +8,9 @@ and converts them to RawItem format.
 from __future__ import annotations
 
 import calendar
-from datetime import datetime, timezone
-from typing import Optional, Any, Callable
+from collections.abc import Callable
+from datetime import UTC, datetime
+from typing import Any
 
 import feedparser
 import requests
@@ -31,7 +32,7 @@ class RSSCollector(BaseCollector):
         self,
         source_id: str,
         source_config: dict[str, Any],
-        fetcher: Optional[FeedFetcher] = None,
+        fetcher: FeedFetcher | None = None,
     ):
         """
         Initialize RSS collector.
@@ -65,7 +66,7 @@ class RSSCollector(BaseCollector):
             feed = feedparser.parse(raw_feed)
 
             items = []
-            now = datetime.now(timezone.utc)
+            now = datetime.now(UTC)
 
             for entry in feed.entries:
                 # Parse publication date
@@ -102,7 +103,7 @@ class RSSCollector(BaseCollector):
 
             raise CollectorError(f"Failed to parse RSS feed from {self.url}: {e}") from e
 
-    def _parse_published_date(self, entry: Any) -> Optional[datetime]:
+    def _parse_published_date(self, entry: Any) -> datetime | None:
         """
         Parse publication date from RSS entry.
 
@@ -117,7 +118,7 @@ class RSSCollector(BaseCollector):
 
         if published:
             # Convert time.struct_time to datetime
-            return datetime.fromtimestamp(calendar.timegm(published), tz=timezone.utc)
+            return datetime.fromtimestamp(calendar.timegm(published), tz=UTC)
 
         return None
 

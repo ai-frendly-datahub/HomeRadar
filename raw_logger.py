@@ -1,9 +1,10 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
+from collections.abc import Iterable
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Iterable, Optional
+from typing import Any
 
 
 class RawLogger:
@@ -15,10 +16,10 @@ class RawLogger:
         items: Iterable[Any],
         *,
         source_name: str,
-        run_id: Optional[str] = None,
+        run_id: str | None = None,
     ) -> Path:
         """Log RawItem-like dicts to JSONL with date-partitioned path."""
-        now = datetime.now(timezone.utc)
+        now = datetime.now(UTC)
         date_dir = self.raw_dir / now.strftime("%Y-%m-%d")
         date_dir.mkdir(parents=True, exist_ok=True)
         safe_source_name = source_name.replace("/", "_").replace("\\", "_")
@@ -45,7 +46,7 @@ class RawLogger:
         with output_path.open("a", encoding="utf-8") as file_obj:
             for item in items:
                 payload = self._normalize_item(item)
-                link: Optional[str] = None
+                link: str | None = None
                 if run_id is not None:
                     candidate = payload.get("link") or payload.get("url")
                     if isinstance(candidate, str):

@@ -10,8 +10,8 @@ API Documentation: https://www.data.go.kr/data/15126469/openapi.do
 
 import time
 import xml.etree.ElementTree as ET
-from datetime import datetime, timezone
-from typing import Any, Optional
+from datetime import UTC, datetime
+from typing import Any
 
 import requests
 
@@ -37,7 +37,7 @@ class MOLITCollector(BaseCollector):
 
         # Validate required fields
         if "service_key" not in source:
-            raise ValueError(f"MOLIT collector requires 'service_key' in source config")
+            raise ValueError("MOLIT collector requires 'service_key' in source config")
 
         self.service_key = source["service_key"]
         self.api_url = source.get("url", "")
@@ -108,7 +108,7 @@ class MOLITCollector(BaseCollector):
 
         return items
 
-    def _parse_item(self, item_node: ET.Element, lawd_cd: str, deal_ymd: str) -> Optional[RawItem]:
+    def _parse_item(self, item_node: ET.Element, lawd_cd: str, deal_ymd: str) -> RawItem | None:
         """
         Parse a single transaction item from XML.
 
@@ -135,12 +135,10 @@ class MOLITCollector(BaseCollector):
 
         # Build transaction date
         try:
-            deal_date = datetime(
-                int(deal_year), int(deal_month), int(deal_day), tzinfo=timezone.utc
-            )
+            deal_date = datetime(int(deal_year), int(deal_month), int(deal_day), tzinfo=UTC)
         except (ValueError, TypeError):
             # Use deal_ymd as fallback
-            deal_date = datetime(int(deal_ymd[:4]), int(deal_ymd[4:6]), 1, tzinfo=timezone.utc)
+            deal_date = datetime(int(deal_ymd[:4]), int(deal_ymd[4:6]), 1, tzinfo=UTC)
 
         # Parse amount (remove commas and convert to integer)
         try:

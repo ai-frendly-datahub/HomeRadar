@@ -1,15 +1,14 @@
-# -*- coding: utf-8 -*-
 """HTML 리포트 생성 (HomeRadar)."""
 
 from __future__ import annotations
 
-from collections import Counter
-from datetime import datetime, timezone
 import html
 import json
-from pathlib import Path
 import shutil
-from typing import Any, Optional
+from collections import Counter
+from datetime import UTC, datetime
+from pathlib import Path
+from typing import Any
 from urllib.request import urlopen
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
@@ -159,11 +158,11 @@ class HtmlReporter:
             regional_distribution=regional_distribution,
             regional_distribution_html=regional_distribution_html,
             regional_distribution_fallback=regional_distribution_fallback,
-            generated_at=datetime.now(timezone.utc),
+            generated_at=datetime.now(UTC),
             stats=stats,
         )
 
-        now = datetime.now(timezone.utc)
+        now = datetime.now(UTC)
         date_stamp = now.strftime("%Y%m%d")
         category_name = output_path.stem.split("_")[0] or "daily"
         dated_path = output_path.parent / f"{category_name}_{date_stamp}.html"
@@ -369,7 +368,7 @@ class HtmlReporter:
 
         return [(str(row[0]), int(row[1])) for row in rows if row[0] is not None]
 
-    def _normalize_to_sido(self, region_name: str) -> Optional[str]:
+    def _normalize_to_sido(self, region_name: str) -> str | None:
         cleaned = region_name.strip()
         if not cleaned:
             return None
@@ -532,7 +531,7 @@ def generate_index_html(report_dir: Path) -> Path:
         display_name = name.replace("_report", "").replace("_", " ").title()
         reports.append({"filename": html_file.name, "display_name": display_name})
 
-    generated_at = datetime.now(timezone.utc).isoformat()
+    generated_at = datetime.now(UTC).isoformat()
 
     if reports:
         cards_html = "\n    ".join(

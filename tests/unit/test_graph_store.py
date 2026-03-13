@@ -3,7 +3,7 @@ Unit tests for GraphStore.
 """
 
 import tempfile
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import pytest
@@ -29,7 +29,7 @@ def store(temp_db):
 @pytest.fixture
 def sample_items():
     """Sample RawItem objects for testing."""
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     return [
         RawItem(
             url="https://example.com/news/gangnam-surge",
@@ -169,9 +169,7 @@ class TestGraphStoreEntities:
     def test_search_entities(self, store, sample_items):
         """Test searching by entity."""
         store.add_items(sample_items)
-        store.add_entities(
-            sample_items[0].url, {"complex": ["래미안"], "district": ["강남구"]}
-        )
+        store.add_entities(sample_items[0].url, {"complex": ["래미안"], "district": ["강남구"]})
 
         # Search for complex
         results = store.search_entities("complex", "래미안")
@@ -254,7 +252,7 @@ class TestGraphStoreEdgeCases:
             title="Test",
             summary="Summary",
             source_id="test",
-            published_at=datetime.now(timezone.utc),
+            published_at=datetime.now(UTC),
             region=None,  # None value
             property_type=None,
         )
