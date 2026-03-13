@@ -155,7 +155,7 @@ class TestSubscriptionCollectorCollect:
     def test_collect_handles_network_error(self, collector):
         """Test handling of network errors."""
         with patch("requests.get", side_effect=Exception("Network error")):
-            with pytest.raises(Exception):
+            with pytest.raises(Exception):  # noqa: B017
                 collector.collect()
 
     def test_collect_with_missing_optional_fields(self, collector):

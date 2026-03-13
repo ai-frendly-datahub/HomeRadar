@@ -117,7 +117,7 @@ def test_naver_land_collector_retries_on_failure(mock_get: MagicMock) -> None:
     config: dict[str, Any] = {}
     collector = NaverLandCollector("naver_land_test", config)
 
-    with pytest.raises(Exception):
+    with pytest.raises(Exception):  # noqa: B017
         collector._fetch_html("https://land.naver.com/search/result?page=1")
 
 
