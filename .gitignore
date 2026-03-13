@@ -176,6 +176,7 @@ gh-pages/
 
 # Generated workflow artifacts
 .sisyphus/
+data/daily/
 data/raw/
 !data/raw/.gitkeep
 data/search_index.db

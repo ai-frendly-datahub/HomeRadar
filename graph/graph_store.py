@@ -428,6 +428,38 @@ class GraphStore:
         except duckdb.Error as exc:
             raise StorageError(f"Failed to delete expired HomeRadar records: {exc}") from exc
 
+    def create_daily_snapshot(self, snapshot_dir: Optional[str] = None) -> Optional[Path]:
+        """Create a daily snapshot of the database.
+
+        Args:
+            snapshot_dir: Optional directory for snapshots.
+                         Defaults to ``<db_parent>/daily``.
+
+        Returns:
+            Path to the created snapshot file, or ``None`` if the
+            source database does not exist.
+        """
+        from .date_storage import snapshot_database
+
+        snapshot_root = Path(snapshot_dir) if snapshot_dir else self.db_path.parent / "daily"
+        return snapshot_database(self.db_path, snapshot_root=snapshot_root)
+
+    def cleanup_old_snapshots(self, snapshot_dir: Optional[str] = None, keep_days: int = 90) -> int:
+        """Remove snapshot date-directories older than *keep_days*.
+
+        Args:
+            snapshot_dir: Optional directory containing snapshots.
+                         Defaults to ``<db_parent>/daily``.
+            keep_days: Number of days to retain.
+
+        Returns:
+            Number of directories removed.
+        """
+        from .date_storage import cleanup_date_directories
+
+        snapshot_root = Path(snapshot_dir) if snapshot_dir else self.db_path.parent / "daily"
+        return cleanup_date_directories(snapshot_root, keep_days=keep_days)
+
     def get_sources_stats(self) -> list[dict[str, Any]]:
         """
         Get statistics for each source.
