@@ -30,6 +30,7 @@ from analyzers import EntityExtractor
 from collectors import CollectorRegistry, RawItem
 from collectors.base import resolve_max_workers
 from config_loader import load_notification_config
+from date_storage import apply_date_storage_policy
 from graph import GraphStore
 from graph.search_index import SearchIndex
 from homeradar.common.validators import (
@@ -38,7 +39,6 @@ from homeradar.common.validators import (
     validate_location,
     validate_price,
 )
-from date_storage import apply_date_storage_policy
 from notifier import (
     CompositeNotifier,
     EmailNotifier,
