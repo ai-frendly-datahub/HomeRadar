@@ -33,12 +33,12 @@ from config_loader import load_notification_config
 from graph import GraphStore
 from graph.search_index import SearchIndex
 from homeradar.common.validators import (
-from homeradar.date_storage import apply_date_storage_policy
     validate_area,
     validate_article,
     validate_location,
     validate_price,
 )
+from date_storage import apply_date_storage_policy
 from notifier import (
     CompositeNotifier,
     EmailNotifier,
@@ -254,6 +254,9 @@ def run_collection_cycle(
     notifier: CompositeNotifier | None = None,
     notification_rules: dict[str, Any] | None = None,
     keep_days: int = 90,
+    keep_raw_days: int = 180,
+    keep_report_days: int = 90,
+    snapshot_db: bool = False,
 ) -> dict[str, Any]:
     """
     Run one complete collection cycle.
