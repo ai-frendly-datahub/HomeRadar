@@ -33,6 +33,7 @@ from config_loader import load_notification_config
 from graph import GraphStore
 from graph.search_index import SearchIndex
 from homeradar.common.validators import (
+from homeradar.date_storage import apply_date_storage_policy
     validate_area,
     validate_article,
     validate_location,

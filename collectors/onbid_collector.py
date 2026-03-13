@@ -85,9 +85,9 @@ class OnbidCollector(BaseCollector):
             response = self._request("GET", url, params=params, timeout=30)
             return response.json()
         except requests.exceptions.RequestException as e:
-            raise CollectorError(f"Onbid API request failed: {e}")
+            raise CollectorError(f"Onbid API request failed: {e}") from None
         except ValueError as e:
-            raise CollectorError(f"Failed to parse Onbid API response: {e}")
+            raise CollectorError(f"Failed to parse Onbid API response: {e}") from None
 
     def collect(self) -> list[RawItem]:
         """
@@ -133,7 +133,7 @@ class OnbidCollector(BaseCollector):
         except CollectorError as e:
             raise e
         except Exception as e:
-            raise CollectorError(f"Onbid collection failed: {e}")
+            raise CollectorError(f"Onbid collection failed: {e}") from None
 
         return items
 

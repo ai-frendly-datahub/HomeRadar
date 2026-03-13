@@ -125,7 +125,7 @@ def get_sources_stats(store: GraphStore) -> list[dict[str, Any]]:
             """
         )
         columns = [desc[0] for desc in result.description]
-        return [dict(zip(columns, row)) for row in result.fetchall()]
+        return [dict(zip(columns, row, strict=False)) for row in result.fetchall()]
 
 
 def search_by_keyword(
@@ -258,7 +258,7 @@ def get_transactions(
 
         result = conn.execute(query, params)
         columns = [desc[0] for desc in result.description]
-        return [dict(zip(columns, row)) for row in result.fetchall()]
+        return [dict(zip(columns, row, strict=False)) for row in result.fetchall()]
 
 
 def get_price_statistics(

@@ -272,7 +272,7 @@ class HtmlReporter:
         for item in items:
             entities = item.get("entities", {})
             if isinstance(entities, dict):
-                for entity_type, entity_list in entities.items():
+                for _entity_type, entity_list in entities.items():
                     if isinstance(entity_list, list):
                         counter.update(entity_list)
 

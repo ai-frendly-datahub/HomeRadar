@@ -70,13 +70,13 @@ class MOLITCollector(BaseCollector):
         try:
             response = self._request("GET", self.api_url, params=params, timeout=30)
         except requests.exceptions.RequestException as e:
-            raise RuntimeError(f"MOLIT API request failed: {e}")
+            raise RuntimeError(f"MOLIT API request failed: {e}") from None
 
         # Parse XML response
         try:
             root = ET.fromstring(response.content)
         except ET.ParseError as e:
-            raise RuntimeError(f"Failed to parse MOLIT API response: {e}")
+            raise RuntimeError(f"Failed to parse MOLIT API response: {e}") from None
 
         # Check response header
         header = root.find(".//header")

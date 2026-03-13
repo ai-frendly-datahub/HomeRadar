@@ -81,9 +81,9 @@ class SubscriptionCollector(BaseCollector):
             response = self._request("GET", url, params=params, timeout=30)
             return response.json()
         except requests.exceptions.RequestException as e:
-            raise CollectorError(f"Subscription API request failed: {e}")
+            raise CollectorError(f"Subscription API request failed: {e}") from None
         except ValueError as e:
-            raise CollectorError(f"Failed to parse Subscription API response: {e}")
+            raise CollectorError(f"Failed to parse Subscription API response: {e}") from None
 
     def collect(self) -> list[RawItem]:
         """
@@ -129,7 +129,7 @@ class SubscriptionCollector(BaseCollector):
         except CollectorError as e:
             raise e
         except Exception as e:
-            raise CollectorError(f"Subscription collection failed: {e}")
+            raise CollectorError(f"Subscription collection failed: {e}") from None
 
         return items
 

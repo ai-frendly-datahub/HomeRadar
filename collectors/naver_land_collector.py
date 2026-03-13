@@ -93,7 +93,7 @@ class NaverLandCollector(BaseCollector):
             return items
 
         except Exception as e:
-            raise CollectorError(f"Naver Land 수집 실패: {e}")
+            raise CollectorError(f"Naver Land 수집 실패: {e}") from None
 
     def _collect_page(self, page: int) -> list[RawItem]:
         """
