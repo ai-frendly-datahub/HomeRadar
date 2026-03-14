@@ -34,7 +34,7 @@ sources:
   - id: reb_subscription
     name: "Korea Real Estate Board - Subscription Info"
     type: api
-    enabled: false  # To be implemented
+    enabled: false
     trust_tier: T1_official
     info_purpose: subscription
     region: korea
@@ -50,7 +50,7 @@ sources:
   - id: mk_realestate
     name: "Maeil Business - Real Estate"
     type: rss
-    enabled: false  # Temporarily disabled: RSS endpoint returns empty body
+    enabled: false
     trust_tier: T2_professional
     info_purpose: news
     region: korea
@@ -94,7 +94,7 @@ sources:
   - id: herald_realestate_all
     name: "Herald Economy - Real Estate All"
     type: rss
-    enabled: false  # Disabled: DNS resolution failing in test environment
+    enabled: false
     trust_tier: T2_professional
     info_purpose: news
     region: korea
@@ -105,7 +105,7 @@ sources:
   - id: herald_realestate_policy
     name: "Herald Economy - Real Estate Policy"
     type: rss
-    enabled: false  # Disabled: DNS resolution failing in test environment
+    enabled: false
     trust_tier: T2_professional
     info_purpose: news
     region: korea
@@ -116,7 +116,7 @@ sources:
   - id: herald_realestate_investment
     name: "Herald Economy - Real Estate Investment"
     type: rss
-    enabled: false  # Disabled: DNS resolution failing in test environment
+    enabled: false
     trust_tier: T2_professional
     info_purpose: news
     region: korea
@@ -127,7 +127,7 @@ sources:
   - id: herald_realestate_market
     name: "Herald Economy - Market Prices"
     type: rss
-    enabled: false  # Disabled: DNS resolution failing in test environment
+    enabled: false
     trust_tier: T2_professional
     info_purpose: news
     region: korea
@@ -138,7 +138,7 @@ sources:
   - id: chosunbiz_realestate
     name: "Chosun Biz - Real Estate"
     type: rss
-    enabled: false  # Disabled: RSS endpoint returns 404
+    enabled: false
     trust_tier: T2_professional
     info_purpose: news
     region: korea
@@ -149,7 +149,7 @@ sources:
   - id: newsdaily_realestate
     name: "News Daily - Real Estate"
     type: rss
-    enabled: false  # Optional - secondary source
+    enabled: false
     trust_tier: T2_professional
     info_purpose: news
     region: korea
@@ -164,7 +164,7 @@ sources:
   - id: kb_kbland
     name: "KB Kookmin Bank - Real Estate Data Hub"
     type: api
-    enabled: false  # Requires research on API access
+    enabled: false
     trust_tier: T3_aggregator
     info_purpose: market_price
     region: korea
@@ -175,7 +175,7 @@ sources:
   - id: naver_land
     name: "Naver Land"
     type: html
-    enabled: false  # No official API - requires web scraping
+    enabled: false
     trust_tier: T3_aggregator
     info_purpose: listing
     region: korea
@@ -186,7 +186,7 @@ sources:
   - id: r114
     name: "R114 (부동산114)"
     type: html
-    enabled: false  # No official API
+    enabled: false
     trust_tier: T3_aggregator
     info_purpose: listing
     region: korea
@@ -197,7 +197,7 @@ sources:
   - id: zigbang
     name: "Zigbang"
     type: html
-    enabled: false  # No official public API
+    enabled: false
     trust_tier: T3_aggregator
     info_purpose: listing
     region: korea
@@ -208,43 +208,13 @@ sources:
   - id: dabang
     name: "Dabang"
     type: html
-    enabled: false  # No official public API
+    enabled: false
     trust_tier: T3_aggregator
     info_purpose: listing
     region: korea
     url: "https://www.dabangapp.com"
     description: "Dabang - Real estate listing platform"
     notes: "No official public API. Competitor to Zigbang."
-
-# Trust tier definitions
-trust_tiers:
-  T1_official:
-    score_multiplier: 1.5
-    description: "Government and official sources"
-  T2_professional:
-    score_multiplier: 1.2
-    description: "Professional media and industry sources"
-  T3_aggregator:
-    score_multiplier: 1.0
-    description: "Aggregators and listing platforms"
-
-# Info purpose categories
-info_purposes:
-  transaction:
-    bonus: 100
-    description: "Actual transaction data (price, volume)"
-  subscription:
-    bonus: 80
-    description: "Subscription and pre-sale information"
-  news:
-    bonus: 60
-    description: "Market news and analysis"
-  listing:
-    bonus: 40
-    description: "Property listings and market prices"
-  development:
-    bonus: 90
-    description: "Redevelopment and urban planning"
 
   - id: onbid_auction
     name: "Onbid - Public Auction Properties"
@@ -284,3 +254,33 @@ info_purposes:
     request_delay_max: 5.0
     description: "Naver Land property listings with anti-bot scraping"
     notes: "Uses random user agents and natural delays to avoid detection. Collects 50+ properties per run."
+
+# Trust tier definitions
+trust_tiers:
+  T1_official:
+    score_multiplier: 1.5
+    description: "Government and official sources"
+  T2_professional:
+    score_multiplier: 1.2
+    description: "Professional media and industry sources"
+  T3_aggregator:
+    score_multiplier: 1.0
+    description: "Aggregators and listing platforms"
+
+# Info purpose categories
+info_purposes:
+  transaction:
+    bonus: 100
+    description: "Actual transaction data (price, volume)"
+  subscription:
+    bonus: 80
+    description: "Subscription and pre-sale information"
+  news:
+    bonus: 60
+    description: "Market news and analysis"
+  listing:
+    bonus: 40
+    description: "Property listings and market prices"
+  development:
+    bonus: 90
+    description: "Redevelopment and urban planning"
