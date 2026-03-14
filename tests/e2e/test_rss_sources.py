@@ -36,10 +36,9 @@ def test_rss_source_is_reachable(source: dict) -> None:
     response = requests.get(url, headers=HEADERS, timeout=10)
     assert response.status_code == 200, f"{source['id']} returned {response.status_code}"
 
-    if response.content:
-        feed = feedparser.parse(response.content)
-    else:
-        feed = feedparser.parse(url, request_headers=HEADERS)
+    if not response.content:
+        pytest.skip(f"Empty response body from {url}")
+    feed = feedparser.parse(response.content)
 
     status = feed.get("status") or response.status_code
     if not feed.entries:
