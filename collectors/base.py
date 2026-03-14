@@ -21,6 +21,14 @@ from urllib3.util.retry import Retry
 from resilience import SourceCircuitBreakerManager
 
 
+_DEFAULT_HEALTH_DB_PATH = "data/radar_data.duckdb"
+
+
+def _load_adaptive_controls() -> tuple[type[Any], type[Any]]:
+    module = __import__("radar_core", fromlist=["AdaptiveThrottler", "CrawlHealthStore"])
+    return module.AdaptiveThrottler, module.CrawlHealthStore
+
+
 class RawItem(BaseModel):
     """
     Raw collected item from any real estate data source.
@@ -66,6 +74,15 @@ class BaseCollector(ABC):
         self.breaker_manager = SourceCircuitBreakerManager()
         self._session = _create_session()
         self._rate_limiters: dict[str, RateLimiter] = {}
+        min_delay = source_config.get("request_interval", 0.5)
+        if not isinstance(min_delay, (int, float)):
+            min_delay = 0.5
+        throttler_cls, health_store_cls = _load_adaptive_controls()
+        self._throttler = throttler_cls(min_delay=max(0.001, float(min_delay)))
+        self._health_store = health_store_cls(
+            source_config.get("health_db_path")
+            or os.environ.get("RADAR_CRAWL_HEALTH_DB_PATH", _DEFAULT_HEALTH_DB_PATH)
+        )
 
     def _request(self, method: str, url: str, **kwargs: Any) -> requests.Response:
         source_name = self._resolve_source_name()
@@ -78,15 +95,46 @@ class BaseCollector(ABC):
 
         host = urlparse(url).netloc.lower() or source_name
         limiter = self._rate_limiters.setdefault(host, RateLimiter(float(min_interval)))
+        max_attempts_raw = self.source_config.get("max_retry_attempts", 3)
+        max_attempts = max_attempts_raw if isinstance(max_attempts_raw, int) else 3
+        max_attempts = max(1, max_attempts)
+        retryable_errors = (
+            requests.exceptions.Timeout,
+            requests.exceptions.ConnectionError,
+            requests.exceptions.HTTPError,
+        )
 
         def _request_impl() -> requests.Response:
-            limiter.acquire()
-            if method.upper() == "POST":
-                response = requests.post(url, timeout=timeout, **kwargs)
-            else:
-                response = requests.get(url, timeout=timeout, **kwargs)
-            response.raise_for_status()
-            return response
+            for attempt in range(max_attempts):
+                limiter.acquire()
+                self._throttler.acquire(source_name)
+
+                try:
+                    if method.upper() == "POST":
+                        response = self._session.post(url, timeout=timeout, **kwargs)
+                    else:
+                        response = self._session.get(url, timeout=timeout, **kwargs)
+                    response.raise_for_status()
+
+                    self._throttler.record_success(source_name)
+                    delay = self._throttler.get_current_delay(source_name)
+                    self._health_store.record_success(source_name, delay)
+                    return response
+                except retryable_errors as exc:
+                    retry_after: int | str | None = None
+                    if isinstance(exc, requests.exceptions.HTTPError):
+                        response = exc.response
+                        if response is not None and response.status_code == 429:
+                            retry_after = _parse_retry_after(response.headers.get("Retry-After"))
+
+                    self._throttler.record_failure(source_name, retry_after=retry_after)
+                    delay = self._throttler.get_current_delay(source_name)
+                    self._health_store.record_failure(source_name, str(exc), delay)
+
+                    if attempt == max_attempts - 1:
+                        raise
+
+            raise RuntimeError("Retry loop exited unexpectedly")
 
         return breaker.call(
             lambda source=source_name: _request_impl(),
@@ -98,6 +146,10 @@ class BaseCollector(ABC):
         if isinstance(source_name, str) and source_name:
             return source_name
         return self.source_id
+
+    def __del__(self) -> None:
+        self._session.close()
+        self._health_store.close()
 
     def _fetch(self, url: str) -> requests.Response:
         return self._request("GET", url)
@@ -182,3 +234,17 @@ def _create_session() -> requests.Session:
     session.mount("http://", adapter)
     session.mount("https://", adapter)
     return session
+
+
+def _parse_retry_after(value: str | None) -> int | str | None:
+    if value is None:
+        return None
+
+    stripped = value.strip()
+    if not stripped:
+        return None
+
+    if stripped.isdigit():
+        return int(stripped)
+
+    return stripped
