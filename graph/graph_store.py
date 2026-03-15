@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 from collections.abc import Iterable
+from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import cast
@@ -19,6 +20,18 @@ def _utc_naive(dt: datetime | None) -> datetime | None:
     if dt.tzinfo:
         return dt.astimezone(UTC).replace(tzinfo=None)
     return dt
+
+
+@dataclass
+class DatabasePaths:
+    path: Path
+
+
+def init_database(db_path: Path) -> DatabasePaths:
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+    conn = duckdb.connect(str(db_path))
+    conn.close()
+    return DatabasePaths(path=db_path)
 
 
 class RadarStorage:
@@ -186,3 +199,6 @@ class RadarStorage:
 
         snapshot_root = Path(snapshot_dir) if snapshot_dir else self.db_path.parent / "daily"
         return cleanup_date_directories(snapshot_root, keep_days=keep_days)
+
+
+GraphStore = RadarStorage  # backward-compat alias
