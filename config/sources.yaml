@@ -205,6 +205,22 @@ sources:
     description: "Zigbang - Real estate listing platform"
     notes: "No official public API. Popular rental/sale listing service."
 
+  - id: zigbang_browser
+    name: "Zigbang Browser Listings"
+    type: browser
+    enabled: false
+    trust_tier: T3_aggregator
+    info_purpose: listing
+    region: korea
+    url: "https://www.zigbang.com/home/apt/danjis"
+    timeout: 20000
+    wait_for: "[data-testid='complex-card']"
+    title_selector: ".title"
+    content_selector: "main"
+    link_selector: "[data-testid='complex-card'] a"
+    description: "Zigbang JS-rendered apartment complex listing cards"
+    notes: "Playwright collector source from Task 7 research."
+
   - id: dabang
     name: "Dabang"
     type: html

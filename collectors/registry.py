@@ -7,6 +7,7 @@ Maps source types to collector classes and provides factory methods.
 from typing import Any
 
 from collectors.base import BaseCollector
+from collectors.browser_collector import BrowserCollector
 from collectors.molit_collector import MOLITCollector
 from collectors.naver_land_collector import NaverLandCollector
 from collectors.onbid_collector import OnbidCollector
@@ -25,6 +26,7 @@ class CollectorRegistry:
         "onbid": OnbidCollector,
         "subscription": SubscriptionCollector,
         "naver_land": NaverLandCollector,
+        "browser": BrowserCollector,
         # "html": HTMLCollector,  # To be implemented
     }
 
