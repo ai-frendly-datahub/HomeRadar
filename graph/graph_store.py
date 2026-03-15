@@ -201,4 +201,6 @@ class RadarStorage:
         return cleanup_date_directories(snapshot_root, keep_days=keep_days)
 
 
-GraphStore = RadarStorage  # backward-compat alias
+class GraphStore(RadarStorage):
+    def __init__(self, db_path: Path = Path("data/homeradar.duckdb")):
+        super().__init__(db_path)
