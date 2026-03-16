@@ -48,6 +48,7 @@ from notifier import (
     detect_home_notifications,
 )
 from raw_logger import RawLogger
+from homeradar.reporter import generate_index_html
 from reporters.html_reporter import HtmlReporter
 
 
@@ -346,6 +347,9 @@ def run_collection_cycle(
                 report_file = Path("reports") / "daily_report.html"
                 report_path = reporter.generate_report(store, report_file, stats=stats)
                 logger.info(f"  Report saved to {report_path}")
+                # Generate index.html
+                index_path = generate_index_html(Path("reports"))
+                logger.info(f"  Index generated at {index_path}")
             except Exception as e:
                 logger.error(f"Failed to generate report: {e}")
 
