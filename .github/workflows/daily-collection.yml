@@ -33,7 +33,7 @@ jobs:
         run: python main.py --mode once --keep-days 90 --generate-report
       - name: Generate index.html
         run: |
-          python -c "from homeradar.reporter import generate_index_html; from pathlib import Path; generate_index_html(Path('docs/reports'))"
+          python -c "from homeradar.reporter import generate_index_html; from pathlib import Path; generate_index_html(Path('reports'))"
       - name: Run Quality Checks
         if: always()
         run: |
