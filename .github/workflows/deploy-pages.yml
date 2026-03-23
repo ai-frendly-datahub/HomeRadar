@@ -1,0 +1,44 @@
+name: Deploy HomeRadar Pages
+
+on:
+  workflow_run:
+    workflows:
+      - HomeRadar Daily Collection
+      - Radar Crawler (Optimized)
+    types:
+      - completed
+
+permissions:
+  contents: write
+
+concurrency:
+  group: homeradar-pages-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download reports artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: homeradar-reports
+          path: reports
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Verify report output
+        run: test -f reports/index.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./reports
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com
+          commit_message: "docs: update radar report"

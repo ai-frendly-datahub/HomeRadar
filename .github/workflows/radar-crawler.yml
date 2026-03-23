@@ -92,17 +92,6 @@ jobs:
           skip_fetch: false
           skip_checkout: false
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ./reports
-          user_name: github-actions[bot]
-          user_email: github-actions[bot]@users.noreply.github.com
-          commit_message: "docs: update radar report"
-          cname: ""  # Add custom domain if needed
-
       - name: Archive DuckDB (30-day backup)
         if: always()
         uses: actions/upload-artifact@v4
@@ -116,7 +105,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: radar-reports-${{ github.run_number }}
+          name: homeradar-reports
           path: reports/
           retention-days: 30
           if-no-files-found: warn
