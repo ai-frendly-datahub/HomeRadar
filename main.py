@@ -39,6 +39,7 @@ from homeradar.common.validators import (
     validate_location,
     validate_price,
 )
+from homeradar.reporter import generate_index_html
 from notifier import (
     CompositeNotifier,
     EmailNotifier,
@@ -48,7 +49,6 @@ from notifier import (
     detect_home_notifications,
 )
 from raw_logger import RawLogger
-from homeradar.reporter import generate_index_html
 from reporters.html_reporter import HtmlReporter
 
 
