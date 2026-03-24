@@ -6,6 +6,7 @@ import html
 from typing import TYPE_CHECKING, Any
 from urllib.request import urlopen
 
+
 if TYPE_CHECKING:
     pass
 

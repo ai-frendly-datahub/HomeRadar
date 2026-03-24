@@ -9,9 +9,9 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from typing import Optional, Any
+from typing import Any
 
 import duckdb
 
@@ -30,7 +30,7 @@ class DatabasePaths:
     path: Path
 
 
-def _resolve_db_path(db_path: Optional[Path | str] = None) -> Path:
+def _resolve_db_path(db_path: Path | str | None = None) -> Path:
     """
     Resolve database path from arguments or environment.
 
@@ -57,7 +57,7 @@ def _resolve_db_path(db_path: Optional[Path | str] = None) -> Path:
     return path
 
 
-def init_database(db_path: Optional[Path | str] = None) -> DatabasePaths:
+def init_database(db_path: Path | str | None = None) -> DatabasePaths:
     """
     Initialize DuckDB database with required tables.
 
@@ -140,7 +140,7 @@ class GraphStore:
     and transaction data.
     """
 
-    def __init__(self, db_path: Optional[Path | str] = None):
+    def __init__(self, db_path: Path | str | None = None):
         """
         Initialize GraphStore.
 
@@ -177,7 +177,7 @@ class GraphStore:
                     existing = conn.execute(
                         "SELECT url FROM urls WHERE url = ?", [item.url]
                     ).fetchone()
-                    now = datetime.now()
+                    now = datetime.now(tz=UTC)
 
                     conn.execute(
                         """
@@ -242,7 +242,7 @@ class GraphStore:
             Number of entity relationships added
         """
         count = 0
-        now = datetime.now()
+        now = datetime.now(tz=UTC)
 
         try:
             with self._connection() as conn:
@@ -268,7 +268,7 @@ class GraphStore:
         return count
 
     def get_recent_items(
-        self, limit: int = 50, source_id: Optional[str] = None
+        self, limit: int = 50, source_id: str | None = None
     ) -> list[dict[str, Any]]:
         """
         Get recent items, optionally filtered by source.
@@ -298,7 +298,7 @@ class GraphStore:
                 result = conn.execute(query, [limit])
 
             columns = [desc[0] for desc in result.description]
-            return [dict(zip(columns, row)) for row in result.fetchall()]
+            return [dict(zip(columns, row, strict=False)) for row in result.fetchall()]
 
     def get_by_region(self, region: str, limit: int = 50) -> list[dict[str, Any]]:
         """
@@ -320,7 +320,7 @@ class GraphStore:
             """
             result = conn.execute(query, [region, limit])
             columns = [desc[0] for desc in result.description]
-            return [dict(zip(columns, row)) for row in result.fetchall()]
+            return [dict(zip(columns, row, strict=False)) for row in result.fetchall()]
 
     def search_entities(
         self, entity_type: str, entity_value: str, limit: int = 50
@@ -347,7 +347,7 @@ class GraphStore:
             """
             result = conn.execute(query, [entity_type, entity_value, limit])
             columns = [desc[0] for desc in result.description]
-            return [dict(zip(columns, row)) for row in result.fetchall()]
+            return [dict(zip(columns, row, strict=False)) for row in result.fetchall()]
 
     def get_stats(self) -> dict[str, Any]:
         """
@@ -401,7 +401,7 @@ class GraphStore:
             }
 
     def delete_older_than(self, days: int) -> int:
-        cutoff = datetime.now(timezone.utc).replace(tzinfo=None) - timedelta(days=days)
+        cutoff = datetime.now(UTC).replace(tzinfo=None) - timedelta(days=days)
         try:
             with self._connection() as conn:
                 conn.execute("BEGIN TRANSACTION")

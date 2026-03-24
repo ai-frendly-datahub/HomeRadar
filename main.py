@@ -39,6 +39,7 @@ from homeradar.common.validators import (
     validate_location,
     validate_price,
 )
+from homeradar.reporter import generate_index_html
 from notifier import (
     CompositeNotifier,
     EmailNotifier,
@@ -48,7 +49,6 @@ from notifier import (
     detect_home_notifications,
 )
 from raw_logger import RawLogger
-from homeradar.reporter import generate_index_html
 from reporters.html_reporter import HtmlReporter
 
 
@@ -413,6 +413,7 @@ def run_once(
     notifier: CompositeNotifier | None = None,
     notification_rules: dict[str, Any] | None = None,
     keep_days: int = 90,
+    snapshot_db: bool = False,
 ) -> int:
     """
     Run collection once and exit.
@@ -421,6 +422,7 @@ def run_once(
         config: Configuration dictionary
         source_filter: Optional source filter
         generate_report: Whether to generate HTML report
+        snapshot_db: Whether to create database snapshot
 
     Returns:
         Exit code (0 = success, 1 = failure)
@@ -434,6 +436,7 @@ def run_once(
         notifier,
         notification_rules,
         keep_days,
+        snapshot_db=snapshot_db,
     )
 
     if result.get("success"):
@@ -450,6 +453,7 @@ def run_scheduler(
     notifier: CompositeNotifier | None = None,
     notification_rules: dict[str, Any] | None = None,
     keep_days: int = 90,
+    snapshot_db: bool = False,
 ) -> None:
     """
     Run collection on a schedule.
@@ -459,6 +463,7 @@ def run_scheduler(
         interval_hours: Hours between collection cycles
         source_filter: Optional source filter
         generate_report: Whether to generate HTML report after each cycle
+        snapshot_db: Whether to create database snapshot
     """
     logger.info(f"Running in SCHEDULER mode (interval: {interval_hours}h)")
 
@@ -471,6 +476,7 @@ def run_scheduler(
                 notifier,
                 notification_rules,
                 keep_days,
+                snapshot_db=snapshot_db,
             )
 
             # Wait for next cycle
@@ -551,6 +557,9 @@ Examples:
     parser.add_argument(
         "--generate-report", action="store_true", help="Generate HTML report after collection"
     )
+    parser.add_argument(
+        "--snapshot-db", action="store_true", default=False, help="Create database snapshot"
+    )
 
     args = parser.parse_args()
 
@@ -582,6 +591,7 @@ Examples:
             notifier,
             notification_config.rules,
             args.keep_days,
+            snapshot_db=args.snapshot_db,
         )
         return exit_code
     elif args.mode == "scheduler":
@@ -593,6 +603,7 @@ Examples:
             notifier,
             notification_config.rules,
             args.keep_days,
+            snapshot_db=args.snapshot_db,
         )
         return 0
 
