@@ -186,3 +186,9 @@ reports/*.html
 !reports/.gitkeep
 docs/reports/*.html
 !docs/reports/.gitkeep
+
+# DuckDB database files (binary, should not be in git)
+*.duckdb
+*.duckdb.wal
+data/snapshots/
+!data/snapshots/.gitkeep

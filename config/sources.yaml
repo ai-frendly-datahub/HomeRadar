@@ -1,6 +1,10 @@
 # HomeRadar Data Sources Configuration
 # Real estate data sources for collection and analysis
-# Last updated: 2025-11-24
+# Last updated: 2026-04-08
+#
+# NOTE: MOLIT API sources (molit_apt_transaction, molit_apt_rent) require
+# MOLIT_SERVICE_KEY to be configured in GitHub Secrets for CI/CD workflows.
+# Obtain a service key from https://www.data.go.kr/data/15126469/openapi.do
 
 sources:
   # ============================================================================
@@ -10,7 +14,7 @@ sources:
   - id: molit_apt_transaction
     name: "MOLIT Apartment Transaction"
     type: api
-    enabled: true
+    enabled: false
     trust_tier: T1_official
     info_purpose: transaction
     region: korea
@@ -22,7 +26,7 @@ sources:
   - id: molit_apt_rent
     name: "MOLIT Apartment Rent"
     type: api
-    enabled: true
+    enabled: false
     trust_tier: T1_official
     info_purpose: transaction
     region: korea
@@ -50,7 +54,7 @@ sources:
   - id: mk_realestate
     name: "Maeil Business - Real Estate"
     type: rss
-    enabled: false
+    enabled: true
     trust_tier: T2_professional
     info_purpose: news
     region: korea
@@ -80,16 +84,16 @@ sources:
     description: "Government policy RSS feed (includes land/housing policy updates)"
     notes: "Official government feed. No authentication. Contains policy/land/housing notices."
 
-  - id: korea_economy_news
-    name: "Korea Gov - Economy RSS"
+  - id: korea_pressrelease_news
+    name: "Korea Gov - Press Release RSS"
     type: rss
     enabled: true
     trust_tier: T1_official
     info_purpose: news
     region: korea
-    url: "https://www.korea.kr/rss/economy.xml"
-    description: "Government economy RSS feed (market/economy including real estate policy)"
-    notes: "Official government feed. No authentication. Broad economy including real estate-related items."
+    url: "https://www.korea.kr/rss/pressrelease.xml"
+    description: "Government press release RSS feed (official announcements including real estate policy)"
+    notes: "Official government feed. No authentication. Updated from economy.xml which was deprecated."
 
   - id: herald_realestate_all
     name: "Herald Economy - Real Estate All"
@@ -235,7 +239,7 @@ sources:
   - id: onbid_auction
     name: "Onbid - Public Auction Properties"
     type: onbid
-    enabled: true
+    enabled: false
     trust_tier: T1_official
     info_purpose: transaction
     region: korea
@@ -246,7 +250,7 @@ sources:
   - id: subscription_apt
     name: "Apartment Subscription Information"
     type: subscription
-    enabled: true
+    enabled: false
     trust_tier: T1_official
     info_purpose: subscription
     region: korea
@@ -257,7 +261,7 @@ sources:
   - id: naver_land_main
     name: "Naver Land - Property Listings"
     type: naver_land
-    enabled: true
+    enabled: false
     trust_tier: T3_aggregator
     info_purpose: listing
     region: korea
