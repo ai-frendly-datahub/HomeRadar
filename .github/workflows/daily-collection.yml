@@ -30,6 +30,7 @@ jobs:
       - name: Run collection
         env:
           MOLIT_SERVICE_KEY: ${{ secrets.MOLIT_SERVICE_KEY }}
+          RADAR_MAX_WORKERS: "1"
         run: python main.py --mode once --keep-days 90 --generate-report
       - name: Generate index.html
         run: |

@@ -54,13 +54,13 @@ sources:
   - id: mk_realestate
     name: "Maeil Business - Real Estate"
     type: rss
-    enabled: true
+    enabled: false
     trust_tier: T2_professional
     info_purpose: news
     region: korea
     url: "http://file.mk.co.kr/news/rss/rss_50300009.xml"
     description: "Maeil Business Newspaper - Real estate section RSS"
-    notes: "Major Korean business daily. High credibility."
+    notes: "DISABLED: RSS feed returns empty content (last-modified: 2023-11-02). Major Korean business daily."
 
   - id: hankyung_realestate
     name: "Korea Economic Daily - Real Estate"

@@ -62,6 +62,7 @@ jobs:
       - name: Run Radar
         env:
           MOLIT_SERVICE_KEY: ${{ secrets.MOLIT_SERVICE_KEY }}
+          RADAR_MAX_WORKERS: "1"
         run: |
           python main.py --mode once --keep-days 90 --generate-report
 
