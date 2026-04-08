@@ -67,6 +67,7 @@ sources:
     type: rss
     enabled: true
     trust_tier: T2_professional
+    collection_tier: daily
     info_purpose: news
     region: korea
     url: "https://www.hankyung.com/feed/realestate"
@@ -78,6 +79,7 @@ sources:
     type: rss
     enabled: true
     trust_tier: T1_official
+    collection_tier: daily
     info_purpose: news
     region: korea
     url: "https://www.korea.kr/rss/policy.xml"
@@ -89,6 +91,7 @@ sources:
     type: rss
     enabled: true
     trust_tier: T1_official
+    collection_tier: daily
     info_purpose: news
     region: korea
     url: "https://www.korea.kr/rss/pressrelease.xml"
@@ -160,6 +163,54 @@ sources:
     url: "http://www.newsdaily.kr/rss/S1N50.xml"
     description: "News Daily - Real estate section"
     notes: "Secondary news source."
+
+  - id: asiae_realestate
+    name: "Asia Economy - Real Estate"
+    type: rss
+    enabled: true
+    trust_tier: T2_professional
+    collection_tier: daily
+    info_purpose: news
+    region: korea
+    url: "https://www.asiae.co.kr/rss/"
+    description: "Asia Economy (아시아경제) - Real estate and economy news"
+    notes: "Major Korean economic newspaper covering real estate market trends and policy."
+
+  - id: edaily_realestate
+    name: "E-Daily - Real Estate"
+    type: rss
+    enabled: true
+    trust_tier: T2_professional
+    collection_tier: daily
+    info_purpose: news
+    region: korea
+    url: "https://www.edaily.co.kr/rss/RealEstate.xml"
+    description: "E-Daily (이데일리) - Real estate section RSS"
+    notes: "Specialized real estate feed from major Korean financial news outlet."
+
+  - id: news1_realestate
+    name: "News1 - Real Estate"
+    type: rss
+    enabled: true
+    trust_tier: T2_professional
+    collection_tier: daily
+    info_purpose: news
+    region: korea
+    url: "https://www.news1.kr/rss/realestate.xml"
+    description: "News1 (뉴스1) - Real estate section RSS"
+    notes: "Major Korean wire service with dedicated real estate news coverage."
+
+  - id: heraldcorp_realestate
+    name: "Herald Corp - Real Estate"
+    type: rss
+    enabled: true
+    trust_tier: T2_professional
+    collection_tier: daily
+    info_purpose: news
+    region: korea
+    url: "http://biz.heraldcorp.com/rss/010104000000.xml"
+    description: "Herald Corp (헤럴드경제) - Real estate section RSS"
+    notes: "Business-focused real estate coverage from Herald Corporation."
 
   # ============================================================================
   # TIER 3: Aggregators & Market Data Platforms (T3_aggregator)
