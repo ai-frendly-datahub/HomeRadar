@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-visual-system="radar-unified-v2" data-visual-surface="report">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -411,6 +411,14 @@
         border-color: rgba(51,214,197,.18);
         background: rgba(51,214,197,.10);
       }
+      .chip.verify{
+        border-color: rgba(246,200,76,.26);
+        background: rgba(246,200,76,.10);
+      }
+      .chip.policy{
+        border-color: rgba(150,190,255,.18);
+        background: rgba(150,190,255,.08);
+      }
       .actions{
         display:flex;
         align-items:center;
@@ -462,6 +470,45 @@
       .footer a{color: rgba(233,238,251,.74)}
       .footer a:hover{color: rgba(51,214,197,.90)}
 
+      :root{
+        --bg0:#11100f;
+        --bg1:#171613;
+        --panel0:rgba(26, 29, 28, .78);
+        --panel1:rgba(29, 33, 31, .72);
+        --panel2:rgba(31, 35, 32, .94);
+        --line:rgba(215, 201, 123, .18);
+        --line2:rgba(215, 201, 123, .30);
+        --text:#f4f2ea;
+        --muted:rgba(244, 242, 234, .72);
+        --faint:rgba(244, 242, 234, .52);
+        --brand:#37d7bd;
+        --brand2:#2cb3a7;
+        --accent:#f2c14e;
+        --danger:#ef6351;
+        --radius:8px;
+        --radius2:8px;
+      }
+      body{
+        background: linear-gradient(180deg, var(--bg0), var(--bg1) 55%, #0e0d0b);
+      }
+      .hero-card:before{display:none}
+      .mark{
+        border-radius:8px;
+        background: linear-gradient(145deg, rgba(55,215,189,.95), rgba(44,179,167,.82) 55%, rgba(242,193,78,.76));
+      }
+      .skip,
+      .pill,
+      .meta span,
+      .stat,
+      .panel,
+      .region-table-wrap,
+      .card,
+      .chip,
+      .kbd,
+      .btn{
+        border-radius:8px;
+      }
+
       @media (max-width: 980px){
         .hero{grid-template-columns: 1fr; }
         .stats{grid-template-columns: 1fr 1fr}
@@ -505,6 +552,9 @@
         <nav class="nav" aria-label="Jump links">
           <a class="pill" href="#charts">Charts</a>
           <a class="pill" href="#regions">Regions</a>
+          {% if quality_report %}
+          <a class="pill" href="#quality">Quality</a>
+          {% endif %}
           <a class="pill" href="#entities">Entities</a>
           <a class="pill" href="#articles">Articles</a>
         </nav>
@@ -567,6 +617,73 @@
           </div>
         </aside>
       </section>
+
+      {% if quality_report %}
+      <section id="quality" class="section" aria-label="Home quality">
+        <div class="section-hd">
+          <h2>Home Quality</h2>
+          <div class="right">
+            <span class="kbd">home_quality.json</span>
+            <span class="kbd">verification + freshness</span>
+          </div>
+        </div>
+
+        <article class="panel">
+          <header class="panel-hd">
+            <div>
+              <p class="panel-title">Verification and Source Freshness</p>
+              <p class="panel-sub">HomeVerificationState coverage and source stale/skip status</p>
+            </div>
+          </header>
+          <div class="panel-bd">
+            <div class="row" aria-label="Quality summary">
+              <span class="chip brand"><strong>fresh</strong> {{ quality_report.summary.fresh_sources }}</span>
+              <span class="chip verify"><strong>stale</strong> {{ quality_report.summary.stale_sources }}</span>
+              <span class="chip"><strong>missing</strong> {{ quality_report.summary.missing_sources }}</span>
+              <span class="chip"><strong>skipped</strong> {{ quality_report.summary.skipped_sources }}</span>
+              <span class="chip policy"><strong>states</strong> {{ quality_report.summary.verification_state_count }}</span>
+            </div>
+
+            {% if quality_report.summary.official_primary_status is defined %}
+            <div class="row" aria-label="Official primary source coverage">
+              <span class="chip policy"><strong>official primary</strong> {{ quality_report.summary.official_primary_status|e }}</span>
+              <span class="chip"><strong>fresh official</strong> {{ quality_report.summary.official_primary_fresh_sources }}</span>
+              <span class="chip"><strong>blocked official</strong> {{ quality_report.summary.official_primary_blocked_sources }}</span>
+              <span class="chip verify"><strong>corroboration only</strong> {{ quality_report.summary.corroboration_only_items }}</span>
+            </div>
+            {% if quality_report.summary.official_primary_blocked_source_ids %}
+            <p class="muted small" style="line-height:1.7; margin:12px 0 0">
+              Official primary sources are not counted as successful collection while credentials are missing:
+              <span class="mono">{{ quality_report.summary.official_primary_blocked_source_ids|join(", ") }}</span>.
+              Required env:
+              <span class="mono">{{ quality_report.summary.official_primary_required_env|join(", ") }}</span>.
+            </p>
+            {% endif %}
+            {% endif %}
+
+            {% if quality_report.verification_states %}
+            <div class="row" aria-label="Verification state counts">
+              {% for state, count in quality_report.verification_states.items() %}
+              <span class="chip verify"><strong>{{ state|e }}</strong> {{ count }}</span>
+              {% endfor %}
+            </div>
+            {% endif %}
+
+            <ul class="muted small" style="line-height:1.7; margin:12px 0 0; padding-left:18px">
+              {% for source in quality_report.sources %}
+                {% if source.status in ["stale", "missing", "unknown_event_date", "skipped_missing_env"] %}
+                <li>
+                  <strong>{{ source.source_id|e }}</strong>: {{ source.status|e }}
+                  {% if source.freshness_sla_days is not none %}(SLA {{ source.freshness_sla_days }}d{% if source.age_days is not none %}, age {{ source.age_days }}d{% endif %}){% endif %}
+                  {% if source.skip_reason %} - {{ source.skip_reason|e }}{% endif %}
+                </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        </article>
+      </section>
+      {% endif %}
 
       <section id="charts" class="section" aria-label="Charts">
         <div class="section-hd">
@@ -786,6 +903,18 @@
                     {% endif %}
                     {% if item.region %}
                     <span class="chip brand"><strong>region</strong> {{ item.region|e }}</span>
+                    {% endif %}
+                    {% if item.verification_state %}
+                    <span class="chip verify"><strong>verify</strong> {{ item.verification_state|e }}</span>
+                    {% endif %}
+                    {% if item.verification_role %}
+                    <span class="chip"><strong>role</strong> {{ item.verification_role|e }}</span>
+                    {% endif %}
+                    {% if item.event_model %}
+                    <span class="chip policy"><strong>event</strong> {{ item.event_model|e }}</span>
+                    {% endif %}
+                    {% if item.merge_policy %}
+                    <span class="chip"><strong>merge</strong> {{ item.merge_policy|e }}</span>
                     {% endif %}
                   </div>
                 </div>

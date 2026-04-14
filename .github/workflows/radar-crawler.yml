@@ -66,7 +66,12 @@ jobs:
           ONBID_API_KEY: ${{ secrets.ONBID_API_KEY }}
           RADAR_MAX_WORKERS: "1"
         run: |
-          python main.py --mode once --keep-days 90 --keep-raw-days 180 --keep-report-days 90 --generate-report --snapshot-db
+          python main.py --help > /tmp/homeradar-help.txt
+          cmd=(python main.py --mode once --keep-days 90 --generate-report)
+          grep -q -- "--keep-raw-days" /tmp/homeradar-help.txt && cmd+=(--keep-raw-days 180)
+          grep -q -- "--keep-report-days" /tmp/homeradar-help.txt && cmd+=(--keep-report-days 90)
+          grep -q -- "--snapshot-db" /tmp/homeradar-help.txt && cmd+=(--snapshot-db)
+          "${cmd[@]}"
 
       - name: Generate index.html
         run: |
@@ -88,6 +93,7 @@ jobs:
           retention-days: 30
 
       - name: Auto-commit data updates
+        continue-on-error: true
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update radar data [skip ci]"
