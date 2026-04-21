@@ -180,6 +180,7 @@ def test_load_settings_reads_search_db_path_and_default() -> None:
     settings = load_settings()
     project_root = Path(__file__).resolve().parents[2]
 
+    assert settings.database_path == (project_root / "data" / "homeradar.duckdb").resolve()
     assert settings.search_db_path == (project_root / "data" / "search_index.db").resolve()
 
 

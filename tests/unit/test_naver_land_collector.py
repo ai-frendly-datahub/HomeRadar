@@ -6,6 +6,7 @@ from typing import Any
 from unittest.mock import MagicMock, patch
 
 import pytest
+import requests
 
 from collectors.naver_land_collector import NaverLandCollector
 
@@ -87,21 +88,19 @@ def test_naver_land_collector_parses_area() -> None:
 
 
 @pytest.mark.unit
-@patch("collectors.naver_land_collector.requests.get")
-def test_naver_land_collector_uses_random_user_agent(mock_get: MagicMock) -> None:
+def test_naver_land_collector_uses_random_user_agent() -> None:
     """NaverLandCollector는 랜덤 User-Agent를 사용한다"""
     mock_response = MagicMock()
     mock_response.text = "<html></html>"
-    mock_response.raise_for_status = MagicMock()
-    mock_get.return_value = mock_response
 
     config: dict[str, Any] = {}
     collector = NaverLandCollector("naver_land_test", config)
 
-    collector._fetch_html("https://land.naver.com/search/result?page=1")
+    with patch.object(collector, "_request", return_value=mock_response) as mock_request:
+        collector._fetch_html("https://land.naver.com/search/result?page=1")
 
     # User-Agent가 설정되었는지 확인
-    call_args = mock_get.call_args
+    call_args = mock_request.call_args
     headers = call_args.kwargs.get("headers", {})
     user_agent = headers.get("User-Agent", "")
 
@@ -109,16 +108,17 @@ def test_naver_land_collector_uses_random_user_agent(mock_get: MagicMock) -> Non
 
 
 @pytest.mark.unit
-@patch("collectors.naver_land_collector.requests.get")
-def test_naver_land_collector_retries_on_failure(mock_get: MagicMock) -> None:
+def test_naver_land_collector_retries_on_failure() -> None:
     """NaverLandCollector는 실패 시 재시도한다"""
-    mock_get.side_effect = Exception("Network error")
-
     config: dict[str, Any] = {}
     collector = NaverLandCollector("naver_land_test", config)
 
+    mock_request = MagicMock(side_effect=requests.exceptions.ConnectionError("Network error"))
     with pytest.raises(Exception):  # noqa: B017
-        collector._fetch_html("https://land.naver.com/search/result?page=1")
+        with patch.object(collector, "_request", mock_request):
+            collector._fetch_html("https://land.naver.com/search/result?page=1")
+
+    assert mock_request.call_count == 3
 
 
 @pytest.mark.unit

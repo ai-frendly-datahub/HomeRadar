@@ -30,8 +30,10 @@ jobs:
       - name: Run collection
         env:
           MOLIT_SERVICE_KEY: ${{ secrets.MOLIT_SERVICE_KEY }}
+          SUBSCRIPTION_API_KEY: ${{ secrets.SUBSCRIPTION_API_KEY }}
+          ONBID_API_KEY: ${{ secrets.ONBID_API_KEY }}
           RADAR_MAX_WORKERS: "1"
-        run: python main.py --mode once --keep-days 90 --generate-report
+        run: python main.py --mode once --keep-days 90 --keep-raw-days 180 --keep-report-days 90 --generate-report --snapshot-db
       - name: Generate index.html
         run: |
           python -c "from homeradar.reporter import generate_index_html; from pathlib import Path; generate_index_html(Path('reports'))"
@@ -53,7 +55,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: homeradar-db-${{ github.run_number }}
-          path: data/homeradar.duckdb
+          path: |
+            data/homeradar.duckdb
+            data/snapshots/
           retention-days: 30
           if-no-files-found: ignore
       - name: Archive reports

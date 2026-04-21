@@ -71,6 +71,7 @@ class RSSCollector(BaseCollector):
             for entry in feed.entries:
                 # Parse publication date
                 published_at = self._parse_published_date(entry) or now
+                category = self._item_category()
 
                 # Build RawItem
                 raw_item = RawItem(
@@ -79,9 +80,11 @@ class RSSCollector(BaseCollector):
                     summary=self._extract_summary(entry),
                     source_id=self.source_id,
                     published_at=published_at,
+                    property_type=category,
                     raw_data={
                         "entry_id": entry.get("id", ""),
                         "author": entry.get("author", ""),
+                        "category": category,
                         "tags": [tag.get("term", "") for tag in entry.get("tags", [])],
                     },
                 )
@@ -121,6 +124,13 @@ class RSSCollector(BaseCollector):
             return datetime.fromtimestamp(calendar.timegm(published), tz=UTC)
 
         return None
+
+    def _item_category(self) -> str:
+        for key in ("event_model", "info_purpose", "type"):
+            value = self.source_config.get(key)
+            if isinstance(value, str) and value.strip():
+                return value.strip()
+        return "news"
 
     def _extract_summary(self, entry: Any) -> str:
         """

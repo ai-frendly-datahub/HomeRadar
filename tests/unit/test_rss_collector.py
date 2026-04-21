@@ -6,6 +6,7 @@ from datetime import datetime
 from unittest.mock import Mock, patch
 
 import pytest
+import requests
 
 from collectors.base import CollectorError
 from collectors.rss_collector import RSSCollector
@@ -101,6 +102,8 @@ class TestRSSCollector:
         assert item1.title == "Gangnam Apartment Prices Surge 10%"
         assert "Apartment prices in Gangnam" in item1.summary
         assert item1.source_id == "test_source"
+        assert item1.property_type == "news"
+        assert item1.raw_data["category"] == "news"
         assert isinstance(item1.published_at, datetime)
 
         # Check second item
@@ -147,6 +150,17 @@ class TestRSSCollector:
         # Should only collect the item with URL
         assert len(items) == 1
         assert items[0].url == "https://example.com/valid"
+
+    def test_collect_uses_event_model_as_category(self, source_config):
+        """Test that event_model supplies the validation category when configured."""
+        source_config["event_model"] = "policy_context"
+        mock_fetcher = Mock(return_value=SAMPLE_RSS_FEED)
+        collector = RSSCollector("test_source", source_config, fetcher=mock_fetcher)
+
+        items = collector.collect()
+
+        assert items[0].property_type == "policy_context"
+        assert items[0].raw_data["category"] == "policy_context"
 
     def test_collect_with_network_error(self, source_config):
         """Test handling of network errors."""
@@ -253,7 +267,14 @@ class TestRSSCollectorIntegration:
         collector = RSSCollector("hankyung_test", source_config)
 
         # This will make actual network request
-        items = collector.collect()
+        try:
+            items = collector.collect()
+        except requests.RequestException as exc:
+            pytest.skip(f"RSS feed unavailable from test network: {exc}")
+        except CollectorError as exc:
+            if "Failed to fetch RSS feed" in str(exc):
+                pytest.skip(f"RSS feed unavailable from test network: {exc}")
+            raise
 
         # Basic validation
         assert len(items) > 0
@@ -906,7 +927,7 @@ class TestRSSCollectorEdgeCases:
     def test_default_fetcher_makes_request(self, source_config):
         """Test that default fetcher uses requests library."""
 
-        with patch("requests.get") as mock_get:
+        with patch.object(RSSCollector, "_request") as mock_request:
             mock_response = Mock()
             mock_response.content = b"""<?xml version="1.0" encoding="UTF-8"?>
             <rss version="2.0">
@@ -919,10 +940,10 @@ class TestRSSCollectorEdgeCases:
             </rss>
             """
             mock_response.raise_for_status = Mock()
-            mock_get.return_value = mock_response
+            mock_request.return_value = mock_response
 
             collector = RSSCollector("test_source", source_config)
             items = collector.collect()
 
-            mock_get.assert_called_once_with(source_config["url"], timeout=15)
+            mock_request.assert_called_once_with("GET", source_config["url"], timeout=15)
             assert len(items) == 1

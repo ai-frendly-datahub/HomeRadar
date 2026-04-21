@@ -205,6 +205,13 @@ def test_generate_report_renders_home_quality_summary(
                 "age_days": None,
                 "skip_reason": "SUBSCRIPTION_API_KEY not set",
             },
+            {
+                "source_id": "disabled_listing",
+                "status": "skipped_disabled",
+                "freshness_sla_days": None,
+                "age_days": None,
+                "skip_reason": "source disabled",
+            },
         ],
     }
 
@@ -222,3 +229,5 @@ def test_generate_report_renders_home_quality_summary(
     assert "blocked_missing_env" in rendered
     assert "reb_subscription" in rendered
     assert "SUBSCRIPTION_API_KEY not set" in rendered
+    assert "disabled_listing" in rendered
+    assert "source disabled" in rendered

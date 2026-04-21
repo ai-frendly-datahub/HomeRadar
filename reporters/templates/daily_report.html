@@ -671,7 +671,7 @@
 
             <ul class="muted small" style="line-height:1.7; margin:12px 0 0; padding-left:18px">
               {% for source in quality_report.sources %}
-                {% if source.status in ["stale", "missing", "unknown_event_date", "skipped_missing_env"] %}
+                {% if source.status in ["stale", "missing", "unknown_event_date", "skipped_missing_env", "skipped_disabled"] %}
                 <li>
                   <strong>{{ source.source_id|e }}</strong>: {{ source.status|e }}
                   {% if source.freshness_sla_days is not none %}(SLA {{ source.freshness_sla_days }}d{% if source.age_days is not none %}, age {{ source.age_days }}d{% endif %}){% endif %}

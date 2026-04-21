@@ -1,10 +1,111 @@
 # HomeRadar Data Sources Configuration
 # Real estate data sources for collection and analysis
-# Last updated: 2026-04-08
+# Last updated: 2026-04-10
 #
 # NOTE: MOLIT API sources (molit_apt_transaction, molit_apt_rent) require
 # MOLIT_SERVICE_KEY to be configured in GitHub Secrets for CI/CD workflows.
 # Obtain a service key from https://www.data.go.kr/data/15126469/openapi.do
+#
+# NOTE: Subscription and Onbid official sources are enabled by default but
+# degrade gracefully when SUBSCRIPTION_API_KEY or ONBID_API_KEY is not set.
+
+data_quality:
+  priority: P0
+  primary_motion: conversion
+  weakest_dimension: verification
+  quality_outputs:
+    freshness_report: reports/home_quality.json
+    dated_freshness_report_pattern: reports/home_YYYYMMDD_quality.json
+    tracked_source_ids: [molit_apt_transaction, molit_apt_rent, reb_subscription, onbid_auction]
+  event_models:
+    - transaction_price
+    - rent_transaction
+    - subscription_notice
+    - auction_signal
+    - policy_context
+    - market_context
+    - listing_inventory
+  canonical_keys:
+    transaction:
+      fields: [lawd_cd, deal_ymd, aptNm, dealYear, dealMonth, dealDay, excluUseAr, floor]
+      notes: "MOLIT 실거래 URL과 중복 제거 기준. 거래일과 수집일은 별도 유지."
+    subscription:
+      fields: [prjNo, prjNm, location, noticeDate]
+      notes: "청약 공고/경쟁률의 project-level canonical key."
+    listing:
+      fields: [platform, region_code, complex_name, area, listing_id]
+      notes: "민간 매물 source가 활성화될 때 사용할 후보 key. 현재는 운영 후보로만 유지."
+    verification_claim:
+      fields: [event_model, region_code, complex_name, event_date, primary_source_id, corroborating_source_id]
+      notes: "뉴스/정책 맥락이 공식 거래·청약·공매 데이터를 보강할 때 사용할 claim-level key."
+  freshness_sla:
+    molit_apt_transaction:
+      max_age_days: 2
+      event_date_field: deal_date
+      observed_date_field: collected_at
+      skip_policy: "MOLIT_SERVICE_KEY 미설정 시 skip_reason을 로그에 남기고 실패로 처리하지 않음"
+    molit_apt_rent:
+      max_age_days: 2
+      event_date_field: deal_date
+      observed_date_field: collected_at
+      skip_policy: "MOLIT_SERVICE_KEY 미설정 시 skip_reason을 로그에 남기고 실패로 처리하지 않음"
+    reb_subscription:
+      max_age_days: 1
+      event_date_field: noticeDate
+      observed_date_field: collected_at
+      skip_policy: "SUBSCRIPTION_API_KEY 미설정 시 skip_reason을 로그에 남기고 실패로 처리하지 않음"
+    onbid_auction:
+      max_age_days: 1
+      event_date_field: bidDate
+      observed_date_field: collected_at
+      skip_policy: "ONBID_API_KEY 미설정 시 skip_reason을 로그에 남기고 실패로 처리하지 않음"
+  quality_gates:
+    - "거래일/공고일/입찰일과 collected_at을 별도 필드로 유지"
+    - "지역 코드와 단지명 alias를 canonical key로 정규화"
+    - "뉴스 source와 실거래/청약/공매 source를 같은 신뢰 등급으로 병합하지 않음"
+    - "시장 RSS는 market_corroboration으로만 저장하고 공식 거래/청약/공매 fact를 덮어쓰지 않음"
+    - "공식 운영 source가 없는 claim은 HomeVerificationState=official_primary_required로 표시"
+    - "민간 listing/browser 후보는 ToS·파트너십·수집 안정성 확인 전 기본 비활성 유지"
+  verification_matrix:
+    transaction_price:
+      primary_sources: [molit_apt_transaction]
+      corroborating_sources: [korea_policy_news, korea_pressrelease_news, hankyung_realestate, asiae_realestate, edaily_realestate, news1_realestate, heraldcorp_realestate]
+      merge_policy: official_primary_required
+    rent_transaction:
+      primary_sources: [molit_apt_rent]
+      corroborating_sources: [korea_policy_news, korea_pressrelease_news, hankyung_realestate, asiae_realestate, edaily_realestate, news1_realestate, heraldcorp_realestate]
+      merge_policy: official_primary_required
+    subscription_notice:
+      primary_sources: [reb_subscription]
+      corroborating_sources: [korea_policy_news, korea_pressrelease_news, hankyung_realestate, asiae_realestate, edaily_realestate, news1_realestate, heraldcorp_realestate]
+      merge_policy: official_primary_required
+    auction_signal:
+      primary_sources: [onbid_auction]
+      corroborating_sources: [hankyung_realestate, asiae_realestate, edaily_realestate, news1_realestate, heraldcorp_realestate]
+      merge_policy: official_primary_required
+    policy_context:
+      primary_sources: [korea_policy_news, korea_pressrelease_news]
+      corroborating_sources: [hankyung_realestate, asiae_realestate, edaily_realestate, news1_realestate, heraldcorp_realestate]
+      merge_policy: official_context_only
+    listing_inventory:
+      primary_sources: []
+      backlog_sources: [naver_land_main, zigbang_browser, kb_kbland]
+      merge_policy: backlog_only_until_tos_review
+
+source_backlog:
+  listing_inventory_candidates:
+    - id: naver_land_main
+      name: "Naver Land - Property Listings"
+      reason: "매물 inventory 보강 후보. ToS/anti-bot/파트너십 검토 전 기본 비활성."
+      required_before_enable: [tos_review, anti_bot_strategy, stale_listing_check]
+    - id: zigbang_browser
+      name: "Zigbang Browser Listings"
+      reason: "JS-rendered apartment complex listing 후보. Playwright 안정성 검증 전 기본 비활성."
+      required_before_enable: [tos_review, browser_fixture_test, rate_limit_policy]
+    - id: kb_kbland
+      name: "KB Kookmin Bank - Real Estate Data Hub"
+      reason: "가격지수/시장동향 보강 후보. PublicDataReader 연동 경로 검증 필요."
+      required_before_enable: [library_adapter, freshness_sla, canonical_region_code]
 
 sources:
   # ============================================================================
@@ -14,38 +115,62 @@ sources:
   - id: molit_apt_transaction
     name: "MOLIT Apartment Transaction"
     type: api
-    enabled: false
+    enabled: true
     trust_tier: T1_official
     info_purpose: transaction
     region: korea
     url: "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTradeDev"
     api_doc: "https://www.data.go.kr/data/15126469/openapi.do"
+    collection_tier: daily
+    event_model: transaction_price
+    verification_role: official_primary_transaction
+    merge_policy: authoritative_source
+    freshness_sla_days: 2
+    event_date_field: deal_date
+    observed_date_field: collected_at
+    canonical_key_fields: [lawd_cd, deal_ymd, aptNm, dealYear, dealMonth, dealDay, excluUseAr, floor]
     description: "Ministry of Land, Infrastructure and Transport - Apartment sales transaction data"
     notes: "Requires service key from data.go.kr. Auto-approval. Updated daily."
 
   - id: molit_apt_rent
     name: "MOLIT Apartment Rent"
     type: api
-    enabled: false
+    enabled: true
     trust_tier: T1_official
     info_purpose: transaction
     region: korea
     url: "http://openapi.molit.go.kr/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptRent"
     api_doc: "https://www.data.go.kr/data/15126469/openapi.do"
+    collection_tier: daily
+    event_model: rent_transaction
+    verification_role: official_primary_transaction
+    merge_policy: authoritative_source
+    freshness_sla_days: 2
+    event_date_field: deal_date
+    observed_date_field: collected_at
+    canonical_key_fields: [lawd_cd, deal_ymd, aptNm, dealYear, dealMonth, dealDay, excluUseAr, floor]
     description: "Ministry of Land, Infrastructure and Transport - Apartment rent (전월세) data"
     notes: "Same API key as apt_transaction. Covers both 전세 and 월세."
 
   - id: reb_subscription
     name: "Korea Real Estate Board - Subscription Info"
-    type: api
-    enabled: false
+    type: subscription
+    enabled: true
     trust_tier: T1_official
     info_purpose: subscription
     region: korea
     url: "https://api.odcloud.kr/api/ApplyhomeInfoDetailSvc/v1/getAPTLttotPblancDetail"
     api_doc: "https://www.data.go.kr/data/15098547/openapi.do"
+    collection_tier: daily
+    event_model: subscription_notice
+    verification_role: official_primary_subscription
+    merge_policy: authoritative_source
+    freshness_sla_days: 1
+    event_date_field: noticeDate
+    observed_date_field: collected_at
+    canonical_key_fields: [prjNo, prjNm, location, noticeDate]
     description: "Apartment subscription (청약) and pre-sale information"
-    notes: "Includes competition rates, schedules, public housing data."
+    notes: "Primary official subscription source. Requires SUBSCRIPTION_API_KEY. Includes competition rates, schedules, and public housing data."
 
   # ============================================================================
   # TIER 2: Professional Media & Industry Sources (T2_professional)
@@ -68,6 +193,9 @@ sources:
     enabled: true
     trust_tier: T2_professional
     collection_tier: daily
+    event_model: market_context
+    verification_role: market_corroboration
+    merge_policy: cannot_override_official_transaction
     info_purpose: news
     region: korea
     url: "https://www.hankyung.com/feed/realestate"
@@ -80,6 +208,9 @@ sources:
     enabled: true
     trust_tier: T1_official
     collection_tier: daily
+    event_model: policy_context
+    verification_role: official_policy_corroboration
+    merge_policy: official_context_only
     info_purpose: news
     region: korea
     url: "https://www.korea.kr/rss/policy.xml"
@@ -92,6 +223,9 @@ sources:
     enabled: true
     trust_tier: T1_official
     collection_tier: daily
+    event_model: policy_context
+    verification_role: official_policy_corroboration
+    merge_policy: official_context_only
     info_purpose: news
     region: korea
     url: "https://www.korea.kr/rss/pressrelease.xml"
@@ -170,6 +304,9 @@ sources:
     enabled: true
     trust_tier: T2_professional
     collection_tier: daily
+    event_model: market_context
+    verification_role: market_corroboration
+    merge_policy: cannot_override_official_transaction
     info_purpose: news
     region: korea
     url: "https://www.asiae.co.kr/rss/"
@@ -182,6 +319,9 @@ sources:
     enabled: true
     trust_tier: T2_professional
     collection_tier: daily
+    event_model: market_context
+    verification_role: market_corroboration
+    merge_policy: cannot_override_official_transaction
     info_purpose: news
     region: korea
     url: "https://www.edaily.co.kr/rss/RealEstate.xml"
@@ -194,6 +334,9 @@ sources:
     enabled: true
     trust_tier: T2_professional
     collection_tier: daily
+    event_model: market_context
+    verification_role: market_corroboration
+    merge_policy: cannot_override_official_transaction
     info_purpose: news
     region: korea
     url: "https://www.news1.kr/rss/realestate.xml"
@@ -203,14 +346,17 @@ sources:
   - id: heraldcorp_realestate
     name: "Herald Corp - Real Estate"
     type: rss
-    enabled: true
+    enabled: false
     trust_tier: T2_professional
     collection_tier: daily
+    event_model: market_context
+    verification_role: market_corroboration
+    merge_policy: cannot_override_official_transaction
     info_purpose: news
     region: korea
     url: "http://biz.heraldcorp.com/rss/010104000000.xml"
     description: "Herald Corp (헤럴드경제) - Real estate section RSS"
-    notes: "Business-focused real estate coverage from Herald Corporation."
+    notes: "DISABLED: RSS endpoint now redirects to HTML homepage and no longer returns a parseable feed."
 
   # ============================================================================
   # TIER 3: Aggregators & Market Data Platforms (T3_aggregator)
@@ -222,6 +368,9 @@ sources:
     enabled: false
     trust_tier: T3_aggregator
     info_purpose: market_price
+    event_model: listing_inventory
+    verification_role: backlog_operational_candidate
+    merge_policy: backlog_only_until_source_adapter
     region: korea
     url: "https://data.kbland.kr/"
     description: "KB Real Estate Data Hub - Housing price index, market trends"
@@ -233,6 +382,9 @@ sources:
     enabled: false
     trust_tier: T3_aggregator
     info_purpose: listing
+    event_model: listing_inventory
+    verification_role: backlog_listing_candidate
+    merge_policy: backlog_only_until_tos_review
     region: korea
     url: "https://land.naver.com"
     description: "Naver real estate listing platform"
@@ -244,6 +396,9 @@ sources:
     enabled: false
     trust_tier: T3_aggregator
     info_purpose: listing
+    event_model: listing_inventory
+    verification_role: backlog_listing_candidate
+    merge_policy: backlog_only_until_tos_review
     region: korea
     url: "https://www.r114.com/"
     description: "Real estate 114 - Listing and market data platform"
@@ -255,6 +410,9 @@ sources:
     enabled: false
     trust_tier: T3_aggregator
     info_purpose: listing
+    event_model: listing_inventory
+    verification_role: backlog_listing_candidate
+    merge_policy: backlog_only_until_tos_review
     region: korea
     url: "https://www.zigbang.com"
     description: "Zigbang - Real estate listing platform"
@@ -266,6 +424,9 @@ sources:
     enabled: false
     trust_tier: T3_aggregator
     info_purpose: listing
+    event_model: listing_inventory
+    verification_role: backlog_listing_candidate
+    merge_policy: backlog_only_until_browser_fixture
     region: korea
     url: "https://www.zigbang.com/home/apt/danjis"
     timeout: 20000
@@ -282,6 +443,9 @@ sources:
     enabled: false
     trust_tier: T3_aggregator
     info_purpose: listing
+    event_model: listing_inventory
+    verification_role: backlog_listing_candidate
+    merge_policy: backlog_only_until_tos_review
     region: korea
     url: "https://www.dabangapp.com"
     description: "Dabang - Real estate listing platform"
@@ -290,24 +454,21 @@ sources:
   - id: onbid_auction
     name: "Onbid - Public Auction Properties"
     type: onbid
-    enabled: false
+    enabled: true
     trust_tier: T1_official
     info_purpose: transaction
     region: korea
     api_doc: "https://www.data.go.kr/data/15101046/openapi.do"
+    collection_tier: daily
+    event_model: auction_signal
+    verification_role: official_primary_auction
+    merge_policy: authoritative_source
+    freshness_sla_days: 1
+    event_date_field: bidDate
+    observed_date_field: collected_at
+    canonical_key_fields: [cltrNo, cltrNm, location, bidDate]
     description: "Onbid public auction property listings and results"
     notes: "Requires ONBID_API_KEY environment variable. Real-time auction data."
-
-  - id: subscription_apt
-    name: "Apartment Subscription Information"
-    type: subscription
-    enabled: false
-    trust_tier: T1_official
-    info_purpose: subscription
-    region: korea
-    api_doc: "https://www.data.go.kr/data/15101046/openapi.do"
-    description: "Apartment subscription (청약) and pre-sale information"
-    notes: "Requires SUBSCRIPTION_API_KEY environment variable. Includes competition rates and schedules."
 
   - id: naver_land_main
     name: "Naver Land - Property Listings"
@@ -315,6 +476,9 @@ sources:
     enabled: false
     trust_tier: T3_aggregator
     info_purpose: listing
+    event_model: listing_inventory
+    verification_role: backlog_listing_candidate
+    merge_policy: backlog_only_until_tos_review
     region: korea
     base_url: "https://land.naver.com"
     search_url: "https://land.naver.com/search/result"

@@ -114,11 +114,11 @@ class TestMOLITCollectorCollect:
 
     def test_collect_successful_request(self, collector, sample_xml_response):
         """Test successful API request and parsing."""
-        with patch("requests.get") as mock_get:
+        with patch.object(collector, "_request") as mock_request:
             mock_response = Mock()
             mock_response.content = sample_xml_response.encode("utf-8")
             mock_response.raise_for_status = Mock()
-            mock_get.return_value = mock_response
+            mock_request.return_value = mock_response
 
             items = collector.collect("11680", "202411")
 
@@ -128,19 +128,20 @@ class TestMOLITCollectorCollect:
 
     def test_collect_with_api_parameters(self, collector):
         """Test that correct parameters are sent to API."""
-        with patch("requests.get") as mock_get:
+        with patch.object(collector, "_request") as mock_request:
             mock_response = Mock()
             mock_response.content = b"""<?xml version="1.0" encoding="UTF-8"?>
 <response><header><resultCode>00</resultCode></header><body></body></response>
 """
             mock_response.raise_for_status = Mock()
-            mock_get.return_value = mock_response
+            mock_request.return_value = mock_response
 
             collector.collect("11110", "202401", page_no=2)
 
-            # Check that requests.get was called with correct parameters
-            call_args = mock_get.call_args
-            assert call_args[0][0] == collector.api_url
+            # Check that BaseCollector._request was called with correct parameters
+            call_args = mock_request.call_args
+            assert call_args[0][0] == "GET"
+            assert call_args[0][1] == collector.api_url
             params = call_args[1]["params"]
             assert params["LAWD_CD"] == "11110"
             assert params["DEAL_YMD"] == "202401"
@@ -149,17 +150,17 @@ class TestMOLITCollectorCollect:
 
     def test_collect_handles_network_error(self, collector):
         """Test handling of network errors."""
-        with patch("requests.get", side_effect=requests.exceptions.ConnectionError):
+        with patch.object(collector, "_request", side_effect=requests.exceptions.ConnectionError):
             with pytest.raises(RuntimeError, match="MOLIT API request failed"):
                 collector.collect("11680", "202411")
 
     def test_collect_handles_invalid_xml(self, collector):
         """Test handling of invalid XML response."""
-        with patch("requests.get") as mock_get:
+        with patch.object(collector, "_request") as mock_request:
             mock_response = Mock()
             mock_response.content = b"Invalid XML <>"
             mock_response.raise_for_status = Mock()
-            mock_get.return_value = mock_response
+            mock_request.return_value = mock_response
 
             with pytest.raises(RuntimeError, match="Failed to parse"):
                 collector.collect("11680", "202411")
@@ -174,11 +175,11 @@ class TestMOLITCollectorCollect:
     </header>
 </response>
 """
-        with patch("requests.get") as mock_get:
+        with patch.object(collector, "_request") as mock_request:
             mock_response = Mock()
             mock_response.content = error_xml.encode("utf-8")
             mock_response.raise_for_status = Mock()
-            mock_get.return_value = mock_response
+            mock_request.return_value = mock_response
 
             with pytest.raises(RuntimeError, match="MOLIT API error: 03"):
                 collector.collect("11680", "202411")
@@ -196,11 +197,11 @@ class TestMOLITCollectorCollect:
     </body>
 </response>
 """
-        with patch("requests.get") as mock_get:
+        with patch.object(collector, "_request") as mock_request:
             mock_response = Mock()
             mock_response.content = empty_xml.encode("utf-8")
             mock_response.raise_for_status = Mock()
-            mock_get.return_value = mock_response
+            mock_request.return_value = mock_response
 
             items = collector.collect("11680", "202411")
 
@@ -363,19 +364,15 @@ class TestMOLITCollectorEdgeCases:
 
     def test_collect_with_timeout(self, collector):
         """Test handling of request timeout."""
-        with patch("requests.get", side_effect=requests.exceptions.Timeout):
+        with patch.object(collector, "_request", side_effect=requests.exceptions.Timeout):
             with pytest.raises(RuntimeError, match="MOLIT API request failed"):
                 collector.collect("11680", "202411")
 
     def test_collect_with_http_error(self, collector):
         """Test handling of HTTP errors."""
-        with patch("requests.get") as mock_get:
-            mock_response = Mock()
-            mock_response.raise_for_status.side_effect = requests.exceptions.HTTPError(
-                "404 Not Found"
-            )
-            mock_get.return_value = mock_response
-
+        with patch.object(
+            collector, "_request", side_effect=requests.exceptions.HTTPError("404 Not Found")
+        ):
             with pytest.raises(RuntimeError, match="MOLIT API request failed"):
                 collector.collect("11680", "202411")
 
@@ -528,11 +525,11 @@ class TestMOLITCollectorEdgeCases:
     </header>
 </response>
 """
-        with patch("requests.get") as mock_get:
+        with patch.object(collector, "_request") as mock_request:
             mock_response = Mock()
             mock_response.content = xml_no_body.encode("utf-8")
             mock_response.raise_for_status = Mock()
-            mock_get.return_value = mock_response
+            mock_request.return_value = mock_response
 
             items = collector.collect("11680", "202411")
 
@@ -555,11 +552,11 @@ class TestMOLITCollectorEdgeCases:
     </body>
 </response>
 """
-        with patch("requests.get") as mock_get:
+        with patch.object(collector, "_request") as mock_request:
             mock_response = Mock()
             mock_response.content = xml_no_header.encode("utf-8")
             mock_response.raise_for_status = Mock()
-            mock_get.return_value = mock_response
+            mock_request.return_value = mock_response
 
             items = collector.collect("11680", "202411")
 
@@ -650,11 +647,11 @@ class TestMOLITCollectorEdgeCases:
     </body>
 </response>
 """
-        with patch("requests.get") as mock_get:
+        with patch.object(collector, "_request") as mock_request:
             mock_response = Mock()
             mock_response.content = xml_mixed.encode("utf-8")
             mock_response.raise_for_status = Mock()
-            mock_get.return_value = mock_response
+            mock_request.return_value = mock_response
 
             items = collector.collect("11680", "202411")
 
@@ -722,17 +719,17 @@ class TestMOLITCollectorEdgeCases:
 
     def test_collect_pagination_parameter(self, collector):
         """Test that pagination parameter is correctly passed."""
-        with patch("requests.get") as mock_get:
+        with patch.object(collector, "_request") as mock_request:
             mock_response = Mock()
             mock_response.content = b"""<?xml version="1.0" encoding="UTF-8"?>
 <response><header><resultCode>00</resultCode></header><body></body></response>
 """
             mock_response.raise_for_status = Mock()
-            mock_get.return_value = mock_response
+            mock_request.return_value = mock_response
 
             collector.collect("11680", "202411", page_no=5)
 
-            call_args = mock_get.call_args
+            call_args = mock_request.call_args
             params = call_args[1]["params"]
             assert params["pageNo"] == 5
 
