@@ -2,7 +2,22 @@
 
 부동산 시장 데이터 수집을 위한 데이터 소스 현황 및 사용 가이드입니다.
 
-**Last Updated**: 2025-11-24
+**Last Updated**: 2026-04-12
+
+## 2026-04-11 Data Quality Overlay
+
+HomeRadar는 P0 품질 계획에 따라 공식 운영 source를 우선 실행 대상으로 유지하고, 민간 listing 후보는 별도 backlog로 분리합니다.
+
+- 실행 source: MOLIT 매매, MOLIT 전월세, REB 청약, Onbid 공매, 검증된 부동산/정책 RSS
+- 품질 게이트: 거래일/공고일/입찰일과 `collected_at`을 분리하고, 지역 코드·단지명·project id를 canonical key로 추적
+- freshness SLA: MOLIT 실거래·전월세 2일, REB 청약 1일, Onbid 공매 1일
+- 검증 매트릭스: MOLIT/REB/Onbid는 `official_primary`, 정부 RSS는 `official_policy_corroboration`, 시장 RSS는 `market_corroboration_requires_official_source`로 분리
+- 병합 정책: 시장 RSS는 실거래·청약·공매 fact를 덮어쓰지 않고 `raw_data.home_quality`의 corroboration 근거로만 사용
+- 출력 점검: `raw_data.home_quality`는 `urls.verification_state`, `verification_role`, `event_model`, `merge_policy`에 저장되고 HTML 리포트와 MCP `recent_updates` 응답에 노출
+- backlog 후보: `naver_land_main`, `zigbang_browser`, `kb_kbland`
+- backlog 활성화 조건: ToS/파트너십 검토, anti-bot 정책, stale listing 검증, 지역/단지 canonicalization
+
+구체적인 실행 계획은 [data-quality-plan.md](data-quality-plan.md)를 기준으로 유지합니다.
 
 ## 📊 데이터 소스 현황 요약
 

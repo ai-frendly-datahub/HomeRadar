@@ -2,7 +2,7 @@
 Integration tests for collector registry with new collectors.
 """
 
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 
 import pytest
 
@@ -130,12 +130,7 @@ class TestOnbidCollectorIntegration:
             }
         }
 
-        with patch("requests.get") as mock_get:
-            mock_resp = Mock()
-            mock_resp.json.return_value = mock_response
-            mock_resp.raise_for_status = Mock()
-            mock_get.return_value = mock_resp
-
+        with patch.object(collector, "_make_request", return_value=mock_response):
             items = collector.collect()
 
             assert len(items) == 1
@@ -177,12 +172,7 @@ class TestSubscriptionCollectorIntegration:
             }
         }
 
-        with patch("requests.get") as mock_get:
-            mock_resp = Mock()
-            mock_resp.json.return_value = mock_response
-            mock_resp.raise_for_status = Mock()
-            mock_get.return_value = mock_resp
-
+        with patch.object(collector, "_make_request", return_value=mock_response):
             items = collector.collect()
 
             assert len(items) == 1

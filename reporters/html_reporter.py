@@ -109,6 +109,7 @@ class HtmlReporter:
         store: GraphStore,
         output_path: Path,
         stats: dict[str, Any] | None = None,
+        quality_report: dict[str, Any] | None = None,
     ) -> Path:
         """
         Generate daily HTML report from graph store.
@@ -158,6 +159,7 @@ class HtmlReporter:
             regional_distribution=regional_distribution,
             regional_distribution_html=regional_distribution_html,
             regional_distribution_fallback=regional_distribution_fallback,
+            quality_report=quality_report or {},
             generated_at=datetime.now(UTC),
             stats=stats,
         )
@@ -512,6 +514,10 @@ class HtmlReporter:
             "published_at": published_at,
             "region": item.get("region", ""),
             "district": item.get("district", ""),
+            "verification_state": item.get("verification_state", ""),
+            "verification_role": item.get("verification_role", ""),
+            "merge_policy": item.get("merge_policy", ""),
+            "event_model": item.get("event_model", ""),
             "entities": item.get("entities", {}),
         }
 
@@ -543,21 +549,22 @@ def generate_index_html(report_dir: Path) -> Path:
         body_content = '<div class="empty">No reports available yet.</div>'
 
     html_content = f"""<!doctype html>
-<html lang="en">
+<html lang="en" data-visual-system="radar-unified-v2" data-visual-surface="index">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
   <title>Radar Reports</title>
   <style>
-    body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; padding: 24px; background: #f6f8fb; color: #0f172a; }}
+    body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; padding: 24px; background: linear-gradient(180deg, #11100f, #171613 55%, #0e0d0b); color: #f4f2ea; }}
     h1 {{ margin: 0 0 8px 0; }}
-    .muted {{ color: #475569; font-size: 13px; margin-bottom: 24px; }}
+    .muted {{ color: rgba(244, 242, 234, .68); font-size: 13px; margin-bottom: 24px; }}
     .reports {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }}
-    .card {{ background: white; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); transition: box-shadow 0.2s; }}
+    .card {{ background: rgba(29, 33, 31, .88); border: 1px solid rgba(215, 201, 123, .22); border-radius: 8px; padding: 16px; box-shadow: 0 14px 42px rgba(0,0,0,0.28); transition: box-shadow 0.2s; }}
     .card:hover {{ box-shadow: 0 4px 6px rgba(0,0,0,0.08); }}
-    a {{ color: #0f172a; text-decoration: none; }}
+    a {{ color: #f4f2ea; text-decoration: none; }}
     a:hover {{ text-decoration: underline; }}
-    .empty {{ text-align: center; color: #64748b; padding: 48px; }}
+    .empty {{ text-align: center; color: rgba(244, 242, 234, .68); padding: 48px; }}
   </style>
 </head>
 <body>

@@ -112,3 +112,122 @@ def test_render_region_distribution_returns_table_when_geojson_fails(
     assert used_fallback is True
     assert "<table" in html
     assert "서울" in html
+
+
+def test_generate_report_renders_home_verification_fields(
+    tmp_path: Path,
+    tmp_store: GraphStore,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    item = RawItem(
+        url="https://example.com/molit/transaction/1",
+        title="Official transaction update",
+        summary="MOLIT transaction record for apartment market monitoring.",
+        source_id="molit_apt_transaction",
+        published_at=datetime(2026, 3, 1, tzinfo=UTC),
+        region="서울",
+        raw_data={
+            "district": "강남구",
+            "home_quality": {
+                "verification_state": "official_primary",
+                "verification_role": "official_primary_transaction",
+                "merge_policy": "authoritative_source",
+                "event_model": "transaction_price",
+            },
+        },
+    )
+    tmp_store.add_items([item])
+
+    template_dir = Path(__file__).resolve().parents[2] / "reporters" / "templates"
+    reporter = HtmlReporter(template_dir=template_dir)
+    monkeypatch.setattr(reporter, "_render_region_distribution", lambda _distribution: ("", True))
+
+    output_path = tmp_path / "reports" / "daily_report.html"
+    reporter.generate_report(tmp_store, output_path)
+    rendered = output_path.read_text(encoding="utf-8")
+
+    assert 'data-visual-system="radar-unified-v2"' in rendered
+    assert 'data-visual-surface="report"' in rendered
+    assert "official_primary" in rendered
+    assert "transaction_price" in rendered
+    assert "authoritative_source" in rendered
+
+
+def test_generate_report_renders_home_quality_summary(
+    tmp_path: Path,
+    tmp_store: GraphStore,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    item = RawItem(
+        url="https://example.com/molit/transaction/2",
+        title="Official transaction update",
+        summary="MOLIT transaction record for apartment market monitoring.",
+        source_id="molit_apt_transaction",
+        published_at=datetime(2026, 3, 1, tzinfo=UTC),
+        region="서울",
+        raw_data={
+            "home_quality": {
+                "verification_state": "official_primary",
+                "verification_role": "official_primary_transaction",
+                "merge_policy": "authoritative_source",
+                "event_model": "transaction_price",
+            },
+        },
+    )
+    tmp_store.add_items([item])
+    quality_report = {
+        "summary": {
+            "fresh_sources": 1,
+            "stale_sources": 1,
+            "missing_sources": 0,
+            "skipped_sources": 1,
+            "verification_state_count": 1,
+            "official_primary_status": "blocked_missing_env",
+            "official_primary_fresh_sources": 0,
+            "official_primary_blocked_sources": 1,
+            "official_primary_blocked_source_ids": ["reb_subscription"],
+            "official_primary_required_env": ["SUBSCRIPTION_API_KEY"],
+            "corroboration_only_items": 1,
+        },
+        "verification_states": {"official_primary": 1},
+        "sources": [
+            {
+                "source_id": "molit_apt_transaction",
+                "status": "fresh",
+                "freshness_sla_days": 2,
+                "age_days": 0.1,
+                "skip_reason": "",
+            },
+            {
+                "source_id": "reb_subscription",
+                "status": "skipped_missing_env",
+                "freshness_sla_days": 1,
+                "age_days": None,
+                "skip_reason": "SUBSCRIPTION_API_KEY not set",
+            },
+            {
+                "source_id": "disabled_listing",
+                "status": "skipped_disabled",
+                "freshness_sla_days": None,
+                "age_days": None,
+                "skip_reason": "source disabled",
+            },
+        ],
+    }
+
+    template_dir = Path(__file__).resolve().parents[2] / "reporters" / "templates"
+    reporter = HtmlReporter(template_dir=template_dir)
+    monkeypatch.setattr(reporter, "_render_region_distribution", lambda _distribution: ("", True))
+
+    output_path = tmp_path / "reports" / "daily_report.html"
+    reporter.generate_report(tmp_store, output_path, quality_report=quality_report)
+    rendered = output_path.read_text(encoding="utf-8")
+
+    assert "Home Quality" in rendered
+    assert "home_quality.json" in rendered
+    assert "official_primary" in rendered
+    assert "blocked_missing_env" in rendered
+    assert "reb_subscription" in rendered
+    assert "SUBSCRIPTION_API_KEY not set" in rendered
+    assert "disabled_listing" in rendered
+    assert "source disabled" in rendered

@@ -3,7 +3,7 @@ Unit tests for SubscriptionCollector.
 """
 
 from datetime import UTC, datetime
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 
 import pytest
 
@@ -113,12 +113,7 @@ class TestSubscriptionCollectorCollect:
 
     def test_collect_successful_request(self, collector, sample_json_response):
         """Test successful API request and parsing."""
-        with patch("requests.get") as mock_get:
-            mock_response = Mock()
-            mock_response.json.return_value = sample_json_response
-            mock_response.raise_for_status = Mock()
-            mock_get.return_value = mock_response
-
+        with patch.object(collector, "_make_request", return_value=sample_json_response):
             items = collector.collect()
 
             assert len(items) == 2
@@ -127,12 +122,7 @@ class TestSubscriptionCollectorCollect:
 
     def test_collect_parses_prices_correctly(self, collector, sample_json_response):
         """Test that prices are parsed correctly."""
-        with patch("requests.get") as mock_get:
-            mock_response = Mock()
-            mock_response.json.return_value = sample_json_response
-            mock_response.raise_for_status = Mock()
-            mock_get.return_value = mock_response
-
+        with patch.object(collector, "_make_request", return_value=sample_json_response):
             items = collector.collect()
 
             assert items[0].price == 500000000
@@ -142,19 +132,14 @@ class TestSubscriptionCollectorCollect:
         """Test that empty response returns empty list."""
         empty_response = {"response": {"body": {"items": []}}}
 
-        with patch("requests.get") as mock_get:
-            mock_response = Mock()
-            mock_response.json.return_value = empty_response
-            mock_response.raise_for_status = Mock()
-            mock_get.return_value = mock_response
-
+        with patch.object(collector, "_make_request", return_value=empty_response):
             items = collector.collect()
 
             assert items == []
 
     def test_collect_handles_network_error(self, collector):
         """Test handling of network errors."""
-        with patch("requests.get", side_effect=Exception("Network error")):
+        with patch.object(collector, "_make_request", side_effect=Exception("Network error")):
             with pytest.raises(Exception):  # noqa: B017
                 collector.collect()
 
@@ -176,12 +161,7 @@ class TestSubscriptionCollectorCollect:
             }
         }
 
-        with patch("requests.get") as mock_get:
-            mock_response = Mock()
-            mock_response.json.return_value = response
-            mock_response.raise_for_status = Mock()
-            mock_get.return_value = mock_response
-
+        with patch.object(collector, "_make_request", return_value=response):
             items = collector.collect()
 
             assert len(items) == 1

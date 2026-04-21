@@ -22,6 +22,13 @@ from exceptions import StorageError
 DB_ENV_VAR = "HOMERADAR_DB_PATH"
 DEFAULT_DB_PATH = Path("data") / "homeradar.duckdb"
 
+URLS_QUALITY_COLUMNS = {
+    "verification_state": "TEXT",
+    "verification_role": "TEXT",
+    "merge_policy": "TEXT",
+    "event_model": "TEXT",
+}
+
 
 @dataclass
 class DatabasePaths:
@@ -50,11 +57,51 @@ def _resolve_db_path(db_path: Optional[Path | str] = None) -> Path:
     elif db_env := os.environ.get(DB_ENV_VAR):
         path = Path(db_env)
     else:
-        path = DEFAULT_DB_PATH
+        path = _settings_db_path()
 
     # Ensure parent directory exists
     path.parent.mkdir(parents=True, exist_ok=True)
     return path
+
+
+def _settings_db_path() -> Path:
+    """Resolve the configured graph DB path, falling back to the historical default."""
+    try:
+        from homeradar.config_loader import load_settings
+
+        return load_settings().database_path
+    except Exception:
+        return DEFAULT_DB_PATH
+
+
+def _ensure_urls_quality_columns(conn: duckdb.DuckDBPyConnection) -> None:
+    """Add HomeRadar quality columns to existing `urls` tables."""
+    existing_columns = {
+        str(row[1])
+        for row in conn.execute("PRAGMA table_info('urls')").fetchall()
+    }
+    for column_name, column_type in URLS_QUALITY_COLUMNS.items():
+        if column_name not in existing_columns:
+            conn.execute(f"ALTER TABLE urls ADD COLUMN {column_name} {column_type}")
+
+
+def _text_or_none(value: object) -> str | None:
+    if value is None:
+        return None
+    text = str(value).strip()
+    return text or None
+
+
+def _home_quality_value(item: RawItem, key: str) -> str | None:
+    raw_data = item.raw_data if isinstance(item.raw_data, dict) else {}
+    home_quality = raw_data.get("home_quality")
+    quality_payload = home_quality if isinstance(home_quality, dict) else {}
+
+    if key == "verification_state":
+        return _text_or_none(
+            quality_payload.get(key) or raw_data.get("HomeVerificationState")
+        )
+    return _text_or_none(quality_payload.get(key))
 
 
 def init_database(db_path: Optional[Path | str] = None) -> DatabasePaths:
@@ -97,6 +144,12 @@ def init_database(db_path: Optional[Path | str] = None) -> DatabasePaths:
                 trust_tier TEXT,          -- T1_official, T2_professional, T3_aggregator
                 info_purpose TEXT,        -- transaction, news, listing, subscription
 
+                -- HomeRadar quality overlay
+                verification_state TEXT,  -- HomeVerificationState for output triage
+                verification_role TEXT,   -- official_primary, market_corroboration, etc.
+                merge_policy TEXT,        -- authoritative_source, cannot_override_*, etc.
+                event_model TEXT,         -- transaction_price, policy_context, etc.
+
                 -- Scoring and timestamps
                 score DOUBLE DEFAULT 0.0,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -105,6 +158,7 @@ def init_database(db_path: Optional[Path | str] = None) -> DatabasePaths:
             )
             """
         )
+        _ensure_urls_quality_columns(conn)
 
         # Entity relationships table
         conn.execute(
@@ -172,56 +226,86 @@ class GraphStore:
 
         try:
             with self._connection() as conn:
-                conn.execute("BEGIN TRANSACTION")
                 for item in items:
                     existing = conn.execute(
                         "SELECT url FROM urls WHERE url = ?", [item.url]
                     ).fetchone()
                     now = datetime.now()
 
-                    conn.execute(
-                        """
-                        INSERT INTO urls (
-                            url, title, summary, source_id, published_at,
-                            region, district, property_type, price, area,
-                            created_at, updated_at, last_seen_at
-                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                        ON CONFLICT (url) DO UPDATE SET
-                            title = EXCLUDED.title,
-                            summary = EXCLUDED.summary,
-                            source_id = EXCLUDED.source_id,
-                            published_at = EXCLUDED.published_at,
-                            region = EXCLUDED.region,
-                            district = EXCLUDED.district,
-                            property_type = EXCLUDED.property_type,
-                            price = EXCLUDED.price,
-                            area = EXCLUDED.area,
-                            updated_at = EXCLUDED.updated_at,
-                            last_seen_at = EXCLUDED.last_seen_at
-                        """,
-                        [
-                            item.url,
-                            item.title,
-                            item.summary,
-                            item.source_id,
-                            item.published_at,
-                            item.region,
-                            item.raw_data.get("district"),
-                            item.property_type,
-                            item.price,
-                            item.area,
-                            now,
-                            now,
-                            now,
-                        ],
-                    )
-
                     if existing:
+                        conn.execute("DELETE FROM url_entities WHERE url = ?", [item.url])
+                        conn.execute(
+                            """
+                            UPDATE urls SET
+                                title = ?,
+                                summary = ?,
+                                source_id = ?,
+                                published_at = ?,
+                                region = ?,
+                                district = ?,
+                                property_type = ?,
+                                price = ?,
+                                area = ?,
+                                verification_state = ?,
+                                verification_role = ?,
+                                merge_policy = ?,
+                                event_model = ?,
+                                updated_at = ?,
+                                last_seen_at = ?
+                            WHERE url = ?
+                            """,
+                            [
+                                item.title,
+                                item.summary,
+                                item.source_id,
+                                item.published_at,
+                                item.region,
+                                item.raw_data.get("district"),
+                                item.property_type,
+                                item.price,
+                                item.area,
+                                _home_quality_value(item, "verification_state"),
+                                _home_quality_value(item, "verification_role"),
+                                _home_quality_value(item, "merge_policy"),
+                                _home_quality_value(item, "event_model"),
+                                now,
+                                now,
+                                item.url,
+                            ],
+                        )
                         updated += 1
                     else:
+                        conn.execute(
+                            """
+                            INSERT INTO urls (
+                                url, title, summary, source_id, published_at,
+                                region, district, property_type, price, area,
+                                verification_state, verification_role, merge_policy, event_model,
+                                created_at, updated_at, last_seen_at
+                            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                            """,
+                            [
+                                item.url,
+                                item.title,
+                                item.summary,
+                                item.source_id,
+                                item.published_at,
+                                item.region,
+                                item.raw_data.get("district"),
+                                item.property_type,
+                                item.price,
+                                item.area,
+                                _home_quality_value(item, "verification_state"),
+                                _home_quality_value(item, "verification_role"),
+                                _home_quality_value(item, "merge_policy"),
+                                _home_quality_value(item, "event_model"),
+                                now,
+                                now,
+                                now,
+                            ],
+                        )
                         inserted += 1
 
-                conn.execute("COMMIT")
         except duckdb.Error as exc:
             raise StorageError(f"Failed to upsert HomeRadar items: {exc}") from exc
 
@@ -285,20 +369,53 @@ class GraphStore:
                 query = """
                     SELECT * FROM urls
                     WHERE source_id = ?
-                    ORDER BY published_at DESC
+                    ORDER BY COALESCE(published_at, last_seen_at, updated_at, created_at) DESC, url DESC
                     LIMIT ?
                 """
                 result = conn.execute(query, [source_id, limit])
             else:
                 query = """
                     SELECT * FROM urls
-                    ORDER BY published_at DESC
+                    ORDER BY COALESCE(published_at, last_seen_at, updated_at, created_at) DESC, url DESC
                     LIMIT ?
                 """
                 result = conn.execute(query, [limit])
 
             columns = [desc[0] for desc in result.description]
-            return [dict(zip(columns, row)) for row in result.fetchall()]
+            items = [dict(zip(columns, row)) for row in result.fetchall()]
+            self._attach_entities(conn, items)
+            return items
+
+    def _attach_entities(
+        self,
+        conn: duckdb.DuckDBPyConnection,
+        items: list[dict[str, Any]],
+    ) -> None:
+        urls = [str(item.get("url", "")) for item in items if item.get("url")]
+        for item in items:
+            item["entities"] = {}
+        if not urls:
+            return
+
+        placeholders = ", ".join("?" for _ in urls)
+        rows = conn.execute(
+            f"""
+            SELECT url, entity_type, entity_value
+            FROM url_entities
+            WHERE url IN ({placeholders})
+            ORDER BY url, entity_type, entity_value
+            """,
+            urls,
+        ).fetchall()
+
+        entity_map: dict[str, dict[str, list[str]]] = {}
+        for url, entity_type, entity_value in rows:
+            entity_map.setdefault(str(url), {}).setdefault(str(entity_type), []).append(
+                str(entity_value)
+            )
+
+        for item in items:
+            item["entities"] = entity_map.get(str(item.get("url", "")), {})
 
     def get_by_region(self, region: str, limit: int = 50) -> list[dict[str, Any]]:
         """
@@ -404,12 +521,17 @@ class GraphStore:
         cutoff = datetime.now(timezone.utc).replace(tzinfo=None) - timedelta(days=days)
         try:
             with self._connection() as conn:
-                conn.execute("BEGIN TRANSACTION")
                 count_row = conn.execute(
                     "SELECT COUNT(*) FROM urls WHERE COALESCE(published_at, last_seen_at) < ?",
                     [cutoff],
                 ).fetchone()
                 to_delete = int(count_row[0]) if count_row else 0
+                if to_delete == 0:
+                    return 0
+
+                # DuckDB may still enforce the URL FK against deleted child rows
+                # inside the same explicit transaction. Let each delete commit
+                # before moving to the parent table.
                 conn.execute(
                     """
                     DELETE FROM url_entities
@@ -423,7 +545,6 @@ class GraphStore:
                     "DELETE FROM urls WHERE COALESCE(published_at, last_seen_at) < ?",
                     [cutoff],
                 )
-                conn.execute("COMMIT")
                 return to_delete
         except duckdb.Error as exc:
             raise StorageError(f"Failed to delete expired HomeRadar records: {exc}") from exc

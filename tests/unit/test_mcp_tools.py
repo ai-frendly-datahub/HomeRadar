@@ -6,6 +6,8 @@ from pathlib import Path
 
 import duckdb
 
+from collectors.base import RawItem
+from graph.graph_store import GraphStore
 from homeradar.search_index import SearchIndex
 
 
@@ -132,6 +134,98 @@ def test_handle_recent_updates(tmp_path: Path) -> None:
     assert "Older" not in output
 
 
+def test_handle_recent_updates_includes_home_verification_fields(tmp_path: Path) -> None:
+    from mcp_server.tools import handle_recent_updates
+
+    db_path = tmp_path / "homeradar.duckdb"
+    store = GraphStore(db_path)
+    store.add_items(
+        [
+            RawItem(
+                url="https://example.com/molit/transaction/1",
+                title="Official transaction update",
+                summary="MOLIT transaction record.",
+                source_id="molit_apt_transaction",
+                published_at=datetime.now(UTC) - timedelta(hours=1),
+                region="서울",
+                raw_data={
+                    "district": "강남구",
+                    "home_quality": {
+                        "verification_state": "official_primary",
+                        "verification_role": "official_primary_transaction",
+                        "merge_policy": "authoritative_source",
+                        "event_model": "transaction_price",
+                    },
+                },
+            )
+        ]
+    )
+
+    output = handle_recent_updates(db_path=db_path, days=1, limit=10)
+    payload = json.loads(output)
+
+    assert payload["results"][0]["verification_state"] == "official_primary"
+    assert payload["results"][0]["verification_role"] == "official_primary_transaction"
+    assert payload["results"][0]["merge_policy"] == "authoritative_source"
+    assert payload["results"][0]["event_model"] == "transaction_price"
+
+
+def test_handle_quality_report_returns_freshness_and_verification_summary(
+    tmp_path: Path, monkeypatch
+) -> None:
+    from mcp_server.tools import handle_quality_report
+
+    monkeypatch.setenv("MOLIT_SERVICE_KEY", "test-key")
+    db_path = tmp_path / "homeradar.duckdb"
+    store = GraphStore(db_path)
+    store.add_items(
+        [
+            RawItem(
+                url="https://example.com/molit/transaction/2",
+                title="Official transaction update",
+                summary="MOLIT transaction record.",
+                source_id="molit_apt_transaction",
+                published_at=datetime.now(UTC) - timedelta(hours=1),
+                region="서울",
+                raw_data={
+                    "home_quality": {
+                        "verification_state": "official_primary",
+                        "verification_role": "official_primary_transaction",
+                        "merge_policy": "authoritative_source",
+                        "event_model": "transaction_price",
+                    },
+                },
+            )
+        ]
+    )
+    sources_path = tmp_path / "sources.yaml"
+    sources_path.write_text(
+        """
+data_quality:
+  freshness_sla:
+    molit_apt_transaction:
+      max_age_days: 2
+sources:
+  - id: molit_apt_transaction
+    name: MOLIT Transaction
+    type: api
+    enabled: true
+    freshness_sla_days: 2
+    event_model: transaction_price
+    verification_role: official_primary_transaction
+""",
+        encoding="utf-8",
+    )
+
+    output = handle_quality_report(db_path=db_path, sources_path=sources_path)
+    payload = json.loads(output)
+
+    assert payload["ok"] is True
+    report = payload["quality_report"]
+    assert report["summary"]["fresh_sources"] == 1
+    assert report["verification_states"] == {"official_primary": 1}
+
+
 def test_handle_sql_select(tmp_path: Path) -> None:
     from mcp_server.tools import handle_sql
 
@@ -168,7 +262,7 @@ def test_handle_top_trends(tmp_path: Path) -> None:
         title="a",
         link="https://example.com/a",
         collected_at=now - timedelta(days=1),
-        entities={"Region": ["ethiopia", "kenya"], "Roaster": ["blue bottle"]},
+        entities={"district": ["강남구", "서초구"], "complex": ["래미안"]},
     )
     _seed_article(
         db_path=db_path,
@@ -176,15 +270,17 @@ def test_handle_top_trends(tmp_path: Path) -> None:
         title="b",
         link="https://example.com/b",
         collected_at=now - timedelta(days=1),
-        entities={"Region": ["brazil"]},
+        entities={"district": ["강남구"]},
     )
 
     output = handle_top_trends(db_path=db_path, days=7, limit=10)
+    payload = json.loads(output)
 
-    assert "Region" in output
-    assert "3" in output
-    assert "Roaster" in output
-    assert "1" in output
+    assert payload["results"] == [
+        {"entity_value": "강남구", "mention_count": 2},
+        {"entity_value": "서초구", "mention_count": 1},
+    ]
+    assert "래미안" not in output
 
 
 def test_handle_price_watch_stub() -> None:

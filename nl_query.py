@@ -4,15 +4,13 @@ import re
 from dataclasses import dataclass
 
 
-DEFAULT_LIMIT = 20
-
-
 @dataclass(frozen=True)
 class ParsedQuery:
     original_query: str
     search_text: str
     days: int | None
-    limit: int
+    limit: int | None
+    category: str | None = None
 
 
 def parse_query(query: str) -> ParsedQuery:
@@ -52,10 +50,10 @@ def _extract_days(text: str) -> tuple[int | None, str]:
     return None, text
 
 
-def _extract_limit(text: str) -> tuple[int, str]:
+def _extract_limit(text: str) -> tuple[int | None, str]:
     match = re.search(r"(?:\b(?:top|limit)\s*(\d+)\b|(\d+)\s*개)", text, re.IGNORECASE)
     if not match:
-        return DEFAULT_LIMIT, text
+        return None, text
 
     value = int(match.group(1) or match.group(2))
     return value, _remove_match(text, match)

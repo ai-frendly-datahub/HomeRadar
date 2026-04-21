@@ -3,7 +3,7 @@ Unit tests for GraphStore.
 """
 
 import tempfile
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 import pytest
@@ -130,12 +130,73 @@ class TestGraphStoreAddItems:
         items = store.get_recent_items(limit=10)
         assert len(items) == 1
 
+    def test_add_duplicate_updates_when_entities_reference_url(self, store, sample_items):
+        """Update existing URL rows without violating url_entities FK references."""
+        item = sample_items[0]
+        store.add_items([item])
+        store.add_entities(item.url, {"district": ["강남구"], "keyword": ["청약"]})
+
+        updated_item = RawItem(
+            url=item.url,
+            title="Updated Gangnam Apartment Prices",
+            summary="Updated article summary.",
+            source_id=item.source_id,
+            published_at=item.published_at,
+            region=item.region,
+            raw_data={"district": "강남구"},
+        )
+        result = store.add_items([updated_item])
+
+        assert result == {"inserted": 0, "updated": 1}
+        with store._connection() as conn:
+            row = conn.execute(
+                "SELECT title FROM urls WHERE url = ?", [item.url]
+            ).fetchone()
+            entity_count = conn.execute(
+                "SELECT COUNT(*) FROM url_entities WHERE url = ?", [item.url]
+            ).fetchone()[0]
+
+        assert row[0] == "Updated Gangnam Apartment Prices"
+        assert entity_count == 0
+
+        reinserted_entities = store.add_entities(item.url, {"district": ["강남구"], "keyword": ["청약"]})
+        assert reinserted_entities == 2
+
     def test_add_empty_list(self, store):
         """Test adding empty list."""
         result = store.add_items([])
 
         assert result["inserted"] == 0
         assert result["updated"] == 0
+
+    def test_add_item_persists_home_verification_fields(self, store):
+        """Test that HomeRadar quality overlay fields are stored on urls."""
+        item = RawItem(
+            url="https://example.com/molit/transaction/1",
+            title="MOLIT transaction",
+            summary="Official transaction record.",
+            source_id="molit_apt_transaction",
+            published_at=datetime.now(UTC),
+            region="서울",
+            raw_data={
+                "district": "강남구",
+                "home_quality": {
+                    "verification_state": "official_primary",
+                    "verification_role": "official_primary_transaction",
+                    "merge_policy": "authoritative_source",
+                    "event_model": "transaction_price",
+                },
+            },
+        )
+
+        result = store.add_items([item])
+        assert result["inserted"] == 1
+
+        items = store.get_recent_items(limit=10)
+        assert items[0]["verification_state"] == "official_primary"
+        assert items[0]["verification_role"] == "official_primary_transaction"
+        assert items[0]["merge_policy"] == "authoritative_source"
+        assert items[0]["event_model"] == "transaction_price"
 
 
 class TestGraphStoreEntities:
@@ -180,6 +241,52 @@ class TestGraphStoreEntities:
         results = store.search_entities("district", "강남구")
         assert len(results) == 1
 
+    def test_delete_older_than_removes_child_entities_before_urls(self, store):
+        """Delete expired URL rows after their entity FK rows are removed."""
+        old_item = RawItem(
+            url="https://example.com/news/old",
+            title="Old policy article",
+            summary="Expired article with entities.",
+            source_id="test_news",
+            published_at=datetime.now(UTC) - timedelta(days=91),
+            region="서울",
+            raw_data={"district": "강남구"},
+        )
+        recent_item = RawItem(
+            url="https://example.com/news/recent",
+            title="Recent policy article",
+            summary="Recent article with entities.",
+            source_id="test_news",
+            published_at=datetime.now(UTC),
+            region="서울",
+            raw_data={"district": "강남구"},
+        )
+        store.add_items([old_item, recent_item])
+        store.add_entities(old_item.url, {"district": ["강남구"], "keyword": ["청약"]})
+        store.add_entities(recent_item.url, {"district": ["강남구"]})
+
+        deleted = store.delete_older_than(90)
+
+        assert deleted == 1
+        with store._connection() as conn:
+            old_url = conn.execute(
+                "SELECT COUNT(*) FROM urls WHERE url = ?", [old_item.url]
+            ).fetchone()[0]
+            old_entities = conn.execute(
+                "SELECT COUNT(*) FROM url_entities WHERE url = ?", [old_item.url]
+            ).fetchone()[0]
+            recent_url = conn.execute(
+                "SELECT COUNT(*) FROM urls WHERE url = ?", [recent_item.url]
+            ).fetchone()[0]
+            recent_entities = conn.execute(
+                "SELECT COUNT(*) FROM url_entities WHERE url = ?", [recent_item.url]
+            ).fetchone()[0]
+
+        assert old_url == 0
+        assert old_entities == 0
+        assert recent_url == 1
+        assert recent_entities == 1
+
 
 class TestGraphStoreQueries:
     """Tests for query methods."""
@@ -193,6 +300,72 @@ class TestGraphStoreQueries:
         assert len(items) == 2
         # Should be sorted by published_at DESC
         assert items[0]["url"] in [item.url for item in sample_items]
+        assert items[0]["entities"] == {}
+
+    def test_get_recent_items_includes_entities(self, store, sample_items):
+        """Recent report rows include entity maps for HTML rendering."""
+        store.add_items(sample_items)
+        store.add_entities(sample_items[0].url, {"district": ["강남구"], "keyword": ["청약"]})
+
+        items = store.get_recent_items(limit=10)
+        item_by_url = {item["url"]: item for item in items}
+
+        assert item_by_url[sample_items[0].url]["entities"] == {
+            "district": ["강남구"],
+            "keyword": ["청약"],
+        }
+        assert item_by_url[sample_items[1].url]["entities"] == {}
+
+    def test_get_recent_items_uses_observed_timestamp_fallback(self, store):
+        """Recent report windows should not collapse when published ordering is sparse."""
+        older_items = [
+            RawItem(
+                url=f"https://example.com/policy/{index}",
+                title=f"Policy context {index}",
+                summary="Official policy context for housing market monitoring.",
+                source_id="korea_policy_news",
+                published_at=datetime(2026, 3, 5, 12, index % 60, tzinfo=UTC),
+                region="서울",
+                raw_data={
+                    "home_quality": {
+                        "verification_state": "official_policy_corroboration",
+                        "verification_role": "official_policy_corroboration",
+                        "merge_policy": "official_context_only",
+                        "event_model": "policy_context",
+                    }
+                },
+            )
+            for index in range(40)
+        ]
+        market_items = [
+            RawItem(
+                url=f"https://example.com/market/{index}",
+                title=f"Market context {index}",
+                summary="Market context for apartment monitoring.",
+                source_id="hankyung_realestate",
+                published_at=datetime(2026, 4, 10, 12, index % 60, tzinfo=UTC),
+                region="서울",
+                raw_data={
+                    "home_quality": {
+                        "verification_state": "market_corroboration_requires_official_source",
+                        "verification_role": "market_corroboration",
+                        "merge_policy": "cannot_override_official_transaction",
+                        "event_model": "market_context",
+                    }
+                },
+            )
+            for index in range(70)
+        ]
+        store.add_items([*older_items, *market_items])
+
+        items = store.get_recent_items(limit=100)
+
+        assert len(items) == 100
+        assert {item["source_id"] for item in items} == {
+            "hankyung_realestate",
+            "korea_policy_news",
+        }
+        assert items[0]["source_id"] == "hankyung_realestate"
 
     def test_get_recent_items_with_source_filter(self, store, sample_items):
         """Test getting recent items filtered by source."""

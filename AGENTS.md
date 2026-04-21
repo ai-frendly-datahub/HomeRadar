@@ -1,6 +1,6 @@
 # HOMERADAR
 
-부동산 시장 데이터 수집·분석 레이더. RSS 뉴스 + MOLIT(국토교통부) 실거래가 API → 엔티티 추출 → DuckDB 그래프 저장.
+부동산 시장 데이터 수집·분석 레이더. 시장 뉴스와 함께 MOLIT 실거래/전월세, REB 청약, Onbid 공매 같은 공식 운영 데이터를 우선 붙입니다.
 
 ## STRUCTURE
 
@@ -27,7 +27,7 @@ HomeRadar/
 ├── demo_pipeline.py          # 전체 파이프라인 데모
 ├── demo_rss.py               # RSS 수집 데모
 ├── config/sources.yaml       # 소스 설정 (categories/ 대신 sources.yaml)
-└── main.py                   # --mode once|scheduler --sources molit,rss
+└── main.py                   # --mode once|scheduler --daily --sources molit,rss
 ```
 
 ## WHERE TO LOOK
@@ -37,23 +37,24 @@ HomeRadar/
 | 새 소스 추가 | `collectors/`, `config/sources.yaml` | BaseCollector 상속 + registry 등록 |
 | 엔티티 키워드 확장 | `analyzers/realestate_entities_data.py` | 지역명/건물유형/가격대 딕셔너리 |
 | 그래프 쿼리 | `graph/graph_queries.py` | DuckDB SQL 기반 노드/엣지 탐색 |
-| MOLIT API 키 | 환경변수 `MOLIT_SERVICE_KEY` | main.py에서 os.environ 참조 |
+| 공식 API 키 | 환경변수 `MOLIT_SERVICE_KEY`, `SUBSCRIPTION_API_KEY`, `ONBID_API_KEY` | 키가 없으면 해당 소스만 스킵 |
 
 ## DEVIATIONS FROM TEMPLATE
 
 - **Config**: `config/sources.yaml` 사용 (categories/ 패턴 아님)
 - **Storage**: RadarStorage 대신 `GraphStore` (노드/엣지 관계형)
-- **Entry point**: `--category` 대신 `--mode once|scheduler --sources <id,...>`
+- **Entry point**: `--category` 대신 `--mode once|scheduler --daily --sources <id,...>`
 - **Collector 패턴**: `CollectorRegistry.create_collector(source_id, config)` 팩토리
 - **로깅**: structlog 대신 stdlib `logging` + 파일 핸들러 (`logs/homeradar.log`)
+- **Source priority**: `공식 API -> 시장 뉴스 -> listing/browser` 순으로 유지
 
 ## COMMANDS
 
 ```bash
-python main.py --mode once
-python main.py --mode scheduler --interval 24
+python main.py --mode once --generate-report --snapshot-db
+python main.py --daily
 python main.py --sources molit_apt_transaction,hankyung_realestate
-MOLIT_SERVICE_KEY=<key> python main.py --mode once
+MOLIT_SERVICE_KEY=<key> SUBSCRIPTION_API_KEY=<key> ONBID_API_KEY=<key> python main.py --mode once --snapshot-db
 
 pytest tests/unit -m unit
 pytest tests/ -m "not network"

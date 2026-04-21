@@ -10,6 +10,7 @@ from mcp.types import TextContent, Tool
 
 from mcp_server.tools import (
     handle_price_watch,
+    handle_quality_report,
     handle_recent_updates,
     handle_search,
     handle_sql,
@@ -21,11 +22,25 @@ app = Server("homeradar")
 
 
 def _db_path() -> Path:
-    return Path(os.getenv("HOMERADAR_DB_PATH", "data/homeradar.duckdb"))
+    if db_path := os.getenv("HOMERADAR_DB_PATH"):
+        return Path(db_path)
+    try:
+        from homeradar.config_loader import load_settings
+
+        return load_settings().database_path
+    except Exception:
+        return Path("data/homeradar.duckdb")
 
 
 def _search_db_path() -> Path:
-    return Path(os.getenv("HOMERADAR_SEARCH_DB_PATH", "data/search_index.db"))
+    if search_db_path := os.getenv("HOMERADAR_SEARCH_DB_PATH"):
+        return Path(search_db_path)
+    try:
+        from homeradar.config_loader import load_settings
+
+        return load_settings().search_db_path
+    except Exception:
+        return Path("data/search_index.db")
 
 
 def _as_int(value: object, default: int) -> int:
@@ -90,6 +105,14 @@ async def list_tools() -> list[Tool]:
             },
         ),
         Tool(
+            name="quality_report",
+            description="Summarize HomeRadar source freshness, skip status, and HomeVerificationState counts.",
+            inputSchema={
+                "type": "object",
+                "properties": {},
+            },
+        ),
+        Tool(
             name="price_watch",
             description="Query transactions by region and price range from HomeRadar transaction data.",
             inputSchema={
@@ -136,6 +159,8 @@ async def call_tool(name: str, arguments: dict[str, object] | None) -> list[Text
         )
     elif name == "sql":
         result = handle_sql(db_path=_db_path(), query=str(args.get("query", "")))
+    elif name == "quality_report":
+        result = handle_quality_report(db_path=_db_path())
     elif name == "price_watch":
         result = handle_price_watch(
             db_path=_db_path(),

@@ -62,9 +62,16 @@ jobs:
       - name: Run Radar
         env:
           MOLIT_SERVICE_KEY: ${{ secrets.MOLIT_SERVICE_KEY }}
+          SUBSCRIPTION_API_KEY: ${{ secrets.SUBSCRIPTION_API_KEY }}
+          ONBID_API_KEY: ${{ secrets.ONBID_API_KEY }}
           RADAR_MAX_WORKERS: "1"
         run: |
-          python main.py --mode once --keep-days 90 --generate-report
+          python main.py --help > /tmp/homeradar-help.txt
+          cmd=(python main.py --mode once --keep-days 90 --generate-report)
+          grep -q -- "--keep-raw-days" /tmp/homeradar-help.txt && cmd+=(--keep-raw-days 180)
+          grep -q -- "--keep-report-days" /tmp/homeradar-help.txt && cmd+=(--keep-report-days 90)
+          grep -q -- "--snapshot-db" /tmp/homeradar-help.txt && cmd+=(--snapshot-db)
+          "${cmd[@]}"
 
       - name: Generate index.html
         run: |
@@ -86,19 +93,33 @@ jobs:
           retention-days: 30
 
       - name: Auto-commit data updates
+        continue-on-error: true
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update radar data [skip ci]"
-          file_pattern: "data/*.duckdb reports/*_summary.json"
+          file_pattern: "reports/*.html reports/*_summary.json"
           skip_fetch: false
           skip_checkout: false
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./reports
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com
+          commit_message: "docs: update radar report"
+          cname: ""
 
       - name: Archive DuckDB (30-day backup)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: radar-db-${{ github.run_number }}
-          path: data/homeradar.duckdb
+          path: |
+            data/homeradar.duckdb
+            data/snapshots/
           retention-days: 30
           if-no-files-found: ignore
 
