@@ -1,0 +1,95 @@
+{
+  "date": "2026-04-22",
+  "category": "home",
+  "article_count": 100,
+  "source_count": 3,
+  "matched_count": 78,
+  "top_entities": [
+    {
+      "name": "keyword",
+      "count": 106
+    },
+    {
+      "name": "district",
+      "count": 97
+    },
+    {
+      "name": "complex",
+      "count": 7
+    },
+    {
+      "name": "project",
+      "count": 2
+    }
+  ],
+  "sources": {
+    "korea_pressrelease_news": 50,
+    "hankyung_realestate": 32,
+    "korea_policy_news": 18
+  },
+  "generated_at": "2026-04-22T11:53:11.852353+09:00",
+  "quality_summary": {
+    "total_sources": 25,
+    "enabled_sources": 10,
+    "tracked_sources": 4,
+    "fresh_sources": 0,
+    "stale_sources": 0,
+    "stale_source_ids": [],
+    "missing_sources": 0,
+    "missing_source_ids": [],
+    "unknown_event_date_sources": 0,
+    "unknown_event_date_source_ids": [],
+    "skipped_sources": 19,
+    "skipped_disabled_sources": 15,
+    "skipped_disabled_source_ids": [
+      "mk_realestate",
+      "herald_realestate_all",
+      "herald_realestate_policy",
+      "herald_realestate_investment",
+      "herald_realestate_market",
+      "chosunbiz_realestate",
+      "newsdaily_realestate",
+      "heraldcorp_realestate",
+      "kb_kbland",
+      "naver_land",
+      "r114",
+      "zigbang",
+      "zigbang_browser",
+      "dabang",
+      "naver_land_main"
+    ],
+    "skipped_missing_env_sources": 4,
+    "skipped_missing_env_source_ids": [
+      "molit_apt_transaction",
+      "molit_apt_rent",
+      "reb_subscription",
+      "onbid_auction"
+    ],
+    "verification_state_count": 150,
+    "official_primary_status": "blocked_missing_env",
+    "official_primary_sources": 4,
+    "official_primary_fresh_sources": 0,
+    "official_primary_credentialed_sources": 0,
+    "official_primary_blocked_sources": 4,
+    "official_primary_blocked_source_ids": [
+      "molit_apt_transaction",
+      "molit_apt_rent",
+      "reb_subscription",
+      "onbid_auction"
+    ],
+    "official_primary_required_env": [
+      "MOLIT_SERVICE_KEY",
+      "ONBID_API_KEY",
+      "SUBSCRIPTION_API_KEY"
+    ],
+    "corroboration_only_items": 50,
+    "official_primary_items": 0
+  },
+  "verification_states": {
+    "market_corroboration_requires_official_source": 50,
+    "official_policy_corroboration": 100
+  },
+  "warnings": [
+    "official primary HomeRadar sources blocked by missing env (molit_apt_transaction, molit_apt_rent, reb_subscription, onbid_auction; required: MOLIT_SERVICE_KEY, ONBID_API_KEY, SUBSCRIPTION_API_KEY)"
+  ]
+}
