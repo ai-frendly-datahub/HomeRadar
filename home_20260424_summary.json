@@ -1,33 +1,33 @@
 {
-  "date": "2026-04-23",
+  "date": "2026-04-24",
   "category": "home",
   "article_count": 100,
   "source_count": 3,
-  "matched_count": 64,
+  "matched_count": 63,
   "top_entities": [
     {
       "name": "keyword",
-      "count": 105
+      "count": 98
     },
     {
       "name": "district",
-      "count": 87
+      "count": 82
     },
     {
       "name": "project",
-      "count": 6
+      "count": 8
     },
     {
       "name": "complex",
-      "count": 2
+      "count": 4
     }
   ],
   "sources": {
-    "hankyung_realestate": 35,
+    "hankyung_realestate": 40,
     "korea_pressrelease_news": 50,
-    "korea_policy_news": 15
+    "korea_policy_news": 10
   },
-  "generated_at": "2026-04-23T11:56:04.158857+09:00",
+  "generated_at": "2026-04-24T11:56:58.367577+09:00",
   "quality_summary": {
     "total_sources": 25,
     "enabled_sources": 10,
