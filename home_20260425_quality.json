@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-04-24T02:56:43.363430+00:00",
+  "generated_at": "2026-04-25T02:46:06.811820+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 10,
@@ -168,11 +168,11 @@
       "event_date_field": "",
       "observed_date_field": "",
       "item_count": 50,
-      "latest_event_at": "2026-04-24T11:39:35+00:00",
-      "latest_observed_at": "2026-04-24T11:56:52.476754+00:00",
+      "latest_event_at": "2026-04-25T08:35:11+00:00",
+      "latest_observed_at": "2026-04-25T11:46:18.680781+00:00",
       "age_days": 0.0,
-      "latest_title": "안양 동안구 북부, 1만4000가구 신흥 주거지로 재탄생 예정",
-      "latest_url": "https://www.hankyung.com/article/202604244086i"
+      "latest_title": "\"25평 20억, 아빠 돈 좀 빌려줘\"…청약 당첨되자 난리 났다 [돈앤톡]",
+      "latest_url": "https://www.hankyung.com/article/2026042312756"
     },
     {
       "source_id": "korea_policy_news",
@@ -190,11 +190,11 @@
       "event_date_field": "",
       "observed_date_field": "",
       "item_count": 50,
-      "latest_event_at": "2026-04-24T10:55:00+00:00",
-      "latest_observed_at": "2026-04-24T11:56:52.659303+00:00",
-      "age_days": 0.0,
-      "latest_title": "\"신짜오\"…이 대통령 부부, 하노이서 베트남 국민들과 하이파이브",
-      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148963361&call_from=rsslink"
+      "latest_event_at": "2026-04-24T22:36:00+00:00",
+      "latest_observed_at": "2026-04-25T11:46:18.855563+00:00",
+      "age_days": 0.17,
+      "latest_title": "청와대, \"5월 중 원유 7462만 배럴 확보…작년 월평균 87% 수준\"",
+      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148963399&call_from=rsslink"
     },
     {
       "source_id": "korea_pressrelease_news",
@@ -212,11 +212,11 @@
       "event_date_field": "",
       "observed_date_field": "",
       "item_count": 50,
-      "latest_event_at": "2026-04-24T11:30:00+00:00",
-      "latest_observed_at": "2026-04-24T11:56:52.837818+00:00",
-      "age_days": 0.0,
-      "latest_title": "[과학기술정보통신부]국내 최초 과학기술 AI 경진대회,  &#xff62;2026 AI Co-Scientist Challenge Korea&#xff63; 시상식 개최",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156757738&call_from=rsslink"
+      "latest_event_at": "2026-04-24T19:44:00+00:00",
+      "latest_observed_at": "2026-04-25T11:46:19.031534+00:00",
+      "age_days": 0.29,
+      "latest_title": "[국무조정실][보도자료] 김민석 국무총리, 천명지킴 발대식 개최",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156757844&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
