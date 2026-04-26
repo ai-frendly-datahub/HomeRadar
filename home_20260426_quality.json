@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-04-25T02:46:06.811820+00:00",
+  "generated_at": "2026-04-26T03:23:03.916792+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 10,
@@ -168,11 +168,11 @@
       "event_date_field": "",
       "observed_date_field": "",
       "item_count": 50,
-      "latest_event_at": "2026-04-25T08:35:11+00:00",
-      "latest_observed_at": "2026-04-25T11:46:18.680781+00:00",
+      "latest_event_at": "2026-04-26T11:15:01+00:00",
+      "latest_observed_at": "2026-04-26T12:23:14.856748+00:00",
       "age_days": 0.0,
-      "latest_title": "\"25평 20억, 아빠 돈 좀 빌려줘\"…청약 당첨되자 난리 났다 [돈앤톡]",
-      "latest_url": "https://www.hankyung.com/article/2026042312756"
+      "latest_title": "신림4구역 신통기획 확정…최고 32층 992가구로",
+      "latest_url": "https://www.hankyung.com/article/202604266529i"
     },
     {
       "source_id": "korea_policy_news",
@@ -191,8 +191,8 @@
       "observed_date_field": "",
       "item_count": 50,
       "latest_event_at": "2026-04-24T22:36:00+00:00",
-      "latest_observed_at": "2026-04-25T11:46:18.855563+00:00",
-      "age_days": 0.17,
+      "latest_observed_at": "2026-04-26T12:23:15.053402+00:00",
+      "age_days": 1.2,
       "latest_title": "청와대, \"5월 중 원유 7462만 배럴 확보…작년 월평균 87% 수준\"",
       "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148963399&call_from=rsslink"
     },
@@ -212,11 +212,11 @@
       "event_date_field": "",
       "observed_date_field": "",
       "item_count": 50,
-      "latest_event_at": "2026-04-24T19:44:00+00:00",
-      "latest_observed_at": "2026-04-25T11:46:19.031534+00:00",
-      "age_days": 0.29,
-      "latest_title": "[국무조정실][보도자료] 김민석 국무총리, 천명지킴 발대식 개최",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156757844&call_from=rsslink"
+      "latest_event_at": "2026-04-26T11:00:00+00:00",
+      "latest_observed_at": "2026-04-26T12:23:15.234780+00:00",
+      "age_days": 0.0,
+      "latest_title": "[농림축산식품부]저렴한 한우와 함께 소중한 가족과 즐거운 가정의 달 보내세요",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156757956&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
