@@ -529,6 +529,9 @@ class TestRunCollectionCycle:
         assert summary["article_count"] == 1
         assert summary["source_count"] == 1
         assert summary["matched_count"] == 1
+        assert summary["ontology"]["repo"] == "HomeRadar"
+        assert summary["ontology"]["ontology_version"] == "0.1.0"
+        assert "home.transaction_price" in summary["ontology"]["event_model_ids"]
         assert summary["quality_summary"]["official_primary_status"] == "not_configured"
         assert summary["quality_summary"]["verification_state_count"] == 0
         assert summary["quality_summary"]["skipped_sources"] == 0

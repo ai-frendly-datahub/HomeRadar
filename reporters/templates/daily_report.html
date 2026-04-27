@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-visual-system="radar-unified-v2" data-visual-surface="report">
+<html lang="en" data-visual-system="radar-unified-v2" data-visual-surface="report" data-visual-page="daily-report">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,6 +15,15 @@
 
     <style>
       :root{
+        --vs-color-bg:#05070c;
+        --vs-color-surface:rgba(10, 16, 30, .72);
+        --vs-color-text:#e9eefb;
+        --vs-color-muted:rgba(233, 238, 251, .72);
+        --vs-color-border:rgba(150, 190, 255, .14);
+        --vs-color-accent:#33d6c5;
+        --vs-radius-md:16px;
+        --vs-radius-lg:22px;
+        --vs-font-sans:"Pretendard Variable","Pretendard", ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
         --bg0:#05070c;
         --bg1:#070b14;
         --panel0:rgba(10, 16, 30, .72);
@@ -31,12 +40,12 @@
         --accent:#f6c84c;
         --danger:#ff5b6e;
 
-        --radius:16px;
-        --radius2:22px;
+        --radius:var(--vs-radius-md);
+        --radius2:var(--vs-radius-lg);
         --max:1180px;
 
         --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-        --sans:"Pretendard Variable","Pretendard", ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+        --sans:var(--vs-font-sans);
 
         --focus: 0 0 0 3px rgba(51, 214, 197, .20), 0 0 0 1px rgba(51, 214, 197, .70);
       }
@@ -471,6 +480,12 @@
       .footer a:hover{color: rgba(51,214,197,.90)}
 
       :root{
+        --vs-color-bg:#11100f;
+        --vs-color-surface:rgba(26, 29, 28, .78);
+        --vs-color-text:#f4f2ea;
+        --vs-color-muted:rgba(244, 242, 234, .72);
+        --vs-color-border:rgba(215, 201, 123, .18);
+        --vs-color-accent:#37d7bd;
         --bg0:#11100f;
         --bg1:#171613;
         --panel0:rgba(26, 29, 28, .78);

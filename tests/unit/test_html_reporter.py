@@ -7,7 +7,7 @@ import pytest
 
 from collectors.base import RawItem
 from graph.graph_store import GraphStore
-from reporters.html_reporter import HtmlReporter
+from reporters.html_reporter import HtmlReporter, generate_index_html
 
 
 @pytest.fixture
@@ -231,3 +231,16 @@ def test_generate_report_renders_home_quality_summary(
     assert "SUBSCRIPTION_API_KEY not set" in rendered
     assert "disabled_listing" in rendered
     assert "source disabled" in rendered
+
+
+def test_generate_index_html_uses_unified_surface_markers(tmp_path: Path) -> None:
+    report_dir = tmp_path / "reports"
+    report_dir.mkdir(parents=True)
+    (report_dir / "daily_report.html").write_text("sample", encoding="utf-8")
+
+    index_path = generate_index_html(report_dir)
+    rendered = index_path.read_text(encoding="utf-8")
+
+    assert 'data-visual-system="radar-unified-v2"' in rendered
+    assert 'data-visual-surface="report"' in rendered
+    assert 'data-visual-page="index"' in rendered

@@ -28,6 +28,8 @@ from typing import Any
 import duckdb
 import yaml
 
+from radar_core.ontology import build_summary_ontology_metadata
+
 from analyzers import EntityExtractor
 from collectors import CollectorRegistry, RawItem
 from collectors.base import resolve_max_workers
@@ -197,7 +199,17 @@ def _write_summary_report(
         "source_count": source_count,
         "matched_count": matched_count,
     }
-    summary_path = _generate_summary_json("home", articles, summary_stats, report_dir)
+    summary_path = _generate_summary_json(
+        "home",
+        articles,
+        summary_stats,
+        report_dir,
+        ontology_metadata=build_summary_ontology_metadata(
+            "HomeRadar",
+            category_name="home",
+            search_from=Path(__file__).resolve(),
+        ),
+    )
     _augment_summary_with_quality(summary_path, quality_report)
     return summary_path
 

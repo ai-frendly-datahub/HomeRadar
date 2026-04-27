@@ -549,22 +549,32 @@ def generate_index_html(report_dir: Path) -> Path:
         body_content = '<div class="empty">No reports available yet.</div>'
 
     html_content = f"""<!doctype html>
-<html lang="en" data-visual-system="radar-unified-v2" data-visual-surface="index">
+<html lang="en" data-visual-system="radar-unified-v2" data-visual-surface="report" data-visual-page="index">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark">
   <title>Radar Reports</title>
   <style>
-    body {{ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; padding: 24px; background: linear-gradient(180deg, #11100f, #171613 55%, #0e0d0b); color: #f4f2ea; }}
+    :root {{
+      --vs-color-bg: #11100f;
+      --vs-color-surface: rgba(29, 33, 31, .88);
+      --vs-color-text: #f4f2ea;
+      --vs-color-muted: rgba(244, 242, 234, .68);
+      --vs-color-border: rgba(215, 201, 123, .22);
+      --vs-color-accent: #37d7bd;
+      --vs-radius-md: 8px;
+      --vs-font-sans: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }}
+    body {{ font-family: var(--vs-font-sans); margin: 0; padding: 24px; background: linear-gradient(180deg, var(--vs-color-bg), #171613 55%, #0e0d0b); color: var(--vs-color-text); }}
     h1 {{ margin: 0 0 8px 0; }}
-    .muted {{ color: rgba(244, 242, 234, .68); font-size: 13px; margin-bottom: 24px; }}
+    .muted {{ color: var(--vs-color-muted); font-size: 13px; margin-bottom: 24px; }}
     .reports {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }}
-    .card {{ background: rgba(29, 33, 31, .88); border: 1px solid rgba(215, 201, 123, .22); border-radius: 8px; padding: 16px; box-shadow: 0 14px 42px rgba(0,0,0,0.28); transition: box-shadow 0.2s; }}
+    .card {{ background: var(--vs-color-surface); border: 1px solid var(--vs-color-border); border-radius: var(--vs-radius-md); padding: 16px; box-shadow: 0 14px 42px rgba(0,0,0,0.28); transition: box-shadow 0.2s; }}
     .card:hover {{ box-shadow: 0 4px 6px rgba(0,0,0,0.08); }}
-    a {{ color: #f4f2ea; text-decoration: none; }}
+    a {{ color: var(--vs-color-text); text-decoration: none; }}
     a:hover {{ text-decoration: underline; }}
-    .empty {{ text-align: center; color: rgba(244, 242, 234, .68); padding: 48px; }}
+    .empty {{ text-align: center; color: var(--vs-color-muted); padding: 48px; }}
   </style>
 </head>
 <body>

@@ -3,6 +3,7 @@ from __future__ import annotations
 from collections.abc import Iterable
 from pathlib import Path
 
+from radar_core.ontology import build_summary_ontology_metadata
 from radar_core.report_utils import (
     generate_index_html as _core_generate_index_html,
     generate_report as _core_generate_report,
@@ -58,6 +59,11 @@ def generate_report(
         stats=stats,
         errors=errors,
         plugin_charts=plugin_charts if plugin_charts else None,
+        ontology_metadata=build_summary_ontology_metadata(
+            "HomeRadar",
+            category_name=category.category_name,
+            search_from=Path(__file__).resolve(),
+        ),
     )
 
 

@@ -26,6 +26,9 @@ if not RSS_SOURCES:
 
 KNOWN_EMPTY_FEEDS: dict[str, str] = {
     "mk_realestate": "Feed responds with 200 but empty body from test network",
+    "asiae_realestate": "Feed responds with 200 but currently returns no parseable RSS entries",
+    "edaily_realestate": "Feed responds with 200 but currently returns no parseable RSS entries",
+    "news1_realestate": "Feed responds with 200 but currently returns no RSS entries",
 }
 
 
