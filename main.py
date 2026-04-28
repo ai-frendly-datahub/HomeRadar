@@ -28,7 +28,7 @@ from typing import Any
 import duckdb
 import yaml
 
-from radar_core.ontology import build_summary_ontology_metadata
+from radar_core.ontology import build_event_model_payload, build_summary_ontology_metadata
 
 from analyzers import EntityExtractor
 from collectors import CollectorRegistry, RawItem
@@ -144,6 +144,71 @@ def _row_summary_payload(
     }
 
 
+_HOMERADAR_REPO_NAME = "HomeRadar"
+
+
+def _resolve_event_model_key(row: dict[str, Any] | None) -> str | None:
+    """Return the contract event_model key carried on the storage row, if present."""
+    if not isinstance(row, dict):
+        return None
+    raw = row.get("event_model")
+    if raw is None:
+        return None
+    text = str(raw).strip()
+    return text or None
+
+
+def _attach_event_model_payload(
+    summary_payload: dict[str, Any],
+    *,
+    event_model_key: str | None,
+    source_row: dict[str, Any] | None = None,
+) -> None:
+    """Enrich a summary article dict with its contract-bound event_model_payload.
+
+    Cycle 11 partial wiring: relies on radar-core's dict-aware
+    ``build_event_model_payload`` (Mapping → SimpleNamespace conversion) plus the
+    summary baseline keys (``title`` / ``link`` / ``source`` / ``summary``) for
+    canonical extractor coverage. Domain fields that the storage row does not
+    carry (e.g. ``lawd_cd``, ``deal_date``, ``project_id``) fall through to None
+    and are dropped by ``build_event_model_payload``, yielding an opt-in partial
+    payload. ``published_date`` is overridden from ``published_at`` so the
+    fully-mappable ``policy_context`` / ``market_context`` event models reach
+    100 percent coverage in the standard summary path.
+    """
+    if not event_model_key:
+        return
+    overrides: dict[str, Any] = {}
+    published_at = summary_payload.get("published_at")
+    if published_at:
+        overrides["published_date"] = published_at
+    if isinstance(source_row, dict):
+        # Surface domain attributes that live on the storage row but are absent
+        # from the trimmed summary dict so the extractor can populate them when
+        # the contract declares them.
+        for field_name in ("region", "district", "property_type"):
+            value = source_row.get(field_name)
+            if value not in (None, ""):
+                overrides.setdefault(field_name, value)
+    try:
+        payload = build_event_model_payload(
+            summary_payload,
+            repo_name=_HOMERADAR_REPO_NAME,
+            event_model_key=event_model_key,
+            overrides=overrides,
+            search_from=Path(__file__).resolve(),
+        )
+    except Exception as exc:  # noqa: BLE001 — best-effort enrichment, never fatal
+        logger.debug(
+            "HomeRadar event_model_payload enrichment skipped for %s: %s",
+            event_model_key,
+            exc,
+        )
+        return
+    if payload:
+        summary_payload["event_model_payload"] = payload
+
+
 def _summary_articles(
     store: GraphStore,
     fallback_items: list[RawItem],
@@ -164,10 +229,16 @@ def _summary_articles(
     if recent_rows:
         urls = [str(item.get("url", "")) for item in recent_rows if item.get("url")]
         entity_map = _summary_entity_map(store, urls)
-        return [
-            _row_summary_payload(item, entity_map.get(str(item.get("url", "")), {}))
-            for item in recent_rows
-        ]
+        articles: list[dict[str, Any]] = []
+        for item in recent_rows:
+            payload = _row_summary_payload(item, entity_map.get(str(item.get("url", "")), {}))
+            _attach_event_model_payload(
+                payload,
+                event_model_key=_resolve_event_model_key(item),
+                source_row=item,
+            )
+            articles.append(payload)
+        return articles
 
     urls = [item.url for item in fallback_items]
     entity_map = _summary_entity_map(store, urls)

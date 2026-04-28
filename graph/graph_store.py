@@ -7,6 +7,8 @@ in a graph structure optimized for queries.
 
 from __future__ import annotations
 
+import json
+import logging
 import os
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
@@ -19,6 +21,9 @@ from collectors.base import RawItem
 from exceptions import StorageError
 
 
+logger = logging.getLogger(__name__)
+
+
 DB_ENV_VAR = "HOMERADAR_DB_PATH"
 DEFAULT_DB_PATH = Path("data") / "homeradar.duckdb"
 
@@ -28,6 +33,23 @@ URLS_QUALITY_COLUMNS = {
     "merge_policy": "TEXT",
     "event_model": "TEXT",
 }
+
+# Cycle 14 (Option D phase 1+2): dual-write articles mart with ontology_json so that
+# `articles_ontology_capable` (radar-analysis builder.py:868) flips to True without
+# touching the urls read path.  HomeRadar domain columns are flattened into the
+# ontology_json payload below; event_model_id mirrors the existing `event_model`
+# label reused by cycle 11's `_resolve_event_model_key` helper.
+HOMERADAR_ONTOLOGY_DOMAIN_KEYS = (
+    "region",
+    "district",
+    "property_type",
+    "price",
+    "area",
+    "trust_tier",
+    "info_purpose",
+    "verification_state",
+    "verification_role",
+)
 
 
 @dataclass
@@ -104,6 +126,88 @@ def _home_quality_value(item: RawItem, key: str) -> str | None:
     return _text_or_none(quality_payload.get(key))
 
 
+def _coerce_number(value: object) -> float | None:
+    """Best-effort numeric coercion for ontology_json payload values."""
+    if value is None or isinstance(value, bool):
+        return None
+    if isinstance(value, (int, float)):
+        return float(value)
+    text = str(value).strip()
+    if not text:
+        return None
+    try:
+        return float(text)
+    except (TypeError, ValueError):
+        return None
+
+
+def _build_homeradar_ontology_json(item: RawItem) -> str:
+    """Serialize HomeRadar domain + quality columns into a JSON ontology payload.
+
+    The payload mirrors the keys consumed by ``radar-analysis`` (specifically the
+    ``event_model_id`` and ``source_role_id`` lookups in builder.py).  Domain
+    columns that are empty or ``None`` are dropped so the resulting JSON stays
+    compact and the count signals (ontology_row_count, event_model_counts) only
+    fire on rows with meaningful data.
+    """
+    payload: dict[str, Any] = {}
+
+    raw_data = item.raw_data if isinstance(item.raw_data, dict) else {}
+
+    # Domain columns sourced from RawItem fields when populated; otherwise fall
+    # back to raw_data (mirrors GraphStore.add_items column choices).
+    candidates: dict[str, Any] = {
+        "region": item.region if item.region is not None else raw_data.get("region"),
+        "district": raw_data.get("district"),
+        "property_type": (
+            item.property_type
+            if item.property_type is not None
+            else raw_data.get("property_type")
+        ),
+        "price": item.price if item.price is not None else raw_data.get("price"),
+        "area": item.area if item.area is not None else raw_data.get("area"),
+        "trust_tier": raw_data.get("trust_tier"),
+        "info_purpose": raw_data.get("info_purpose"),
+        "verification_state": _home_quality_value(item, "verification_state"),
+        "verification_role": _home_quality_value(item, "verification_role"),
+    }
+
+    for key in HOMERADAR_ONTOLOGY_DOMAIN_KEYS:
+        raw_value = candidates.get(key)
+        if raw_value is None:
+            continue
+        if key in {"price", "area"}:
+            num = _coerce_number(raw_value)
+            if num is None:
+                continue
+            payload[key] = num
+        else:
+            text = _text_or_none(raw_value)
+            if text is None:
+                continue
+            payload[key] = text
+
+    event_model_id = _home_quality_value(item, "event_model")
+    if event_model_id is None:
+        # Fall back to row-level raw_data label if home_quality is absent.
+        event_model_id = _text_or_none(raw_data.get("event_model"))
+    if event_model_id is not None:
+        payload["event_model_id"] = event_model_id
+
+    merge_policy = _home_quality_value(item, "merge_policy")
+    if merge_policy is not None:
+        payload["merge_policy"] = merge_policy
+
+    source_role = _home_quality_value(item, "verification_role")
+    if source_role is not None:
+        # Surface the verification role as a source_role_id alias too so the
+        # builder's source_role_counts can register HomeRadar without further
+        # downstream wiring changes.
+        payload.setdefault("source_role_id", source_role)
+
+    return json.dumps(payload, ensure_ascii=False)
+
+
 def init_database(db_path: Optional[Path | str] = None) -> DatabasePaths:
     """
     Initialize DuckDB database with required tables.
@@ -176,12 +280,40 @@ def init_database(db_path: Optional[Path | str] = None) -> DatabasePaths:
             """
         )
 
+        # Cycle 14 (Option D phase 1): articles dual-write mart.  Mirrors the
+        # radar-core RadarStorage articles table layout (link/source/published
+        # naming aligned with the spec) so downstream `articles_ontology_capable`
+        # detection in radar-analysis fires when ontology_json rows exist.  The
+        # urls table remains the source of truth for HomeRadar's read paths.
+        conn.execute(
+            "CREATE SEQUENCE IF NOT EXISTS articles_id_seq START 1"
+        )
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS articles (
+                id BIGINT PRIMARY KEY DEFAULT nextval('articles_id_seq'),
+                url TEXT UNIQUE NOT NULL,
+                title TEXT,
+                summary TEXT,
+                source_id TEXT,
+                published_at TIMESTAMP,
+                collected_at TIMESTAMP,
+                event_model_id TEXT,
+                ontology_json TEXT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+            """
+        )
+
         # Create indexes for common queries
         conn.execute("CREATE INDEX IF NOT EXISTS idx_urls_published ON urls(published_at DESC)")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_urls_source ON urls(source_id)")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_urls_region ON urls(region)")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_entities_type ON url_entities(entity_type)")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_entities_value ON url_entities(entity_value)")
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_articles_category_time ON articles(source_id, published_at)"
+        )
 
     return DatabasePaths(path=path)
 
@@ -305,6 +437,47 @@ class GraphStore:
                             ],
                         )
                         inserted += 1
+
+                    # Cycle 14 (Option D phase 2): best-effort dual-write into the
+                    # articles ontology mart.  Failures here MUST NOT impact the
+                    # urls upsert above; we log a warning and move on so the urls
+                    # path stays the source of truth for HomeRadar reads.
+                    try:
+                        ontology_json = _build_homeradar_ontology_json(item)
+                        event_model_id = _home_quality_value(item, "event_model")
+                        conn.execute(
+                            """
+                            INSERT INTO articles (
+                                url, title, summary, source_id, published_at,
+                                collected_at, event_model_id, ontology_json
+                            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                            ON CONFLICT (url) DO UPDATE SET
+                                title = EXCLUDED.title,
+                                summary = EXCLUDED.summary,
+                                source_id = EXCLUDED.source_id,
+                                published_at = EXCLUDED.published_at,
+                                collected_at = EXCLUDED.collected_at,
+                                event_model_id = EXCLUDED.event_model_id,
+                                ontology_json = EXCLUDED.ontology_json
+                            """,
+                            [
+                                item.url,
+                                item.title,
+                                item.summary,
+                                item.source_id,
+                                item.published_at,
+                                now,
+                                event_model_id,
+                                ontology_json,
+                            ],
+                        )
+                    except Exception as exc:  # noqa: BLE001 - best-effort dual-write
+                        logger.warning(
+                            "HomeRadar articles dual-write failed for source=%s url=%s: %s",
+                            item.source_id,
+                            item.url,
+                            exc,
+                        )
 
         except duckdb.Error as exc:
             raise StorageError(f"Failed to upsert HomeRadar items: {exc}") from exc

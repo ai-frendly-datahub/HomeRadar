@@ -2,14 +2,18 @@
 Unit tests for GraphStore.
 """
 
+import json
+import logging
 import tempfile
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
+from unittest.mock import patch
 
+import duckdb
 import pytest
 
 from collectors.base import RawItem
-from graph.graph_store import GraphStore, init_database
+from graph.graph_store import GraphStore, _build_homeradar_ontology_json, init_database
 
 
 @pytest.fixture
@@ -436,3 +440,207 @@ class TestGraphStoreEdgeCases:
         items = store.get_recent_items()
         assert len(items) == 1
         assert items[0]["region"] is None
+
+
+class TestArticlesDualWrite:
+    """Cycle 14 (Option D phase 1+2): articles ontology mart dual-write."""
+
+    @staticmethod
+    def _full_item(url: str = "https://example.com/articles/molit/1") -> RawItem:
+        return RawItem(
+            url=url,
+            title="MOLIT transaction",
+            summary="Official transaction record.",
+            source_id="molit_apt_transaction",
+            published_at=datetime.now(UTC),
+            region="서울",
+            property_type="아파트",
+            price=12.5,
+            area=84.5,
+            raw_data={
+                "district": "강남구",
+                "trust_tier": "T1_official",
+                "info_purpose": "transaction",
+                "home_quality": {
+                    "verification_state": "official_primary",
+                    "verification_role": "official_primary_transaction",
+                    "merge_policy": "authoritative_source",
+                    "event_model": "transaction_price",
+                },
+            },
+        )
+
+    def test_articles_table_schema(self, store):
+        """`_ensure_tables` provisions an articles table with ontology_json TEXT column."""
+        with store._connection() as conn:
+            cols = conn.execute("PRAGMA table_info('articles')").fetchall()
+
+        col_map = {row[1]: row[2] for row in cols}
+        assert "id" in col_map and col_map["id"] == "BIGINT"
+        assert "url" in col_map and col_map["url"] == "VARCHAR"
+        assert "source_id" in col_map and col_map["source_id"] == "VARCHAR"
+        assert "published_at" in col_map and col_map["published_at"] == "TIMESTAMP"
+        assert "collected_at" in col_map and col_map["collected_at"] == "TIMESTAMP"
+        assert "event_model_id" in col_map and col_map["event_model_id"] == "VARCHAR"
+        # builder.py:781 looks for the literal column name "ontology_json".
+        assert "ontology_json" in col_map
+        assert col_map["ontology_json"] == "VARCHAR"
+
+    def test_add_items_populates_articles_with_valid_json(self, store):
+        """add_items writes a row whose ontology_json is valid JSON with domain keys."""
+        item = self._full_item()
+
+        result = store.add_items([item])
+        assert result["inserted"] == 1
+
+        with store._connection() as conn:
+            row = conn.execute(
+                """
+                SELECT url, source_id, event_model_id, ontology_json
+                FROM articles
+                WHERE url = ?
+                """,
+                [item.url],
+            ).fetchone()
+
+        assert row is not None
+        assert row[0] == item.url
+        assert row[1] == "molit_apt_transaction"
+        assert row[2] == "transaction_price"
+
+        payload = json.loads(row[3])
+        assert isinstance(payload, dict)
+        # Domain columns serialised into ontology_json.
+        assert payload["region"] == "서울"
+        assert payload["district"] == "강남구"
+        assert payload["property_type"] == "아파트"
+        assert payload["price"] == 12.5
+        assert payload["area"] == 84.5
+        assert payload["trust_tier"] == "T1_official"
+        assert payload["info_purpose"] == "transaction"
+        assert payload["verification_state"] == "official_primary"
+        assert payload["verification_role"] == "official_primary_transaction"
+        # event_model_id mirrors the row-level event_model label (cycle 11 reuse).
+        assert payload["event_model_id"] == "transaction_price"
+        # source_role_id alias is populated for builder.py source_role_counts.
+        assert payload["source_role_id"] == "official_primary_transaction"
+
+    def test_add_items_dual_writes_urls_and_articles(self, store):
+        """A single add_items call lands rows in both urls and articles tables."""
+        item = self._full_item("https://example.com/articles/dual/1")
+
+        store.add_items([item])
+
+        with store._connection() as conn:
+            urls_row = conn.execute(
+                "SELECT url, region, event_model FROM urls WHERE url = ?",
+                [item.url],
+            ).fetchone()
+            articles_row = conn.execute(
+                "SELECT url, source_id, event_model_id FROM articles WHERE url = ?",
+                [item.url],
+            ).fetchone()
+
+        assert urls_row is not None
+        assert urls_row[0] == item.url
+        assert urls_row[1] == "서울"
+        assert urls_row[2] == "transaction_price"
+
+        assert articles_row is not None
+        assert articles_row[0] == item.url
+        assert articles_row[1] == "molit_apt_transaction"
+        assert articles_row[2] == "transaction_price"
+
+    def test_articles_insert_failure_preserves_urls_and_logs_warning(
+        self, store, caplog
+    ):
+        """A simulated articles INSERT failure must not break the urls upsert."""
+        item = self._full_item("https://example.com/articles/failure/1")
+
+        class _FailingArticlesConnection:
+            """Proxy connection that injects an exception on articles INSERTs."""
+
+            def __init__(self, real_conn):
+                self._real = real_conn
+
+            def __enter__(self):
+                self._real.__enter__()
+                return self
+
+            def __exit__(self, exc_type, exc, tb):
+                return self._real.__exit__(exc_type, exc, tb)
+
+            def execute(self, query, *args, **kwargs):
+                if isinstance(query, str) and "INSERT INTO articles" in query:
+                    raise duckdb.Error("simulated articles dual-write failure")
+                return self._real.execute(query, *args, **kwargs)
+
+            def __getattr__(self, name):
+                return getattr(self._real, name)
+
+        original_connection = store._connection
+
+        def patched_connection():
+            return _FailingArticlesConnection(original_connection())
+
+        with caplog.at_level(logging.WARNING, logger="graph.graph_store"):
+            with patch.object(store, "_connection", side_effect=patched_connection):
+                result = store.add_items([item])
+
+        # urls upsert should have succeeded despite the articles failure.
+        assert result == {"inserted": 1, "updated": 0}
+
+        with store._connection() as conn:
+            urls_count = conn.execute(
+                "SELECT COUNT(*) FROM urls WHERE url = ?", [item.url]
+            ).fetchone()[0]
+            articles_count = conn.execute(
+                "SELECT COUNT(*) FROM articles WHERE url = ?", [item.url]
+            ).fetchone()[0]
+
+        assert urls_count == 1
+        assert articles_count == 0
+
+        warnings = [
+            record
+            for record in caplog.records
+            if record.levelno == logging.WARNING
+            and "HomeRadar articles dual-write failed" in record.getMessage()
+        ]
+        assert warnings, "expected a warning log message for the failed articles dual-write"
+        message = warnings[0].getMessage()
+        assert item.source_id in message
+        assert item.url in message
+
+
+class TestBuildHomeradarOntologyJson:
+    """Cycle 14: ontology_json builder helper unit coverage."""
+
+    def test_drops_empty_domain_keys(self):
+        item = RawItem(
+            url="https://example.com/sparse",
+            title="Sparse",
+            summary="",
+            source_id="hankyung_realestate",
+            published_at=datetime.now(UTC),
+            region="서울",
+            raw_data={},
+        )
+
+        payload = json.loads(_build_homeradar_ontology_json(item))
+
+        assert payload == {"region": "서울"}
+
+    def test_event_model_id_falls_back_to_raw_data_label(self):
+        item = RawItem(
+            url="https://example.com/fallback",
+            title="Fallback",
+            summary="",
+            source_id="hankyung_realestate",
+            published_at=datetime.now(UTC),
+            raw_data={"event_model": "market_context"},
+        )
+
+        payload = json.loads(_build_homeradar_ontology_json(item))
+
+        assert payload["event_model_id"] == "market_context"

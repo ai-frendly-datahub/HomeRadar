@@ -13,6 +13,7 @@ import yaml
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
+sys.path.insert(0, str(PROJECT_ROOT.parent / "radar-core"))
 
 from homeradar.common.quality_checks import run_all_checks  # noqa: E402
 from homeradar.quality_report import build_quality_report, write_quality_report  # noqa: E402

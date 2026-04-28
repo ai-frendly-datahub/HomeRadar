@@ -544,3 +544,101 @@ class TestRunCollectionCycle:
             assert result["success"] is False
             assert "error" in result
             assert result["error"] == "Database error"
+
+
+class TestSummaryArticlesEventModelWiring:
+    """Cycle 11 partial wiring: ``_summary_articles`` enriches each article with
+    a contract-bound ``event_model_payload`` whenever the storage row carries an
+    ``event_model`` column matching the HomeRadar runtime contract."""
+
+    def _make_store(self, rows):
+        store = Mock()
+        store.get_recent_items.return_value = rows
+        store._connection.return_value.__enter__ = Mock(
+            return_value=Mock(
+                execute=Mock(return_value=Mock(fetchall=Mock(return_value=[])))
+            )
+        )
+        store._connection.return_value.__exit__ = Mock(return_value=False)
+        return store
+
+    def test_summary_articles_attaches_full_payload_for_policy_context(self):
+        from main import _summary_articles
+
+        rows = [
+            {
+                "url": "https://policy.example/release/1",
+                "title": "Tax revision announced",
+                "summary": "context",
+                "source_id": "korea_policy_news",
+                "published_at": "2026-04-15T00:00:00Z",
+                "created_at": "2026-04-16T00:00:00Z",
+                "event_model": "policy_context",
+                "region": "서울",
+            }
+        ]
+        articles = _summary_articles(self._make_store(rows), [], limit=10)
+        assert len(articles) == 1
+        payload = articles[0].get("event_model_payload")
+        assert payload is not None, "policy_context should yield a full payload"
+        assert payload == {
+            "title": "Tax revision announced",
+            "published_date": "2026-04-15T00:00:00Z",
+            "source_url": "https://policy.example/release/1",
+        }
+
+    def test_summary_articles_partial_payload_for_transaction_price(self):
+        from main import _summary_articles
+
+        rows = [
+            {
+                "url": "https://land.example/deal/9",
+                "title": "Apt sale",
+                "summary": "",
+                "source_id": "molit_apt_transaction",
+                "published_at": "2026-04-22T00:00:00Z",
+                "event_model": "transaction_price",
+            }
+        ]
+        articles = _summary_articles(self._make_store(rows), [], limit=10)
+        payload = articles[0]["event_model_payload"]
+        # lawd_cd / deal_date are absent on the row → opt-in partial payload
+        # carrying source_url only (still emitter-meaningful for traceability).
+        assert payload == {"source_url": "https://land.example/deal/9"}
+
+    def test_summary_articles_skips_payload_without_event_model_column(self):
+        from main import _summary_articles
+
+        rows = [
+            {
+                "url": "https://misc.example/x",
+                "title": "Untagged",
+                "summary": "",
+                "source_id": "misc",
+                "published_at": "2026-04-23T00:00:00Z",
+                "event_model": None,
+            }
+        ]
+        articles = _summary_articles(self._make_store(rows), [], limit=10)
+        # No event_model on the row → no enrichment key added.
+        assert "event_model_payload" not in articles[0]
+
+    def test_summary_articles_skips_payload_when_listing_inventory_unmappable(self):
+        from main import _summary_articles
+
+        # listing_inventory requires platform/region_code/observed_at — none of
+        # which exist on the storage row schema → build_event_model_payload
+        # returns an empty dict and the helper skips the key.
+        rows = [
+            {
+                "url": "https://naver.land.example/x/4",
+                "title": "Listing",
+                "summary": "",
+                "source_id": "naver_realty",
+                "published_at": "2026-04-23T00:00:00Z",
+                "event_model": "listing_inventory",
+                "region": "서울",
+            }
+        ]
+        articles = _summary_articles(self._make_store(rows), [], limit=10)
+        assert "event_model_payload" not in articles[0]
