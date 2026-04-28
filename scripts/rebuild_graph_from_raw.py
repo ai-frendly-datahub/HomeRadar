@@ -15,6 +15,9 @@ import yaml
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
+RADAR_CORE_ROOT = PROJECT_ROOT.parent / "radar-core"
+if RADAR_CORE_ROOT.exists():
+    sys.path.insert(0, str(RADAR_CORE_ROOT))
 
 from analyzers import EntityExtractor  # noqa: E402
 from collectors.base import RawItem  # noqa: E402

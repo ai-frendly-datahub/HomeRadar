@@ -612,6 +612,92 @@ class TestArticlesDualWrite:
         assert item.source_id in message
         assert item.url in message
 
+    def test_backfill_articles_from_urls_populates_missing_article_rows(self, store):
+        """Historical urls rows can be copied into articles without raw replay."""
+        published_at = datetime.now(UTC)
+        with store._connection() as conn:
+            conn.execute(
+                """
+                INSERT INTO urls (
+                    url, title, summary, source_id, published_at,
+                    region, district, property_type, price, area,
+                    trust_tier, info_purpose,
+                    verification_state, verification_role, merge_policy, event_model
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """,
+                [
+                    "https://example.com/backfill/1",
+                    "Backfill transaction",
+                    "Official transaction record.",
+                    "molit_apt_transaction",
+                    published_at,
+                    "서울",
+                    "강남구",
+                    "아파트",
+                    12.5,
+                    84.5,
+                    "T1_official",
+                    "transaction",
+                    "official_primary",
+                    "official_primary_transaction",
+                    "authoritative_source",
+                    "transaction_price",
+                ],
+            )
+
+        stats = store.backfill_articles_from_urls()
+
+        assert stats == {"scanned": 1, "inserted": 1, "updated": 0}
+        with store._connection() as conn:
+            row = conn.execute(
+                """
+                SELECT event_model_id, ontology_json
+                FROM articles
+                WHERE url = ?
+                """,
+                ["https://example.com/backfill/1"],
+            ).fetchone()
+
+        assert row is not None
+        assert row[0] == "transaction_price"
+        payload = json.loads(row[1])
+        assert payload["region"] == "서울"
+        assert payload["district"] == "강남구"
+        assert payload["event_model_id"] == "transaction_price"
+        assert payload["source_role_id"] == "official_primary_transaction"
+
+    def test_backfill_articles_from_urls_is_idempotent_for_missing_only(self, store):
+        """Default backfill skips rows that already exist in articles."""
+        item = self._full_item("https://example.com/backfill/idempotent")
+        store.add_items([item])
+
+        stats = store.backfill_articles_from_urls()
+
+        assert stats == {"scanned": 0, "inserted": 0, "updated": 0}
+
+    def test_backfill_articles_from_urls_can_refresh_existing_rows(self, store):
+        """Overwrite mode refreshes stale articles rows from urls."""
+        item = self._full_item("https://example.com/backfill/refresh")
+        store.add_items([item])
+        with store._connection() as conn:
+            conn.execute(
+                "UPDATE urls SET title = ?, event_model = ? WHERE url = ?",
+                ["Refreshed policy context", "policy_context", item.url],
+            )
+
+        stats = store.backfill_articles_from_urls(only_missing=False)
+
+        assert stats == {"scanned": 1, "inserted": 0, "updated": 1}
+        with store._connection() as conn:
+            row = conn.execute(
+                "SELECT title, event_model_id, ontology_json FROM articles WHERE url = ?",
+                [item.url],
+            ).fetchone()
+
+        assert row[0] == "Refreshed policy context"
+        assert row[1] == "policy_context"
+        assert json.loads(row[2])["event_model_id"] == "policy_context"
+
 
 class TestBuildHomeradarOntologyJson:
     """Cycle 14: ontology_json builder helper unit coverage."""

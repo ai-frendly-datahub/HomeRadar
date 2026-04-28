@@ -126,6 +126,13 @@ def _home_quality_value(item: RawItem, key: str) -> str | None:
     return _text_or_none(quality_payload.get(key))
 
 
+def _home_event_model_id(item: RawItem) -> str | None:
+    raw_data = item.raw_data if isinstance(item.raw_data, dict) else {}
+    return _home_quality_value(item, "event_model") or _text_or_none(
+        raw_data.get("event_model")
+    )
+
+
 def _coerce_number(value: object) -> float | None:
     """Best-effort numeric coercion for ontology_json payload values."""
     if value is None or isinstance(value, bool):
@@ -187,7 +194,7 @@ def _build_homeradar_ontology_json(item: RawItem) -> str:
                 continue
             payload[key] = text
 
-    event_model_id = _home_quality_value(item, "event_model")
+    event_model_id = _home_event_model_id(item)
     if event_model_id is None:
         # Fall back to row-level raw_data label if home_quality is absent.
         event_model_id = _text_or_none(raw_data.get("event_model"))
@@ -206,6 +213,77 @@ def _build_homeradar_ontology_json(item: RawItem) -> str:
         payload.setdefault("source_role_id", source_role)
 
     return json.dumps(payload, ensure_ascii=False)
+
+
+def _raw_item_from_url_row(row: dict[str, Any]) -> RawItem:
+    """Build a RawItem from an existing urls row for articles backfill."""
+    fallback_time = (
+        row.get("published_at")
+        or row.get("last_seen_at")
+        or row.get("updated_at")
+        or row.get("created_at")
+        or datetime.now()
+    )
+    raw_data = {
+        "district": row.get("district"),
+        "trust_tier": row.get("trust_tier"),
+        "info_purpose": row.get("info_purpose"),
+        "home_quality": {
+            "verification_state": row.get("verification_state"),
+            "verification_role": row.get("verification_role"),
+            "merge_policy": row.get("merge_policy"),
+            "event_model": row.get("event_model"),
+        },
+    }
+    return RawItem(
+        url=str(row["url"]),
+        title=str(row.get("title") or ""),
+        summary=str(row.get("summary") or ""),
+        source_id=str(row.get("source_id") or "unknown"),
+        published_at=fallback_time,
+        collected_at=row.get("last_seen_at") or row.get("updated_at") or fallback_time,
+        raw_data=raw_data,
+        region=_text_or_none(row.get("region")),
+        property_type=_text_or_none(row.get("property_type")),
+        price=_coerce_number(row.get("price")),
+        area=_coerce_number(row.get("area")),
+    )
+
+
+def _upsert_article_row(
+    conn: duckdb.DuckDBPyConnection,
+    item: RawItem,
+    *,
+    collected_at: datetime,
+) -> None:
+    ontology_json = _build_homeradar_ontology_json(item)
+    event_model_id = _home_event_model_id(item)
+    conn.execute(
+        """
+        INSERT INTO articles (
+            url, title, summary, source_id, published_at,
+            collected_at, event_model_id, ontology_json
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        ON CONFLICT (url) DO UPDATE SET
+            title = EXCLUDED.title,
+            summary = EXCLUDED.summary,
+            source_id = EXCLUDED.source_id,
+            published_at = EXCLUDED.published_at,
+            collected_at = EXCLUDED.collected_at,
+            event_model_id = EXCLUDED.event_model_id,
+            ontology_json = EXCLUDED.ontology_json
+        """,
+        [
+            item.url,
+            item.title,
+            item.summary,
+            item.source_id,
+            item.published_at,
+            collected_at,
+            event_model_id,
+            ontology_json,
+        ],
+    )
 
 
 def init_database(db_path: Optional[Path | str] = None) -> DatabasePaths:
@@ -443,34 +521,7 @@ class GraphStore:
                     # urls upsert above; we log a warning and move on so the urls
                     # path stays the source of truth for HomeRadar reads.
                     try:
-                        ontology_json = _build_homeradar_ontology_json(item)
-                        event_model_id = _home_quality_value(item, "event_model")
-                        conn.execute(
-                            """
-                            INSERT INTO articles (
-                                url, title, summary, source_id, published_at,
-                                collected_at, event_model_id, ontology_json
-                            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-                            ON CONFLICT (url) DO UPDATE SET
-                                title = EXCLUDED.title,
-                                summary = EXCLUDED.summary,
-                                source_id = EXCLUDED.source_id,
-                                published_at = EXCLUDED.published_at,
-                                collected_at = EXCLUDED.collected_at,
-                                event_model_id = EXCLUDED.event_model_id,
-                                ontology_json = EXCLUDED.ontology_json
-                            """,
-                            [
-                                item.url,
-                                item.title,
-                                item.summary,
-                                item.source_id,
-                                item.published_at,
-                                now,
-                                event_model_id,
-                                ontology_json,
-                            ],
-                        )
+                        _upsert_article_row(conn, item, collected_at=now)
                     except Exception as exc:  # noqa: BLE001 - best-effort dual-write
                         logger.warning(
                             "HomeRadar articles dual-write failed for source=%s url=%s: %s",
@@ -483,6 +534,66 @@ class GraphStore:
             raise StorageError(f"Failed to upsert HomeRadar items: {exc}") from exc
 
         return {"inserted": inserted, "updated": updated}
+
+    def backfill_articles_from_urls(
+        self,
+        *,
+        only_missing: bool = True,
+        limit: int | None = None,
+    ) -> dict[str, int]:
+        """Populate the articles ontology mart from existing urls rows.
+
+        This is the one-off companion to the dual-write path: historical rows
+        inserted before the articles mart existed can be copied without touching
+        HomeRadar's urls/url_entities read paths.
+        """
+        if limit is not None and limit < 0:
+            raise ValueError("limit must be non-negative")
+
+        params: list[Any] = []
+        query = """
+            SELECT u.*
+            FROM urls u
+        """
+        if only_missing:
+            query += " LEFT JOIN articles a ON u.url = a.url WHERE a.url IS NULL"
+        query += """
+            ORDER BY COALESCE(u.published_at, u.last_seen_at, u.updated_at, u.created_at) DESC,
+                     u.url DESC
+        """
+        if limit is not None:
+            query += " LIMIT ?"
+            params.append(limit)
+
+        inserted = 0
+        updated = 0
+
+        try:
+            with self._connection() as conn:
+                result = conn.execute(query, params)
+                columns = [desc[0] for desc in result.description]
+                rows = [dict(zip(columns, row)) for row in result.fetchall()]
+
+                for row in rows:
+                    item = _raw_item_from_url_row(row)
+                    existing = conn.execute(
+                        "SELECT 1 FROM articles WHERE url = ?", [item.url]
+                    ).fetchone()
+                    collected_at = (
+                        row.get("last_seen_at")
+                        or row.get("updated_at")
+                        or row.get("created_at")
+                        or item.published_at
+                    )
+                    _upsert_article_row(conn, item, collected_at=collected_at)
+                    if existing:
+                        updated += 1
+                    else:
+                        inserted += 1
+        except duckdb.Error as exc:
+            raise StorageError(f"Failed to backfill HomeRadar articles: {exc}") from exc
+
+        return {"scanned": inserted + updated, "inserted": inserted, "updated": updated}
 
     def add_entities(self, url: str, entities: dict[str, list[str]], weight: float = 1.0) -> int:
         """
