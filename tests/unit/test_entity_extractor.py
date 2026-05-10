@@ -263,3 +263,24 @@ class TestRealWorldExamples:
         assert "keyword" in entities
         assert "투기과열지구" in entities["keyword"]
         assert "재건축" in entities["keyword"] or "재건축" in entities["project"]
+
+    def test_construction_and_housing_market_terms_from_recent_feed(self, extractor):
+        """Recent HomeRadar real-estate feed terms should stay in scope."""
+        text = "신풍역 일대 신통기획 확정, 최고 35층 990가구 주거단지"
+
+        entities = extractor.extract(text)
+
+        assert "district" in entities
+        assert "신풍역" in entities["district"]
+        assert "project" in entities
+        assert "신통기획" in entities["project"]
+        assert "keyword" in entities
+        assert "주거단지" in entities["keyword"]
+
+    def test_broad_government_non_home_press_release_has_no_entities(self, extractor):
+        """Scope filtering should not retain unrelated government press releases."""
+        text = "국가관광전략회의 대통령 소속으로 격상, 관광기본법 개정안 국무회의 통과"
+
+        entities = extractor.extract(text)
+
+        assert entities == {}

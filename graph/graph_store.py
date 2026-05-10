@@ -34,6 +34,17 @@ URLS_QUALITY_COLUMNS = {
     "event_model": "TEXT",
 }
 
+URL_ENTITIES_SECONDARY_INDEXES = (
+    (
+        "idx_entities_type",
+        "CREATE INDEX IF NOT EXISTS idx_entities_type ON url_entities(entity_type)",
+    ),
+    (
+        "idx_entities_value",
+        "CREATE INDEX IF NOT EXISTS idx_entities_value ON url_entities(entity_value)",
+    ),
+)
+
 # Cycle 14 (Option D phase 1+2): dual-write articles mart with ontology_json so that
 # `articles_ontology_capable` (radar-analysis builder.py:868) flips to True without
 # touching the urls read path.  HomeRadar domain columns are flattened into the
@@ -105,6 +116,16 @@ def _ensure_urls_quality_columns(conn: duckdb.DuckDBPyConnection) -> None:
     for column_name, column_type in URLS_QUALITY_COLUMNS.items():
         if column_name not in existing_columns:
             conn.execute(f"ALTER TABLE urls ADD COLUMN {column_name} {column_type}")
+
+
+def _drop_url_entities_secondary_indexes(conn: duckdb.DuckDBPyConnection) -> None:
+    for index_name, _ddl in URL_ENTITIES_SECONDARY_INDEXES:
+        conn.execute(f"DROP INDEX IF EXISTS {index_name}")
+
+
+def _create_url_entities_secondary_indexes(conn: duckdb.DuckDBPyConnection) -> None:
+    for _index_name, ddl in URL_ENTITIES_SECONDARY_INDEXES:
+        conn.execute(ddl)
 
 
 def _text_or_none(value: object) -> str | None:
@@ -387,8 +408,7 @@ def init_database(db_path: Optional[Path | str] = None) -> DatabasePaths:
         conn.execute("CREATE INDEX IF NOT EXISTS idx_urls_published ON urls(published_at DESC)")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_urls_source ON urls(source_id)")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_urls_region ON urls(region)")
-        conn.execute("CREATE INDEX IF NOT EXISTS idx_entities_type ON url_entities(entity_type)")
-        conn.execute("CREATE INDEX IF NOT EXISTS idx_entities_value ON url_entities(entity_value)")
+        _create_url_entities_secondary_indexes(conn)
         conn.execute(
             "CREATE INDEX IF NOT EXISTS idx_articles_category_time ON articles(source_id, published_at)"
         )
@@ -436,6 +456,11 @@ class GraphStore:
 
         try:
             with self._connection() as conn:
+                # DuckDB 1.5 can fail repeated url_entities deletes against the
+                # secondary indexes in long update batches. The primary key
+                # still protects entity uniqueness; rebuild these read indexes
+                # after the batch mutation finishes.
+                _drop_url_entities_secondary_indexes(conn)
                 for item in items:
                     existing = conn.execute(
                         "SELECT url FROM urls WHERE url = ?", [item.url]
@@ -529,6 +554,7 @@ class GraphStore:
                             item.url,
                             exc,
                         )
+                _create_url_entities_secondary_indexes(conn)
 
         except duckdb.Error as exc:
             raise StorageError(f"Failed to upsert HomeRadar items: {exc}") from exc
@@ -816,6 +842,7 @@ class GraphStore:
                 # DuckDB may still enforce the URL FK against deleted child rows
                 # inside the same explicit transaction. Let each delete commit
                 # before moving to the parent table.
+                _drop_url_entities_secondary_indexes(conn)
                 conn.execute(
                     """
                     DELETE FROM url_entities
@@ -829,6 +856,7 @@ class GraphStore:
                     "DELETE FROM urls WHERE COALESCE(published_at, last_seen_at) < ?",
                     [cutoff],
                 )
+                _create_url_entities_secondary_indexes(conn)
                 return to_delete
         except duckdb.Error as exc:
             raise StorageError(f"Failed to delete expired HomeRadar records: {exc}") from exc

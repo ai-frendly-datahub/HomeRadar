@@ -188,8 +188,24 @@ def test_generate_report_renders_home_quality_summary(
             "official_primary_blocked_source_ids": ["reb_subscription"],
             "official_primary_required_env": ["SUBSCRIPTION_API_KEY"],
             "corroboration_only_items": 1,
+            "daily_review_item_count": 2,
         },
         "verification_states": {"official_primary": 1},
+        "daily_review_items": [
+            {
+                "reason": "official_primary_missing_env",
+                "source_id": "reb_subscription",
+                "event_model": "subscription_notice",
+                "required_env": "SUBSCRIPTION_API_KEY",
+            },
+            {
+                "reason": "home_verification_requires_official_primary",
+                "source_id": "hankyung_realestate",
+                "event_model": "market_context",
+                "verification_state": "market_corroboration_requires_official_source",
+                "title": "Market article needs official transaction confirmation",
+            },
+        ],
         "sources": [
             {
                 "source_id": "molit_apt_transaction",
@@ -227,6 +243,9 @@ def test_generate_report_renders_home_quality_summary(
     assert "home_quality.json" in rendered
     assert "official_primary" in rendered
     assert "blocked_missing_env" in rendered
+    assert "Daily Review Items" in rendered
+    assert "official_primary_missing_env" in rendered
+    assert "home_verification_requires_official_primary" in rendered
     assert "reb_subscription" in rendered
     assert "SUBSCRIPTION_API_KEY not set" in rendered
     assert "disabled_listing" in rendered

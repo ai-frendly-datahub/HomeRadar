@@ -657,6 +657,7 @@
               <span class="chip"><strong>missing</strong> {{ quality_report.summary.missing_sources }}</span>
               <span class="chip"><strong>skipped</strong> {{ quality_report.summary.skipped_sources }}</span>
               <span class="chip policy"><strong>states</strong> {{ quality_report.summary.verification_state_count }}</span>
+              <span class="chip verify"><strong>review</strong> {{ quality_report.summary.daily_review_item_count|default(quality_report.daily_review_items|length, true) }}</span>
             </div>
 
             {% if quality_report.summary.official_primary_status is defined %}
@@ -682,6 +683,22 @@
               <span class="chip verify"><strong>{{ state|e }}</strong> {{ count }}</span>
               {% endfor %}
             </div>
+            {% endif %}
+
+            {% set daily_review_items = quality_report.daily_review_items|default([]) %}
+            {% if daily_review_items %}
+            <p class="panel-title" style="margin:14px 0 0">Daily Review Items</p>
+            <ul class="muted small" style="line-height:1.7; margin:8px 0 0; padding-left:18px">
+              {% for item in daily_review_items[:8] %}
+              <li>
+                <strong>{{ item.reason|e }}</strong>:
+                <span class="mono">{{ item.source_id|default(item.source, true)|e }}</span>
+                {% if item.required_env %} - env {{ item.required_env|e }}{% endif %}
+                {% if item.verification_state %} - {{ item.verification_state|e }}{% endif %}
+                {% if item.title %} - {{ item.title|truncate(120, True, '')|e }}{% endif %}
+              </li>
+              {% endfor %}
+            </ul>
             {% endif %}
 
             <ul class="muted small" style="line-height:1.7; margin:12px 0 0; padding-left:18px">

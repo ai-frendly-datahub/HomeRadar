@@ -20,6 +20,7 @@ import os
 import shutil
 import sys
 import time
+from collections.abc import Mapping
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import UTC, datetime
 from pathlib import Path
@@ -105,6 +106,86 @@ def _summary_entity_map(store: GraphStore, urls: list[str]) -> dict[str, dict[st
         value = str(entity_value)
         entity_map.setdefault(url_key, {}).setdefault(entity_key, []).append(value)
     return entity_map
+
+
+def _source_configs_by_id(
+    sources: list[Mapping[str, Any]] | None,
+) -> dict[str, Mapping[str, Any]]:
+    if not sources:
+        return {}
+    return {
+        str(source.get("id") or "").strip(): source
+        for source in sources
+        if str(source.get("id") or "").strip()
+    }
+
+
+def _scope_filter(source: Mapping[str, Any] | None) -> Mapping[str, Any]:
+    if not isinstance(source, Mapping):
+        return {}
+    raw_filter = source.get("scope_filter")
+    return raw_filter if isinstance(raw_filter, Mapping) else {}
+
+
+def _scope_filter_applies(
+    source: Mapping[str, Any] | None,
+    *,
+    stage: str,
+) -> bool:
+    scope_filter = _scope_filter(source)
+    if scope_filter.get("mode") != "require_home_entity":
+        return False
+    return bool(scope_filter.get(stage, False))
+
+
+def _merge_entity_maps(
+    *entity_maps: Mapping[str, list[str]] | None,
+) -> dict[str, list[str]]:
+    merged: dict[str, list[str]] = {}
+    for entity_map in entity_maps:
+        if not isinstance(entity_map, Mapping):
+            continue
+        for raw_entity_type, raw_values in entity_map.items():
+            entity_type = str(raw_entity_type).strip()
+            if not entity_type or not isinstance(raw_values, list):
+                continue
+            values = merged.setdefault(entity_type, [])
+            for raw_value in raw_values:
+                value = str(raw_value).strip()
+                if value and value not in values:
+                    values.append(value)
+    return merged
+
+
+def _extract_current_entities_from_mapping(
+    row: Mapping[str, Any],
+    extractor: EntityExtractor,
+) -> dict[str, list[str]]:
+    return extractor.extract(
+        f"{row.get('title', '')} {row.get('summary', '')}"
+    )
+
+
+def _extract_current_entities_from_item(
+    item: RawItem,
+    extractor: EntityExtractor,
+) -> dict[str, list[str]]:
+    return extractor.extract_from_item({"title": item.title, "summary": item.summary})
+
+
+def _filter_items_by_home_scope(
+    source: Mapping[str, Any],
+    items: list[RawItem],
+    extractor: EntityExtractor,
+) -> tuple[list[RawItem], int]:
+    if not _scope_filter_applies(source, stage="apply_to_collection"):
+        return items, 0
+
+    scoped_items: list[RawItem] = []
+    for item in items:
+        if _extract_current_entities_from_item(item, extractor):
+            scoped_items.append(item)
+    return scoped_items, len(items) - len(scoped_items)
 
 
 def _item_summary_payload(item: RawItem, matched_entities: dict[str, list[str]]) -> dict[str, Any]:
@@ -213,11 +294,19 @@ def _summary_articles(
     store: GraphStore,
     fallback_items: list[RawItem],
     *,
+    source_configs: dict[str, Mapping[str, Any]] | None = None,
     limit: int = 100,
 ) -> list[dict[str, Any]]:
     """Build the standard report summary article payload from the DB report window."""
+    source_configs = source_configs or {}
+    has_report_scope_filters = any(
+        _scope_filter_applies(source, stage="apply_to_report")
+        for source in source_configs.values()
+    )
+    fetch_limit = limit * 3 if has_report_scope_filters else limit
+    extractor = EntityExtractor()
     try:
-        recent_items = store.get_recent_items(limit=limit)
+        recent_items = store.get_recent_items(limit=fetch_limit)
     except Exception as exc:
         logger.warning("Failed to load HomeRadar summary rows: %s", exc)
         recent_items = []
@@ -231,18 +320,48 @@ def _summary_articles(
         entity_map = _summary_entity_map(store, urls)
         articles: list[dict[str, Any]] = []
         for item in recent_rows:
-            payload = _row_summary_payload(item, entity_map.get(str(item.get("url", "")), {}))
+            source_id = str(item.get("source_id") or "")
+            matched_entities = _merge_entity_maps(
+                entity_map.get(str(item.get("url", ""))),
+                item.get("entities") if isinstance(item.get("entities"), Mapping) else None,
+                _extract_current_entities_from_mapping(item, extractor),
+            )
+            source_config = source_configs.get(source_id)
+            if (
+                _scope_filter_applies(source_config, stage="apply_to_report")
+                and not matched_entities
+            ):
+                continue
+
+            payload = _row_summary_payload(item, matched_entities)
             _attach_event_model_payload(
                 payload,
                 event_model_key=_resolve_event_model_key(item),
                 source_row=item,
             )
             articles.append(payload)
+            if len(articles) >= limit:
+                break
         return articles
 
     urls = [item.url for item in fallback_items]
     entity_map = _summary_entity_map(store, urls)
-    return [_item_summary_payload(item, entity_map.get(item.url, {})) for item in fallback_items]
+    articles: list[dict[str, Any]] = []
+    for item in fallback_items:
+        matched_entities = _merge_entity_maps(
+            entity_map.get(item.url),
+            _extract_current_entities_from_item(item, extractor),
+        )
+        source_config = source_configs.get(item.source_id)
+        if (
+            _scope_filter_applies(source_config, stage="apply_to_report")
+            and not matched_entities
+        ):
+            continue
+        articles.append(_item_summary_payload(item, matched_entities))
+        if len(articles) >= limit:
+            break
+    return articles
 
 
 def _write_summary_report(
@@ -252,9 +371,14 @@ def _write_summary_report(
     fallback_items: list[RawItem],
     stats: dict[str, int],
     quality_report: dict[str, Any] | None = None,
+    sources: list[Mapping[str, Any]] | None = None,
 ) -> Path:
     """Write the radar-core compatible HomeRadar summary JSON."""
-    articles = _summary_articles(store, fallback_items)
+    articles = _summary_articles(
+        store,
+        fallback_items,
+        source_configs=_source_configs_by_id(sources),
+    )
     source_count = len(
         {
             str(article.get("source", ""))
@@ -335,6 +459,8 @@ def _summary_quality_payload(quality_report: dict[str, Any] | None) -> dict[str,
         "skipped_missing_env_sources",
         "skipped_missing_env_source_ids",
         "verification_state_count",
+        "verification_review_sample_count",
+        "daily_review_item_count",
         "official_primary_status",
         "official_primary_sources",
         "official_primary_fresh_sources",
@@ -374,6 +500,9 @@ def _summary_quality_payload(quality_report: dict[str, Any] | None) -> dict[str,
     }
     if isinstance(verification_states, dict) and verification_states:
         payload["verification_states"] = verification_states
+    daily_review_items = quality_report.get("daily_review_items")
+    if isinstance(daily_review_items, list) and daily_review_items:
+        payload["quality_review_items"] = daily_review_items[:12]
     return payload
 
 
@@ -461,6 +590,7 @@ def collect_from_sources(
 
     logger.info(f"Collecting from {len(filtered_sources)} sources...")
     raw_logger = RawLogger(Path("data") / "raw")
+    scope_extractor = EntityExtractor()
 
     workers = resolve_max_workers()
 
@@ -481,6 +611,17 @@ def collect_from_sources(
                 items = collect_molit(collector, source)
             else:
                 items = collector.collect()
+            items, skipped_by_scope = _filter_items_by_home_scope(
+                source,
+                items,
+                scope_extractor,
+            )
+            if skipped_by_scope:
+                logger.info(
+                    "    Scope-filtered %s off-topic item(s) from %s",
+                    skipped_by_scope,
+                    source_id,
+                )
             return source_id, source_name, source_type, items, None
         except Exception as exc:
             return source_id, source_name, source_type, [], str(exc)
@@ -734,6 +875,7 @@ def run_collection_cycle(
                     fallback_items=validated_items,
                     stats=stats,
                     quality_report=quality_report,
+                    sources=sources,
                 )
                 logger.info(f"  Summary saved to {summary_report_path}")
             except Exception as e:

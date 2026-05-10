@@ -201,6 +201,11 @@ sources:
     url: "https://www.hankyung.com/feed/realestate"
     description: "Korea Economic Daily - Real estate news"
     notes: "Covers market analysis, policy, investment trends. HTTPS feed verified in e2e."
+    scope_filter:
+      mode: require_home_entity
+      apply_to_collection: true
+      apply_to_report: true
+      reason: "Dedicated real-estate feed can occasionally include adjacent business items; keep only rows with HomeRadar entities."
 
   - id: korea_policy_news
     name: "Korea Gov - Policy RSS"
@@ -231,6 +236,11 @@ sources:
     url: "https://www.korea.kr/rss/pressrelease.xml"
     description: "Government press release RSS feed (official announcements including real estate policy)"
     notes: "Official government feed. No authentication. Updated from economy.xml which was deprecated."
+    scope_filter:
+      mode: require_home_entity
+      apply_to_collection: true
+      apply_to_report: true
+      reason: "Broad government press-release feed; keep only housing, construction, policy, transaction, subscription, or development items."
 
   - id: herald_realestate_all
     name: "Herald Economy - Real Estate All"

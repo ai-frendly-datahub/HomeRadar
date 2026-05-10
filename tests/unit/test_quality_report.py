@@ -117,6 +117,8 @@ def test_build_quality_report_tracks_fresh_stale_skip_and_verification_counts(
     assert report["summary"]["skipped_disabled_sources"] == 1
     assert report["summary"]["skipped_disabled_source_ids"] == ["disabled_listing"]
     assert report["summary"]["not_tracked_sources"] == 1
+    assert report["summary"]["verification_review_sample_count"] == 1
+    assert report["summary"]["daily_review_item_count"] == 4
     assert report["summary"]["official_primary_status"] == "partial_fresh"
     assert report["summary"]["official_primary_sources"] == 2
     assert report["summary"]["official_primary_fresh_sources"] == 1
@@ -129,6 +131,25 @@ def test_build_quality_report_tracks_fresh_stale_skip_and_verification_counts(
         "market_corroboration_requires_official_source": 1,
         "official_primary": 1,
     }
+    assert len(report["verification_review_samples"]) == 1
+    review_sample = report["verification_review_samples"][0]
+    assert review_sample["url"] == "https://example.com/market/1"
+    assert review_sample["title"] == "Old market metric"
+    assert review_sample["source_id"] == "market_metric"
+    assert review_sample["verification_state"] == (
+        "market_corroboration_requires_official_source"
+    )
+    assert review_sample["verification_role"] == "market_corroboration"
+    assert review_sample["merge_policy"] == "cannot_override_official_transaction"
+    assert review_sample["event_model"] == "market_context"
+    assert review_sample["published_at"]
+    daily_reasons = [item["reason"] for item in report["daily_review_items"]]
+    assert daily_reasons == [
+        "official_primary_missing_env",
+        "source_status_stale",
+        "source_status_missing",
+        "home_verification_requires_official_primary",
+    ]
 
     statuses = {row["source_id"]: row["status"] for row in report["sources"]}
     assert statuses["molit_apt_transaction"] == "fresh"
@@ -213,6 +234,14 @@ def test_build_quality_report_marks_all_official_sources_blocked_by_env(
         "MOLIT_SERVICE_KEY",
         "ONBID_API_KEY",
         "SUBSCRIPTION_API_KEY",
+    ]
+    assert report["summary"]["daily_review_item_count"] == 3
+    assert [
+        item["reason"] for item in report["daily_review_items"]
+    ] == [
+        "official_primary_missing_env",
+        "official_primary_missing_env",
+        "official_primary_missing_env",
     ]
 
 

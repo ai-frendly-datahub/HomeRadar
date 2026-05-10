@@ -20,6 +20,7 @@ def build_quality_report(
     quality = _dict(quality_config or {}, "data_quality")
     source_metrics = _load_source_metrics(store)
     verification_states = _load_verification_state_counts(store)
+    verification_review_samples = _load_verification_review_samples(store)
 
     source_rows = [
         _build_source_row(
@@ -32,6 +33,10 @@ def build_quality_report(
     ]
     status_counts = Counter(str(row["status"]) for row in source_rows)
     official_summary = _official_primary_summary(source_rows, verification_states)
+    daily_review_items = _build_daily_review_items(
+        source_rows=source_rows,
+        verification_review_samples=verification_review_samples,
+    )
 
     summary = {
         "total_sources": len(source_rows),
@@ -54,6 +59,8 @@ def build_quality_report(
         "skipped_missing_env_source_ids": _source_ids_by_status(source_rows, "skipped_missing_env"),
         "not_tracked_sources": status_counts.get("not_tracked", 0),
         "verification_state_count": sum(verification_states.values()),
+        "verification_review_sample_count": len(verification_review_samples),
+        "daily_review_item_count": len(daily_review_items),
     }
     summary.update(official_summary)
 
@@ -62,7 +69,9 @@ def build_quality_report(
         "generated_at": generated.isoformat(),
         "summary": summary,
         "verification_states": dict(sorted(verification_states.items())),
+        "verification_review_samples": verification_review_samples,
         "sources": source_rows,
+        "daily_review_items": daily_review_items,
     }
 
 
@@ -119,6 +128,7 @@ def _build_source_row(
         "event_model": str(source.get("event_model", "")),
         "verification_role": str(source.get("verification_role", "")),
         "merge_policy": str(source.get("merge_policy", "")),
+        "trust_tier": str(source.get("trust_tier", "")),
         "official_primary": _is_official_primary_source(source, quality),
         "freshness_sla_days": freshness_sla_days,
         "event_date_field": str(source.get("event_date_field", "")),
@@ -197,6 +207,84 @@ def _source_ids_by_status(
         for row in source_rows
         if str(row.get("status", "")) == status and str(row.get("source_id", "")).strip()
     ]
+
+
+def _build_daily_review_items(
+    *,
+    source_rows: Sequence[Mapping[str, Any]],
+    verification_review_samples: Sequence[Mapping[str, Any]],
+) -> list[dict[str, Any]]:
+    items: list[dict[str, Any]] = []
+    for row in source_rows:
+        source_id = str(row.get("source_id", ""))
+        source_name = str(row.get("name", source_id))
+        status = str(row.get("status", ""))
+        event_model = str(row.get("event_model", ""))
+
+        if status in {"missing", "stale", "unknown_event_date"}:
+            items.append(
+                {
+                    "reason": f"source_status_{status}",
+                    "source_id": source_id,
+                    "source": source_name,
+                    "event_model": event_model,
+                    "freshness_sla_days": row.get("freshness_sla_days"),
+                    "age_days": row.get("age_days"),
+                    "latest_event_at": row.get("latest_event_at"),
+                    "latest_url": row.get("latest_url"),
+                    "detail": "Tracked HomeRadar source needs collection or freshness follow-up.",
+                }
+            )
+
+        if status == "skipped_missing_env":
+            items.append(
+                {
+                    "reason": "official_primary_missing_env"
+                    if bool(row.get("official_primary"))
+                    else "source_skipped_missing_env",
+                    "source_id": source_id,
+                    "source": source_name,
+                    "event_model": event_model,
+                    "required_env": row.get("required_env"),
+                    "skip_reason": row.get("skip_reason"),
+                    "detail": "Credentialed official source is skipped until the required environment variable is set.",
+                }
+            )
+
+        if status == "skipped_disabled" and (
+            event_model
+            or str(row.get("verification_role", ""))
+            or str(row.get("merge_policy", ""))
+        ):
+            items.append(
+                {
+                    "reason": "disabled_source_gate",
+                    "source_id": source_id,
+                    "source": source_name,
+                    "event_model": event_model,
+                    "verification_role": row.get("verification_role"),
+                    "merge_policy": row.get("merge_policy"),
+                    "skip_reason": row.get("skip_reason"),
+                }
+            )
+
+    for sample in verification_review_samples:
+        items.append(
+            {
+                "reason": "home_verification_requires_official_primary",
+                "source_id": sample.get("source_id"),
+                "source": sample.get("source_id"),
+                "event_model": sample.get("event_model"),
+                "verification_state": sample.get("verification_state"),
+                "verification_role": sample.get("verification_role"),
+                "merge_policy": sample.get("merge_policy"),
+                "title": sample.get("title"),
+                "url": sample.get("url"),
+                "published_at": sample.get("published_at"),
+            }
+        )
+
+    return items[:100]
 
 
 def _is_official_primary_source(
@@ -316,6 +404,57 @@ def _load_verification_state_counts(store: Any) -> dict[str, int]:
     except Exception:
         return {}
     return {str(row[0]): int(row[1]) for row in rows}
+
+
+def _load_verification_review_samples(store: Any, limit: int = 20) -> list[dict[str, Any]]:
+    states_requiring_official_primary = (
+        "market_corroboration_requires_official_source",
+        "corroboration_requires_official_source",
+        "verification_required",
+    )
+    try:
+        with store._connection() as conn:
+            rows = conn.execute(
+                """
+                SELECT
+                    url,
+                    title,
+                    source_id,
+                    published_at,
+                    verification_state,
+                    verification_role,
+                    merge_policy,
+                    event_model
+                FROM urls
+                WHERE verification_state IN (?, ?, ?)
+                ORDER BY published_at DESC NULLS LAST, url ASC
+                LIMIT ?
+                """,
+                [*states_requiring_official_primary, limit],
+            ).fetchall()
+    except Exception:
+        return []
+
+    samples: list[dict[str, Any]] = []
+    for row in rows:
+        published_at = row[3]
+        samples.append(
+            {
+                "url": str(row[0] or ""),
+                "title": str(row[1] or ""),
+                "source_id": str(row[2] or ""),
+                "published_at": (
+                    _as_utc(published_at).isoformat()
+                    if isinstance(published_at, datetime)
+                    else str(published_at or "")
+                ),
+                "verification_state": str(row[4] or ""),
+                "verification_role": str(row[5] or ""),
+                "merge_policy": str(row[6] or ""),
+                "event_model": str(row[7] or ""),
+            }
+        )
+    return samples
 
 
 def _source_sla_days(

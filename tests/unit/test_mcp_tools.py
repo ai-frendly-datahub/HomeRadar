@@ -195,7 +195,23 @@ def test_handle_quality_report_returns_freshness_and_verification_summary(
                         "event_model": "transaction_price",
                     },
                 },
-            )
+            ),
+            RawItem(
+                url="https://example.com/market/transaction/1",
+                title="Market article mentions apartment transaction price",
+                summary="Market corroboration needs an official primary transaction source.",
+                source_id="market_metric",
+                published_at=datetime.now(UTC) - timedelta(hours=2),
+                region="서울",
+                raw_data={
+                    "home_quality": {
+                        "verification_state": "market_corroboration_requires_official_source",
+                        "verification_role": "market_corroboration",
+                        "merge_policy": "cannot_override_official_transaction",
+                        "event_model": "market_context",
+                    },
+                },
+            ),
         ]
     )
     sources_path = tmp_path / "sources.yaml"
@@ -213,6 +229,13 @@ sources:
     freshness_sla_days: 2
     event_model: transaction_price
     verification_role: official_primary_transaction
+  - id: market_metric
+    name: Market Metric
+    type: rss
+    enabled: true
+    freshness_sla_days: 2
+    event_model: market_context
+    verification_role: market_corroboration
 """,
         encoding="utf-8",
     )
@@ -222,8 +245,15 @@ sources:
 
     assert payload["ok"] is True
     report = payload["quality_report"]
-    assert report["summary"]["fresh_sources"] == 1
-    assert report["verification_states"] == {"official_primary": 1}
+    assert report["summary"]["fresh_sources"] == 2
+    assert report["summary"]["daily_review_item_count"] == 1
+    assert report["verification_states"] == {
+        "market_corroboration_requires_official_source": 1,
+        "official_primary": 1,
+    }
+    assert report["daily_review_items"][0]["reason"] == (
+        "home_verification_requires_official_primary"
+    )
 
 
 def test_handle_sql_select(tmp_path: Path) -> None:

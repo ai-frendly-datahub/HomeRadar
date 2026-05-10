@@ -159,9 +159,16 @@ class TestGraphStoreAddItems:
             entity_count = conn.execute(
                 "SELECT COUNT(*) FROM url_entities WHERE url = ?", [item.url]
             ).fetchone()[0]
+            index_names = {
+                row[4]
+                for row in conn.execute(
+                    "SELECT * FROM duckdb_indexes() WHERE table_name = 'url_entities'"
+                ).fetchall()
+            }
 
         assert row[0] == "Updated Gangnam Apartment Prices"
         assert entity_count == 0
+        assert {"idx_entities_type", "idx_entities_value"}.issubset(index_names)
 
         reinserted_entities = store.add_entities(item.url, {"district": ["강남구"], "keyword": ["청약"]})
         assert reinserted_entities == 2

@@ -62,6 +62,18 @@ sources:
         }
 
         sources = {source["id"]: source for source in config["sources"]}
+        assert sources["hankyung_realestate"]["scope_filter"]["mode"] == (
+            "require_home_entity"
+        )
+        assert sources["korea_pressrelease_news"]["scope_filter"] == {
+            "mode": "require_home_entity",
+            "apply_to_collection": True,
+            "apply_to_report": True,
+            "reason": (
+                "Broad government press-release feed; keep only housing, construction, "
+                "policy, transaction, subscription, or development items."
+            ),
+        }
         for source_id in (
             "molit_apt_transaction",
             "molit_apt_rent",
@@ -197,6 +209,49 @@ class TestCollectFromSources:
 
         assert items == []
         mock_create.assert_not_called()
+
+    def test_collect_applies_home_scope_filter(self):
+        """Broad official feeds keep only rows with HomeRadar entities."""
+        source = {
+            "id": "korea_pressrelease_news",
+            "name": "Korea Press Release",
+            "type": "rss",
+            "enabled": True,
+            "url": "https://example.com/rss",
+            "scope_filter": {
+                "mode": "require_home_entity",
+                "apply_to_collection": True,
+                "apply_to_report": True,
+            },
+        }
+        kept = RawItem(
+            url="https://example.com/home",
+            title="강남구 아파트 공급 정책 발표",
+            summary="신규 주택 공급 계획",
+            source_id="korea_pressrelease_news",
+            published_at=datetime.now(tz=UTC),
+        )
+        skipped = RawItem(
+            url="https://example.com/tour",
+            title="국가관광전략회의 대통령 소속으로 격상",
+            summary="관광기본법 개정안 국무회의 통과",
+            source_id="korea_pressrelease_news",
+            published_at=datetime.now(tz=UTC),
+        )
+
+        with patch("main.CollectorRegistry.create_collector") as mock_create:
+            mock_collector = Mock()
+            mock_collector.collect.return_value = [kept, skipped]
+            mock_create.return_value = mock_collector
+
+            with patch("main.RawLogger") as mock_logger_class:
+                mock_logger = Mock()
+                mock_logger_class.return_value = mock_logger
+
+                items = collect_from_sources([source], enabled_only=True)
+
+        assert items == [kept]
+        mock_logger.log.assert_called_once_with([kept], source_name="korea_pressrelease_news")
 
 
 class TestMissingRequiredEnv:
@@ -642,3 +697,44 @@ class TestSummaryArticlesEventModelWiring:
         ]
         articles = _summary_articles(self._make_store(rows), [], limit=10)
         assert "event_model_payload" not in articles[0]
+
+    def test_summary_articles_filters_broad_press_release_without_home_entity(self):
+        from main import _summary_articles
+
+        rows = [
+            {
+                "url": "https://press.example/home",
+                "title": "강남구 아파트 공급 정책 발표",
+                "summary": "신규 주택 공급 계획",
+                "source_id": "korea_pressrelease_news",
+                "published_at": "2026-04-23T00:00:00Z",
+                "event_model": "policy_context",
+            },
+            {
+                "url": "https://press.example/tour",
+                "title": "국가관광전략회의 대통령 소속으로 격상",
+                "summary": "관광기본법 개정안 국무회의 통과",
+                "source_id": "korea_pressrelease_news",
+                "published_at": "2026-04-23T00:00:00Z",
+                "event_model": "policy_context",
+            },
+        ]
+        source_configs = {
+            "korea_pressrelease_news": {
+                "scope_filter": {
+                    "mode": "require_home_entity",
+                    "apply_to_report": True,
+                }
+            }
+        }
+
+        articles = _summary_articles(
+            self._make_store(rows),
+            [],
+            source_configs=source_configs,
+            limit=10,
+        )
+
+        assert len(articles) == 1
+        assert articles[0]["link"] == "https://press.example/home"
+        assert articles[0]["matched_entities"]["district"] == ["강남구"]

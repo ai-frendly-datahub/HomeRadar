@@ -9,7 +9,8 @@
 
 ## 현재 이슈
 
-- 현재 설정상 즉시 차단 이슈 없음. 운영 지표와 freshness SLA만 명시하면 됨
+- 최신 리포트 매칭률과 report scope 문제는 해결됨.
+- 남은 운영 게이트는 `MOLIT_SERVICE_KEY`, `SUBSCRIPTION_API_KEY`, `ONBID_API_KEY` 미설정으로 인한 공식 primary source 비활성 상태임.
 
 ## 필수 신호
 
@@ -24,10 +25,20 @@
 - API key 미설정 시 collector는 실패가 아니라 skip 사유를 남김
 - 시장 RSS는 공식 거래·청약·공매 fact를 덮어쓰지 않고 corroboration 상태로만 병합
 
-## 다음 구현 순서
+## 구현 완료
 
 - HomeVerificationState를 HTML/MCP 리포트 출력에 포함
 - config/sources.yaml의 freshness SLA를 검증하는 stale/skip 리포트를 추가
+- `home_quality.json`의 `daily_review_items`와 `verification_review_samples`를 summary/HTML/MCP 품질 응답에 노출
+- 넓은 정부/시장 RSS의 off-topic 항목은 `scope_filter.require_home_entity`로 수집·요약 범위에서 제외
+- 한경 부동산 feed의 건설·주거·정비·입지 용어를 entity dictionary에 추가
+- 저장 DB에서 요약을 만들 때 현재 entity dictionary를 재적용해 과거 row도 최신 규칙으로 매칭
+- 지역 엔티티 부분 문자열 false positive를 줄이도록 긴 지역명 안에 포함된 짧은 지역명은 제거
+
+## 다음 구현 순서
+
+- `home_quality.json`의 daily review queue를 기준으로 공식 primary env gate를 처리
+- `MOLIT_SERVICE_KEY`, `SUBSCRIPTION_API_KEY`, `ONBID_API_KEY`를 운영 환경에 주입한 뒤 공식 primary source smoke 검증
 - 매물 inventory 후보는 source_backlog에서 ToS·anti-bot·stale listing 검증 후 단계적 활성화
 - 지역·단지 단위 중복 제거 리포트를 검증 산출물에 포함
 

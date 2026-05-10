@@ -133,6 +133,7 @@ class EntityExtractor:
             # Apply normalization
             if entity_type == "district":
                 found = self._normalize_regions(found)
+                found = self._remove_nested_entities(found)
             elif entity_type == "keyword":
                 found = self._normalize_keywords(found)
 
@@ -208,6 +209,20 @@ class EntityExtractor:
             normalized.append(normalized_keyword)
 
         return normalized
+
+    def _remove_nested_entities(self, entities: list[str]) -> list[str]:
+        """Drop shorter values that were only matched inside longer entities."""
+        unique_entities = list(dict.fromkeys(entities))
+        return [
+            entity
+            for entity in unique_entities
+            if not any(
+                entity != other
+                and entity in other
+                and len(entity) < len(other)
+                for other in unique_entities
+            )
+        ]
 
     def extract_from_item(self, item: dict[str, Any]) -> dict[str, list[str]]:
         """
