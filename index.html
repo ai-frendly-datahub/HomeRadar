@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-visual-system="radar-unified-v2" data-visual-surface="index">
+<html lang="en" data-visual-system="radar-unified-v2" data-visual-surface="report" data-visual-page="index">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,30 +22,50 @@
   <style>
 
     :root {
+      --vs-bg-0: #0b0b0f;
+      --vs-bg-1: #121116;
+      --vs-surface-0: rgba(28, 26, 34, 0.85);
+      --vs-surface-1: rgba(36, 33, 43, 0.95);
+      --vs-surface-alt: rgba(24, 22, 29, 0.72);
+      --vs-text: #e4e6eb;
+      --vs-text-muted: #b0b3b8;
+      --vs-text-faint: rgba(233, 238, 251, 0.52);
+      --vs-line: rgba(244, 244, 247, 0.14);
+      --vs-line-strong: rgba(244, 244, 247, 0.22);
+      --vs-brand: #33d6c5;
+      --vs-brand-strong: #f6c84c;
+      --vs-danger: #ff5b6e;
+      --vs-shadow: 0 4px 24px rgba(0, 0, 0, 0.28);
+      --vs-shadow-glow: 0 0 40px rgba(51, 214, 197, 0.12);
+      --vs-font-sans: "Pretendard Variable", "Pretendard", ui-sans-serif, system-ui, -apple-system, sans-serif;
+      --vs-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      --vs-radius: 10px;
+      --vs-max: 1280px;
 
-      --bg-primary: #0b0b0f;
-      --bg-secondary: #121116;
-      --bg-card: rgba(28, 26, 34, 0.85);
-      --bg-card-hover: rgba(36, 33, 43, 0.95);
-      --bg-glass: rgba(24, 22, 29, 0.72);
+
+      --bg-primary: var(--vs-bg-0);
+      --bg-secondary: var(--vs-bg-1);
+      --bg-card: var(--vs-surface-0);
+      --bg-card-hover: var(--vs-surface-1);
+      --bg-glass: var(--vs-surface-alt);
 
 
-      --text-primary: #e4e6eb;
-      --text-secondary: #b0b3b8;
+      --text-primary: var(--vs-text);
+      --text-secondary: var(--vs-text-muted);
       --text-muted: #6b7280;
-      --text-faint: rgba(233, 238, 251, 0.52);
+      --text-faint: var(--vs-text-faint);
 
 
-      --accent-primary: #33d6c5;
-      --accent-secondary: #f6c84c;
-      --accent-highlight: #f6c84c;
-      --accent-danger: #ff5b6e;
+      --accent-primary: var(--vs-brand);
+      --accent-secondary: var(--vs-brand-strong);
+      --accent-highlight: var(--vs-brand-strong);
+      --accent-danger: var(--vs-danger);
 
 
-      --border-color: rgba(244, 244, 247, 0.14);
-      --border-highlight: rgba(244, 244, 247, 0.22);
-      --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.28);
-      --shadow-glow: 0 0 40px rgba(51, 214, 197, 0.12);
+      --border-color: var(--vs-line);
+      --border-highlight: var(--vs-line-strong);
+      --shadow-soft: var(--vs-shadow);
+      --shadow-glow: var(--vs-shadow-glow);
 
 
       --space-1: 0.25rem;
@@ -60,20 +80,20 @@
 
 
       --radius-sm: 6px;
-      --radius-md: 10px;
+      --radius-md: var(--vs-radius);
       --radius-lg: 8px;
       --radius-xl: 8px;
 
 
-      --font-sans: "Pretendard Variable", "Pretendard", ui-sans-serif, system-ui, -apple-system, sans-serif;
-      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      --font-sans: var(--vs-font-sans);
+      --font-mono: var(--vs-font-mono);
 
 
       --transition-fast: 0.15s ease-out;
       --transition-normal: 0.25s ease-out;
 
 
-      --max-width: 1280px;
+      --max-width: var(--vs-max);
     }
 
 
@@ -516,7 +536,7 @@
         </div>
 
         <div class="stat-item">
-          <span class="stat-value">2026-04-26</span>
+          <span class="stat-value">2026-05-12</span>
           <span class="stat-label">Latest Report</span>
         </div>
 
@@ -574,9 +594,9 @@
       <div id="reports-grid" class="reports-grid">
 
 
-          <a href="daily_report_20260426.html" class="report-card" data-date="2026-04-26" data-name="daily_report - 2026-04-26" data-title="daily_report - 2026-04-26" data-entities="">
+          <a href="daily_report_20260512.html" class="report-card" data-date="2026-05-12" data-name="daily_report - 2026-05-12" data-title="daily_report - 2026-05-12" data-entities="">
             <div class="report-card__header">
-              <span class="report-card__date">2026-04-26</span>
+              <span class="report-card__date">2026-05-12</span>
 
               <span class="report-card__badge">Daily</span>
 
@@ -591,14 +611,14 @@
               </span>
             </div>
 
-            <div class="report-card__entities" data-summary-date="2026-04-26">
+            <div class="report-card__entities" data-summary-date="2026-05-12">
 
             </div>
           </a>
 
-          <a href="daily_20260426.html" class="report-card" data-date="2026-04-26" data-name="daily - 2026-04-26" data-title="daily - 2026-04-26" data-entities="">
+          <a href="daily_20260512.html" class="report-card" data-date="2026-05-12" data-name="daily - 2026-05-12" data-title="daily - 2026-05-12" data-entities="">
             <div class="report-card__header">
-              <span class="report-card__date">2026-04-26</span>
+              <span class="report-card__date">2026-05-12</span>
 
               <span class="report-card__badge">Daily</span>
 
@@ -613,7 +633,7 @@
               </span>
             </div>
 
-            <div class="report-card__entities" data-summary-date="2026-04-26">
+            <div class="report-card__entities" data-summary-date="2026-05-12">
 
             </div>
           </a>
@@ -849,7 +869,7 @@
         <span class="footer__timestamp">
 
 
-              2026-04-26T03:23:21.133150+00:00
+              2026-05-12T20:35:27.635658+00:00
 
 
         </span>
@@ -865,9 +885,9 @@
 
     const RADAR_DATA = {
       name: "Home Radar",
-      reports: [{"date": "2026-04-26", "date_label": "2026-04-26", "display_name": "daily_report - 2026-04-26", "filename": "daily_report_20260426.html"}, {"date": "2026-04-26", "date_label": "2026-04-26", "display_name": "daily - 2026-04-26", "filename": "daily_20260426.html"}, {"date": "2026-04-21", "date_label": "2026-04-21", "display_name": "daily - 2026-04-21", "filename": "daily_20260421.html"}, {"date": "2026-04-20", "date_label": "2026-04-20", "display_name": "daily - 2026-04-20", "filename": "daily_20260420.html"}, {"date": "2026-04-19", "date_label": "2026-04-19", "display_name": "daily - 2026-04-19", "filename": "daily_20260419.html"}, {"date": "2026-04-18", "date_label": "2026-04-18", "display_name": "daily - 2026-04-18", "filename": "daily_20260418.html"}, {"date": "2026-04-17", "date_label": "2026-04-17", "display_name": "daily - 2026-04-17", "filename": "daily_20260417.html"}, {"date": "2026-04-16", "date_label": "2026-04-16", "display_name": "daily - 2026-04-16", "filename": "daily_20260416.html"}, {"date": "2026-04-15", "date_label": "2026-04-15", "display_name": "daily - 2026-04-15", "filename": "daily_20260415.html"}, {"date": "2026-04-14", "date_label": "2026-04-14", "display_name": "daily - 2026-04-14", "filename": "daily_20260414.html"}, {"date": "2026-03-16", "date_label": "2026-03-16", "display_name": "daily - 2026-03-16", "filename": "daily_20260316.html"}, {"date": "", "date_label": "", "display_name": "Daily Report", "filename": "daily_report.html"}],
-      summaries: [{"date": "2026-04-26", "category": "home", "article_count": 100, "source_count": 3, "matched_count": 69, "top_entities": [{"name": "keyword", "count": 103}, {"name": "district", "count": 63}, {"name": "project", "count": 6}, {"name": "complex", "count": 3}]}],
-      generatedAt: "2026-04-26T03:23:21.133150+00:00"
+      reports: [{"date": "2026-05-12", "date_label": "2026-05-12", "display_name": "daily_report - 2026-05-12", "filename": "daily_report_20260512.html"}, {"date": "2026-05-12", "date_label": "2026-05-12", "display_name": "daily - 2026-05-12", "filename": "daily_20260512.html"}, {"date": "2026-04-21", "date_label": "2026-04-21", "display_name": "daily - 2026-04-21", "filename": "daily_20260421.html"}, {"date": "2026-04-20", "date_label": "2026-04-20", "display_name": "daily - 2026-04-20", "filename": "daily_20260420.html"}, {"date": "2026-04-19", "date_label": "2026-04-19", "display_name": "daily - 2026-04-19", "filename": "daily_20260419.html"}, {"date": "2026-04-18", "date_label": "2026-04-18", "display_name": "daily - 2026-04-18", "filename": "daily_20260418.html"}, {"date": "2026-04-17", "date_label": "2026-04-17", "display_name": "daily - 2026-04-17", "filename": "daily_20260417.html"}, {"date": "2026-04-16", "date_label": "2026-04-16", "display_name": "daily - 2026-04-16", "filename": "daily_20260416.html"}, {"date": "2026-04-15", "date_label": "2026-04-15", "display_name": "daily - 2026-04-15", "filename": "daily_20260415.html"}, {"date": "2026-04-14", "date_label": "2026-04-14", "display_name": "daily - 2026-04-14", "filename": "daily_20260414.html"}, {"date": "2026-03-16", "date_label": "2026-03-16", "display_name": "daily - 2026-03-16", "filename": "daily_20260316.html"}, {"date": "", "date_label": "", "display_name": "Daily Report", "filename": "daily_report.html"}],
+      summaries: [{"date": "2026-05-13", "category": "home", "article_count": 100, "source_count": 3, "matched_count": 98, "top_entities": [{"name": "keyword", "count": 226}, {"name": "district", "count": 102}, {"name": "project", "count": 4}, {"name": "complex", "count": 2}]}],
+      generatedAt: "2026-05-12T20:35:27.635658+00:00"
     };
 
 
