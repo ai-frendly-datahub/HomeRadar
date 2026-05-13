@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-05-12T20:35:28.114863+00:00",
+  "generated_at": "2026-05-13T06:51:04.671116+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 10,
@@ -39,7 +39,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 6,
-    "verification_state_count": 976,
+    "verification_state_count": 967,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -58,14 +58,94 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 417,
+    "corroboration_only_items": 416,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 417,
-    "official_policy_corroboration": 559
+    "market_corroboration_requires_official_source": 416,
+    "official_policy_corroboration": 551
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/202605133670i",
+      "title": "최고급 시니어 레지던스 '소요한남'…25~26일 청약",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-13T14:03:12+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605133239i",
+      "title": "토마스 헤더윅의 압구정갤러리아百 재건축…서울시 건축심의 통과",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-13T11:32:36+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605133308i",
+      "title": "삼성물산, 신반포 19·25 홍보관 열어…\"한강 조망 극대화\"",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-13T11:27:30+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605133016i",
+      "title": "북촌 등 서울 한옥 생태면적률 의무 제외된다",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-13T11:18:13+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605133300i",
+      "title": "서울 평균 아파트값 15.5억 찍더니…'우르르' 몰리는 동네",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-13T11:12:38+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605133286i",
+      "title": "'두산위브 트리니뷰 구명역' 견본주택 15일 개관",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-13T11:09:30+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605132897i",
+      "title": "GS건설, 다음달 '목동윤슬자이' 분양한다",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-13T09:58:16+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026051325206",
+      "title": "\"얼어 죽어도 신축이지\"…입주 없는 서울서 벌어진 일",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-13T08:42:00+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/202605084555i",
       "title": "송파구에 무슨 일이…2주 연속 전셋값 상승률 '1위'",
@@ -148,7 +228,7 @@
     },
     {
       "url": "https://www.hankyung.com/article/202605121189i",
-      "title": "연말까지 서울·경기 '세 낀 매매' 풀린다...세입자 있는 모든 주택 대상",
+      "title": "서울·경기 '세 낀 주택' 매도 허용…거래 숨통 트이나",
       "source_id": "hankyung_realestate",
       "published_at": "2026-05-12T17:13:17+00:00",
       "verification_state": "market_corroboration_requires_official_source",
@@ -181,86 +261,6 @@
       "title": "국토부 \"실거주 의무 어길 땐 허가 취소도 고려…토허제 취지 그대로\"",
       "source_id": "hankyung_realestate",
       "published_at": "2026-05-12T11:34:25+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026051204586",
-      "title": "세입자 있어도 집 팔 수 있다는데…전문가 '뜻밖의 전망' [분석+]",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-12T11:34:23+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605120593i",
-      "title": "'비거주 1주택'도 실거주 의무 유예받는다",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-12T11:30:03+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605120187i",
-      "title": "와이어드스코어, 어패스리질리언스와 손잡고 한국 빌딩인증 시장 진출",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-12T10:38:54+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026051297647",
-      "title": "[단독] 신혜성, 논현동 꼬마빌딩 55.5억 매각…\"손해 보고 팔았다\"",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-12T09:25:13+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026051297936",
-      "title": "\"매매보다 무서운 전셋값\"…세입자들 '한숨'",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-12T09:10:44+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605083660i",
-      "title": "\"아파트값 너무 올랐다\"… 무주택자들 눈 돌린 곳",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-12T06:45:03+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026051180836",
-      "title": "강남 아파트 10억 싼 급매 쏟아지더니…\"바겐세일 끝\" [돈앤톡]",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-12T06:30:02+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605118753i",
-      "title": "DL이앤씨, 압구정5구역에 '조합원 전 가구 한강조망' 제안",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-11T20:50:03+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
@@ -376,12 +376,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 417,
-      "latest_event_at": "2026-05-12T18:59:06+00:00",
-      "latest_observed_at": "2026-05-13T05:35:18.773553+00:00",
-      "age_days": 0.07,
-      "latest_title": "송파구에 무슨 일이…2주 연속 전셋값 상승률 '1위'",
-      "latest_url": "https://www.hankyung.com/article/202605084555i"
+      "item_count": 416,
+      "latest_event_at": "2026-05-13T14:03:12+00:00",
+      "latest_observed_at": "2026-05-13T15:50:55.651939+00:00",
+      "age_days": 0.0,
+      "latest_title": "최고급 시니어 레지던스 '소요한남'…25~26일 청약",
+      "latest_url": "https://www.hankyung.com/article/202605133670i"
     },
     {
       "source_id": "korea_policy_news",
@@ -400,11 +400,11 @@
       "event_date_field": "",
       "observed_date_field": "",
       "item_count": 207,
-      "latest_event_at": "2026-05-12T18:06:00+00:00",
-      "latest_observed_at": "2026-05-13T05:35:19.170862+00:00",
-      "age_days": 0.1,
-      "latest_title": "반복·중대 개인정보 유출 '엄정 대응'…매출액 10%까지 과징금",
-      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148964248&call_from=rsslink"
+      "latest_event_at": "2026-05-13T15:33:00+00:00",
+      "latest_observed_at": "2026-05-13T15:50:56.079515+00:00",
+      "age_days": 0.0,
+      "latest_title": "농식품부, 태풍·폭염 대비 여름철 농업재해 대응체계 가동",
+      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148964296&call_from=rsslink"
     },
     {
       "source_id": "korea_pressrelease_news",
@@ -422,12 +422,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 352,
-      "latest_event_at": "2026-05-12T17:55:31+00:00",
-      "latest_observed_at": "2026-05-13T05:35:19.475740+00:00",
-      "age_days": 0.11,
-      "latest_title": "[국무조정실][보도자료] 김민석 국무총리 주재 사회보장위원회 위원 위촉식 및 회의",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156761165&call_from=rsslink"
+      "item_count": 344,
+      "latest_event_at": "2026-05-13T15:14:17+00:00",
+      "latest_observed_at": "2026-05-13T15:50:56.334003+00:00",
+      "age_days": 0.0,
+      "latest_title": "[관세청][동정] 이명구 관세청장, 호주 진출기업 대상 간담회 개최",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156761350&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
@@ -961,6 +961,102 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "최고급 시니어 레지던스 '소요한남'…25~26일 청약",
+      "url": "https://www.hankyung.com/article/202605133670i",
+      "published_at": "2026-05-13T14:03:12+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "토마스 헤더윅의 압구정갤러리아百 재건축…서울시 건축심의 통과",
+      "url": "https://www.hankyung.com/article/202605133239i",
+      "published_at": "2026-05-13T11:32:36+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "삼성물산, 신반포 19·25 홍보관 열어…\"한강 조망 극대화\"",
+      "url": "https://www.hankyung.com/article/202605133308i",
+      "published_at": "2026-05-13T11:27:30+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "북촌 등 서울 한옥 생태면적률 의무 제외된다",
+      "url": "https://www.hankyung.com/article/202605133016i",
+      "published_at": "2026-05-13T11:18:13+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "서울 평균 아파트값 15.5억 찍더니…'우르르' 몰리는 동네",
+      "url": "https://www.hankyung.com/article/202605133300i",
+      "published_at": "2026-05-13T11:12:38+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "'두산위브 트리니뷰 구명역' 견본주택 15일 개관",
+      "url": "https://www.hankyung.com/article/202605133286i",
+      "published_at": "2026-05-13T11:09:30+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "GS건설, 다음달 '목동윤슬자이' 분양한다",
+      "url": "https://www.hankyung.com/article/202605132897i",
+      "published_at": "2026-05-13T09:58:16+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "\"얼어 죽어도 신축이지\"…입주 없는 서울서 벌어진 일",
+      "url": "https://www.hankyung.com/article/2026051325206",
+      "published_at": "2026-05-13T08:42:00+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "송파구에 무슨 일이…2주 연속 전셋값 상승률 '1위'",
       "url": "https://www.hankyung.com/article/202605084555i",
       "published_at": "2026-05-12T18:59:06+00:00"
@@ -1057,7 +1153,7 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "연말까지 서울·경기 '세 낀 매매' 풀린다...세입자 있는 모든 주택 대상",
+      "title": "서울·경기 '세 낀 주택' 매도 허용…거래 숨통 트이나",
       "url": "https://www.hankyung.com/article/202605121189i",
       "published_at": "2026-05-12T17:13:17+00:00"
     },
@@ -1096,102 +1192,6 @@
       "title": "국토부 \"실거주 의무 어길 땐 허가 취소도 고려…토허제 취지 그대로\"",
       "url": "https://www.hankyung.com/article/202605120628i",
       "published_at": "2026-05-12T11:34:25+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "세입자 있어도 집 팔 수 있다는데…전문가 '뜻밖의 전망' [분석+]",
-      "url": "https://www.hankyung.com/article/2026051204586",
-      "published_at": "2026-05-12T11:34:23+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "'비거주 1주택'도 실거주 의무 유예받는다",
-      "url": "https://www.hankyung.com/article/202605120593i",
-      "published_at": "2026-05-12T11:30:03+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "와이어드스코어, 어패스리질리언스와 손잡고 한국 빌딩인증 시장 진출",
-      "url": "https://www.hankyung.com/article/202605120187i",
-      "published_at": "2026-05-12T10:38:54+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "[단독] 신혜성, 논현동 꼬마빌딩 55.5억 매각…\"손해 보고 팔았다\"",
-      "url": "https://www.hankyung.com/article/2026051297647",
-      "published_at": "2026-05-12T09:25:13+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "\"매매보다 무서운 전셋값\"…세입자들 '한숨'",
-      "url": "https://www.hankyung.com/article/2026051297936",
-      "published_at": "2026-05-12T09:10:44+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "\"아파트값 너무 올랐다\"… 무주택자들 눈 돌린 곳",
-      "url": "https://www.hankyung.com/article/202605083660i",
-      "published_at": "2026-05-12T06:45:03+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "강남 아파트 10억 싼 급매 쏟아지더니…\"바겐세일 끝\" [돈앤톡]",
-      "url": "https://www.hankyung.com/article/2026051180836",
-      "published_at": "2026-05-12T06:30:02+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "DL이앤씨, 압구정5구역에 '조합원 전 가구 한강조망' 제안",
-      "url": "https://www.hankyung.com/article/202605118753i",
-      "published_at": "2026-05-11T20:50:03+00:00"
     }
   ]
 }
