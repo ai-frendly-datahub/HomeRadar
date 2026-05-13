@@ -6,6 +6,8 @@ from pathlib import Path
 from radar_core.ontology import build_summary_ontology_metadata
 from radar_core.report_utils import (
     generate_index_html as _core_generate_index_html,
+)
+from radar_core.report_utils import (
     generate_report as _core_generate_report,
 )
 
