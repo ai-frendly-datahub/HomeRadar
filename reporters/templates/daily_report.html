@@ -845,6 +845,21 @@
             {% endif %}
           </div>
         </article>
+
+        {% if cross_reference_html %}
+        <article class="panel" aria-label="Cross-source property reference">
+          <header class="panel-hd">
+            <div>
+              <p class="panel-title">Cross-Source Property Reference</p>
+              <p class="panel-sub">Complexes observed across MOLIT / REB / ONBID / news</p>
+            </div>
+            <div class="pill" aria-hidden="true">join</div>
+          </header>
+          <div class="panel-bd">
+            {{ cross_reference_html|safe }}
+          </div>
+        </article>
+        {% endif %}
       </section>
 
       <section id="entities" class="section" aria-label="Entity table">

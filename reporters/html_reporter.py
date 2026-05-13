@@ -132,6 +132,7 @@ class HtmlReporter:
         regional_distribution_html, regional_distribution_fallback = (
             self._render_region_distribution(regional_distribution)
         )
+        cross_reference_html = self._build_cross_reference_html(store)
 
         # Generate chart data
         chart_data = self._generate_chart_data(recent_items, trending_entities)
@@ -159,6 +160,7 @@ class HtmlReporter:
             regional_distribution=regional_distribution,
             regional_distribution_html=regional_distribution_html,
             regional_distribution_fallback=regional_distribution_fallback,
+            cross_reference_html=cross_reference_html,
             quality_report=quality_report or {},
             generated_at=datetime.now(UTC),
             stats=stats,
@@ -487,6 +489,92 @@ class HtmlReporter:
             "<thead><tr><th>지역</th><th>분포</th><th>건수</th></tr></thead>"
             f"<tbody>{body_rows}</tbody>"
             "</table></div>"
+        )
+
+    def _build_cross_reference_html(self, store: GraphStore) -> str:
+        """Render the cross-source property reference panel.
+
+        Joins ``urls`` (region/district/source_id) with ``url_entities``
+        (entity_type='complex') to assemble ``PropertyRecord`` rows, then
+        groups them through :mod:`homeradar.cross_reference` so the report
+        can show which property keys are corroborated across MOLIT / REB /
+        ONBID / news.
+
+        Returns "" when no joinable rows exist or anything goes wrong; the
+        template hides the panel in that case.
+        """
+        try:
+            from homeradar.cross_reference import (
+                PropertyRecord,
+                cross_reference_sources,
+            )
+
+            with store._connection() as conn:
+                rows = conn.execute(
+                    """
+                    SELECT u.region, u.district, e.entity_value AS complex_name,
+                           u.source_id
+                    FROM urls u
+                    JOIN url_entities e ON u.url = e.url
+                    WHERE e.entity_type = 'complex'
+                      AND u.region IS NOT NULL AND TRIM(u.region) != ''
+                      AND u.district IS NOT NULL AND TRIM(u.district) != ''
+                      AND e.entity_value IS NOT NULL AND TRIM(e.entity_value) != ''
+                    """
+                ).fetchall()
+        except Exception:
+            return ""
+
+        if not rows:
+            return ""
+
+        records = [
+            PropertyRecord(
+                si_do=str(region),
+                si_gun_gu=str(district),
+                dong=str(district),
+                complex_name=str(complex_name),
+                source=str(source_id or "unknown"),
+            )
+            for region, district, complex_name, source_id in rows
+        ]
+        layered = cross_reference_sources(records)
+        if not layered:
+            return ""
+
+        rows_by_source_count = sorted(
+            layered.items(),
+            key=lambda kv: (len(kv[1]), sum(len(v) for v in kv[1].values())),
+            reverse=True,
+        )
+
+        multi_source = sum(1 for _, sources in rows_by_source_count if len(sources) >= 2)
+        total_keys = len(rows_by_source_count)
+
+        body_rows: list[str] = []
+        for key, sources in rows_by_source_count[:30]:
+            parts = key.split("|")
+            label = " · ".join(html.escape(p) for p in parts if p)
+            source_chips = "".join(
+                f'<span class="chip"><strong>{html.escape(src)}</strong> {len(items)}</span>'
+                for src, items in sorted(sources.items())
+            )
+            body_rows.append(
+                f"<tr><td>{label}</td>"
+                f"<td>{source_chips}</td>"
+                f"<td class='mono'>{len(sources)}</td></tr>"
+            )
+
+        return (
+            '<div class="cross-reference-summary">'
+            f'<p class="muted small" style="margin:0 0 8px">'
+            f'{total_keys} property keys observed, {multi_source} corroborated across '
+            "2+ sources (top 30 shown).</p>"
+            '<div class="cross-reference-table-wrap">'
+            '<table class="cross-reference-table" aria-label="Cross-source property reference">'
+            "<thead><tr><th>Property</th><th>Sources</th><th>#</th></tr></thead>"
+            f"<tbody>{''.join(body_rows)}</tbody>"
+            "</table></div></div>"
         )
 
     def _item_to_dict(self, item: dict[str, Any]) -> dict[str, Any]:
