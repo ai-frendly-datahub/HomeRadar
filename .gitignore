@@ -179,9 +179,7 @@ gh-pages/
 data/daily/
 data/raw/
 !data/raw/.gitkeep
-data/search_index.db
-data/search_index.db-wal
-data/search_index.db-shm
+data/search_index.db*
 reports/*.html
 !reports/.gitkeep
 docs/reports/*.html
