@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-05-14T02:29:27.541886+00:00",
+  "generated_at": "2026-05-14T04:41:36.492298+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 10,
@@ -39,7 +39,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 6,
-    "verification_state_count": 970,
+    "verification_state_count": 995,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -63,7 +63,7 @@
   },
   "verification_states": {
     "market_corroboration_requires_official_source": 418,
-    "official_policy_corroboration": 552
+    "official_policy_corroboration": 577
   },
   "verification_review_samples": [
     {
@@ -378,7 +378,7 @@
       "observed_date_field": "",
       "item_count": 418,
       "latest_event_at": "2026-05-14T10:20:55+00:00",
-      "latest_observed_at": "2026-05-14T11:29:18.804389+00:00",
+      "latest_observed_at": "2026-05-14T13:41:27.178323+00:00",
       "age_days": 0.0,
       "latest_title": "서울에서 내 땅 갖기, 젊음은 몸테크의 마지막 기회다",
       "latest_url": "https://www.hankyung.com/article/202605133628i"
@@ -401,7 +401,7 @@
       "observed_date_field": "",
       "item_count": 207,
       "latest_event_at": "2026-05-14T09:29:00+00:00",
-      "latest_observed_at": "2026-05-14T11:29:19.250995+00:00",
+      "latest_observed_at": "2026-05-14T13:41:27.937274+00:00",
       "age_days": 0.0,
       "latest_title": "소아암 치료에 35년 바쳐 \"지방 환아들은 지방서 치료받을 수 있어야\"",
       "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148964205&call_from=rsslink"
@@ -422,12 +422,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 345,
-      "latest_event_at": "2026-05-14T10:27:11+00:00",
-      "latest_observed_at": "2026-05-14T11:29:19.522010+00:00",
+      "item_count": 370,
+      "latest_event_at": "2026-05-14T13:10:29+00:00",
+      "latest_observed_at": "2026-05-14T13:41:28.282256+00:00",
       "age_days": 0.0,
-      "latest_title": "[고용노동부]한국사회적기업진흥원, 「2026년 1차 사회적경제 SE브릿지 공모전」 참여기업 모집",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156761493&call_from=rsslink"
+      "latest_title": "[외교부]제11차 한-싱가포르 기후변화 대화 개최",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156761551&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
