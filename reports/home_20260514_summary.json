@@ -1,0 +1,207 @@
+{
+  "date": "2026-05-14",
+  "category": "home",
+  "article_count": 100,
+  "source_count": 3,
+  "matched_count": 98,
+  "top_entities": [
+    {
+      "name": "keyword",
+      "count": 222
+    },
+    {
+      "name": "district",
+      "count": 127
+    },
+    {
+      "name": "complex",
+      "count": 5
+    },
+    {
+      "name": "project",
+      "count": 3
+    }
+  ],
+  "sources": {
+    "korea_pressrelease_news": 31,
+    "hankyung_realestate": 39,
+    "korea_policy_news": 30
+  },
+  "generated_at": "2026-05-14T11:29:26.642832+09:00",
+  "quality_summary": {
+    "total_sources": 25,
+    "enabled_sources": 10,
+    "tracked_sources": 4,
+    "fresh_sources": 0,
+    "stale_sources": 0,
+    "stale_source_ids": [],
+    "missing_sources": 0,
+    "missing_source_ids": [],
+    "unknown_event_date_sources": 0,
+    "unknown_event_date_source_ids": [],
+    "skipped_sources": 19,
+    "skipped_disabled_sources": 15,
+    "skipped_disabled_source_ids": [
+      "mk_realestate",
+      "herald_realestate_all",
+      "herald_realestate_policy",
+      "herald_realestate_investment",
+      "herald_realestate_market",
+      "chosunbiz_realestate",
+      "newsdaily_realestate",
+      "heraldcorp_realestate",
+      "kb_kbland",
+      "naver_land",
+      "r114",
+      "zigbang",
+      "zigbang_browser",
+      "dabang",
+      "naver_land_main"
+    ],
+    "skipped_missing_env_sources": 4,
+    "skipped_missing_env_source_ids": [
+      "molit_apt_transaction",
+      "molit_apt_rent",
+      "reb_subscription",
+      "onbid_auction"
+    ],
+    "verification_state_count": 970,
+    "verification_review_sample_count": 20,
+    "daily_review_item_count": 32,
+    "official_primary_status": "blocked_missing_env",
+    "official_primary_sources": 4,
+    "official_primary_fresh_sources": 0,
+    "official_primary_credentialed_sources": 0,
+    "official_primary_blocked_sources": 4,
+    "official_primary_blocked_source_ids": [
+      "molit_apt_transaction",
+      "molit_apt_rent",
+      "reb_subscription",
+      "onbid_auction"
+    ],
+    "official_primary_required_env": [
+      "MOLIT_SERVICE_KEY",
+      "ONBID_API_KEY",
+      "SUBSCRIPTION_API_KEY"
+    ],
+    "corroboration_only_items": 418,
+    "official_primary_items": 0
+  },
+  "verification_states": {
+    "market_corroboration_requires_official_source": 418,
+    "official_policy_corroboration": 552
+  },
+  "quality_review_items": [
+    {
+      "reason": "official_primary_missing_env",
+      "source_id": "molit_apt_transaction",
+      "source": "MOLIT Apartment Transaction",
+      "event_model": "transaction_price",
+      "required_env": "MOLIT_SERVICE_KEY",
+      "skip_reason": "MOLIT_SERVICE_KEY not set",
+      "detail": "Credentialed official source is skipped until the required environment variable is set."
+    },
+    {
+      "reason": "official_primary_missing_env",
+      "source_id": "molit_apt_rent",
+      "source": "MOLIT Apartment Rent",
+      "event_model": "rent_transaction",
+      "required_env": "MOLIT_SERVICE_KEY",
+      "skip_reason": "MOLIT_SERVICE_KEY not set",
+      "detail": "Credentialed official source is skipped until the required environment variable is set."
+    },
+    {
+      "reason": "official_primary_missing_env",
+      "source_id": "reb_subscription",
+      "source": "Korea Real Estate Board - Subscription Info",
+      "event_model": "subscription_notice",
+      "required_env": "SUBSCRIPTION_API_KEY",
+      "skip_reason": "SUBSCRIPTION_API_KEY not set",
+      "detail": "Credentialed official source is skipped until the required environment variable is set."
+    },
+    {
+      "reason": "disabled_source_gate",
+      "source_id": "heraldcorp_realestate",
+      "source": "Herald Corp - Real Estate",
+      "event_model": "market_context",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "skip_reason": "source disabled"
+    },
+    {
+      "reason": "disabled_source_gate",
+      "source_id": "kb_kbland",
+      "source": "KB Kookmin Bank - Real Estate Data Hub",
+      "event_model": "listing_inventory",
+      "verification_role": "backlog_operational_candidate",
+      "merge_policy": "backlog_only_until_source_adapter",
+      "skip_reason": "source disabled"
+    },
+    {
+      "reason": "disabled_source_gate",
+      "source_id": "naver_land",
+      "source": "Naver Land",
+      "event_model": "listing_inventory",
+      "verification_role": "backlog_listing_candidate",
+      "merge_policy": "backlog_only_until_tos_review",
+      "skip_reason": "source disabled"
+    },
+    {
+      "reason": "disabled_source_gate",
+      "source_id": "r114",
+      "source": "R114 (부동산114)",
+      "event_model": "listing_inventory",
+      "verification_role": "backlog_listing_candidate",
+      "merge_policy": "backlog_only_until_tos_review",
+      "skip_reason": "source disabled"
+    },
+    {
+      "reason": "disabled_source_gate",
+      "source_id": "zigbang",
+      "source": "Zigbang",
+      "event_model": "listing_inventory",
+      "verification_role": "backlog_listing_candidate",
+      "merge_policy": "backlog_only_until_tos_review",
+      "skip_reason": "source disabled"
+    },
+    {
+      "reason": "disabled_source_gate",
+      "source_id": "zigbang_browser",
+      "source": "Zigbang Browser Listings",
+      "event_model": "listing_inventory",
+      "verification_role": "backlog_listing_candidate",
+      "merge_policy": "backlog_only_until_browser_fixture",
+      "skip_reason": "source disabled"
+    },
+    {
+      "reason": "disabled_source_gate",
+      "source_id": "dabang",
+      "source": "Dabang",
+      "event_model": "listing_inventory",
+      "verification_role": "backlog_listing_candidate",
+      "merge_policy": "backlog_only_until_tos_review",
+      "skip_reason": "source disabled"
+    },
+    {
+      "reason": "official_primary_missing_env",
+      "source_id": "onbid_auction",
+      "source": "Onbid - Public Auction Properties",
+      "event_model": "auction_signal",
+      "required_env": "ONBID_API_KEY",
+      "skip_reason": "ONBID_API_KEY not set",
+      "detail": "Credentialed official source is skipped until the required environment variable is set."
+    },
+    {
+      "reason": "disabled_source_gate",
+      "source_id": "naver_land_main",
+      "source": "Naver Land - Property Listings",
+      "event_model": "listing_inventory",
+      "verification_role": "backlog_listing_candidate",
+      "merge_policy": "backlog_only_until_tos_review",
+      "skip_reason": "source disabled"
+    }
+  ],
+  "warnings": [
+    "official primary HomeRadar sources blocked by missing env (molit_apt_transaction, molit_apt_rent, reb_subscription, onbid_auction; required: MOLIT_SERVICE_KEY, ONBID_API_KEY, SUBSCRIPTION_API_KEY)"
+  ]
+}
