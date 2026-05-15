@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-05-15T04:47:09.528789+00:00",
+  "generated_at": "2026-05-15T06:58:57.785962+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 10,
@@ -39,7 +39,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 6,
-    "verification_state_count": 1080,
+    "verification_state_count": 1095,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -58,14 +58,24 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 441,
+    "corroboration_only_items": 442,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 441,
-    "official_policy_corroboration": 639
+    "market_corroboration_requires_official_source": 442,
+    "official_policy_corroboration": 653
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/202605159304i",
+      "title": "서울건축포럼, 오는 29일 '한국 건축 비평' 연다",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-15T15:23:52+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/202605158628i",
       "title": "서울 자양 면목 모아타운 개발로 4042가구 주택공급",
@@ -255,16 +265,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605146798i",
-      "title": "지방 분양시장, 산업단지 인접 단지 청약 강세",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-14T15:45:10+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -376,12 +376,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 441,
-      "latest_event_at": "2026-05-15T11:15:01+00:00",
-      "latest_observed_at": "2026-05-15T13:46:59.849316+00:00",
+      "item_count": 442,
+      "latest_event_at": "2026-05-15T15:23:52+00:00",
+      "latest_observed_at": "2026-05-15T15:58:47.964451+00:00",
       "age_days": 0.0,
-      "latest_title": "서울 자양 면목 모아타운 개발로 4042가구 주택공급",
-      "latest_url": "https://www.hankyung.com/article/202605158628i"
+      "latest_title": "서울건축포럼, 오는 29일 '한국 건축 비평' 연다",
+      "latest_url": "https://www.hankyung.com/article/202605159304i"
     },
     {
       "source_id": "korea_policy_news",
@@ -399,12 +399,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 219,
-      "latest_event_at": "2026-05-15T12:28:00+00:00",
-      "latest_observed_at": "2026-05-15T13:47:00.652827+00:00",
+      "item_count": 224,
+      "latest_event_at": "2026-05-15T15:36:00+00:00",
+      "latest_observed_at": "2026-05-15T15:58:48.835121+00:00",
       "age_days": 0.0,
-      "latest_title": "[정책 바로보기] 방위사업청 \"한·미 함정 MRO 협력은 상호 신뢰 기반으로 정상 추진 중\"",
-      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148964437&call_from=rsslink"
+      "latest_title": "공동주택에도 수열에너지 보급 확대…\"30% 이상 냉난방비 절감\"",
+      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148964455&call_from=rsslink"
     },
     {
       "source_id": "korea_pressrelease_news",
@@ -422,12 +422,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 420,
-      "latest_event_at": "2026-05-15T13:27:40+00:00",
-      "latest_observed_at": "2026-05-15T13:47:00.908144+00:00",
+      "item_count": 429,
+      "latest_event_at": "2026-05-15T15:19:41+00:00",
+      "latest_observed_at": "2026-05-15T15:58:49.246958+00:00",
       "age_days": 0.0,
-      "latest_title": "[조달청]조달청 시설공사 주간('26.5.18.~'26.5.22.)입찰 동향",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156761852&call_from=rsslink"
+      "latest_title": "[산림청]중부지방산림청, 인명 피해 최소화를 위한 산사태대책상황실 운영",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156761882&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
@@ -961,6 +961,18 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "서울건축포럼, 오는 29일 '한국 건축 비평' 연다",
+      "url": "https://www.hankyung.com/article/202605159304i",
+      "published_at": "2026-05-15T15:23:52+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "서울 자양 면목 모아타운 개발로 4042가구 주택공급",
       "url": "https://www.hankyung.com/article/202605158628i",
       "published_at": "2026-05-15T11:15:01+00:00"
@@ -1180,18 +1192,6 @@
       "title": "기왕이면 다홍치마…분양시장서 풍수지리 '명당' 단지가 뜬다",
       "url": "https://www.hankyung.com/article/202605146903i",
       "published_at": "2026-05-14T16:08:21+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "지방 분양시장, 산업단지 인접 단지 청약 강세",
-      "url": "https://www.hankyung.com/article/202605146798i",
-      "published_at": "2026-05-14T15:45:10+00:00"
     }
   ]
 }
