@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-05-16T04:27:52.135832+00:00",
+  "generated_at": "2026-05-16T06:24:04.188681+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 10,
@@ -378,7 +378,7 @@
       "observed_date_field": "",
       "item_count": 447,
       "latest_event_at": "2026-05-16T09:00:12+00:00",
-      "latest_observed_at": "2026-05-16T13:27:42.466239+00:00",
+      "latest_observed_at": "2026-05-16T15:23:53.201420+00:00",
       "age_days": 0.0,
       "latest_title": "아파트 대출 규제 심해지자…'꼬마빌딩' 다시 눈길",
       "latest_url": "https://www.hankyung.com/article/202605146586i"
@@ -401,8 +401,8 @@
       "observed_date_field": "",
       "item_count": 232,
       "latest_event_at": "2026-05-15T17:40:00+00:00",
-      "latest_observed_at": "2026-05-16T13:27:43.200665+00:00",
-      "age_days": 0.45,
+      "latest_observed_at": "2026-05-16T15:23:54.155030+00:00",
+      "age_days": 0.53,
       "latest_title": "\"조선왕릉 숲길에서 신록을 느끼세요\"…세계유산 9곳 개방",
       "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148964465&call_from=rsslink"
     },
@@ -424,8 +424,8 @@
       "observed_date_field": "",
       "item_count": 447,
       "latest_event_at": "2026-05-15T19:08:24+00:00",
-      "latest_observed_at": "2026-05-16T13:27:43.534648+00:00",
-      "age_days": 0.39,
+      "latest_observed_at": "2026-05-16T15:23:54.764669+00:00",
+      "age_days": 0.47,
       "latest_title": "[외교부]제2차 한-EU 안보방위대화 개최, 안보방위 분야 정례 협력 강화",
       "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156761934&call_from=rsslink"
     },
