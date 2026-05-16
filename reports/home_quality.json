@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-05-15T06:58:57.785962+00:00",
+  "generated_at": "2026-05-16T04:27:52.135832+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 10,
@@ -39,7 +39,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 6,
-    "verification_state_count": 1095,
+    "verification_state_count": 1126,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -58,14 +58,64 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 442,
+    "corroboration_only_items": 447,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 442,
-    "official_policy_corroboration": 653
+    "market_corroboration_requires_official_source": 447,
+    "official_policy_corroboration": 679
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/202605146586i",
+      "title": "아파트 대출 규제 심해지자…'꼬마빌딩' 다시 눈길",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-16T09:00:12+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605032025i",
+      "title": "공급 부족한 '실버타운' 활성화 방법은?…한국의 '승부수'",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-16T09:00:07+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605158689i",
+      "title": "병원 건물 낙찰 잇달아…안정적 임대 수입에 대로변 입지 돋보여",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-16T09:00:05+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026051596791",
+      "title": "롯데건설, 준공·분양 호조로 '실적 반등'",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-15T17:11:48+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026051596781",
+      "title": "'더샵 송도그란테르' 모델하우스 탐방",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-15T17:11:39+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/202605159304i",
       "title": "서울건축포럼, 오는 29일 '한국 건축 비평' 연다",
@@ -215,56 +265,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026051470931",
-      "title": "올해 아파트 거래량, 용인·수원·화성 '톱3'",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-14T17:03:09+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605147042i",
-      "title": "휴가 중에도 무료주차…\"인천공항, 무료주차권 남발\"",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-14T16:40:47+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605147016i",
-      "title": "국토부 \"공급 부족한 아스콘, 안전 관련 현장에 우선 투입\"",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-14T16:35:58+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605146960i",
-      "title": "최인호 HUG 사장, 원주 PF사업장 현장 점검…주택공급 활성화 강조",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-14T16:18:50+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605146903i",
-      "title": "기왕이면 다홍치마…분양시장서 풍수지리 '명당' 단지가 뜬다",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-14T16:08:21+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -376,12 +376,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 442,
-      "latest_event_at": "2026-05-15T15:23:52+00:00",
-      "latest_observed_at": "2026-05-15T15:58:47.964451+00:00",
+      "item_count": 447,
+      "latest_event_at": "2026-05-16T09:00:12+00:00",
+      "latest_observed_at": "2026-05-16T13:27:42.466239+00:00",
       "age_days": 0.0,
-      "latest_title": "서울건축포럼, 오는 29일 '한국 건축 비평' 연다",
-      "latest_url": "https://www.hankyung.com/article/202605159304i"
+      "latest_title": "아파트 대출 규제 심해지자…'꼬마빌딩' 다시 눈길",
+      "latest_url": "https://www.hankyung.com/article/202605146586i"
     },
     {
       "source_id": "korea_policy_news",
@@ -399,12 +399,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 224,
-      "latest_event_at": "2026-05-15T15:36:00+00:00",
-      "latest_observed_at": "2026-05-15T15:58:48.835121+00:00",
-      "age_days": 0.0,
-      "latest_title": "공동주택에도 수열에너지 보급 확대…\"30% 이상 냉난방비 절감\"",
-      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148964455&call_from=rsslink"
+      "item_count": 232,
+      "latest_event_at": "2026-05-15T17:40:00+00:00",
+      "latest_observed_at": "2026-05-16T13:27:43.200665+00:00",
+      "age_days": 0.45,
+      "latest_title": "\"조선왕릉 숲길에서 신록을 느끼세요\"…세계유산 9곳 개방",
+      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148964465&call_from=rsslink"
     },
     {
       "source_id": "korea_pressrelease_news",
@@ -422,12 +422,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 429,
-      "latest_event_at": "2026-05-15T15:19:41+00:00",
-      "latest_observed_at": "2026-05-15T15:58:49.246958+00:00",
-      "age_days": 0.0,
-      "latest_title": "[산림청]중부지방산림청, 인명 피해 최소화를 위한 산사태대책상황실 운영",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156761882&call_from=rsslink"
+      "item_count": 447,
+      "latest_event_at": "2026-05-15T19:08:24+00:00",
+      "latest_observed_at": "2026-05-16T13:27:43.534648+00:00",
+      "age_days": 0.39,
+      "latest_title": "[외교부]제2차 한-EU 안보방위대화 개최, 안보방위 분야 정례 협력 강화",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156761934&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
@@ -961,6 +961,66 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "아파트 대출 규제 심해지자…'꼬마빌딩' 다시 눈길",
+      "url": "https://www.hankyung.com/article/202605146586i",
+      "published_at": "2026-05-16T09:00:12+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "공급 부족한 '실버타운' 활성화 방법은?…한국의 '승부수'",
+      "url": "https://www.hankyung.com/article/202605032025i",
+      "published_at": "2026-05-16T09:00:07+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "병원 건물 낙찰 잇달아…안정적 임대 수입에 대로변 입지 돋보여",
+      "url": "https://www.hankyung.com/article/202605158689i",
+      "published_at": "2026-05-16T09:00:05+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "롯데건설, 준공·분양 호조로 '실적 반등'",
+      "url": "https://www.hankyung.com/article/2026051596791",
+      "published_at": "2026-05-15T17:11:48+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "'더샵 송도그란테르' 모델하우스 탐방",
+      "url": "https://www.hankyung.com/article/2026051596781",
+      "published_at": "2026-05-15T17:11:39+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "서울건축포럼, 오는 29일 '한국 건축 비평' 연다",
       "url": "https://www.hankyung.com/article/202605159304i",
       "published_at": "2026-05-15T15:23:52+00:00"
@@ -1132,66 +1192,6 @@
       "title": "서울 전세가격 상승폭, 10년6개월 만에 '최대'",
       "url": "https://www.hankyung.com/article/2026051470971",
       "published_at": "2026-05-14T17:03:35+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "올해 아파트 거래량, 용인·수원·화성 '톱3'",
-      "url": "https://www.hankyung.com/article/2026051470931",
-      "published_at": "2026-05-14T17:03:09+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "휴가 중에도 무료주차…\"인천공항, 무료주차권 남발\"",
-      "url": "https://www.hankyung.com/article/202605147042i",
-      "published_at": "2026-05-14T16:40:47+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "국토부 \"공급 부족한 아스콘, 안전 관련 현장에 우선 투입\"",
-      "url": "https://www.hankyung.com/article/202605147016i",
-      "published_at": "2026-05-14T16:35:58+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "최인호 HUG 사장, 원주 PF사업장 현장 점검…주택공급 활성화 강조",
-      "url": "https://www.hankyung.com/article/202605146960i",
-      "published_at": "2026-05-14T16:18:50+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "기왕이면 다홍치마…분양시장서 풍수지리 '명당' 단지가 뜬다",
-      "url": "https://www.hankyung.com/article/202605146903i",
-      "published_at": "2026-05-14T16:08:21+00:00"
     }
   ]
 }
