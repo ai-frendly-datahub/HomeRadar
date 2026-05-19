@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-05-19T07:49:23.101731+00:00",
+  "generated_at": "2026-05-19T13:46:42.150133+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 10,
@@ -39,7 +39,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 6,
-    "verification_state_count": 1306,
+    "verification_state_count": 1321,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -58,14 +58,74 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 486,
+    "corroboration_only_items": 492,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 486,
-    "official_policy_corroboration": 820
+    "market_corroboration_requires_official_source": 492,
+    "official_policy_corroboration": 829
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/202605158725i",
+      "title": "'2호선·9호선·신분당선'이 '황금 노선'으로 불리는 이유",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-19T18:00:03+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605182731i",
+      "title": "부동산 경매, 양극화 넘어 초양극화…투자 전략 재편 불가피",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-19T17:38:44+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026051969491",
+      "title": "'북오산자이 드포레' 1517가구 분양",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-19T17:22:55+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026051969481",
+      "title": "'래미안 엘라비네' 33가구 무순위 청약",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-19T17:22:31+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026051969561",
+      "title": "\"전셋값 뛰면 3~9개월 뒤 매매시장 자극\"",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-19T17:22:20+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026051969541",
+      "title": "인테리어 상담·입주 청소…삼성물산 '홈닉' 새 서비스",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-19T17:21:51+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/202605196580i",
       "title": "\"전세가 다시 '대세상승'…3~9개월 뒤 매매가 끌어올린다\"",
@@ -205,66 +265,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026051842791",
-      "title": "'비규제' 구리 아파트, 올 거래 265% 급증",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-18T17:15:59+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026051842851",
-      "title": "압구정5구역 수주 '본격화'…현대·DL 공동홍보관 개관",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-18T17:14:39+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026051842771",
-      "title": "대우건설, 천호동 공공재개발에 '써밋' 넣는다",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-18T17:14:16+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026051842831",
-      "title": "두산건설, 부산 망미5구역 수주",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-18T17:13:45+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605183785i",
-      "title": "서울시 \"GTX-A 삼성역 철근 누락, 국가철도공단에 3차례 보고\"",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-18T14:50:58+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605183637i",
-      "title": "구리, 경기 아파트 거래 증가율 1위…1년 새 265% 급증",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-18T14:15:32+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -376,12 +376,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 486,
-      "latest_event_at": "2026-05-19T15:35:18+00:00",
-      "latest_observed_at": "2026-05-19T16:49:12.731618+00:00",
+      "item_count": 492,
+      "latest_event_at": "2026-05-19T18:00:03+00:00",
+      "latest_observed_at": "2026-05-19T22:46:31.246721+00:00",
       "age_days": 0.0,
-      "latest_title": "\"전세가 다시 '대세상승'…3~9개월 뒤 매매가 끌어올린다\"",
-      "latest_url": "https://www.hankyung.com/article/202605196580i"
+      "latest_title": "'2호선·9호선·신분당선'이 '황금 노선'으로 불리는 이유",
+      "latest_url": "https://www.hankyung.com/article/202605158725i"
     },
     {
       "source_id": "korea_policy_news",
@@ -399,12 +399,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 256,
-      "latest_event_at": "2026-05-19T16:25:00+00:00",
-      "latest_observed_at": "2026-05-19T16:49:13.703319+00:00",
+      "item_count": 260,
+      "latest_event_at": "2026-05-19T18:31:00+00:00",
+      "latest_observed_at": "2026-05-19T22:46:32.239981+00:00",
       "age_days": 0.0,
-      "latest_title": "부동산 탈루혐의자 127명 자금형성과정 등 조사",
-      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148964628&call_from=rsslink"
+      "latest_title": "기후부, 하천 불법점용 대응 강화…제방 훼손 사전 방지",
+      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148964643&call_from=rsslink"
     },
     {
       "source_id": "korea_pressrelease_news",
@@ -422,12 +422,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 564,
-      "latest_event_at": "2026-05-19T16:08:29+00:00",
-      "latest_observed_at": "2026-05-19T16:49:14.112330+00:00",
+      "item_count": 569,
+      "latest_event_at": "2026-05-19T19:31:45+00:00",
+      "latest_observed_at": "2026-05-19T22:46:32.883026+00:00",
       "age_days": 0.0,
-      "latest_title": "[중소벤처기업부]중기부, 휴&middot;폐업 소상공인  사회안전망 강화 간담회 개최",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156762475&call_from=rsslink"
+      "latest_title": "[산업통상부](참고자료)한일 양국의 에너지 안보 및 공급망 회복력 협력 강화에 관한 대한민국 산업통상부와 일본 경제산업성 간 공동 보도자료",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156762493&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
@@ -961,6 +961,78 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "'2호선·9호선·신분당선'이 '황금 노선'으로 불리는 이유",
+      "url": "https://www.hankyung.com/article/202605158725i",
+      "published_at": "2026-05-19T18:00:03+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "부동산 경매, 양극화 넘어 초양극화…투자 전략 재편 불가피",
+      "url": "https://www.hankyung.com/article/202605182731i",
+      "published_at": "2026-05-19T17:38:44+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "'북오산자이 드포레' 1517가구 분양",
+      "url": "https://www.hankyung.com/article/2026051969491",
+      "published_at": "2026-05-19T17:22:55+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "'래미안 엘라비네' 33가구 무순위 청약",
+      "url": "https://www.hankyung.com/article/2026051969481",
+      "published_at": "2026-05-19T17:22:31+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "\"전셋값 뛰면 3~9개월 뒤 매매시장 자극\"",
+      "url": "https://www.hankyung.com/article/2026051969561",
+      "published_at": "2026-05-19T17:22:20+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "인테리어 상담·입주 청소…삼성물산 '홈닉' 새 서비스",
+      "url": "https://www.hankyung.com/article/2026051969541",
+      "published_at": "2026-05-19T17:21:51+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "\"전세가 다시 '대세상승'…3~9개월 뒤 매매가 끌어올린다\"",
       "url": "https://www.hankyung.com/article/202605196580i",
       "published_at": "2026-05-19T15:35:18+00:00"
@@ -1120,78 +1192,6 @@
       "title": "이르면 연말 분양…한남뉴타운 공급 '급물살'",
       "url": "https://www.hankyung.com/article/2026051842811",
       "published_at": "2026-05-18T17:17:02+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "'비규제' 구리 아파트, 올 거래 265% 급증",
-      "url": "https://www.hankyung.com/article/2026051842791",
-      "published_at": "2026-05-18T17:15:59+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "압구정5구역 수주 '본격화'…현대·DL 공동홍보관 개관",
-      "url": "https://www.hankyung.com/article/2026051842851",
-      "published_at": "2026-05-18T17:14:39+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "대우건설, 천호동 공공재개발에 '써밋' 넣는다",
-      "url": "https://www.hankyung.com/article/2026051842771",
-      "published_at": "2026-05-18T17:14:16+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "두산건설, 부산 망미5구역 수주",
-      "url": "https://www.hankyung.com/article/2026051842831",
-      "published_at": "2026-05-18T17:13:45+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "서울시 \"GTX-A 삼성역 철근 누락, 국가철도공단에 3차례 보고\"",
-      "url": "https://www.hankyung.com/article/202605183785i",
-      "published_at": "2026-05-18T14:50:58+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "구리, 경기 아파트 거래 증가율 1위…1년 새 265% 급증",
-      "url": "https://www.hankyung.com/article/202605183637i",
-      "published_at": "2026-05-18T14:15:32+00:00"
     }
   ]
 }
