@@ -102,6 +102,8 @@ class HtmlReporter:
         self.env = Environment(
             loader=FileSystemLoader(str(self.template_dir)),
             autoescape=select_autoescape(["html", "xml"]),
+            trim_blocks=True,
+            lstrip_blocks=True,
         )
 
     def generate_report(

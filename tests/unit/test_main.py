@@ -74,6 +74,15 @@ sources:
                 "policy, transaction, subscription, or development items."
             ),
         }
+        assert sources["korea_policy_news"]["scope_filter"] == {
+            "mode": "require_home_entity",
+            "apply_to_collection": True,
+            "apply_to_report": True,
+            "reason": (
+                "Broad government policy feed; keep only housing, construction, "
+                "policy, transaction, subscription, or development items."
+            ),
+        }
         for source_id in (
             "molit_apt_transaction",
             "molit_apt_rent",

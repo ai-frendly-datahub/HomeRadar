@@ -233,6 +233,11 @@ sources:
     url: "https://www.korea.kr/rss/policy.xml"
     description: "Government policy RSS feed (includes land/housing policy updates)"
     notes: "Official government feed. No authentication. Contains policy/land/housing notices."
+    scope_filter:
+      mode: require_home_entity
+      apply_to_collection: true
+      apply_to_report: true
+      reason: "Broad government policy feed; keep only housing, construction, policy, transaction, subscription, or development items."
 
   - id: korea_pressrelease_news
     name: "Korea Gov - Press Release RSS"

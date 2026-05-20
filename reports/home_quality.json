@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-05-19T13:46:42.150133+00:00",
+  "generated_at": "2026-05-19T22:55:42.553217+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 10,
@@ -39,7 +39,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 6,
-    "verification_state_count": 1321,
+    "verification_state_count": 1325,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -63,7 +63,7 @@
   },
   "verification_states": {
     "market_corroboration_requires_official_source": 492,
-    "official_policy_corroboration": 829
+    "official_policy_corroboration": 833
   },
   "verification_review_samples": [
     {
@@ -378,8 +378,8 @@
       "observed_date_field": "",
       "item_count": 492,
       "latest_event_at": "2026-05-19T18:00:03+00:00",
-      "latest_observed_at": "2026-05-19T22:46:31.246721+00:00",
-      "age_days": 0.0,
+      "latest_observed_at": "2026-05-20T07:56:06.758547+00:00",
+      "age_days": 0.21,
       "latest_title": "'2호선·9호선·신분당선'이 '황금 노선'으로 불리는 이유",
       "latest_url": "https://www.hankyung.com/article/202605158725i"
     },
@@ -401,8 +401,8 @@
       "observed_date_field": "",
       "item_count": 260,
       "latest_event_at": "2026-05-19T18:31:00+00:00",
-      "latest_observed_at": "2026-05-19T22:46:32.239981+00:00",
-      "age_days": 0.0,
+      "latest_observed_at": "2026-05-20T07:56:09.300770+00:00",
+      "age_days": 0.18,
       "latest_title": "기후부, 하천 불법점용 대응 강화…제방 훼손 사전 방지",
       "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148964643&call_from=rsslink"
     },
@@ -422,12 +422,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 569,
-      "latest_event_at": "2026-05-19T19:31:45+00:00",
-      "latest_observed_at": "2026-05-19T22:46:32.883026+00:00",
+      "item_count": 573,
+      "latest_event_at": "2026-05-20T07:00:00+00:00",
+      "latest_observed_at": "2026-05-20T07:56:10.877119+00:00",
       "age_days": 0.0,
-      "latest_title": "[산업통상부](참고자료)한일 양국의 에너지 안보 및 공급망 회복력 협력 강화에 관한 대한민국 산업통상부와 일본 경제산업성 간 공동 보도자료",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156762493&call_from=rsslink"
+      "latest_title": "[외교부]박윤주 외교부 제1차관, 한미 JFS 이행 협의를 위한 美 국무부&middot;NSC 인사 면담 결과",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156762518&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
