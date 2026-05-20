@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-05-19T22:55:42.553217+00:00",
+  "generated_at": "2026-05-20T05:03:11.546389+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 10,
@@ -39,7 +39,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 6,
-    "verification_state_count": 1325,
+    "verification_state_count": 1362,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -58,14 +58,34 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 492,
+    "corroboration_only_items": 494,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 492,
-    "official_policy_corroboration": 833
+    "market_corroboration_requires_official_source": 494,
+    "official_policy_corroboration": 868
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/2026052078876",
+      "title": "롯데건설 안전체험센터, 민간 안전체험교육장 인정 취득",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-20T08:59:23+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026052077916",
+      "title": "지난달 서울서 '첫 집 마련' 4년 5개월만 가장 많았던 이유",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-20T08:53:40+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/202605158725i",
       "title": "'2호선·9호선·신분당선'이 '황금 노선'으로 불리는 이유",
@@ -245,26 +265,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605159166i",
-      "title": "다시 뛰는 수도권…경기 안양·광명 한주간 가장 많이 올라",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-18T18:00:02+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026051842811",
-      "title": "이르면 연말 분양…한남뉴타운 공급 '급물살'",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-18T17:17:02+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -376,12 +376,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 492,
-      "latest_event_at": "2026-05-19T18:00:03+00:00",
-      "latest_observed_at": "2026-05-20T07:56:06.758547+00:00",
-      "age_days": 0.21,
-      "latest_title": "'2호선·9호선·신분당선'이 '황금 노선'으로 불리는 이유",
-      "latest_url": "https://www.hankyung.com/article/202605158725i"
+      "item_count": 494,
+      "latest_event_at": "2026-05-20T08:59:23+00:00",
+      "latest_observed_at": "2026-05-20T14:03:01.032798+00:00",
+      "age_days": 0.0,
+      "latest_title": "롯데건설 안전체험센터, 민간 안전체험교육장 인정 취득",
+      "latest_url": "https://www.hankyung.com/article/2026052078876"
     },
     {
       "source_id": "korea_policy_news",
@@ -399,12 +399,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 260,
-      "latest_event_at": "2026-05-19T18:31:00+00:00",
-      "latest_observed_at": "2026-05-20T07:56:09.300770+00:00",
-      "age_days": 0.18,
-      "latest_title": "기후부, 하천 불법점용 대응 강화…제방 훼손 사전 방지",
-      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148964643&call_from=rsslink"
+      "item_count": 261,
+      "latest_event_at": "2026-05-20T09:29:00+00:00",
+      "latest_observed_at": "2026-05-20T14:03:02.010452+00:00",
+      "age_days": 0.0,
+      "latest_title": "\"다수가 믿는다고 진실은 아니다…가짜뉴스보다 무서운 건 가짜에 무감각해진 사회\"",
+      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148964423&call_from=rsslink"
     },
     {
       "source_id": "korea_pressrelease_news",
@@ -422,12 +422,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 573,
-      "latest_event_at": "2026-05-20T07:00:00+00:00",
-      "latest_observed_at": "2026-05-20T07:56:10.877119+00:00",
+      "item_count": 607,
+      "latest_event_at": "2026-05-20T13:09:47+00:00",
+      "latest_observed_at": "2026-05-20T14:03:02.319230+00:00",
       "age_days": 0.0,
-      "latest_title": "[외교부]박윤주 외교부 제1차관, 한미 JFS 이행 협의를 위한 美 국무부&middot;NSC 인사 면담 결과",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156762518&call_from=rsslink"
+      "latest_title": "[농림축산식품부]밀가루 담합 업체 7개사 대상  정부정책자금 지원 중단 및 관리감독 강화",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156762650&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
@@ -961,6 +961,30 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "롯데건설 안전체험센터, 민간 안전체험교육장 인정 취득",
+      "url": "https://www.hankyung.com/article/2026052078876",
+      "published_at": "2026-05-20T08:59:23+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "지난달 서울서 '첫 집 마련' 4년 5개월만 가장 많았던 이유",
+      "url": "https://www.hankyung.com/article/2026052077916",
+      "published_at": "2026-05-20T08:53:40+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "'2호선·9호선·신분당선'이 '황금 노선'으로 불리는 이유",
       "url": "https://www.hankyung.com/article/202605158725i",
       "published_at": "2026-05-19T18:00:03+00:00"
@@ -1168,30 +1192,6 @@
       "title": "3구역 철거·5구역 청사진 인가…한남뉴타운 사업 잰걸음",
       "url": "https://www.hankyung.com/article/202605183712i",
       "published_at": "2026-05-18T18:00:04+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "다시 뛰는 수도권…경기 안양·광명 한주간 가장 많이 올라",
-      "url": "https://www.hankyung.com/article/202605159166i",
-      "published_at": "2026-05-18T18:00:02+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "이르면 연말 분양…한남뉴타운 공급 '급물살'",
-      "url": "https://www.hankyung.com/article/2026051842811",
-      "published_at": "2026-05-18T17:17:02+00:00"
     }
   ]
 }
