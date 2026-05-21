@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-05-21T05:08:31.039697+00:00",
+  "generated_at": "2026-05-21T07:57:24.108702+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -38,7 +38,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 1468,
+    "verification_state_count": 1499,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -57,17 +57,27 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 528,
+    "corroboration_only_items": 529,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 528,
-    "official_policy_corroboration": 940
+    "market_corroboration_requires_official_source": 529,
+    "official_policy_corroboration": 970
   },
   "verification_review_samples": [
     {
+      "url": "https://www.hankyung.com/article/202605211903i",
+      "title": "상승폭 커지는 서울 집값…16주 만에 0.3%대 상승",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-21T14:57:00+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
       "url": "https://www.hankyung.com/article/2026052113816",
-      "title": "종암동 국평 2.2억 올랐다…강북부터 강남까지 상승세 탄 집값",
+      "title": "10억 종암동 아파트, 3개월 만에 팔린 가격이…서울 집값 반전",
       "source_id": "hankyung_realestate",
       "published_at": "2026-05-21T14:00:04+00:00",
       "verification_state": "market_corroboration_requires_official_source",
@@ -254,16 +264,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052082721",
-      "title": "\"세 낀 집 급매물 주목…수도권 분양 1만2000가구 노려라\"",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-20T15:42:02+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -375,12 +375,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 528,
-      "latest_event_at": "2026-05-21T14:00:04+00:00",
-      "latest_observed_at": "2026-05-21T14:08:19.538832+00:00",
+      "item_count": 529,
+      "latest_event_at": "2026-05-21T14:57:00+00:00",
+      "latest_observed_at": "2026-05-21T16:57:12.730254+00:00",
       "age_days": 0.0,
-      "latest_title": "종암동 국평 2.2억 올랐다…강북부터 강남까지 상승세 탄 집값",
-      "latest_url": "https://www.hankyung.com/article/2026052113816"
+      "latest_title": "상승폭 커지는 서울 집값…16주 만에 0.3%대 상승",
+      "latest_url": "https://www.hankyung.com/article/202605211903i"
     },
     {
       "source_id": "korea_policy_news",
@@ -398,12 +398,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 275,
-      "latest_event_at": "2026-05-21T13:34:00+00:00",
-      "latest_observed_at": "2026-05-21T14:08:20.609684+00:00",
+      "item_count": 284,
+      "latest_event_at": "2026-05-21T16:27:00+00:00",
+      "latest_observed_at": "2026-05-21T16:57:13.764489+00:00",
       "age_days": 0.0,
-      "latest_title": "[정책 바로보기] 교육부 \"초등학교 체육활동 활발하게 이루어지도록 지원\"",
-      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148964828&call_from=rsslink"
+      "latest_title": "\"공연 1만 원 할인권 신청하세요\"…8월 20일까지 24만 장 배포",
+      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148964851&call_from=rsslink"
     },
     {
       "source_id": "korea_pressrelease_news",
@@ -421,12 +421,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 665,
-      "latest_event_at": "2026-05-21T13:23:01+00:00",
-      "latest_observed_at": "2026-05-21T14:08:20.934162+00:00",
+      "item_count": 686,
+      "latest_event_at": "2026-05-21T16:15:08+00:00",
+      "latest_observed_at": "2026-05-21T16:57:14.159614+00:00",
       "age_days": 0.0,
-      "latest_title": "[산림청]차세대중형위성 4호,  발사장 운송 앞두고 최종 준비 완료",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156762941&call_from=rsslink"
+      "latest_title": "[보건복지부]현수엽 제1차관, 그냥드림 운영점검 &quot;꼭 필요한 국민께 우선 지원&quot;",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156763014&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
@@ -960,7 +960,19 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "종암동 국평 2.2억 올랐다…강북부터 강남까지 상승세 탄 집값",
+      "title": "상승폭 커지는 서울 집값…16주 만에 0.3%대 상승",
+      "url": "https://www.hankyung.com/article/202605211903i",
+      "published_at": "2026-05-21T14:57:00+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "10억 종암동 아파트, 3개월 만에 팔린 가격이…서울 집값 반전",
       "url": "https://www.hankyung.com/article/2026052113816",
       "published_at": "2026-05-21T14:00:04+00:00"
     },
@@ -1179,18 +1191,6 @@
       "title": "역대급 인허가 속도 대교아파트, 여의도 재건축 '잰걸음'",
       "url": "https://www.hankyung.com/article/202605208549i",
       "published_at": "2026-05-20T16:23:22+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "\"세 낀 집 급매물 주목…수도권 분양 1만2000가구 노려라\"",
-      "url": "https://www.hankyung.com/article/2026052082721",
-      "published_at": "2026-05-20T15:42:02+00:00"
     }
   ]
 }
