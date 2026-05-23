@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-05-23T04:40:48.125240+00:00",
+  "generated_at": "2026-05-23T06:35:48.472812+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -377,7 +377,7 @@
       "observed_date_field": "",
       "item_count": 558,
       "latest_event_at": "2026-05-23T09:00:09+00:00",
-      "latest_observed_at": "2026-05-23T13:40:33.922003+00:00",
+      "latest_observed_at": "2026-05-23T15:35:35.491419+00:00",
       "age_days": 0.0,
       "latest_title": "리츠로 확장하는 '시니어 주거' 시장…새로운 먹거리로 부상",
       "latest_url": "https://www.hankyung.com/article/202604283122i"
@@ -400,8 +400,8 @@
       "observed_date_field": "",
       "item_count": 300,
       "latest_event_at": "2026-05-22T17:56:00+00:00",
-      "latest_observed_at": "2026-05-23T13:40:35.320200+00:00",
-      "age_days": 0.45,
+      "latest_observed_at": "2026-05-23T15:35:36.731709+00:00",
+      "age_days": 0.53,
       "latest_title": "스쿨존 속도규제 합리화 등 국가정상화 프로젝트 164개 확정",
       "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965011&call_from=rsslink"
     },
@@ -423,8 +423,8 @@
       "observed_date_field": "",
       "item_count": 744,
       "latest_event_at": "2026-05-22T19:02:19+00:00",
-      "latest_observed_at": "2026-05-23T13:40:36.155053+00:00",
-      "age_days": 0.4,
+      "latest_observed_at": "2026-05-23T15:35:37.594565+00:00",
+      "age_days": 0.48,
       "latest_title": "[산업통상부]APEC 통상장관회의, 아태지역 다자주의 활성화 및 AI&middot;디지털&middot;녹색산업 협력방안 논의",
       "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156763275&call_from=rsslink"
     },
