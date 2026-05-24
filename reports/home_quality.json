@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-05-24T05:00:48.364307+00:00",
+  "generated_at": "2026-05-24T07:26:17.323589+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -38,7 +38,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 1609,
+    "verification_state_count": 1622,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -62,7 +62,7 @@
   },
   "verification_states": {
     "market_corroboration_requires_official_source": 564,
-    "official_policy_corroboration": 1045
+    "official_policy_corroboration": 1058
   },
   "verification_review_samples": [
     {
@@ -377,7 +377,7 @@
       "observed_date_field": "",
       "item_count": 564,
       "latest_event_at": "2026-05-24T12:07:49+00:00",
-      "latest_observed_at": "2026-05-24T14:00:34.669391+00:00",
+      "latest_observed_at": "2026-05-24T16:26:04.395012+00:00",
       "age_days": 0.0,
       "latest_title": "\"10억 하던 아파트가 2년 만에\"…호재 줄줄이 집값 '들썩' [철길옆집]",
       "latest_url": "https://www.hankyung.com/article/2026052108546"
@@ -400,8 +400,8 @@
       "observed_date_field": "",
       "item_count": 300,
       "latest_event_at": "2026-05-22T17:56:00+00:00",
-      "latest_observed_at": "2026-05-24T14:00:36.078780+00:00",
-      "age_days": 1.46,
+      "latest_observed_at": "2026-05-24T16:26:05.748761+00:00",
+      "age_days": 1.56,
       "latest_title": "스쿨존 속도규제 합리화 등 국가정상화 프로젝트 164개 확정",
       "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965011&call_from=rsslink"
     },
@@ -421,12 +421,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 745,
-      "latest_event_at": "2026-05-23T16:00:00+00:00",
-      "latest_observed_at": "2026-05-24T14:00:37.581755+00:00",
-      "age_days": 0.54,
-      "latest_title": "[행정안전부]제9회 전국동시지방선거 선거인수는 총 44,649,908명",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156763319&call_from=rsslink"
+      "item_count": 758,
+      "latest_event_at": "2026-05-24T15:17:31+00:00",
+      "latest_observed_at": "2026-05-24T16:26:06.546509+00:00",
+      "age_days": 0.0,
+      "latest_title": "[농촌진흥청]&quot;과수화상병 예방, 매주 수요일 자가 예찰 하세요&quot;",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156763352&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
