@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-05-23T06:35:48.472812+00:00",
+  "generated_at": "2026-05-24T05:00:48.364307+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -38,7 +38,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 1602,
+    "verification_state_count": 1609,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -57,14 +57,74 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 558,
+    "corroboration_only_items": 564,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 558,
-    "official_policy_corroboration": 1044
+    "market_corroboration_requires_official_source": 564,
+    "official_policy_corroboration": 1045
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/2026052108546",
+      "title": "\"10억 하던 아파트가 2년 만에\"…호재 줄줄이 집값 '들썩' [철길옆집]",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-24T12:07:49+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605158763i",
+      "title": "장위·신길뉴타운 대단지 분양…고양창릉·김포풍무 분상제 '눈길'",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-24T09:00:35+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605223658i",
+      "title": "\"왜 나는 줍줍 못하지?\"…무순위 청약도 유형별로 지원자격 다르다",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-24T09:00:14+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026052458197",
+      "title": "3기 신도시 최대어 광명시흥 보상 마침표…2029년 첫 분양 추진",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-24T07:11:02+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026052242236",
+      "title": "\"돈 있으면 무조건 넣는다\"…'국평 30억' 배짱 분양에도 '북적' [현장+]",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-23T17:30:01+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026052355687",
+      "title": "압구정 한강변 '2.1조 재건축 대어'…삼성물산이 따냈다",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-23T17:24:34+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/202604283122i",
       "title": "리츠로 확장하는 '시니어 주거' 시장…새로운 먹거리로 부상",
@@ -204,66 +264,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605223569i",
-      "title": "정원주 대우건설 회장, '한-아프리카 기여상' 수상",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-22T09:59:24+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605223423i",
-      "title": "SM그룹 건설부문 '수원역 아너스빌 플라츠·타임원' 22일 견본주택 개관",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-22T09:12:23+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052233897",
-      "title": "구윤철 \"수도권에 매입임대 9만호 공급\"…청년 주거 안정 도모",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-22T09:04:24+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052231367",
-      "title": "'원빈 모델' 아정당 대표, 218억 아파트 매입…아이유와 이웃  [집코노미-핫!부동산]",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-22T07:52:08+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052230817",
-      "title": "서울 아파트값 7개월만에 하락…전셋값은 역대 최고치",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-22T07:01:00+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052124321",
-      "title": "20년째 놀고 있는 '노른자 땅'…주민들 \"GTX 개통만 기다려\"",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-21T21:00:03+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -375,12 +375,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 558,
-      "latest_event_at": "2026-05-23T09:00:09+00:00",
-      "latest_observed_at": "2026-05-23T15:35:35.491419+00:00",
+      "item_count": 564,
+      "latest_event_at": "2026-05-24T12:07:49+00:00",
+      "latest_observed_at": "2026-05-24T14:00:34.669391+00:00",
       "age_days": 0.0,
-      "latest_title": "리츠로 확장하는 '시니어 주거' 시장…새로운 먹거리로 부상",
-      "latest_url": "https://www.hankyung.com/article/202604283122i"
+      "latest_title": "\"10억 하던 아파트가 2년 만에\"…호재 줄줄이 집값 '들썩' [철길옆집]",
+      "latest_url": "https://www.hankyung.com/article/2026052108546"
     },
     {
       "source_id": "korea_policy_news",
@@ -400,8 +400,8 @@
       "observed_date_field": "",
       "item_count": 300,
       "latest_event_at": "2026-05-22T17:56:00+00:00",
-      "latest_observed_at": "2026-05-23T15:35:36.731709+00:00",
-      "age_days": 0.53,
+      "latest_observed_at": "2026-05-24T14:00:36.078780+00:00",
+      "age_days": 1.46,
       "latest_title": "스쿨존 속도규제 합리화 등 국가정상화 프로젝트 164개 확정",
       "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965011&call_from=rsslink"
     },
@@ -421,12 +421,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 744,
-      "latest_event_at": "2026-05-22T19:02:19+00:00",
-      "latest_observed_at": "2026-05-23T15:35:37.594565+00:00",
-      "age_days": 0.48,
-      "latest_title": "[산업통상부]APEC 통상장관회의, 아태지역 다자주의 활성화 및 AI&middot;디지털&middot;녹색산업 협력방안 논의",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156763275&call_from=rsslink"
+      "item_count": 745,
+      "latest_event_at": "2026-05-23T16:00:00+00:00",
+      "latest_observed_at": "2026-05-24T14:00:37.581755+00:00",
+      "age_days": 0.54,
+      "latest_title": "[행정안전부]제9회 전국동시지방선거 선거인수는 총 44,649,908명",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156763319&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
@@ -960,6 +960,78 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "\"10억 하던 아파트가 2년 만에\"…호재 줄줄이 집값 '들썩' [철길옆집]",
+      "url": "https://www.hankyung.com/article/2026052108546",
+      "published_at": "2026-05-24T12:07:49+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "장위·신길뉴타운 대단지 분양…고양창릉·김포풍무 분상제 '눈길'",
+      "url": "https://www.hankyung.com/article/202605158763i",
+      "published_at": "2026-05-24T09:00:35+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "\"왜 나는 줍줍 못하지?\"…무순위 청약도 유형별로 지원자격 다르다",
+      "url": "https://www.hankyung.com/article/202605223658i",
+      "published_at": "2026-05-24T09:00:14+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "3기 신도시 최대어 광명시흥 보상 마침표…2029년 첫 분양 추진",
+      "url": "https://www.hankyung.com/article/2026052458197",
+      "published_at": "2026-05-24T07:11:02+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "\"돈 있으면 무조건 넣는다\"…'국평 30억' 배짱 분양에도 '북적' [현장+]",
+      "url": "https://www.hankyung.com/article/2026052242236",
+      "published_at": "2026-05-23T17:30:01+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "압구정 한강변 '2.1조 재건축 대어'…삼성물산이 따냈다",
+      "url": "https://www.hankyung.com/article/2026052355687",
+      "published_at": "2026-05-23T17:24:34+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "리츠로 확장하는 '시니어 주거' 시장…새로운 먹거리로 부상",
       "url": "https://www.hankyung.com/article/202604283122i",
       "published_at": "2026-05-23T09:00:09+00:00"
@@ -1119,78 +1191,6 @@
       "title": "전월세 급등에…수도권 규제지역에 매입임대 6.6만가구 푼다",
       "url": "https://www.hankyung.com/article/202605223613i",
       "published_at": "2026-05-22T10:02:57+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "정원주 대우건설 회장, '한-아프리카 기여상' 수상",
-      "url": "https://www.hankyung.com/article/202605223569i",
-      "published_at": "2026-05-22T09:59:24+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "SM그룹 건설부문 '수원역 아너스빌 플라츠·타임원' 22일 견본주택 개관",
-      "url": "https://www.hankyung.com/article/202605223423i",
-      "published_at": "2026-05-22T09:12:23+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "구윤철 \"수도권에 매입임대 9만호 공급\"…청년 주거 안정 도모",
-      "url": "https://www.hankyung.com/article/2026052233897",
-      "published_at": "2026-05-22T09:04:24+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "'원빈 모델' 아정당 대표, 218억 아파트 매입…아이유와 이웃  [집코노미-핫!부동산]",
-      "url": "https://www.hankyung.com/article/2026052231367",
-      "published_at": "2026-05-22T07:52:08+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "서울 아파트값 7개월만에 하락…전셋값은 역대 최고치",
-      "url": "https://www.hankyung.com/article/2026052230817",
-      "published_at": "2026-05-22T07:01:00+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "20년째 놀고 있는 '노른자 땅'…주민들 \"GTX 개통만 기다려\"",
-      "url": "https://www.hankyung.com/article/2026052124321",
-      "published_at": "2026-05-21T21:00:03+00:00"
     }
   ]
 }
