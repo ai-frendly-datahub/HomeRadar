@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-05-25T08:24:44.974168+00:00",
+  "generated_at": "2026-05-26T05:01:40.390275+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -38,7 +38,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 1634,
+    "verification_state_count": 1680,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -57,14 +57,114 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 570,
+    "corroboration_only_items": 580,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 570,
-    "official_policy_corroboration": 1064
+    "market_corroboration_requires_official_source": 580,
+    "official_policy_corroboration": 1100
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/2026052686346",
+      "title": "부동산R114, 신규 플랫폼 개시…빅데이터에 전문가 평가까지",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-26T11:14:27+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605268586i",
+      "title": "노원구 하계한신동성, 최고 46층 940가구로 재건축",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-26T10:51:50+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605268496i",
+      "title": "5.5조 압구정 3 품은 현대건설…도시정비 목표 초과달성",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-26T10:15:46+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605268169i",
+      "title": "6월 수도권 입주물량 5781가구…전년 대비 37.7% 감소",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-26T09:57:49+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026052680706",
+      "title": "현대건설, 압구정 3구역 재건축 시공 맡는다",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-26T09:21:18+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026052681406",
+      "title": "롯데건설, 재생골재·폐플라스틱으로 층간소음 줄인다",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-26T09:15:23+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026052574681",
+      "title": "[한경 매물마당] 인천 대로변 코너 배스킨라빈스 상가 등 6건",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-26T09:06:53+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026052679786",
+      "title": "내달 전국서 아파트 1만3599가구 집들이",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-26T08:52:04+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605257536i",
+      "title": "'5조 대어' 압구정3구역 현대건설 품으로",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-25T19:22:56+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026052574661",
+      "title": "이중근 \"공공임대 대부분이 '분양 조건부'…진짜 임대 30%까지 늘려야\"",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-25T18:26:05+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/202605257135i",
       "title": "호반건설, 면목동 정비사업 3곳 수주…1391가구 브랜드타운 본격화",
@@ -160,106 +260,6 @@
       "title": "3기 신도시 최대어 광명시흥 보상 마침표…2029년 첫 분양 추진",
       "source_id": "hankyung_realestate",
       "published_at": "2026-05-24T07:11:02+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052242236",
-      "title": "\"돈 있으면 무조건 넣는다\"…'국평 30억' 배짱 분양에도 '북적' [현장+]",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-23T17:30:01+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052355687",
-      "title": "압구정 한강변 '2.1조 재건축 대어'…삼성물산이 따냈다",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-23T17:24:34+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202604283122i",
-      "title": "리츠로 확장하는 '시니어 주거' 시장…새로운 먹거리로 부상",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-23T09:00:09+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052249277",
-      "title": "장원영, 137억 현금 매입한 집 공개…1억짜리 소파도 화제 [집코노미-핫!부동산]",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-22T18:57:37+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052247151",
-      "title": "전월세 고공행진에…6.6만 가구 사들여 임대",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-22T17:40:39+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605224812i",
-      "title": "홍지선 국토2차관 \"철도건설, 기본은 철저하게 안전은 꼼꼼하게\"",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-22T17:40:39+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052247181",
-      "title": "'세 낀 매물' 거래허가, 29일부터 신청",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-22T17:38:38+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605224701i",
-      "title": "'아름다운 우리 아파트 사진' 공모전…이달 말까지 접수",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-22T17:29:46+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605224457i",
-      "title": "세낀 집 매수 실거주 의무 유예 오는 29일부터 시행한다",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-22T15:39:36+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605224420i",
-      "title": "김윤덕 국토장관 \"GTX, 안전문제 없도록 철저히 점검\"",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-22T15:26:15+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
@@ -375,12 +375,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 570,
-      "latest_event_at": "2026-05-25T14:42:01+00:00",
-      "latest_observed_at": "2026-05-25T17:24:31.506349+00:00",
+      "item_count": 580,
+      "latest_event_at": "2026-05-26T11:14:27+00:00",
+      "latest_observed_at": "2026-05-26T14:01:27.449193+00:00",
       "age_days": 0.0,
-      "latest_title": "호반건설, 면목동 정비사업 3곳 수주…1391가구 브랜드타운 본격화",
-      "latest_url": "https://www.hankyung.com/article/202605257135i"
+      "latest_title": "부동산R114, 신규 플랫폼 개시…빅데이터에 전문가 평가까지",
+      "latest_url": "https://www.hankyung.com/article/2026052686346"
     },
     {
       "source_id": "korea_policy_news",
@@ -398,12 +398,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 300,
-      "latest_event_at": "2026-05-22T17:56:00+00:00",
-      "latest_observed_at": "2026-05-25T17:24:32.899257+00:00",
-      "age_days": 2.6,
-      "latest_title": "스쿨존 속도규제 합리화 등 국가정상화 프로젝트 164개 확정",
-      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965011&call_from=rsslink"
+      "item_count": 301,
+      "latest_event_at": "2026-05-26T13:32:00+00:00",
+      "latest_observed_at": "2026-05-26T14:01:28.860681+00:00",
+      "age_days": 0.0,
+      "latest_title": "국민이 만든 대전환의 길…국민주권정부 1주년 성과자료집 발간",
+      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965079&call_from=rsslink"
     },
     {
       "source_id": "korea_pressrelease_news",
@@ -421,12 +421,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 764,
-      "latest_event_at": "2026-05-25T15:01:29+00:00",
-      "latest_observed_at": "2026-05-25T17:24:33.793513+00:00",
+      "item_count": 799,
+      "latest_event_at": "2026-05-26T13:34:50+00:00",
+      "latest_observed_at": "2026-05-26T14:01:29.268855+00:00",
       "age_days": 0.0,
-      "latest_title": "[외교부]한-크로아티아 외교장관회담(5.25.) 개최 결과",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156763363&call_from=rsslink"
+      "latest_title": "[법무부]서울구치소에 수용 중인 윤석열 前 대통령과 이상민 前 행정안전부장관이 특혜를 누리고 있다는 유튜브 방송 내용은 사실이 아닙니다.",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156763517&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
@@ -960,6 +960,126 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "부동산R114, 신규 플랫폼 개시…빅데이터에 전문가 평가까지",
+      "url": "https://www.hankyung.com/article/2026052686346",
+      "published_at": "2026-05-26T11:14:27+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "노원구 하계한신동성, 최고 46층 940가구로 재건축",
+      "url": "https://www.hankyung.com/article/202605268586i",
+      "published_at": "2026-05-26T10:51:50+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "5.5조 압구정 3 품은 현대건설…도시정비 목표 초과달성",
+      "url": "https://www.hankyung.com/article/202605268496i",
+      "published_at": "2026-05-26T10:15:46+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "6월 수도권 입주물량 5781가구…전년 대비 37.7% 감소",
+      "url": "https://www.hankyung.com/article/202605268169i",
+      "published_at": "2026-05-26T09:57:49+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "현대건설, 압구정 3구역 재건축 시공 맡는다",
+      "url": "https://www.hankyung.com/article/2026052680706",
+      "published_at": "2026-05-26T09:21:18+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "롯데건설, 재생골재·폐플라스틱으로 층간소음 줄인다",
+      "url": "https://www.hankyung.com/article/2026052681406",
+      "published_at": "2026-05-26T09:15:23+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "[한경 매물마당] 인천 대로변 코너 배스킨라빈스 상가 등 6건",
+      "url": "https://www.hankyung.com/article/2026052574681",
+      "published_at": "2026-05-26T09:06:53+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "내달 전국서 아파트 1만3599가구 집들이",
+      "url": "https://www.hankyung.com/article/2026052679786",
+      "published_at": "2026-05-26T08:52:04+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "'5조 대어' 압구정3구역 현대건설 품으로",
+      "url": "https://www.hankyung.com/article/202605257536i",
+      "published_at": "2026-05-25T19:22:56+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "이중근 \"공공임대 대부분이 '분양 조건부'…진짜 임대 30%까지 늘려야\"",
+      "url": "https://www.hankyung.com/article/2026052574661",
+      "published_at": "2026-05-25T18:26:05+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "호반건설, 면목동 정비사업 3곳 수주…1391가구 브랜드타운 본격화",
       "url": "https://www.hankyung.com/article/202605257135i",
       "published_at": "2026-05-25T14:42:01+00:00"
@@ -1071,126 +1191,6 @@
       "title": "3기 신도시 최대어 광명시흥 보상 마침표…2029년 첫 분양 추진",
       "url": "https://www.hankyung.com/article/2026052458197",
       "published_at": "2026-05-24T07:11:02+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "\"돈 있으면 무조건 넣는다\"…'국평 30억' 배짱 분양에도 '북적' [현장+]",
-      "url": "https://www.hankyung.com/article/2026052242236",
-      "published_at": "2026-05-23T17:30:01+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "압구정 한강변 '2.1조 재건축 대어'…삼성물산이 따냈다",
-      "url": "https://www.hankyung.com/article/2026052355687",
-      "published_at": "2026-05-23T17:24:34+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "리츠로 확장하는 '시니어 주거' 시장…새로운 먹거리로 부상",
-      "url": "https://www.hankyung.com/article/202604283122i",
-      "published_at": "2026-05-23T09:00:09+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "장원영, 137억 현금 매입한 집 공개…1억짜리 소파도 화제 [집코노미-핫!부동산]",
-      "url": "https://www.hankyung.com/article/2026052249277",
-      "published_at": "2026-05-22T18:57:37+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "전월세 고공행진에…6.6만 가구 사들여 임대",
-      "url": "https://www.hankyung.com/article/2026052247151",
-      "published_at": "2026-05-22T17:40:39+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "홍지선 국토2차관 \"철도건설, 기본은 철저하게 안전은 꼼꼼하게\"",
-      "url": "https://www.hankyung.com/article/202605224812i",
-      "published_at": "2026-05-22T17:40:39+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "'세 낀 매물' 거래허가, 29일부터 신청",
-      "url": "https://www.hankyung.com/article/2026052247181",
-      "published_at": "2026-05-22T17:38:38+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "'아름다운 우리 아파트 사진' 공모전…이달 말까지 접수",
-      "url": "https://www.hankyung.com/article/202605224701i",
-      "published_at": "2026-05-22T17:29:46+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "세낀 집 매수 실거주 의무 유예 오는 29일부터 시행한다",
-      "url": "https://www.hankyung.com/article/202605224457i",
-      "published_at": "2026-05-22T15:39:36+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "김윤덕 국토장관 \"GTX, 안전문제 없도록 철저히 점검\"",
-      "url": "https://www.hankyung.com/article/202605224420i",
-      "published_at": "2026-05-22T15:26:15+00:00"
     }
   ]
 }
