@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-05-26T05:01:40.390275+00:00",
+  "generated_at": "2026-05-26T07:54:04.240412+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -38,7 +38,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 1680,
+    "verification_state_count": 1715,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -57,14 +57,64 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 580,
+    "corroboration_only_items": 585,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 580,
-    "official_policy_corroboration": 1100
+    "market_corroboration_requires_official_source": 585,
+    "official_policy_corroboration": 1130
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/202605269409i",
+      "title": "KCC건설, 응급처치·심폐소생술 교육 28년째 운영",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-26T15:49:40+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605268990i",
+      "title": "민간임대 흥행 HM그룹, 신분평에 2500가구 추가 공급한다",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-26T14:41:00+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605223603i",
+      "title": "광명·성북 아파트값 강세…에테르노청담 218억 매매 최고가",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-26T13:39:29+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605268551i",
+      "title": "DL이앤씨, 중대재해 공시…울산 에쓰오일 샤힌 현장서 사망 사고",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-26T13:39:21+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605268668i",
+      "title": "우리 지역 '리딩아파트' 투표 가능…부동산114 신규 플랫폼 구축",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-26T13:34:36+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/2026052686346",
       "title": "부동산R114, 신규 플랫폼 개시…빅데이터에 전문가 평가까지",
@@ -214,56 +264,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052462651",
-      "title": "HM그룹, 남양주 덕소1구역 1010가구",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-24T17:09:27+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052108546",
-      "title": "\"10억 하던 아파트가 2년 만에\"…호재 줄줄이 집값 '들썩' [철길옆집]",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-24T12:07:49+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605158763i",
-      "title": "장위·신길뉴타운 대단지 분양…고양창릉·김포풍무 분상제 '눈길'",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-24T09:00:35+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605223658i",
-      "title": "\"왜 나는 줍줍 못하지?\"…무순위 청약도 유형별로 지원자격 다르다",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-24T09:00:14+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052458197",
-      "title": "3기 신도시 최대어 광명시흥 보상 마침표…2029년 첫 분양 추진",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-24T07:11:02+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -375,12 +375,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 580,
-      "latest_event_at": "2026-05-26T11:14:27+00:00",
-      "latest_observed_at": "2026-05-26T14:01:27.449193+00:00",
+      "item_count": 585,
+      "latest_event_at": "2026-05-26T15:49:40+00:00",
+      "latest_observed_at": "2026-05-26T16:53:50.728293+00:00",
       "age_days": 0.0,
-      "latest_title": "부동산R114, 신규 플랫폼 개시…빅데이터에 전문가 평가까지",
-      "latest_url": "https://www.hankyung.com/article/2026052686346"
+      "latest_title": "KCC건설, 응급처치·심폐소생술 교육 28년째 운영",
+      "latest_url": "https://www.hankyung.com/article/202605269409i"
     },
     {
       "source_id": "korea_policy_news",
@@ -398,12 +398,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 301,
-      "latest_event_at": "2026-05-26T13:32:00+00:00",
-      "latest_observed_at": "2026-05-26T14:01:28.860681+00:00",
+      "item_count": 310,
+      "latest_event_at": "2026-05-26T16:31:00+00:00",
+      "latest_observed_at": "2026-05-26T16:53:52.063520+00:00",
       "age_days": 0.0,
-      "latest_title": "국민이 만든 대전환의 길…국민주권정부 1주년 성과자료집 발간",
-      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965079&call_from=rsslink"
+      "latest_title": "해수부, '남부 해양수도권' 청사진 발표…\"북극항로 시대 대비\"",
+      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965118&call_from=rsslink"
     },
     {
       "source_id": "korea_pressrelease_news",
@@ -421,12 +421,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 799,
-      "latest_event_at": "2026-05-26T13:34:50+00:00",
-      "latest_observed_at": "2026-05-26T14:01:29.268855+00:00",
+      "item_count": 820,
+      "latest_event_at": "2026-05-26T16:00:00+00:00",
+      "latest_observed_at": "2026-05-26T16:53:52.766838+00:00",
       "age_days": 0.0,
-      "latest_title": "[법무부]서울구치소에 수용 중인 윤석열 前 대통령과 이상민 前 행정안전부장관이 특혜를 누리고 있다는 유튜브 방송 내용은 사실이 아닙니다.",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156763517&call_from=rsslink"
+      "latest_title": "[국가데이터처]국가데이터인재개발원,  강릉 모산초 학생 대상 '교과서 밖 통계&middot;데이터 캠프' 개최",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156763559&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
@@ -960,6 +960,66 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "KCC건설, 응급처치·심폐소생술 교육 28년째 운영",
+      "url": "https://www.hankyung.com/article/202605269409i",
+      "published_at": "2026-05-26T15:49:40+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "민간임대 흥행 HM그룹, 신분평에 2500가구 추가 공급한다",
+      "url": "https://www.hankyung.com/article/202605268990i",
+      "published_at": "2026-05-26T14:41:00+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "광명·성북 아파트값 강세…에테르노청담 218억 매매 최고가",
+      "url": "https://www.hankyung.com/article/202605223603i",
+      "published_at": "2026-05-26T13:39:29+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "DL이앤씨, 중대재해 공시…울산 에쓰오일 샤힌 현장서 사망 사고",
+      "url": "https://www.hankyung.com/article/202605268551i",
+      "published_at": "2026-05-26T13:39:21+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "우리 지역 '리딩아파트' 투표 가능…부동산114 신규 플랫폼 구축",
+      "url": "https://www.hankyung.com/article/202605268668i",
+      "published_at": "2026-05-26T13:34:36+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "부동산R114, 신규 플랫폼 개시…빅데이터에 전문가 평가까지",
       "url": "https://www.hankyung.com/article/2026052686346",
       "published_at": "2026-05-26T11:14:27+00:00"
@@ -1131,66 +1191,6 @@
       "title": "성북구 장위15구역 최고 36층 3316가구로 탈바꿈",
       "url": "https://www.hankyung.com/article/2026052462661",
       "published_at": "2026-05-24T17:09:46+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "HM그룹, 남양주 덕소1구역 1010가구",
-      "url": "https://www.hankyung.com/article/2026052462651",
-      "published_at": "2026-05-24T17:09:27+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "\"10억 하던 아파트가 2년 만에\"…호재 줄줄이 집값 '들썩' [철길옆집]",
-      "url": "https://www.hankyung.com/article/2026052108546",
-      "published_at": "2026-05-24T12:07:49+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "장위·신길뉴타운 대단지 분양…고양창릉·김포풍무 분상제 '눈길'",
-      "url": "https://www.hankyung.com/article/202605158763i",
-      "published_at": "2026-05-24T09:00:35+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "\"왜 나는 줍줍 못하지?\"…무순위 청약도 유형별로 지원자격 다르다",
-      "url": "https://www.hankyung.com/article/202605223658i",
-      "published_at": "2026-05-24T09:00:14+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "3기 신도시 최대어 광명시흥 보상 마침표…2029년 첫 분양 추진",
-      "url": "https://www.hankyung.com/article/2026052458197",
-      "published_at": "2026-05-24T07:11:02+00:00"
     }
   ]
 }
