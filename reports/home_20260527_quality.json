@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-05-27T05:13:49.720667+00:00",
+  "generated_at": "2026-05-27T08:08:00.495308+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -38,7 +38,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 1754,
+    "verification_state_count": 1791,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -57,14 +57,34 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 597,
+    "corroboration_only_items": 599,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 597,
-    "official_policy_corroboration": 1157
+    "market_corroboration_requires_official_source": 599,
+    "official_policy_corroboration": 1192
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/202605271906i",
+      "title": "특화 커튼월·태양광 일체화…한화 건설부문, 새 '포레나' 외관 공개",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-27T16:06:07+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605271759i",
+      "title": "포니정재단, 서울대에 10년간 50억원 기부…\"기초과학 연구 지원\"",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-27T14:25:25+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/202605271350i",
       "title": "서울 여의도 미래에셋증권 본사 빌딩 31층 랜드마크로",
@@ -244,26 +264,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605268586i",
-      "title": "노원구 하계한신동성, 최고 46층 940가구로 재건축",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-26T10:51:50+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605268496i",
-      "title": "5.5조 압구정 3 품은 현대건설…도시정비 목표 초과달성",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-26T10:15:46+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -375,12 +375,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 597,
-      "latest_event_at": "2026-05-27T11:08:52+00:00",
-      "latest_observed_at": "2026-05-27T14:13:37.089592+00:00",
+      "item_count": 599,
+      "latest_event_at": "2026-05-27T16:06:07+00:00",
+      "latest_observed_at": "2026-05-27T17:07:45.489264+00:00",
       "age_days": 0.0,
-      "latest_title": "서울 여의도 미래에셋증권 본사 빌딩 31층 랜드마크로",
-      "latest_url": "https://www.hankyung.com/article/202605271350i"
+      "latest_title": "특화 커튼월·태양광 일체화…한화 건설부문, 새 '포레나' 외관 공개",
+      "latest_url": "https://www.hankyung.com/article/202605271906i"
     },
     {
       "source_id": "korea_policy_news",
@@ -398,12 +398,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 312,
-      "latest_event_at": "2026-05-26T19:51:00+00:00",
-      "latest_observed_at": "2026-05-27T14:13:38.572288+00:00",
-      "age_days": 0.39,
-      "latest_title": "코리아 프리미엄 시대 개막…K-열풍이 보여준 '한국의 힘'",
-      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965045&call_from=rsslink"
+      "item_count": 318,
+      "latest_event_at": "2026-05-27T16:04:00+00:00",
+      "latest_observed_at": "2026-05-27T17:07:47.253601+00:00",
+      "age_days": 0.0,
+      "latest_title": "국민과 함께 국익 중심 '실용외교'…재외국민 적극 보호",
+      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965221&call_from=rsslink"
     },
     {
       "source_id": "korea_pressrelease_news",
@@ -421,12 +421,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 845,
-      "latest_event_at": "2026-05-27T13:33:57+00:00",
-      "latest_observed_at": "2026-05-27T14:13:38.915168+00:00",
+      "item_count": 874,
+      "latest_event_at": "2026-05-27T16:28:00+00:00",
+      "latest_observed_at": "2026-05-27T17:07:47.982019+00:00",
       "age_days": 0.0,
-      "latest_title": "[새만금개발청]새만금, 해양산업 핵심부품 공급망 자립화 &quot;대규모 잭업바지선 제조공장 준공&quot;",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156763754&call_from=rsslink"
+      "latest_title": "[국토교통부][차관동정] 김이탁 제1차관, &quot;규제는 풀고, 지원은 두텁게도시형 생활주택 공급 속도 높일 것&quot;",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156763813&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
@@ -960,6 +960,30 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "특화 커튼월·태양광 일체화…한화 건설부문, 새 '포레나' 외관 공개",
+      "url": "https://www.hankyung.com/article/202605271906i",
+      "published_at": "2026-05-27T16:06:07+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "포니정재단, 서울대에 10년간 50억원 기부…\"기초과학 연구 지원\"",
+      "url": "https://www.hankyung.com/article/202605271759i",
+      "published_at": "2026-05-27T14:25:25+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "서울 여의도 미래에셋증권 본사 빌딩 31층 랜드마크로",
       "url": "https://www.hankyung.com/article/202605271350i",
       "published_at": "2026-05-27T11:08:52+00:00"
@@ -1167,30 +1191,6 @@
       "title": "부동산R114, 신규 플랫폼 개시…빅데이터에 전문가 평가까지",
       "url": "https://www.hankyung.com/article/2026052686346",
       "published_at": "2026-05-26T11:14:27+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "노원구 하계한신동성, 최고 46층 940가구로 재건축",
-      "url": "https://www.hankyung.com/article/202605268586i",
-      "published_at": "2026-05-26T10:51:50+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "5.5조 압구정 3 품은 현대건설…도시정비 목표 초과달성",
-      "url": "https://www.hankyung.com/article/202605268496i",
-      "published_at": "2026-05-26T10:15:46+00:00"
     }
   ]
 }
