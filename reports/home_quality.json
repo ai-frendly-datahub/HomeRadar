@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-05-28T05:08:30.233117+00:00",
+  "generated_at": "2026-05-28T08:02:39.170512+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -38,7 +38,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 1841,
+    "verification_state_count": 1879,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -57,14 +57,44 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 609,
+    "corroboration_only_items": 612,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 609,
-    "official_policy_corroboration": 1232
+    "market_corroboration_requires_official_source": 612,
+    "official_policy_corroboration": 1267
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/202605284377i",
+      "title": "강남보다 비싼 분양가에도…흑석·노량진, 두 자릿수 청약 경쟁률",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-28T15:48:47+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605284655i",
+      "title": "롯데건설, 사회공헌 '러브하우스' 100호 개소",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-28T15:37:35+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605284015i",
+      "title": "GH, 현대건설 컨소시엄과 경기 성남 '제3판교 테크노밸리' 사업협약",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-28T14:04:14+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/2026052836416",
       "title": "종로·동대문구 아파트도 '신고가'…멈추지 않는 집값 상승세",
@@ -234,36 +264,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052600481",
-      "title": "도시형주택 규제 풀어 11만채 공급",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-26T21:52:00+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605209866i",
-      "title": "신설 노선 '발표→착공→개통' 중…아파트, 언제 가장 많이 오르나",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-26T18:00:07+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052698051",
-      "title": "상가·지식산업센터, '준주택'으로 활용",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-26T17:19:33+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -375,12 +375,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 609,
-      "latest_event_at": "2026-05-28T14:00:01+00:00",
-      "latest_observed_at": "2026-05-28T14:08:16.338303+00:00",
+      "item_count": 612,
+      "latest_event_at": "2026-05-28T15:48:47+00:00",
+      "latest_observed_at": "2026-05-28T17:02:26.130660+00:00",
       "age_days": 0.0,
-      "latest_title": "종로·동대문구 아파트도 '신고가'…멈추지 않는 집값 상승세",
-      "latest_url": "https://www.hankyung.com/article/2026052836416"
+      "latest_title": "강남보다 비싼 분양가에도…흑석·노량진, 두 자릿수 청약 경쟁률",
+      "latest_url": "https://www.hankyung.com/article/202605284377i"
     },
     {
       "source_id": "korea_policy_news",
@@ -398,12 +398,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 325,
-      "latest_event_at": "2026-05-27T17:36:00+00:00",
-      "latest_observed_at": "2026-05-28T14:08:17.796022+00:00",
-      "age_days": 0.48,
-      "latest_title": "자영업자 전기 요금 부담 던다…6월부터 전기요금 선택권 확대",
-      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965108&call_from=rsslink"
+      "item_count": 329,
+      "latest_event_at": "2026-05-28T16:16:00+00:00",
+      "latest_observed_at": "2026-05-28T17:02:27.493814+00:00",
+      "age_days": 0.0,
+      "latest_title": "부산 BTS 공연 대비 '바가지요금' 근절 총력…대체 숙박시설도 최대 확보",
+      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965333&call_from=rsslink"
     },
     {
       "source_id": "korea_pressrelease_news",
@@ -421,12 +421,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 907,
-      "latest_event_at": "2026-05-28T12:59:55+00:00",
-      "latest_observed_at": "2026-05-28T14:08:18.299918+00:00",
+      "item_count": 938,
+      "latest_event_at": "2026-05-28T16:30:00+00:00",
+      "latest_observed_at": "2026-05-28T17:02:27.833664+00:00",
       "age_days": 0.0,
-      "latest_title": "[법무부]법무부, 국민주권정부 출범 1년간 민생&middot;안전 법안 38건 국회 통과",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156764023&call_from=rsslink"
+      "latest_title": "[방송미디어통신위원회]아동&middot;청소년 SNS, 학부모&middot;교사 의견 청취",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156764106&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
@@ -960,6 +960,42 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "강남보다 비싼 분양가에도…흑석·노량진, 두 자릿수 청약 경쟁률",
+      "url": "https://www.hankyung.com/article/202605284377i",
+      "published_at": "2026-05-28T15:48:47+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "롯데건설, 사회공헌 '러브하우스' 100호 개소",
+      "url": "https://www.hankyung.com/article/202605284655i",
+      "published_at": "2026-05-28T15:37:35+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "GH, 현대건설 컨소시엄과 경기 성남 '제3판교 테크노밸리' 사업협약",
+      "url": "https://www.hankyung.com/article/202605284015i",
+      "published_at": "2026-05-28T14:04:14+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "종로·동대문구 아파트도 '신고가'…멈추지 않는 집값 상승세",
       "url": "https://www.hankyung.com/article/2026052836416",
       "published_at": "2026-05-28T14:00:01+00:00"
@@ -1155,42 +1191,6 @@
       "title": "삼성물산, 신반포19·25차에 '87% 한강 조망' 제안",
       "url": "https://www.hankyung.com/article/2026052707986",
       "published_at": "2026-05-27T09:16:40+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "도시형주택 규제 풀어 11만채 공급",
-      "url": "https://www.hankyung.com/article/2026052600481",
-      "published_at": "2026-05-26T21:52:00+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "신설 노선 '발표→착공→개통' 중…아파트, 언제 가장 많이 오르나",
-      "url": "https://www.hankyung.com/article/202605209866i",
-      "published_at": "2026-05-26T18:00:07+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "상가·지식산업센터, '준주택'으로 활용",
-      "url": "https://www.hankyung.com/article/2026052698051",
-      "published_at": "2026-05-26T17:19:33+00:00"
     }
   ]
 }
