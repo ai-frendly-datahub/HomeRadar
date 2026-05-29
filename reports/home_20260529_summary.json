@@ -7,11 +7,11 @@
   "top_entities": [
     {
       "name": "keyword",
-      "count": 187
+      "count": 170
     },
     {
       "name": "district",
-      "count": 130
+      "count": 115
     },
     {
       "name": "complex",
@@ -23,11 +23,11 @@
     }
   ],
   "sources": {
-    "hankyung_realestate": 25,
+    "korea_policy_news": 13,
     "korea_pressrelease_news": 63,
-    "korea_policy_news": 12
+    "hankyung_realestate": 24
   },
-  "generated_at": "2026-05-29T14:12:44.064020+09:00",
+  "generated_at": "2026-05-29T17:00:41.148004+09:00",
   "quality_summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -64,7 +64,7 @@
       "reb_subscription",
       "onbid_auction"
     ],
-    "verification_state_count": 1937,
+    "verification_state_count": 1970,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -83,12 +83,12 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 633,
+    "corroboration_only_items": 636,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 633,
-    "official_policy_corroboration": 1304
+    "market_corroboration_requires_official_source": 636,
+    "official_policy_corroboration": 1334
   },
   "quality_review_items": [
     {

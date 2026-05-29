@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-05-29T05:12:45.039252+00:00",
+  "generated_at": "2026-05-29T08:00:42.051647+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -38,7 +38,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 1937,
+    "verification_state_count": 1970,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -57,14 +57,44 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 633,
+    "corroboration_only_items": 636,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 633,
-    "official_policy_corroboration": 1304
+    "market_corroboration_requires_official_source": 636,
+    "official_policy_corroboration": 1334
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/202605296402i",
+      "title": "신반포 19·25차 시공사 선정 앞두고…삼성·포스코 '막판 경쟁'",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-29T15:42:59+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605297011i",
+      "title": "악화하는 서울 주택 공급지표…1~4월 착공·준공·인허가 '트리플 감소'",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-29T15:30:05+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605296978i",
+      "title": "성남 신규택지에 6300가구…\"1년 앞당긴 2029년 공급\"",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-29T15:13:53+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/202605296717i",
       "title": "LH, 14개 블록 1만 가구 '민간참여사업' 공모",
@@ -87,7 +117,7 @@
     },
     {
       "url": "https://www.hankyung.com/article/2026052846656",
-      "title": "'주식 대박+성과급' 삼전닉스 영끌족 몰리더니…집값 들썩 [돈앤톡]",
+      "title": "\"영끌했어요\"…'삼전닉스' 돈잔치에 이 동네 아파트 씨말랐다 [돈앤톡]",
       "source_id": "hankyung_realestate",
       "published_at": "2026-05-29T13:30:04+00:00",
       "verification_state": "market_corroboration_requires_official_source",
@@ -234,36 +264,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052848981",
-      "title": "우미건설, 광주 챔피언스시티 1차 수주",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-28T18:00:25+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052849021",
-      "title": "서울 노량진8·흑석11구역, 두 자릿수 청약 경쟁률",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-28T18:00:03+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605284819i",
-      "title": "광주 최대 복합개발 '챔피언스시티' 본궤도…시공사에 우미건설",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-28T16:27:55+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -375,12 +375,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 633,
-      "latest_event_at": "2026-05-29T13:51:27+00:00",
-      "latest_observed_at": "2026-05-29T14:12:32.173713+00:00",
+      "item_count": 636,
+      "latest_event_at": "2026-05-29T15:42:59+00:00",
+      "latest_observed_at": "2026-05-29T17:00:29.210818+00:00",
       "age_days": 0.0,
-      "latest_title": "LH, 14개 블록 1만 가구 '민간참여사업' 공모",
-      "latest_url": "https://www.hankyung.com/article/202605296717i"
+      "latest_title": "신반포 19·25차 시공사 선정 앞두고…삼성·포스코 '막판 경쟁'",
+      "latest_url": "https://www.hankyung.com/article/202605296402i"
     },
     {
       "source_id": "korea_policy_news",
@@ -398,12 +398,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 337,
-      "latest_event_at": "2026-05-29T10:56:00+00:00",
-      "latest_observed_at": "2026-05-29T14:12:33.480329+00:00",
+      "item_count": 339,
+      "latest_event_at": "2026-05-29T16:32:00+00:00",
+      "latest_observed_at": "2026-05-29T17:00:30.547369+00:00",
       "age_days": 0.0,
-      "latest_title": "폭염중대경보·열대야주의보 신설…이상기후와 싸운 1년",
-      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965361&call_from=rsslink"
+      "latest_title": "재취업지원서비스 의무사업장, 내년 500인 이상 사업주로 확대",
+      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965452&call_from=rsslink"
     },
     {
       "source_id": "korea_pressrelease_news",
@@ -421,12 +421,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 967,
-      "latest_event_at": "2026-05-29T13:30:00+00:00",
-      "latest_observed_at": "2026-05-29T14:12:33.817340+00:00",
+      "item_count": 995,
+      "latest_event_at": "2026-05-29T16:30:01+00:00",
+      "latest_observed_at": "2026-05-29T17:00:30.993126+00:00",
       "age_days": 0.0,
-      "latest_title": "[공정거래위원회]BTS 공연 주간 부산 숙박업소 바가지요금 소비자피해예방주의보 발령",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156764326&call_from=rsslink"
+      "latest_title": "[산림청]'2026년 산림공공데이터 모니터링단' 발대식 개최",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156764386&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
@@ -960,6 +960,42 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "신반포 19·25차 시공사 선정 앞두고…삼성·포스코 '막판 경쟁'",
+      "url": "https://www.hankyung.com/article/202605296402i",
+      "published_at": "2026-05-29T15:42:59+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "악화하는 서울 주택 공급지표…1~4월 착공·준공·인허가 '트리플 감소'",
+      "url": "https://www.hankyung.com/article/202605297011i",
+      "published_at": "2026-05-29T15:30:05+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "성남 신규택지에 6300가구…\"1년 앞당긴 2029년 공급\"",
+      "url": "https://www.hankyung.com/article/202605296978i",
+      "published_at": "2026-05-29T15:13:53+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "LH, 14개 블록 1만 가구 '민간참여사업' 공모",
       "url": "https://www.hankyung.com/article/202605296717i",
       "published_at": "2026-05-29T13:51:27+00:00"
@@ -984,7 +1020,7 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "'주식 대박+성과급' 삼전닉스 영끌족 몰리더니…집값 들썩 [돈앤톡]",
+      "title": "\"영끌했어요\"…'삼전닉스' 돈잔치에 이 동네 아파트 씨말랐다 [돈앤톡]",
       "url": "https://www.hankyung.com/article/2026052846656",
       "published_at": "2026-05-29T13:30:04+00:00"
     },
@@ -1155,42 +1191,6 @@
       "title": "상생임대 5년만에 폐지?…전세 물량 감소 우려",
       "url": "https://www.hankyung.com/article/2026052848991",
       "published_at": "2026-05-28T18:01:27+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "우미건설, 광주 챔피언스시티 1차 수주",
-      "url": "https://www.hankyung.com/article/2026052848981",
-      "published_at": "2026-05-28T18:00:25+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "서울 노량진8·흑석11구역, 두 자릿수 청약 경쟁률",
-      "url": "https://www.hankyung.com/article/2026052849021",
-      "published_at": "2026-05-28T18:00:03+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "광주 최대 복합개발 '챔피언스시티' 본궤도…시공사에 우미건설",
-      "url": "https://www.hankyung.com/article/202605284819i",
-      "published_at": "2026-05-28T16:27:55+00:00"
     }
   ]
 }
