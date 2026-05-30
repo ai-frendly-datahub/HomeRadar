@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-05-30T04:51:48.982897+00:00",
+  "generated_at": "2026-05-30T06:49:12.181729+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -377,7 +377,7 @@
       "observed_date_field": "",
       "item_count": 647,
       "latest_event_at": "2026-05-30T10:31:49+00:00",
-      "latest_observed_at": "2026-05-30T13:51:35.935537+00:00",
+      "latest_observed_at": "2026-05-30T15:48:57.704838+00:00",
       "age_days": 0.0,
       "latest_title": "\"역시 로또였네\"…17억에 분양했는데 순식간에 '40억'",
       "latest_url": "https://www.hankyung.com/article/2026053079707"
@@ -400,8 +400,8 @@
       "observed_date_field": "",
       "item_count": 347,
       "latest_event_at": "2026-05-29T18:07:00+00:00",
-      "latest_observed_at": "2026-05-30T13:51:37.201331+00:00",
-      "age_days": 0.45,
+      "latest_observed_at": "2026-05-30T15:48:59.179345+00:00",
+      "age_days": 0.53,
       "latest_title": "29~30일 지방선거 사전투표…'신분증만 들고 가까운 투표소로'",
       "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965476&call_from=rsslink"
     },
@@ -423,8 +423,8 @@
       "observed_date_field": "",
       "item_count": 1031,
       "latest_event_at": "2026-05-30T01:00:00+00:00",
-      "latest_observed_at": "2026-05-30T13:51:37.614852+00:00",
-      "age_days": 0.16,
+      "latest_observed_at": "2026-05-30T15:49:00.314653+00:00",
+      "age_days": 0.24,
       "latest_title": "[국토교통부][참고] 경의선 신촌~서울역 구간 운행재개",
       "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156764520&call_from=rsslink"
     },
