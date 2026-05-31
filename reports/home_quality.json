@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-05-30T06:49:12.181729+00:00",
+  "generated_at": "2026-05-31T05:18:22.603306+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -38,7 +38,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 2025,
+    "verification_state_count": 2037,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -57,14 +57,24 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 647,
+    "corroboration_only_items": 648,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 647,
-    "official_policy_corroboration": 1378
+    "market_corroboration_requires_official_source": 648,
+    "official_policy_corroboration": 1389
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/202605308337i",
+      "title": "삼성물산, 신반포 19·25차 재건축 수주...정비사업 '3조 클럽' 진입",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-05-31T00:10:46+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/2026053079707",
       "title": "\"역시 로또였네\"…17억에 분양했는데 순식간에 '40억'",
@@ -254,16 +264,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052960176",
-      "title": "같은 동네인데…한쪽은 76% 급등, 다른 쪽은 하락한 이유",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-29T10:42:08+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -375,12 +375,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 647,
-      "latest_event_at": "2026-05-30T10:31:49+00:00",
-      "latest_observed_at": "2026-05-30T15:48:57.704838+00:00",
-      "age_days": 0.0,
-      "latest_title": "\"역시 로또였네\"…17억에 분양했는데 순식간에 '40억'",
-      "latest_url": "https://www.hankyung.com/article/2026053079707"
+      "item_count": 648,
+      "latest_event_at": "2026-05-31T00:10:46+00:00",
+      "latest_observed_at": "2026-05-31T14:18:08.834046+00:00",
+      "age_days": 0.21,
+      "latest_title": "삼성물산, 신반포 19·25차 재건축 수주...정비사업 '3조 클럽' 진입",
+      "latest_url": "https://www.hankyung.com/article/202605308337i"
     },
     {
       "source_id": "korea_policy_news",
@@ -398,10 +398,10 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 347,
+      "item_count": 346,
       "latest_event_at": "2026-05-29T18:07:00+00:00",
-      "latest_observed_at": "2026-05-30T15:48:59.179345+00:00",
-      "age_days": 0.53,
+      "latest_observed_at": "2026-05-31T14:18:10.315123+00:00",
+      "age_days": 1.47,
       "latest_title": "29~30일 지방선거 사전투표…'신분증만 들고 가까운 투표소로'",
       "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965476&call_from=rsslink"
     },
@@ -421,12 +421,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 1031,
-      "latest_event_at": "2026-05-30T01:00:00+00:00",
-      "latest_observed_at": "2026-05-30T15:49:00.314653+00:00",
-      "age_days": 0.24,
-      "latest_title": "[국토교통부][참고] 경의선 신촌~서울역 구간 운행재개",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156764520&call_from=rsslink"
+      "item_count": 1043,
+      "latest_event_at": "2026-05-31T12:05:00+00:00",
+      "latest_observed_at": "2026-05-31T14:18:11.034643+00:00",
+      "age_days": 0.0,
+      "latest_title": "[보건복지부]통합돌봄 시행, 그냥드림 전국 확대 등 더 따뜻한 복지! 의대정원 증원, 지역의사제 도입 등 더 가까운 의료! 제약&middot;바이오, K-뷰티 역대 최고 수출 등 더 성장하는 K-바이오헬스",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156764559&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
@@ -960,6 +960,18 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "삼성물산, 신반포 19·25차 재건축 수주...정비사업 '3조 클럽' 진입",
+      "url": "https://www.hankyung.com/article/202605308337i",
+      "published_at": "2026-05-31T00:10:46+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "\"역시 로또였네\"…17억에 분양했는데 순식간에 '40억'",
       "url": "https://www.hankyung.com/article/2026053079707",
       "published_at": "2026-05-30T10:31:49+00:00"
@@ -1179,18 +1191,6 @@
       "title": "흑석 2구역도 '7부 능선' 넘었다…49층·1045가구로 재탄생",
       "url": "https://www.hankyung.com/article/2026052963936",
       "published_at": "2026-05-29T11:06:34+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "같은 동네인데…한쪽은 76% 급등, 다른 쪽은 하락한 이유",
-      "url": "https://www.hankyung.com/article/2026052960176",
-      "published_at": "2026-05-29T10:42:08+00:00"
     }
   ]
 }
