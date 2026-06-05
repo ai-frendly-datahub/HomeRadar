@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-06-04T08:30:59.758422+00:00",
+  "generated_at": "2026-06-05T08:18:21.840774+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -38,7 +38,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 1979,
+    "verification_state_count": 1978,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -57,14 +57,84 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 639,
+    "corroboration_only_items": 638,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 639,
+    "market_corroboration_requires_official_source": 638,
     "official_policy_corroboration": 1340
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/202606059426i",
+      "title": "'경기광주역 롯데캐슬' 1077가구 무순위 청약",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-05T13:45:21+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202606059368i",
+      "title": "최인호 HUG 사장, '찾아가는 소통 행보'로 주택공급 활성화",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-05T11:32:13+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202606059364i",
+      "title": "한국부동산마케팅협회, 매력일자리 인턴 대상 'AI 활용 마케팅 실무심화' 교육",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-05T11:27:39+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202606059093i",
+      "title": "분양가 상승 우려 지속…분양가 상한제 단지 관심",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-05T10:05:39+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202605284497i",
+      "title": "\"재건축으로 만든 공원에 재산세 도시지역분 부과는 무효\" 대법원 첫 판례",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-05T07:00:11+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202604215843i",
+      "title": "늙어가는 서울 아파트들, 재건축과 재개발 차이는?",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-04T18:00:05+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026060481431",
+      "title": "\"규제로 되레 집값 더 올라\"…대출정책 속도조절할 듯",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-04T17:46:37+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/202605195990i",
       "title": "이주비 대출 막히니 재건축, 재개발도 막혔다",
@@ -194,76 +264,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026060349991",
-      "title": "한승민 대표 \"전세사기 위험 여부, 점수로 보여줘요\"",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-03T18:43:33+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026060349971",
-      "title": "노원 상계한신 1·2·3차, 1600가구 재건축 시동",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-03T18:43:07+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026060349981",
-      "title": "남양주 다산지금 518가구…GH, 16~19일 입주자 모집",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-03T18:42:54+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202606034557i",
-      "title": "호반건설 '호반써밋 풍무II' 1순위 청약 최고 경쟁률 25.71대 1 기록",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-03T13:52:52+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026060228296",
-      "title": "한 달 만에 또 '신고가'…계약 직전 \"2000만원 더 달라\" 무슨 일 [주간이집]",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-03T12:28:22+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202606034467i",
-      "title": "김포 '호반써밋 풍무II' 1순위 청약 최고 경쟁률 25.71대 1",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-03T11:27:31+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202604283373i",
-      "title": "서울까지 20분이면 간다 '들썩'…'베드타운'의 대변신",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-02T20:00:04+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -375,12 +375,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 639,
-      "latest_event_at": "2026-06-04T15:06:02+00:00",
-      "latest_observed_at": "2026-06-04T17:30:53.242223+00:00",
+      "item_count": 638,
+      "latest_event_at": "2026-06-05T13:45:21+00:00",
+      "latest_observed_at": "2026-06-05T17:18:15.988748+00:00",
       "age_days": 0.0,
-      "latest_title": "이주비 대출 막히니 재건축, 재개발도 막혔다",
-      "latest_url": "https://www.hankyung.com/article/202605195990i"
+      "latest_title": "'경기광주역 롯데캐슬' 1077가구 무순위 청약",
+      "latest_url": "https://www.hankyung.com/article/202606059426i"
     },
     {
       "source_id": "korea_policy_news",
@@ -401,7 +401,7 @@
       "item_count": 297,
       "latest_event_at": "2026-05-29T18:07:00+00:00",
       "latest_observed_at": "2026-05-31T14:18:10.315123+00:00",
-      "age_days": 5.6,
+      "age_days": 6.59,
       "latest_title": "29~30일 지방선거 사전투표…'신분증만 들고 가까운 투표소로'",
       "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965476&call_from=rsslink"
     },
@@ -424,7 +424,7 @@
       "item_count": 1043,
       "latest_event_at": "2026-05-31T12:05:00+00:00",
       "latest_observed_at": "2026-05-31T14:18:11.034643+00:00",
-      "age_days": 3.85,
+      "age_days": 4.84,
       "latest_title": "[보건복지부]통합돌봄 시행, 그냥드림 전국 확대 등 더 따뜻한 복지! 의대정원 증원, 지역의사제 도입 등 더 가까운 의료! 제약&middot;바이오, K-뷰티 역대 최고 수출 등 더 성장하는 K-바이오헬스",
       "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156764559&call_from=rsslink"
     },
@@ -960,6 +960,90 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "'경기광주역 롯데캐슬' 1077가구 무순위 청약",
+      "url": "https://www.hankyung.com/article/202606059426i",
+      "published_at": "2026-06-05T13:45:21+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "최인호 HUG 사장, '찾아가는 소통 행보'로 주택공급 활성화",
+      "url": "https://www.hankyung.com/article/202606059368i",
+      "published_at": "2026-06-05T11:32:13+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "한국부동산마케팅협회, 매력일자리 인턴 대상 'AI 활용 마케팅 실무심화' 교육",
+      "url": "https://www.hankyung.com/article/202606059364i",
+      "published_at": "2026-06-05T11:27:39+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "분양가 상승 우려 지속…분양가 상한제 단지 관심",
+      "url": "https://www.hankyung.com/article/202606059093i",
+      "published_at": "2026-06-05T10:05:39+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "\"재건축으로 만든 공원에 재산세 도시지역분 부과는 무효\" 대법원 첫 판례",
+      "url": "https://www.hankyung.com/article/202605284497i",
+      "published_at": "2026-06-05T07:00:11+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "늙어가는 서울 아파트들, 재건축과 재개발 차이는?",
+      "url": "https://www.hankyung.com/article/202604215843i",
+      "published_at": "2026-06-04T18:00:05+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "\"규제로 되레 집값 더 올라\"…대출정책 속도조절할 듯",
+      "url": "https://www.hankyung.com/article/2026060481431",
+      "published_at": "2026-06-04T17:46:37+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "이주비 대출 막히니 재건축, 재개발도 막혔다",
       "url": "https://www.hankyung.com/article/202605195990i",
       "published_at": "2026-06-04T15:06:02+00:00"
@@ -1107,90 +1191,6 @@
       "title": "2026년 상반기 한경 주거문화대상 공모",
       "url": "https://www.hankyung.com/article/2026060350021",
       "published_at": "2026-06-03T18:44:03+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "한승민 대표 \"전세사기 위험 여부, 점수로 보여줘요\"",
-      "url": "https://www.hankyung.com/article/2026060349991",
-      "published_at": "2026-06-03T18:43:33+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "노원 상계한신 1·2·3차, 1600가구 재건축 시동",
-      "url": "https://www.hankyung.com/article/2026060349971",
-      "published_at": "2026-06-03T18:43:07+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "남양주 다산지금 518가구…GH, 16~19일 입주자 모집",
-      "url": "https://www.hankyung.com/article/2026060349981",
-      "published_at": "2026-06-03T18:42:54+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "호반건설 '호반써밋 풍무II' 1순위 청약 최고 경쟁률 25.71대 1 기록",
-      "url": "https://www.hankyung.com/article/202606034557i",
-      "published_at": "2026-06-03T13:52:52+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "한 달 만에 또 '신고가'…계약 직전 \"2000만원 더 달라\" 무슨 일 [주간이집]",
-      "url": "https://www.hankyung.com/article/2026060228296",
-      "published_at": "2026-06-03T12:28:22+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "김포 '호반써밋 풍무II' 1순위 청약 최고 경쟁률 25.71대 1",
-      "url": "https://www.hankyung.com/article/202606034467i",
-      "published_at": "2026-06-03T11:27:31+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "서울까지 20분이면 간다 '들썩'…'베드타운'의 대변신",
-      "url": "https://www.hankyung.com/article/202604283373i",
-      "published_at": "2026-06-02T20:00:04+00:00"
     }
   ]
 }
