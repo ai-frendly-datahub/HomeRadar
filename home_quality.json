@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-06-06T07:04:08.683508+00:00",
+  "generated_at": "2026-06-07T08:04:40.992691+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -65,6 +65,16 @@
     "official_policy_corroboration": 1340
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/202606047383i",
+      "title": "'제2의 마곡' 될까…강서구 방화·화곡 정비사업 잰걸음",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-07T09:00:05+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/202605297328i",
       "title": "“로또식 투자 끝난다”…아파트 대신 임대수익 시대 온다 [강영연의 건축 그리고 건축가]",
@@ -254,16 +264,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202606047386i",
-      "title": "대우건설, 이달 '장위 푸르지오 마크원' 1032가구 분양",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-04T14:17:47+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -376,11 +376,11 @@
       "event_date_field": "",
       "observed_date_field": "",
       "item_count": 638,
-      "latest_event_at": "2026-06-06T11:00:04+00:00",
-      "latest_observed_at": "2026-06-06T16:04:02.914901+00:00",
+      "latest_event_at": "2026-06-07T09:00:05+00:00",
+      "latest_observed_at": "2026-06-07T17:04:35.363833+00:00",
       "age_days": 0.0,
-      "latest_title": "“로또식 투자 끝난다”…아파트 대신 임대수익 시대 온다 [강영연의 건축 그리고 건축가]",
-      "latest_url": "https://www.hankyung.com/article/202605297328i"
+      "latest_title": "'제2의 마곡' 될까…강서구 방화·화곡 정비사업 잰걸음",
+      "latest_url": "https://www.hankyung.com/article/202606047383i"
     },
     {
       "source_id": "korea_policy_news",
@@ -401,7 +401,7 @@
       "item_count": 297,
       "latest_event_at": "2026-05-29T18:07:00+00:00",
       "latest_observed_at": "2026-05-31T14:18:10.315123+00:00",
-      "age_days": 7.54,
+      "age_days": 8.58,
       "latest_title": "29~30일 지방선거 사전투표…'신분증만 들고 가까운 투표소로'",
       "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965476&call_from=rsslink"
     },
@@ -424,7 +424,7 @@
       "item_count": 1043,
       "latest_event_at": "2026-05-31T12:05:00+00:00",
       "latest_observed_at": "2026-05-31T14:18:11.034643+00:00",
-      "age_days": 5.79,
+      "age_days": 6.83,
       "latest_title": "[보건복지부]통합돌봄 시행, 그냥드림 전국 확대 등 더 따뜻한 복지! 의대정원 증원, 지역의사제 도입 등 더 가까운 의료! 제약&middot;바이오, K-뷰티 역대 최고 수출 등 더 성장하는 K-바이오헬스",
       "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156764559&call_from=rsslink"
     },
@@ -960,6 +960,18 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "'제2의 마곡' 될까…강서구 방화·화곡 정비사업 잰걸음",
+      "url": "https://www.hankyung.com/article/202606047383i",
+      "published_at": "2026-06-07T09:00:05+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "“로또식 투자 끝난다”…아파트 대신 임대수익 시대 온다 [강영연의 건축 그리고 건축가]",
       "url": "https://www.hankyung.com/article/202605297328i",
       "published_at": "2026-06-06T11:00:04+00:00"
@@ -1179,18 +1191,6 @@
       "title": "\"잔금대출 못 받아 이사 못해요\"…아파트 입주율 '반토막'",
       "url": "https://www.hankyung.com/article/202605183648i",
       "published_at": "2026-06-04T14:58:30+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "대우건설, 이달 '장위 푸르지오 마크원' 1032가구 분양",
-      "url": "https://www.hankyung.com/article/202606047386i",
-      "published_at": "2026-06-04T14:17:47+00:00"
     }
   ]
 }
