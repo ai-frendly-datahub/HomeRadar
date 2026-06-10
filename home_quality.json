@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-06-09T08:00:16.495514+00:00",
+  "generated_at": "2026-06-10T08:11:30.905665+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -38,7 +38,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 1983,
+    "verification_state_count": 2062,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -57,209 +57,209 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 643,
+    "corroboration_only_items": 640,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 643,
-    "official_policy_corroboration": 1340
+    "market_corroboration_requires_official_source": 640,
+    "official_policy_corroboration": 1422
   },
   "verification_review_samples": [
     {
-      "url": "https://www.hankyung.com/article/202606095183i",
-      "title": "계룡건설, 평택 '엘리프 고덕 센트럴하이' 6월 분양",
+      "url": "https://www.hankyung.com/article/202606108393i",
+      "title": "'미입주' 생숙 오피스텔로 탈바꿈…갈등 봉합·주택공급 효과",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-06-09T10:14:49+00:00",
+      "published_at": "2026-06-10T17:02:56+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.hankyung.com/article/202606095170i",
-      "title": "올 상반기 서울에서 '뉴타운' 분양 대전 열린다",
+      "url": "https://www.hankyung.com/article/202606108241i",
+      "title": "AI 직주근접 광주 '호반써밋 첨단3지구' 805가구",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-06-09T10:00:45+00:00",
+      "published_at": "2026-06-10T16:59:55+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.hankyung.com/article/202606095063i",
-      "title": "대림수암장학문화재단, 안양지역 청소년 인재에 장학금",
+      "url": "https://www.hankyung.com/article/202606108598i",
+      "title": "케어닥 '부모님 집을 부탁해' 프로젝트…“시니어 주거 안전 개선 목표”",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-06-09T09:56:17+00:00",
+      "published_at": "2026-06-10T15:32:34+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.hankyung.com/article/202606095008i",
-      "title": "GS건설, 천안 '백석시그니처자이' 견본주택 12일 개관",
+      "url": "https://www.hankyung.com/article/202606108577i",
+      "title": "산하에코종합건설, LH 부사장 출신 이정관 대표 선임",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-06-09T09:34:05+00:00",
+      "published_at": "2026-06-10T15:28:35+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.hankyung.com/article/202606094938i",
-      "title": "문재인 정부의 경고…부동산 정책이 실패하는 6가지 이유 [집코노미 타임즈]",
+      "url": "https://www.hankyung.com/article/202606108506i",
+      "title": "인천도시공사(iH), 대보건설 등과 도화 B-3BL 구역 공공임대 협약",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-06-09T09:12:08+00:00",
+      "published_at": "2026-06-10T15:22:25+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.hankyung.com/article/2026060948736",
-      "title": "\"비싼 아파트가 역시 좋다?\"…전문가 평점 보니 뜻밖의 단지도",
+      "url": "https://www.hankyung.com/article/202606107754i",
+      "title": "경기도 입주물량 11년來 최저…전·월세 상승세 심해지나",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-06-09T09:04:36+00:00",
+      "published_at": "2026-06-10T13:59:00+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.hankyung.com/article/2026060948566",
-      "title": "\"바람 불면 아파트 외벽 '출렁'\"…목동 새 단지에 들어서는 작품",
+      "url": "https://www.hankyung.com/article/202606108195i",
+      "title": "서울 7호선 신풍역 일대에 35층 2054가구 주거단지",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-06-09T08:50:10+00:00",
+      "published_at": "2026-06-10T13:55:29+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.hankyung.com/article/2026060947986",
-      "title": "\"이사 안 갈래요\"…서울 오피스텔 세입자들, 갱신권 더 썼다",
+      "url": "https://www.hankyung.com/article/202606108174i",
+      "title": "BS한양, 신임 대표에 박유신 전 건설부문장 선임",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-06-09T08:39:38+00:00",
+      "published_at": "2026-06-10T13:18:37+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.hankyung.com/article/2026060835476",
-      "title": "\"한국 보유세 낮다\" 李 대통령 발언에…부동산 시장 '술렁' [돈앤톡]",
+      "url": "https://www.hankyung.com/article/2026061075916",
+      "title": "\"하자 접수 전에 먼저 본다\"…자이, AS 방식 바꾼다",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-06-09T06:30:04+00:00",
+      "published_at": "2026-06-10T09:54:34+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.hankyung.com/article/2026060841191",
-      "title": "李대통령, 부동산 정책 변화 없다…\"신축이든 택지 개발이든 공급 속도\"",
+      "url": "https://www.hankyung.com/article/202606107390i",
+      "title": "GS건설, 자이 입주단지 선제 점검 강화…시공 담당자가 직접 AS 나선다",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-06-08T17:39:07+00:00",
+      "published_at": "2026-06-10T09:20:23+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.hankyung.com/article/2026060839491",
-      "title": "\"정부가 정비구역 지정\"…부동산정책 주도권 갈등",
+      "url": "https://www.hankyung.com/article/2026061073766",
+      "title": "\"아파트 입구부터 다르다\"…포레나 새 디자인 선보인다",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-06-08T17:17:42+00:00",
+      "published_at": "2026-06-10T09:14:13+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.hankyung.com/article/2026060839511",
-      "title": "\"입주하고 내세요\"…분담금 납부유예 확산",
+      "url": "https://www.hankyung.com/article/2026061073346",
+      "title": "BS한양, 박유신 대표 선임…건설·에너지 '투트랙' 본격화",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-06-08T17:16:37+00:00",
+      "published_at": "2026-06-10T09:05:25+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.hankyung.com/article/2026060839501",
-      "title": "아파트 경매, 서울 활활…지방 찬바람",
+      "url": "https://www.hankyung.com/article/2026061073026",
+      "title": "\"전기자전거 배터리도 걱정됐는데\"…래미안엔 이런 기술도",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-06-08T17:15:35+00:00",
+      "published_at": "2026-06-10T08:57:34+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.hankyung.com/article/2026060839541",
-      "title": "서울 신고가 비중 31→19%…수도권 아파트 10% 밑돌아",
+      "url": "https://www.hankyung.com/article/2026061072606",
+      "title": "\"호재보단 든든한 연봉\"…삼성맨 잭팟에 '이 동네' 집값 들썩",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-06-08T17:15:00+00:00",
+      "published_at": "2026-06-10T08:47:00+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.hankyung.com/article/2026060839561",
-      "title": "엠디엠 \"수요자 맞춤형 시니어·고급주거 공략\"",
+      "url": "https://www.hankyung.com/article/202606107258i",
+      "title": "레미콘 운송단가 인상 잠정 합의…수도권 건설현장 '숨통'",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-06-08T17:14:13+00:00",
+      "published_at": "2026-06-10T08:40:57+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.hankyung.com/article/2026060839551",
-      "title": "평택 '고덕 수자인하우스디' 403가구",
+      "url": "https://www.hankyung.com/article/2026061072386",
+      "title": "DK아시아, 김앤장과 손잡았다…검단 1만6800가구 개발 속도",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-06-08T17:13:42+00:00",
+      "published_at": "2026-06-10T08:38:41+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.hankyung.com/article/202606083922i",
-      "title": "일신건영, 이천 최중심 갈산동에 '이천 휴먼빌 클래스원' 7월 분양",
+      "url": "https://www.hankyung.com/article/2026060965161",
+      "title": "\"삼성전자 성과급 믿고 샀어요\"…동탄 국평 20억 뚫었다",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-06-08T17:00:07+00:00",
+      "published_at": "2026-06-10T07:00:02+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.hankyung.com/article/202606083449i",
-      "title": "'청약 당첨돼도 못 사겠네'…서울 국평 분양가 21억 넘었다",
+      "url": "https://www.hankyung.com/article/2026060956866",
+      "title": "\"삼전닉스보다 낫다\"…불붙은 동탄 집값 [주간이집]",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-06-08T14:56:53+00:00",
+      "published_at": "2026-06-10T06:30:03+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.hankyung.com/article/202606083507i",
-      "title": "일신건영, 이천 갈산동 '이천 휴먼빌 클래스원' 7월 분양",
+      "url": "https://www.hankyung.com/article/2026060964161",
+      "title": "목동 재건축 시동…'30조 수주전' 불붙었다",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-06-08T14:44:31+00:00",
+      "published_at": "2026-06-09T18:23:30+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.hankyung.com/article/2026060834736",
-      "title": "\"감정가보다 비싸게 낙찰\"…서울 아파트 경매시장, 기대감 유입",
+      "url": "https://www.hankyung.com/article/2026060964091",
+      "title": "'이주비 20억' vs '연대 보증'…롯데·대우건설, 성수4 경쟁",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-06-08T14:33:04+00:00",
+      "published_at": "2026-06-09T18:21:54+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
@@ -375,12 +375,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 643,
-      "latest_event_at": "2026-06-09T10:14:49+00:00",
-      "latest_observed_at": "2026-06-09T17:00:09.712357+00:00",
+      "item_count": 640,
+      "latest_event_at": "2026-06-10T17:02:56+00:00",
+      "latest_observed_at": "2026-06-10T17:11:18.396737+00:00",
       "age_days": 0.0,
-      "latest_title": "계룡건설, 평택 '엘리프 고덕 센트럴하이' 6월 분양",
-      "latest_url": "https://www.hankyung.com/article/202606095183i"
+      "latest_title": "'미입주' 생숙 오피스텔로 탈바꿈…갈등 봉합·주택공급 효과",
+      "latest_url": "https://www.hankyung.com/article/202606108393i"
     },
     {
       "source_id": "korea_policy_news",
@@ -398,12 +398,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 297,
-      "latest_event_at": "2026-05-29T18:07:00+00:00",
-      "latest_observed_at": "2026-05-31T14:18:10.315123+00:00",
-      "age_days": 10.58,
-      "latest_title": "29~30일 지방선거 사전투표…'신분증만 들고 가까운 투표소로'",
-      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965476&call_from=rsslink"
+      "item_count": 345,
+      "latest_event_at": "2026-06-10T16:36:00+00:00",
+      "latest_observed_at": "2026-06-10T17:11:18.988672+00:00",
+      "age_days": 0.0,
+      "latest_title": "스토킹 가해자 위치·이동경로 실시간 공유…피해자 보호체계 강화",
+      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148966267&call_from=rsslink"
     },
     {
       "source_id": "korea_pressrelease_news",
@@ -421,12 +421,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 1043,
-      "latest_event_at": "2026-05-31T12:05:00+00:00",
-      "latest_observed_at": "2026-05-31T14:18:11.034643+00:00",
-      "age_days": 8.83,
-      "latest_title": "[보건복지부]통합돌봄 시행, 그냥드림 전국 확대 등 더 따뜻한 복지! 의대정원 증원, 지역의사제 도입 등 더 가까운 의료! 제약&middot;바이오, K-뷰티 역대 최고 수출 등 더 성장하는 K-바이오헬스",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156764559&call_from=rsslink"
+      "item_count": 1077,
+      "latest_event_at": "2026-06-10T16:35:02+00:00",
+      "latest_observed_at": "2026-06-10T17:11:19.393088+00:00",
+      "age_days": 0.0,
+      "latest_title": "[산림청]동부지방산림청, 올해 목재 생산 8만 1천㎥로 확대… 전년 대비 20%↑",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156765989&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
@@ -960,9 +960,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "계룡건설, 평택 '엘리프 고덕 센트럴하이' 6월 분양",
-      "url": "https://www.hankyung.com/article/202606095183i",
-      "published_at": "2026-06-09T10:14:49+00:00"
+      "title": "'미입주' 생숙 오피스텔로 탈바꿈…갈등 봉합·주택공급 효과",
+      "url": "https://www.hankyung.com/article/202606108393i",
+      "published_at": "2026-06-10T17:02:56+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -972,9 +972,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "올 상반기 서울에서 '뉴타운' 분양 대전 열린다",
-      "url": "https://www.hankyung.com/article/202606095170i",
-      "published_at": "2026-06-09T10:00:45+00:00"
+      "title": "AI 직주근접 광주 '호반써밋 첨단3지구' 805가구",
+      "url": "https://www.hankyung.com/article/202606108241i",
+      "published_at": "2026-06-10T16:59:55+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -984,9 +984,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "대림수암장학문화재단, 안양지역 청소년 인재에 장학금",
-      "url": "https://www.hankyung.com/article/202606095063i",
-      "published_at": "2026-06-09T09:56:17+00:00"
+      "title": "케어닥 '부모님 집을 부탁해' 프로젝트…“시니어 주거 안전 개선 목표”",
+      "url": "https://www.hankyung.com/article/202606108598i",
+      "published_at": "2026-06-10T15:32:34+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -996,9 +996,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "GS건설, 천안 '백석시그니처자이' 견본주택 12일 개관",
-      "url": "https://www.hankyung.com/article/202606095008i",
-      "published_at": "2026-06-09T09:34:05+00:00"
+      "title": "산하에코종합건설, LH 부사장 출신 이정관 대표 선임",
+      "url": "https://www.hankyung.com/article/202606108577i",
+      "published_at": "2026-06-10T15:28:35+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1008,9 +1008,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "문재인 정부의 경고…부동산 정책이 실패하는 6가지 이유 [집코노미 타임즈]",
-      "url": "https://www.hankyung.com/article/202606094938i",
-      "published_at": "2026-06-09T09:12:08+00:00"
+      "title": "인천도시공사(iH), 대보건설 등과 도화 B-3BL 구역 공공임대 협약",
+      "url": "https://www.hankyung.com/article/202606108506i",
+      "published_at": "2026-06-10T15:22:25+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1020,9 +1020,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "\"비싼 아파트가 역시 좋다?\"…전문가 평점 보니 뜻밖의 단지도",
-      "url": "https://www.hankyung.com/article/2026060948736",
-      "published_at": "2026-06-09T09:04:36+00:00"
+      "title": "경기도 입주물량 11년來 최저…전·월세 상승세 심해지나",
+      "url": "https://www.hankyung.com/article/202606107754i",
+      "published_at": "2026-06-10T13:59:00+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1032,9 +1032,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "\"바람 불면 아파트 외벽 '출렁'\"…목동 새 단지에 들어서는 작품",
-      "url": "https://www.hankyung.com/article/2026060948566",
-      "published_at": "2026-06-09T08:50:10+00:00"
+      "title": "서울 7호선 신풍역 일대에 35층 2054가구 주거단지",
+      "url": "https://www.hankyung.com/article/202606108195i",
+      "published_at": "2026-06-10T13:55:29+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1044,9 +1044,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "\"이사 안 갈래요\"…서울 오피스텔 세입자들, 갱신권 더 썼다",
-      "url": "https://www.hankyung.com/article/2026060947986",
-      "published_at": "2026-06-09T08:39:38+00:00"
+      "title": "BS한양, 신임 대표에 박유신 전 건설부문장 선임",
+      "url": "https://www.hankyung.com/article/202606108174i",
+      "published_at": "2026-06-10T13:18:37+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1056,9 +1056,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "\"한국 보유세 낮다\" 李 대통령 발언에…부동산 시장 '술렁' [돈앤톡]",
-      "url": "https://www.hankyung.com/article/2026060835476",
-      "published_at": "2026-06-09T06:30:04+00:00"
+      "title": "\"하자 접수 전에 먼저 본다\"…자이, AS 방식 바꾼다",
+      "url": "https://www.hankyung.com/article/2026061075916",
+      "published_at": "2026-06-10T09:54:34+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1068,9 +1068,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "李대통령, 부동산 정책 변화 없다…\"신축이든 택지 개발이든 공급 속도\"",
-      "url": "https://www.hankyung.com/article/2026060841191",
-      "published_at": "2026-06-08T17:39:07+00:00"
+      "title": "GS건설, 자이 입주단지 선제 점검 강화…시공 담당자가 직접 AS 나선다",
+      "url": "https://www.hankyung.com/article/202606107390i",
+      "published_at": "2026-06-10T09:20:23+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1080,9 +1080,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "\"정부가 정비구역 지정\"…부동산정책 주도권 갈등",
-      "url": "https://www.hankyung.com/article/2026060839491",
-      "published_at": "2026-06-08T17:17:42+00:00"
+      "title": "\"아파트 입구부터 다르다\"…포레나 새 디자인 선보인다",
+      "url": "https://www.hankyung.com/article/2026061073766",
+      "published_at": "2026-06-10T09:14:13+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1092,9 +1092,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "\"입주하고 내세요\"…분담금 납부유예 확산",
-      "url": "https://www.hankyung.com/article/2026060839511",
-      "published_at": "2026-06-08T17:16:37+00:00"
+      "title": "BS한양, 박유신 대표 선임…건설·에너지 '투트랙' 본격화",
+      "url": "https://www.hankyung.com/article/2026061073346",
+      "published_at": "2026-06-10T09:05:25+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1104,9 +1104,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "아파트 경매, 서울 활활…지방 찬바람",
-      "url": "https://www.hankyung.com/article/2026060839501",
-      "published_at": "2026-06-08T17:15:35+00:00"
+      "title": "\"전기자전거 배터리도 걱정됐는데\"…래미안엔 이런 기술도",
+      "url": "https://www.hankyung.com/article/2026061073026",
+      "published_at": "2026-06-10T08:57:34+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1116,9 +1116,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "서울 신고가 비중 31→19%…수도권 아파트 10% 밑돌아",
-      "url": "https://www.hankyung.com/article/2026060839541",
-      "published_at": "2026-06-08T17:15:00+00:00"
+      "title": "\"호재보단 든든한 연봉\"…삼성맨 잭팟에 '이 동네' 집값 들썩",
+      "url": "https://www.hankyung.com/article/2026061072606",
+      "published_at": "2026-06-10T08:47:00+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1128,9 +1128,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "엠디엠 \"수요자 맞춤형 시니어·고급주거 공략\"",
-      "url": "https://www.hankyung.com/article/2026060839561",
-      "published_at": "2026-06-08T17:14:13+00:00"
+      "title": "레미콘 운송단가 인상 잠정 합의…수도권 건설현장 '숨통'",
+      "url": "https://www.hankyung.com/article/202606107258i",
+      "published_at": "2026-06-10T08:40:57+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1140,9 +1140,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "평택 '고덕 수자인하우스디' 403가구",
-      "url": "https://www.hankyung.com/article/2026060839551",
-      "published_at": "2026-06-08T17:13:42+00:00"
+      "title": "DK아시아, 김앤장과 손잡았다…검단 1만6800가구 개발 속도",
+      "url": "https://www.hankyung.com/article/2026061072386",
+      "published_at": "2026-06-10T08:38:41+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1152,9 +1152,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "일신건영, 이천 최중심 갈산동에 '이천 휴먼빌 클래스원' 7월 분양",
-      "url": "https://www.hankyung.com/article/202606083922i",
-      "published_at": "2026-06-08T17:00:07+00:00"
+      "title": "\"삼성전자 성과급 믿고 샀어요\"…동탄 국평 20억 뚫었다",
+      "url": "https://www.hankyung.com/article/2026060965161",
+      "published_at": "2026-06-10T07:00:02+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1164,9 +1164,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "'청약 당첨돼도 못 사겠네'…서울 국평 분양가 21억 넘었다",
-      "url": "https://www.hankyung.com/article/202606083449i",
-      "published_at": "2026-06-08T14:56:53+00:00"
+      "title": "\"삼전닉스보다 낫다\"…불붙은 동탄 집값 [주간이집]",
+      "url": "https://www.hankyung.com/article/2026060956866",
+      "published_at": "2026-06-10T06:30:03+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1176,9 +1176,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "일신건영, 이천 갈산동 '이천 휴먼빌 클래스원' 7월 분양",
-      "url": "https://www.hankyung.com/article/202606083507i",
-      "published_at": "2026-06-08T14:44:31+00:00"
+      "title": "목동 재건축 시동…'30조 수주전' 불붙었다",
+      "url": "https://www.hankyung.com/article/2026060964161",
+      "published_at": "2026-06-09T18:23:30+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1188,9 +1188,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "\"감정가보다 비싸게 낙찰\"…서울 아파트 경매시장, 기대감 유입",
-      "url": "https://www.hankyung.com/article/2026060834736",
-      "published_at": "2026-06-08T14:33:04+00:00"
+      "title": "'이주비 20억' vs '연대 보증'…롯데·대우건설, 성수4 경쟁",
+      "url": "https://www.hankyung.com/article/2026060964091",
+      "published_at": "2026-06-09T18:21:54+00:00"
     }
   ]
 }
