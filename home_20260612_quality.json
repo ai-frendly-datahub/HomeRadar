@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-06-11T08:50:11.333853+00:00",
+  "generated_at": "2026-06-12T08:29:03.267572+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -38,7 +38,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 2066,
+    "verification_state_count": 2056,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -57,14 +57,134 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 638,
+    "corroboration_only_items": 636,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 638,
-    "official_policy_corroboration": 1428
+    "market_corroboration_requires_official_source": 636,
+    "official_policy_corroboration": 1420
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/2026061236011",
+      "title": "부산 에코델타시티에 501가구",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-12T17:03:33+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026061236031",
+      "title": "주담대 막히고, 멸실하면 稅부담…비아파트 공급 '진퇴양난'",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-12T17:02:48+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202606123552i",
+      "title": "\"중동전쟁發 PF 자금경색 방지\"…주금공, 사업자보증 설명회",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-12T17:02:06+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202606122417i",
+      "title": "\"영등포 10억 아파트 추천 좀\"…카톡에 물어보면 직방이 골라준다",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-12T10:12:08+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026061222386",
+      "title": "\"10억 이하 아파트 찾아줘\"…직방 AI중개사, 카톡에 '쏙'",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-12T08:56:41+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026061221836",
+      "title": "강남역·신논현역 사이 'W빌딩' 매물로",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-12T08:41:50+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202606110560i",
+      "title": "\"서리풀2지구 2028년 착공\"…수도권 주택공급 '잰걸음'",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-11T21:54:02+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202606083626i",
+      "title": "'5선시장'된 오세훈, 신통기획 속도낸다…변수는?",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-11T18:20:48+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026061113841",
+      "title": "성과급에 GTX 호재까지 터졌다…집값 급등한 '이 동네'",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-11T17:17:44+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026061113831",
+      "title": "\"단지 클수록 더 오르네\"…1500가구 이상 집값 상승률, 300가구 미만 소단지의 2배",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-11T17:16:16+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026061113871",
+      "title": "\"우리집 공시가 너무 높아요\"…올 가격하향 신청 8배 급증",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-11T17:15:42+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026061113881",
+      "title": "오류동 현대연립 520가구로 재건축",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-11T17:15:05+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/202606111142i",
       "title": "수도권 아파트 집값, 단지 클수록 더 올랐다",
@@ -140,126 +260,6 @@
       "title": "다주택자 급매 소진 여파?…서울 거래 32% 줄고 집값 1.55% 올라",
       "source_id": "hankyung_realestate",
       "published_at": "2026-06-11T13:35:15+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202606110225i",
-      "title": "호반건설, 청년안심주택 '호반써밋 양재' 최고 280대 1로 청약 마감",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-11T10:08:26+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202606110179i",
-      "title": "서초 우면동에 공공주택 2000가구…'서리풀2지구' 지구 지정",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-11T10:01:15+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026061198266",
-      "title": "\"전세시대 끝?\"…서울 아파트 월세 비중, 10년 새 50% 육박",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-11T09:00:42+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026061198096",
-      "title": "\"세금으로 시장 통제 그만\"…공시가격 이의신청 2.5배 늘었다",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-11T08:51:56+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202606119394i",
-      "title": "'남이섬 아니고 아파트'…30대 몰리더니 거래량 터진 동네 [연두부]",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-11T07:00:01+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026061089781",
-      "title": "분양가 상한제의 역설…강남 묶자 非강남서 '국평 30억' 찍었다",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-10T19:33:39+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026061089771",
-      "title": "집값 요동칠 때마다 조였다 풀었다 반복",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-10T18:14:21+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026061088481",
-      "title": "경기도 입주물량 11년來 최소…새 분양 단지에 '얼죽신' 관심",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-10T17:21:27+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026061088491",
-      "title": "강서구보다 비싼 광명…드파인·써밋 들어서나",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-10T17:20:38+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026061088511",
-      "title": "라온건설, 중화3구역 250가구 분양",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-10T17:19:39+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026061088501",
-      "title": "레지던스→오피스텔 전환…전세난 '숨통' 기대",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-10T17:18:54+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026061088521",
-      "title": "광주 '호반써밋 첨단3지구' 805가구",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-10T17:18:12+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
@@ -375,12 +375,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 638,
-      "latest_event_at": "2026-06-11T16:05:11+00:00",
-      "latest_observed_at": "2026-06-11T17:49:58.164169+00:00",
+      "item_count": 636,
+      "latest_event_at": "2026-06-12T17:03:33+00:00",
+      "latest_observed_at": "2026-06-12T17:28:51.567192+00:00",
       "age_days": 0.0,
-      "latest_title": "수도권 아파트 집값, 단지 클수록 더 올랐다",
-      "latest_url": "https://www.hankyung.com/article/202606111142i"
+      "latest_title": "부산 에코델타시티에 501가구",
+      "latest_url": "https://www.hankyung.com/article/2026061236011"
     },
     {
       "source_id": "korea_policy_news",
@@ -399,11 +399,11 @@
       "event_date_field": "",
       "observed_date_field": "",
       "item_count": 346,
-      "latest_event_at": "2026-06-11T17:31:00+00:00",
-      "latest_observed_at": "2026-06-11T17:49:58.752928+00:00",
+      "latest_event_at": "2026-06-12T16:21:00+00:00",
+      "latest_observed_at": "2026-06-12T17:28:52.119527+00:00",
       "age_days": 0.0,
-      "latest_title": "전기 1%만 덜 써도 혜택…올 하반기 '에너지캐시백' 확대 시행",
-      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148966349&call_from=rsslink"
+      "latest_title": "전기 사용 1%만 줄여도 캐시백 혜택",
+      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965983&call_from=rsslink"
     },
     {
       "source_id": "korea_pressrelease_news",
@@ -421,12 +421,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 1082,
-      "latest_event_at": "2026-06-11T17:00:00+00:00",
-      "latest_observed_at": "2026-06-11T17:49:59.225677+00:00",
+      "item_count": 1074,
+      "latest_event_at": "2026-06-12T16:04:03+00:00",
+      "latest_observed_at": "2026-06-12T17:28:52.465639+00:00",
       "age_days": 0.0,
-      "latest_title": "[농림축산식품부]농지 전수조사 본궤도에 올라... 장관이 직접 현장 챙긴다",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156766211&call_from=rsslink"
+      "latest_title": "[관세청]2026년 5월의 관세인에 김경환 주무관 선정",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156766352&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
@@ -960,6 +960,150 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "부산 에코델타시티에 501가구",
+      "url": "https://www.hankyung.com/article/2026061236011",
+      "published_at": "2026-06-12T17:03:33+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "주담대 막히고, 멸실하면 稅부담…비아파트 공급 '진퇴양난'",
+      "url": "https://www.hankyung.com/article/2026061236031",
+      "published_at": "2026-06-12T17:02:48+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "\"중동전쟁發 PF 자금경색 방지\"…주금공, 사업자보증 설명회",
+      "url": "https://www.hankyung.com/article/202606123552i",
+      "published_at": "2026-06-12T17:02:06+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "\"영등포 10억 아파트 추천 좀\"…카톡에 물어보면 직방이 골라준다",
+      "url": "https://www.hankyung.com/article/202606122417i",
+      "published_at": "2026-06-12T10:12:08+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "\"10억 이하 아파트 찾아줘\"…직방 AI중개사, 카톡에 '쏙'",
+      "url": "https://www.hankyung.com/article/2026061222386",
+      "published_at": "2026-06-12T08:56:41+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "강남역·신논현역 사이 'W빌딩' 매물로",
+      "url": "https://www.hankyung.com/article/2026061221836",
+      "published_at": "2026-06-12T08:41:50+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "\"서리풀2지구 2028년 착공\"…수도권 주택공급 '잰걸음'",
+      "url": "https://www.hankyung.com/article/202606110560i",
+      "published_at": "2026-06-11T21:54:02+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "'5선시장'된 오세훈, 신통기획 속도낸다…변수는?",
+      "url": "https://www.hankyung.com/article/202606083626i",
+      "published_at": "2026-06-11T18:20:48+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "성과급에 GTX 호재까지 터졌다…집값 급등한 '이 동네'",
+      "url": "https://www.hankyung.com/article/2026061113841",
+      "published_at": "2026-06-11T17:17:44+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "\"단지 클수록 더 오르네\"…1500가구 이상 집값 상승률, 300가구 미만 소단지의 2배",
+      "url": "https://www.hankyung.com/article/2026061113831",
+      "published_at": "2026-06-11T17:16:16+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "\"우리집 공시가 너무 높아요\"…올 가격하향 신청 8배 급증",
+      "url": "https://www.hankyung.com/article/2026061113871",
+      "published_at": "2026-06-11T17:15:42+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "오류동 현대연립 520가구로 재건축",
+      "url": "https://www.hankyung.com/article/2026061113881",
+      "published_at": "2026-06-11T17:15:05+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "수도권 아파트 집값, 단지 클수록 더 올랐다",
       "url": "https://www.hankyung.com/article/202606111142i",
       "published_at": "2026-06-11T16:05:11+00:00"
@@ -1047,150 +1191,6 @@
       "title": "다주택자 급매 소진 여파?…서울 거래 32% 줄고 집값 1.55% 올라",
       "url": "https://www.hankyung.com/article/202606110430i",
       "published_at": "2026-06-11T13:35:15+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "호반건설, 청년안심주택 '호반써밋 양재' 최고 280대 1로 청약 마감",
-      "url": "https://www.hankyung.com/article/202606110225i",
-      "published_at": "2026-06-11T10:08:26+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "서초 우면동에 공공주택 2000가구…'서리풀2지구' 지구 지정",
-      "url": "https://www.hankyung.com/article/202606110179i",
-      "published_at": "2026-06-11T10:01:15+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "\"전세시대 끝?\"…서울 아파트 월세 비중, 10년 새 50% 육박",
-      "url": "https://www.hankyung.com/article/2026061198266",
-      "published_at": "2026-06-11T09:00:42+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "\"세금으로 시장 통제 그만\"…공시가격 이의신청 2.5배 늘었다",
-      "url": "https://www.hankyung.com/article/2026061198096",
-      "published_at": "2026-06-11T08:51:56+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "'남이섬 아니고 아파트'…30대 몰리더니 거래량 터진 동네 [연두부]",
-      "url": "https://www.hankyung.com/article/202606119394i",
-      "published_at": "2026-06-11T07:00:01+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "분양가 상한제의 역설…강남 묶자 非강남서 '국평 30억' 찍었다",
-      "url": "https://www.hankyung.com/article/2026061089781",
-      "published_at": "2026-06-10T19:33:39+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "집값 요동칠 때마다 조였다 풀었다 반복",
-      "url": "https://www.hankyung.com/article/2026061089771",
-      "published_at": "2026-06-10T18:14:21+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "경기도 입주물량 11년來 최소…새 분양 단지에 '얼죽신' 관심",
-      "url": "https://www.hankyung.com/article/2026061088481",
-      "published_at": "2026-06-10T17:21:27+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "강서구보다 비싼 광명…드파인·써밋 들어서나",
-      "url": "https://www.hankyung.com/article/2026061088491",
-      "published_at": "2026-06-10T17:20:38+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "라온건설, 중화3구역 250가구 분양",
-      "url": "https://www.hankyung.com/article/2026061088511",
-      "published_at": "2026-06-10T17:19:39+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "레지던스→오피스텔 전환…전세난 '숨통' 기대",
-      "url": "https://www.hankyung.com/article/2026061088501",
-      "published_at": "2026-06-10T17:18:54+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "광주 '호반써밋 첨단3지구' 805가구",
-      "url": "https://www.hankyung.com/article/2026061088521",
-      "published_at": "2026-06-10T17:18:12+00:00"
     }
   ]
 }
