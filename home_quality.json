@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-06-12T08:29:03.267572+00:00",
+  "generated_at": "2026-06-13T07:52:14.702480+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -38,7 +38,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 2056,
+    "verification_state_count": 2062,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -57,14 +57,84 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 636,
+    "corroboration_only_items": 637,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 636,
-    "official_policy_corroboration": 1420
+    "market_corroboration_requires_official_source": 637,
+    "official_policy_corroboration": 1425
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/202606108434i",
+      "title": "주차로봇 도입되면 아파트 주차장 어떻게 바뀔까?",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-13T08:29:02+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026061222986",
+      "title": "\"GTX 뚫리면 집값 날아간다더니\"…40대 집주인 한탄 [철길옆집]",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-13T07:39:54+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202606095104i",
+      "title": "공사에서 청소까지…로봇 도입 확대하는 건설사들",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-12T20:55:18+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026061237501",
+      "title": "서울 25개구 중 18곳 전고점 돌파…집값 상승률, 文정부 추월",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-12T17:46:51+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026061237751",
+      "title": "수도권 집값 '코로나 고점' 넘었다",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-12T17:45:28+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026061237511",
+      "title": "\"당분간 새 집 없다\"…분양·입주권도 신고가",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-12T17:37:17+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026061237521",
+      "title": "李대통령 취임 후 1년간 서울 전셋값 7% 급등",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-12T17:36:50+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/2026061236011",
       "title": "부산 에코델타시티에 501가구",
@@ -194,76 +264,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202606110820i",
-      "title": "\"감리부실 사고 예방\"…국가인증감리제, 도로·교통 분야로 확대",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-11T15:32:29+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202606110982i",
-      "title": "오세훈 \"부동산 참사의 길 멈춰야\"…李정부에 정책 전환 촉구",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-11T15:29:22+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202606111003i",
-      "title": "'옛 부산 MBC 개발' 알티에로 광안 12일 갤러리 오픈",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-11T15:19:53+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202606110972i",
-      "title": "평택 브레인시티 찾은 HUG…\"비아파트 특례보증 구축\"",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-11T15:11:45+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202606110805i",
-      "title": "서울 아파트값 상승률 5주째 0.2% 웃돌아…화성 동탄 2% 육박",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-11T14:20:32+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026061102606",
-      "title": "삼전닉스 직원 몰리더니…19억 아파트, 한 달 만에 '역대급 상황'",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-11T14:00:02+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202606110430i",
-      "title": "다주택자 급매 소진 여파?…서울 거래 32% 줄고 집값 1.55% 올라",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-11T13:35:15+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -375,12 +375,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 636,
-      "latest_event_at": "2026-06-12T17:03:33+00:00",
-      "latest_observed_at": "2026-06-12T17:28:51.567192+00:00",
+      "item_count": 637,
+      "latest_event_at": "2026-06-13T08:29:02+00:00",
+      "latest_observed_at": "2026-06-13T16:52:02.004148+00:00",
       "age_days": 0.0,
-      "latest_title": "부산 에코델타시티에 501가구",
-      "latest_url": "https://www.hankyung.com/article/2026061236011"
+      "latest_title": "주차로봇 도입되면 아파트 주차장 어떻게 바뀔까?",
+      "latest_url": "https://www.hankyung.com/article/202606108434i"
     },
     {
       "source_id": "korea_policy_news",
@@ -399,11 +399,11 @@
       "event_date_field": "",
       "observed_date_field": "",
       "item_count": 346,
-      "latest_event_at": "2026-06-12T16:21:00+00:00",
-      "latest_observed_at": "2026-06-12T17:28:52.119527+00:00",
+      "latest_event_at": "2026-06-13T11:02:00+00:00",
+      "latest_observed_at": "2026-06-13T16:52:02.626307+00:00",
       "age_days": 0.0,
-      "latest_title": "전기 사용 1%만 줄여도 캐시백 혜택",
-      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965983&call_from=rsslink"
+      "latest_title": "이 대통령 \"한-이탈리아는 최적의 파트너…글로벌 불확실성 함께 헤쳐나가야\"",
+      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148966450&call_from=rsslink"
     },
     {
       "source_id": "korea_pressrelease_news",
@@ -421,12 +421,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 1074,
-      "latest_event_at": "2026-06-12T16:04:03+00:00",
-      "latest_observed_at": "2026-06-12T17:28:52.465639+00:00",
+      "item_count": 1079,
+      "latest_event_at": "2026-06-13T15:46:23+00:00",
+      "latest_observed_at": "2026-06-13T16:52:03.090314+00:00",
       "age_days": 0.0,
-      "latest_title": "[관세청]2026년 5월의 관세인에 김경환 주무관 선정",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156766352&call_from=rsslink"
+      "latest_title": "[외교부]한미일 사무국 운영이사회 및 북한 관련 한미일 협의 개최(6.12.)",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156766392&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
@@ -960,6 +960,90 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "주차로봇 도입되면 아파트 주차장 어떻게 바뀔까?",
+      "url": "https://www.hankyung.com/article/202606108434i",
+      "published_at": "2026-06-13T08:29:02+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "\"GTX 뚫리면 집값 날아간다더니\"…40대 집주인 한탄 [철길옆집]",
+      "url": "https://www.hankyung.com/article/2026061222986",
+      "published_at": "2026-06-13T07:39:54+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "공사에서 청소까지…로봇 도입 확대하는 건설사들",
+      "url": "https://www.hankyung.com/article/202606095104i",
+      "published_at": "2026-06-12T20:55:18+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "서울 25개구 중 18곳 전고점 돌파…집값 상승률, 文정부 추월",
+      "url": "https://www.hankyung.com/article/2026061237501",
+      "published_at": "2026-06-12T17:46:51+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "수도권 집값 '코로나 고점' 넘었다",
+      "url": "https://www.hankyung.com/article/2026061237751",
+      "published_at": "2026-06-12T17:45:28+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "\"당분간 새 집 없다\"…분양·입주권도 신고가",
+      "url": "https://www.hankyung.com/article/2026061237511",
+      "published_at": "2026-06-12T17:37:17+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "李대통령 취임 후 1년간 서울 전셋값 7% 급등",
+      "url": "https://www.hankyung.com/article/2026061237521",
+      "published_at": "2026-06-12T17:36:50+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "부산 에코델타시티에 501가구",
       "url": "https://www.hankyung.com/article/2026061236011",
       "published_at": "2026-06-12T17:03:33+00:00"
@@ -1107,90 +1191,6 @@
       "title": "수도권 아파트 집값, 단지 클수록 더 올랐다",
       "url": "https://www.hankyung.com/article/202606111142i",
       "published_at": "2026-06-11T16:05:11+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "\"감리부실 사고 예방\"…국가인증감리제, 도로·교통 분야로 확대",
-      "url": "https://www.hankyung.com/article/202606110820i",
-      "published_at": "2026-06-11T15:32:29+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "오세훈 \"부동산 참사의 길 멈춰야\"…李정부에 정책 전환 촉구",
-      "url": "https://www.hankyung.com/article/202606110982i",
-      "published_at": "2026-06-11T15:29:22+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "'옛 부산 MBC 개발' 알티에로 광안 12일 갤러리 오픈",
-      "url": "https://www.hankyung.com/article/202606111003i",
-      "published_at": "2026-06-11T15:19:53+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "평택 브레인시티 찾은 HUG…\"비아파트 특례보증 구축\"",
-      "url": "https://www.hankyung.com/article/202606110972i",
-      "published_at": "2026-06-11T15:11:45+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "서울 아파트값 상승률 5주째 0.2% 웃돌아…화성 동탄 2% 육박",
-      "url": "https://www.hankyung.com/article/202606110805i",
-      "published_at": "2026-06-11T14:20:32+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "삼전닉스 직원 몰리더니…19억 아파트, 한 달 만에 '역대급 상황'",
-      "url": "https://www.hankyung.com/article/2026061102606",
-      "published_at": "2026-06-11T14:00:02+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "다주택자 급매 소진 여파?…서울 거래 32% 줄고 집값 1.55% 올라",
-      "url": "https://www.hankyung.com/article/202606110430i",
-      "published_at": "2026-06-11T13:35:15+00:00"
     }
   ]
 }
