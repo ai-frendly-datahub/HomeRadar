@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-06-19T09:17:43.691467+00:00",
+  "generated_at": "2026-06-20T07:53:53.937478+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -38,7 +38,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 1977,
+    "verification_state_count": 2056,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -62,9 +62,29 @@
   },
   "verification_states": {
     "market_corroboration_requires_official_source": 637,
-    "official_policy_corroboration": 1340
+    "official_policy_corroboration": 1419
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/2026061844446",
+      "title": "\"30조가 달렸다\"…건설사 '혈투' 벌어진 '미니 신도시' 정체 [돈앤톡]",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-20T13:02:33+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202606183803i",
+      "title": "시니어 주거 디자인의 과학: 치매 친화와 유니버설 디자인",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-20T09:00:22+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/2026061972491",
       "title": "모델하우스 탐방 - '드파인 아르티아' 404가구",
@@ -244,26 +264,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026061846857",
-      "title": "\"전세 더 오르고 집값도 뛴다\"…동탄 일주일새 2% 뛰어 [퇴근길 30초 경제]",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-18T17:09:17+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026061847606",
-      "title": "\"전세 더 오르고 집값도 뛴다\"…하반기 부동산, 양극화 전망",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-18T15:46:18+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -376,11 +376,11 @@
       "event_date_field": "",
       "observed_date_field": "",
       "item_count": 637,
-      "latest_event_at": "2026-06-19T17:09:17+00:00",
-      "latest_observed_at": "2026-06-19T18:17:37.927148+00:00",
+      "latest_event_at": "2026-06-20T13:02:33+00:00",
+      "latest_observed_at": "2026-06-20T16:53:41.137932+00:00",
       "age_days": 0.0,
-      "latest_title": "모델하우스 탐방 - '드파인 아르티아' 404가구",
-      "latest_url": "https://www.hankyung.com/article/2026061972491"
+      "latest_title": "\"30조가 달렸다\"…건설사 '혈투' 벌어진 '미니 신도시' 정체 [돈앤톡]",
+      "latest_url": "https://www.hankyung.com/article/2026061844446"
     },
     {
       "source_id": "korea_policy_news",
@@ -398,12 +398,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 297,
-      "latest_event_at": "2026-05-29T18:07:00+00:00",
-      "latest_observed_at": "2026-05-31T14:18:10.315123+00:00",
-      "age_days": 20.63,
-      "latest_title": "29~30일 지방선거 사전투표…'신분증만 들고 가까운 투표소로'",
-      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965476&call_from=rsslink"
+      "item_count": 346,
+      "latest_event_at": "2026-06-19T15:49:00+00:00",
+      "latest_observed_at": "2026-06-20T16:53:41.787839+00:00",
+      "age_days": 0.67,
+      "latest_title": "기후부, 순환경제 선도기업·산단 16곳 첫 지정",
+      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148966841&call_from=rsslink"
     },
     {
       "source_id": "korea_pressrelease_news",
@@ -421,12 +421,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 1043,
-      "latest_event_at": "2026-05-31T12:05:00+00:00",
-      "latest_observed_at": "2026-05-31T14:18:11.034643+00:00",
-      "age_days": 18.88,
-      "latest_title": "[보건복지부]통합돌봄 시행, 그냥드림 전국 확대 등 더 따뜻한 복지! 의대정원 증원, 지역의사제 도입 등 더 가까운 의료! 제약&middot;바이오, K-뷰티 역대 최고 수출 등 더 성장하는 K-바이오헬스",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156764559&call_from=rsslink"
+      "item_count": 1073,
+      "latest_event_at": "2026-06-20T14:05:00+00:00",
+      "latest_observed_at": "2026-06-20T16:53:42.177717+00:00",
+      "age_days": 0.0,
+      "latest_title": "[보건복지부]지역 의료의 길, 주민과 전공의에게 묻는다",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156767384&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
@@ -960,6 +960,30 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "\"30조가 달렸다\"…건설사 '혈투' 벌어진 '미니 신도시' 정체 [돈앤톡]",
+      "url": "https://www.hankyung.com/article/2026061844446",
+      "published_at": "2026-06-20T13:02:33+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "시니어 주거 디자인의 과학: 치매 친화와 유니버설 디자인",
+      "url": "https://www.hankyung.com/article/202606183803i",
+      "published_at": "2026-06-20T09:00:22+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "모델하우스 탐방 - '드파인 아르티아' 404가구",
       "url": "https://www.hankyung.com/article/2026061972491",
       "published_at": "2026-06-19T17:09:17+00:00"
@@ -1167,30 +1191,6 @@
       "title": "추진위 건너뛰는 '조합직접설립'…정비사업 2년 줄였다",
       "url": "https://www.hankyung.com/article/2026061849941",
       "published_at": "2026-06-18T17:17:40+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "\"전세 더 오르고 집값도 뛴다\"…동탄 일주일새 2% 뛰어 [퇴근길 30초 경제]",
-      "url": "https://www.hankyung.com/article/2026061846857",
-      "published_at": "2026-06-18T17:09:17+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "\"전세 더 오르고 집값도 뛴다\"…하반기 부동산, 양극화 전망",
-      "url": "https://www.hankyung.com/article/2026061847606",
-      "published_at": "2026-06-18T15:46:18+00:00"
     }
   ]
 }
