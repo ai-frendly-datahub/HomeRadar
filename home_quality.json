@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-06-20T07:53:53.937478+00:00",
+  "generated_at": "2026-06-21T08:44:19.235351+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -38,7 +38,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 2056,
+    "verification_state_count": 1977,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -62,12 +62,32 @@
   },
   "verification_states": {
     "market_corroboration_requires_official_source": 637,
-    "official_policy_corroboration": 1419
+    "official_policy_corroboration": 1340
   },
   "verification_review_samples": [
     {
+      "url": "https://www.hankyung.com/article/2026062186777",
+      "title": "\"월세마저 올랐다\"…이사 포기하고 눌러앉는 세입자들",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-21T14:20:28+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026062185627",
+      "title": "\"20억에 팔았는데 한 달 만에…\" 동탄 집주인들 '멘붕'",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-21T11:34:22+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
       "url": "https://www.hankyung.com/article/2026061844446",
-      "title": "\"30조가 달렸다\"…건설사 '혈투' 벌어진 '미니 신도시' 정체 [돈앤톡]",
+      "title": "'30조 전쟁'에 혈투…'미니 신도시급' 재건축 앞둔 동네 [돈앤톡]",
       "source_id": "hankyung_realestate",
       "published_at": "2026-06-20T13:02:33+00:00",
       "verification_state": "market_corroboration_requires_official_source",
@@ -244,26 +264,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026061849991",
-      "title": "원스톱 위험진단 서비스 구축…국토부 '전세사기' 막는다",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-18T17:19:21+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026061849941",
-      "title": "추진위 건너뛰는 '조합직접설립'…정비사업 2년 줄였다",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-18T17:17:40+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -376,11 +376,11 @@
       "event_date_field": "",
       "observed_date_field": "",
       "item_count": 637,
-      "latest_event_at": "2026-06-20T13:02:33+00:00",
-      "latest_observed_at": "2026-06-20T16:53:41.137932+00:00",
+      "latest_event_at": "2026-06-21T14:20:28+00:00",
+      "latest_observed_at": "2026-06-21T17:44:12.472348+00:00",
       "age_days": 0.0,
-      "latest_title": "\"30조가 달렸다\"…건설사 '혈투' 벌어진 '미니 신도시' 정체 [돈앤톡]",
-      "latest_url": "https://www.hankyung.com/article/2026061844446"
+      "latest_title": "\"월세마저 올랐다\"…이사 포기하고 눌러앉는 세입자들",
+      "latest_url": "https://www.hankyung.com/article/2026062186777"
     },
     {
       "source_id": "korea_policy_news",
@@ -398,12 +398,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 346,
-      "latest_event_at": "2026-06-19T15:49:00+00:00",
-      "latest_observed_at": "2026-06-20T16:53:41.787839+00:00",
-      "age_days": 0.67,
-      "latest_title": "기후부, 순환경제 선도기업·산단 16곳 첫 지정",
-      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148966841&call_from=rsslink"
+      "item_count": 297,
+      "latest_event_at": "2026-05-29T18:07:00+00:00",
+      "latest_observed_at": "2026-05-31T14:18:10.315123+00:00",
+      "age_days": 22.61,
+      "latest_title": "29~30일 지방선거 사전투표…'신분증만 들고 가까운 투표소로'",
+      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965476&call_from=rsslink"
     },
     {
       "source_id": "korea_pressrelease_news",
@@ -421,12 +421,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 1073,
-      "latest_event_at": "2026-06-20T14:05:00+00:00",
-      "latest_observed_at": "2026-06-20T16:53:42.177717+00:00",
-      "age_days": 0.0,
-      "latest_title": "[보건복지부]지역 의료의 길, 주민과 전공의에게 묻는다",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156767384&call_from=rsslink"
+      "item_count": 1043,
+      "latest_event_at": "2026-05-31T12:05:00+00:00",
+      "latest_observed_at": "2026-05-31T14:18:11.034643+00:00",
+      "age_days": 20.86,
+      "latest_title": "[보건복지부]통합돌봄 시행, 그냥드림 전국 확대 등 더 따뜻한 복지! 의대정원 증원, 지역의사제 도입 등 더 가까운 의료! 제약&middot;바이오, K-뷰티 역대 최고 수출 등 더 성장하는 K-바이오헬스",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156764559&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
@@ -960,7 +960,31 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "\"30조가 달렸다\"…건설사 '혈투' 벌어진 '미니 신도시' 정체 [돈앤톡]",
+      "title": "\"월세마저 올랐다\"…이사 포기하고 눌러앉는 세입자들",
+      "url": "https://www.hankyung.com/article/2026062186777",
+      "published_at": "2026-06-21T14:20:28+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "\"20억에 팔았는데 한 달 만에…\" 동탄 집주인들 '멘붕'",
+      "url": "https://www.hankyung.com/article/2026062185627",
+      "published_at": "2026-06-21T11:34:22+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "'30조 전쟁'에 혈투…'미니 신도시급' 재건축 앞둔 동네 [돈앤톡]",
       "url": "https://www.hankyung.com/article/2026061844446",
       "published_at": "2026-06-20T13:02:33+00:00"
     },
@@ -1167,30 +1191,6 @@
       "title": "이헌욱 한국부동산원장 \"집값 주간통계 논란 많아…월간조사가 적절\"",
       "url": "https://www.hankyung.com/article/2026061850001",
       "published_at": "2026-06-18T17:19:26+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "원스톱 위험진단 서비스 구축…국토부 '전세사기' 막는다",
-      "url": "https://www.hankyung.com/article/2026061849991",
-      "published_at": "2026-06-18T17:19:21+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "추진위 건너뛰는 '조합직접설립'…정비사업 2년 줄였다",
-      "url": "https://www.hankyung.com/article/2026061849941",
-      "published_at": "2026-06-18T17:17:40+00:00"
     }
   ]
 }
