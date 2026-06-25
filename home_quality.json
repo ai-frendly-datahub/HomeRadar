@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-06-24T07:50:38.256764+00:00",
+  "generated_at": "2026-06-25T07:52:06.387354+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -65,6 +65,96 @@
     "official_policy_corroboration": 1340
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/202606256863i",
+      "title": "한국도시부동산학회, 내달 메타시티 전문가 포럼 개최",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-25T14:01:32+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026062572406",
+      "title": "11억이던 옥수동 아파트, 3개월 만에 갔더니…서민들 '비명'",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-25T14:00:01+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026062573917",
+      "title": "전 농구선수 김태술, 강남 건물 5년 전 매각…20억 차익 [집코노미-핫!부동산]",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-25T12:15:17+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202606257067i",
+      "title": "신혼희망타운 혼인관계 증명, 입주 전까지만 하면 된다",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-25T11:00:07+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026062458921",
+      "title": "시공사 뽑고 이주하고…'양재천 벨트' 재건축 잰걸음",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-24T17:27:57+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026062458971",
+      "title": "'힐스테이트양산' 598가구, 가촌리서 10년來 첫 분양",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-24T17:26:25+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026062458911",
+      "title": "전·월세 물건 늘었는데 임대료 고공행진, 왜?",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-24T17:25:41+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026062458961",
+      "title": "성북구서 일반분양 1032가구 나온다",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-24T17:24:50+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026062459021",
+      "title": "성동구 왕십리역세권에 관광문화 복합공간 조성",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-24T17:24:06+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/2026062456306",
       "title": "\"전세 사라진다\"…수도권 임대차 시장, 월세 중심으로 가속",
@@ -170,96 +260,6 @@
       "title": "분상제 적용 검단 첫 더샵…'더샵 검단레이크파크' 분양",
       "source_id": "hankyung_realestate",
       "published_at": "2026-06-23T18:00:03+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026062335981",
-      "title": "\"서울서 단체로 오더니…\" 대기업 덕에 '미분양' 사라진 동네",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-23T17:59:53+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026062334061",
-      "title": "경기 비규제지역 '줍줍' 잡아라",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-23T17:20:00+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026062334081",
-      "title": "속도내는 성수 재개발…2~4지구 시공사 선정 '눈앞'",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-23T17:19:48+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026062334111",
-      "title": "'20돌' 힐스테이트, H 컬처클럽 서비스 도입",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-23T17:19:26+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202606232925i",
-      "title": "박창근 \"전국 위험 건설현장 2만2000곳 끝까지 점검\"",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-23T16:00:02+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026062330006",
-      "title": "\"경매업계 첫 인증\"…지지옥션, 우수 부동산서비스 사업자 선정",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-23T14:50:18+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026062329936",
-      "title": "전쟁 끝나자마자 움직였다…대우건설, 중동 재건시장 겨냥",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-23T14:47:25+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026062328476",
-      "title": "\"전세 7억 줘도 집이 없다\"…매물 절벽에 세입자들 '비명'",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-23T14:08:42+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202606232569i",
-      "title": "롯데건설, 교량 휘어짐 방지 '강관가로보 공법' 재난안전신기술 지정",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-23T11:26:06+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
@@ -376,11 +376,11 @@
       "event_date_field": "",
       "observed_date_field": "",
       "item_count": 634,
-      "latest_event_at": "2026-06-24T15:42:24+00:00",
-      "latest_observed_at": "2026-06-24T16:50:30.107542+00:00",
+      "latest_event_at": "2026-06-25T14:01:32+00:00",
+      "latest_observed_at": "2026-06-25T16:52:00.555718+00:00",
       "age_days": 0.0,
-      "latest_title": "\"전세 사라진다\"…수도권 임대차 시장, 월세 중심으로 가속",
-      "latest_url": "https://www.hankyung.com/article/2026062456306"
+      "latest_title": "한국도시부동산학회, 내달 메타시티 전문가 포럼 개최",
+      "latest_url": "https://www.hankyung.com/article/202606256863i"
     },
     {
       "source_id": "korea_policy_news",
@@ -401,7 +401,7 @@
       "item_count": 297,
       "latest_event_at": "2026-05-29T18:07:00+00:00",
       "latest_observed_at": "2026-05-31T14:18:10.315123+00:00",
-      "age_days": 25.57,
+      "age_days": 26.57,
       "latest_title": "29~30일 지방선거 사전투표…'신분증만 들고 가까운 투표소로'",
       "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965476&call_from=rsslink"
     },
@@ -424,7 +424,7 @@
       "item_count": 1043,
       "latest_event_at": "2026-05-31T12:05:00+00:00",
       "latest_observed_at": "2026-05-31T14:18:11.034643+00:00",
-      "age_days": 23.82,
+      "age_days": 24.82,
       "latest_title": "[보건복지부]통합돌봄 시행, 그냥드림 전국 확대 등 더 따뜻한 복지! 의대정원 증원, 지역의사제 도입 등 더 가까운 의료! 제약&middot;바이오, K-뷰티 역대 최고 수출 등 더 성장하는 K-바이오헬스",
       "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156764559&call_from=rsslink"
     },
@@ -960,6 +960,114 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "한국도시부동산학회, 내달 메타시티 전문가 포럼 개최",
+      "url": "https://www.hankyung.com/article/202606256863i",
+      "published_at": "2026-06-25T14:01:32+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "11억이던 옥수동 아파트, 3개월 만에 갔더니…서민들 '비명'",
+      "url": "https://www.hankyung.com/article/2026062572406",
+      "published_at": "2026-06-25T14:00:01+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "전 농구선수 김태술, 강남 건물 5년 전 매각…20억 차익 [집코노미-핫!부동산]",
+      "url": "https://www.hankyung.com/article/2026062573917",
+      "published_at": "2026-06-25T12:15:17+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "신혼희망타운 혼인관계 증명, 입주 전까지만 하면 된다",
+      "url": "https://www.hankyung.com/article/202606257067i",
+      "published_at": "2026-06-25T11:00:07+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "시공사 뽑고 이주하고…'양재천 벨트' 재건축 잰걸음",
+      "url": "https://www.hankyung.com/article/2026062458921",
+      "published_at": "2026-06-24T17:27:57+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "'힐스테이트양산' 598가구, 가촌리서 10년來 첫 분양",
+      "url": "https://www.hankyung.com/article/2026062458971",
+      "published_at": "2026-06-24T17:26:25+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "전·월세 물건 늘었는데 임대료 고공행진, 왜?",
+      "url": "https://www.hankyung.com/article/2026062458911",
+      "published_at": "2026-06-24T17:25:41+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "성북구서 일반분양 1032가구 나온다",
+      "url": "https://www.hankyung.com/article/2026062458961",
+      "published_at": "2026-06-24T17:24:50+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "성동구 왕십리역세권에 관광문화 복합공간 조성",
+      "url": "https://www.hankyung.com/article/2026062459021",
+      "published_at": "2026-06-24T17:24:06+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "\"전세 사라진다\"…수도권 임대차 시장, 월세 중심으로 가속",
       "url": "https://www.hankyung.com/article/2026062456306",
       "published_at": "2026-06-24T15:42:24+00:00"
@@ -1083,114 +1191,6 @@
       "title": "분상제 적용 검단 첫 더샵…'더샵 검단레이크파크' 분양",
       "url": "https://www.hankyung.com/article/202606232073i",
       "published_at": "2026-06-23T18:00:03+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "\"서울서 단체로 오더니…\" 대기업 덕에 '미분양' 사라진 동네",
-      "url": "https://www.hankyung.com/article/2026062335981",
-      "published_at": "2026-06-23T17:59:53+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "경기 비규제지역 '줍줍' 잡아라",
-      "url": "https://www.hankyung.com/article/2026062334061",
-      "published_at": "2026-06-23T17:20:00+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "속도내는 성수 재개발…2~4지구 시공사 선정 '눈앞'",
-      "url": "https://www.hankyung.com/article/2026062334081",
-      "published_at": "2026-06-23T17:19:48+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "'20돌' 힐스테이트, H 컬처클럽 서비스 도입",
-      "url": "https://www.hankyung.com/article/2026062334111",
-      "published_at": "2026-06-23T17:19:26+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "박창근 \"전국 위험 건설현장 2만2000곳 끝까지 점검\"",
-      "url": "https://www.hankyung.com/article/202606232925i",
-      "published_at": "2026-06-23T16:00:02+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "\"경매업계 첫 인증\"…지지옥션, 우수 부동산서비스 사업자 선정",
-      "url": "https://www.hankyung.com/article/2026062330006",
-      "published_at": "2026-06-23T14:50:18+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "전쟁 끝나자마자 움직였다…대우건설, 중동 재건시장 겨냥",
-      "url": "https://www.hankyung.com/article/2026062329936",
-      "published_at": "2026-06-23T14:47:25+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "\"전세 7억 줘도 집이 없다\"…매물 절벽에 세입자들 '비명'",
-      "url": "https://www.hankyung.com/article/2026062328476",
-      "published_at": "2026-06-23T14:08:42+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "롯데건설, 교량 휘어짐 방지 '강관가로보 공법' 재난안전신기술 지정",
-      "url": "https://www.hankyung.com/article/202606232569i",
-      "published_at": "2026-06-23T11:26:06+00:00"
     }
   ]
 }
