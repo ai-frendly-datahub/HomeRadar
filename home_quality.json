@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-06-26T08:03:29.748246+00:00",
+  "generated_at": "2026-06-27T07:01:50.090573+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -65,6 +65,46 @@
     "official_policy_corroboration": 1340
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/2026062692746",
+      "title": "5억에 샀는데 7억6000만원…'서울 끝' 창동에 무슨 일이 [철길옆집]",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-27T12:43:55+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202606220617i",
+      "title": "무신사 조만호의 뚝심…초고가 시니어 주택 흥행 이끌어",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-27T07:30:02+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026062607181",
+      "title": "반포 팰리스, 오피스텔·호텔·헬스케어 '복합개발'",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-26T17:30:33+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202606260472i",
+      "title": "프리즘투자자문, 월천재테크와 '금융·부동산 통합 컨설팅' 업무협약 맺어",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-26T16:12:29+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/202606260198i",
       "title": "IPARK현대산업개발, '김해 신문 센트럴 아이파크' 분양",
@@ -224,46 +264,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202606256863i",
-      "title": "한국도시부동산학회, 내달 메타시티 전문가 포럼 개최",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-25T14:01:32+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026062572406",
-      "title": "11억이던 옥수동 아파트, 3개월 만에 갔더니…서민들 '비명'",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-25T14:00:01+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026062573917",
-      "title": "전 농구선수 김태술, 강남 건물 5년 전 매각…20억 차익 [집코노미-핫!부동산]",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-25T12:15:17+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202606257067i",
-      "title": "신혼희망타운 혼인관계 증명, 입주 전까지만 하면 된다",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-25T11:00:07+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -376,11 +376,11 @@
       "event_date_field": "",
       "observed_date_field": "",
       "item_count": 637,
-      "latest_event_at": "2026-06-26T15:03:04+00:00",
-      "latest_observed_at": "2026-06-26T17:03:23.246571+00:00",
+      "latest_event_at": "2026-06-27T12:43:55+00:00",
+      "latest_observed_at": "2026-06-27T16:01:43.836326+00:00",
       "age_days": 0.0,
-      "latest_title": "IPARK현대산업개발, '김해 신문 센트럴 아이파크' 분양",
-      "latest_url": "https://www.hankyung.com/article/202606260198i"
+      "latest_title": "5억에 샀는데 7억6000만원…'서울 끝' 창동에 무슨 일이 [철길옆집]",
+      "latest_url": "https://www.hankyung.com/article/2026062692746"
     },
     {
       "source_id": "korea_policy_news",
@@ -401,7 +401,7 @@
       "item_count": 297,
       "latest_event_at": "2026-05-29T18:07:00+00:00",
       "latest_observed_at": "2026-05-31T14:18:10.315123+00:00",
-      "age_days": 27.58,
+      "age_days": 28.54,
       "latest_title": "29~30일 지방선거 사전투표…'신분증만 들고 가까운 투표소로'",
       "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965476&call_from=rsslink"
     },
@@ -424,7 +424,7 @@
       "item_count": 1043,
       "latest_event_at": "2026-05-31T12:05:00+00:00",
       "latest_observed_at": "2026-05-31T14:18:11.034643+00:00",
-      "age_days": 25.83,
+      "age_days": 26.79,
       "latest_title": "[보건복지부]통합돌봄 시행, 그냥드림 전국 확대 등 더 따뜻한 복지! 의대정원 증원, 지역의사제 도입 등 더 가까운 의료! 제약&middot;바이오, K-뷰티 역대 최고 수출 등 더 성장하는 K-바이오헬스",
       "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156764559&call_from=rsslink"
     },
@@ -960,6 +960,54 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "5억에 샀는데 7억6000만원…'서울 끝' 창동에 무슨 일이 [철길옆집]",
+      "url": "https://www.hankyung.com/article/2026062692746",
+      "published_at": "2026-06-27T12:43:55+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "무신사 조만호의 뚝심…초고가 시니어 주택 흥행 이끌어",
+      "url": "https://www.hankyung.com/article/202606220617i",
+      "published_at": "2026-06-27T07:30:02+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "반포 팰리스, 오피스텔·호텔·헬스케어 '복합개발'",
+      "url": "https://www.hankyung.com/article/2026062607181",
+      "published_at": "2026-06-26T17:30:33+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "프리즘투자자문, 월천재테크와 '금융·부동산 통합 컨설팅' 업무협약 맺어",
+      "url": "https://www.hankyung.com/article/202606260472i",
+      "published_at": "2026-06-26T16:12:29+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "IPARK현대산업개발, '김해 신문 센트럴 아이파크' 분양",
       "url": "https://www.hankyung.com/article/202606260198i",
       "published_at": "2026-06-26T15:03:04+00:00"
@@ -1143,54 +1191,6 @@
       "title": "제11회 아름다운 우리 아파트 사진 공모전 대상에 '할머니 식물원' 선정",
       "url": "https://www.hankyung.com/article/202606258139i",
       "published_at": "2026-06-25T16:51:52+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "한국도시부동산학회, 내달 메타시티 전문가 포럼 개최",
-      "url": "https://www.hankyung.com/article/202606256863i",
-      "published_at": "2026-06-25T14:01:32+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "11억이던 옥수동 아파트, 3개월 만에 갔더니…서민들 '비명'",
-      "url": "https://www.hankyung.com/article/2026062572406",
-      "published_at": "2026-06-25T14:00:01+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "전 농구선수 김태술, 강남 건물 5년 전 매각…20억 차익 [집코노미-핫!부동산]",
-      "url": "https://www.hankyung.com/article/2026062573917",
-      "published_at": "2026-06-25T12:15:17+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "신혼희망타운 혼인관계 증명, 입주 전까지만 하면 된다",
-      "url": "https://www.hankyung.com/article/202606257067i",
-      "published_at": "2026-06-25T11:00:07+00:00"
     }
   ]
 }

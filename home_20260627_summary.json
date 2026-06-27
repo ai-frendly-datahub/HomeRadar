@@ -1,5 +1,5 @@
 {
-  "date": "2026-06-26",
+  "date": "2026-06-27",
   "category": "home",
   "article_count": 100,
   "source_count": 3,
@@ -7,19 +7,19 @@
   "top_entities": [
     {
       "name": "keyword",
-      "count": 132
+      "count": 129
     },
     {
       "name": "district",
-      "count": 76
+      "count": 77
     },
     {
       "name": "complex",
-      "count": 8
+      "count": 7
     },
     {
       "name": "project",
-      "count": 6
+      "count": 5
     }
   ],
   "sources": {
@@ -27,7 +27,7 @@
     "korea_pressrelease_news": 48,
     "korea_policy_news": 3
   },
-  "generated_at": "2026-06-26T17:03:28.798870+09:00",
+  "generated_at": "2026-06-27T16:01:49.174078+09:00",
   "quality_summary": {
     "total_sources": 25,
     "enabled_sources": 11,
