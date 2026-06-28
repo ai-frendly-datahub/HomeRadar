@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-06-27T07:01:50.090573+00:00",
+  "generated_at": "2026-06-28T08:03:26.535388+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -38,7 +38,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 1977,
+    "verification_state_count": 1978,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -57,14 +57,24 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 637,
+    "corroboration_only_items": 638,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 637,
+    "market_corroboration_requires_official_source": 638,
     "official_policy_corroboration": 1340
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/2026062820057",
+      "title": "서울 개인 소유 주택, 집주인 45%는 '외지인'",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-28T12:12:22+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/2026062692746",
       "title": "5억에 샀는데 7억6000만원…'서울 끝' 창동에 무슨 일이 [철길옆집]",
@@ -254,16 +264,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202606258139i",
-      "title": "제11회 아름다운 우리 아파트 사진 공모전 대상에 '할머니 식물원' 선정",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-25T16:51:52+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -375,12 +375,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 637,
-      "latest_event_at": "2026-06-27T12:43:55+00:00",
-      "latest_observed_at": "2026-06-27T16:01:43.836326+00:00",
+      "item_count": 638,
+      "latest_event_at": "2026-06-28T12:12:22+00:00",
+      "latest_observed_at": "2026-06-28T17:03:20.337900+00:00",
       "age_days": 0.0,
-      "latest_title": "5억에 샀는데 7억6000만원…'서울 끝' 창동에 무슨 일이 [철길옆집]",
-      "latest_url": "https://www.hankyung.com/article/2026062692746"
+      "latest_title": "서울 개인 소유 주택, 집주인 45%는 '외지인'",
+      "latest_url": "https://www.hankyung.com/article/2026062820057"
     },
     {
       "source_id": "korea_policy_news",
@@ -401,7 +401,7 @@
       "item_count": 297,
       "latest_event_at": "2026-05-29T18:07:00+00:00",
       "latest_observed_at": "2026-05-31T14:18:10.315123+00:00",
-      "age_days": 28.54,
+      "age_days": 29.58,
       "latest_title": "29~30일 지방선거 사전투표…'신분증만 들고 가까운 투표소로'",
       "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965476&call_from=rsslink"
     },
@@ -424,7 +424,7 @@
       "item_count": 1043,
       "latest_event_at": "2026-05-31T12:05:00+00:00",
       "latest_observed_at": "2026-05-31T14:18:11.034643+00:00",
-      "age_days": 26.79,
+      "age_days": 27.83,
       "latest_title": "[보건복지부]통합돌봄 시행, 그냥드림 전국 확대 등 더 따뜻한 복지! 의대정원 증원, 지역의사제 도입 등 더 가까운 의료! 제약&middot;바이오, K-뷰티 역대 최고 수출 등 더 성장하는 K-바이오헬스",
       "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156764559&call_from=rsslink"
     },
@@ -960,6 +960,18 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "서울 개인 소유 주택, 집주인 45%는 '외지인'",
+      "url": "https://www.hankyung.com/article/2026062820057",
+      "published_at": "2026-06-28T12:12:22+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "5억에 샀는데 7억6000만원…'서울 끝' 창동에 무슨 일이 [철길옆집]",
       "url": "https://www.hankyung.com/article/2026062692746",
       "published_at": "2026-06-27T12:43:55+00:00"
@@ -1179,18 +1191,6 @@
       "title": "\"디벨로퍼, 리스크 관리·생산적 금융으로 주택공급 확대\"",
       "url": "https://www.hankyung.com/article/202606257926i",
       "published_at": "2026-06-25T17:11:02+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "제11회 아름다운 우리 아파트 사진 공모전 대상에 '할머니 식물원' 선정",
-      "url": "https://www.hankyung.com/article/202606258139i",
-      "published_at": "2026-06-25T16:51:52+00:00"
     }
   ]
 }
