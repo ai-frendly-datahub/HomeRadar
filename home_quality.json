@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-06-29T09:02:08.402165+00:00",
+  "generated_at": "2026-06-30T08:06:15.194219+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -38,7 +38,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 2065,
+    "verification_state_count": 1982,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -57,14 +57,134 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 640,
+    "corroboration_only_items": 642,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 640,
-    "official_policy_corroboration": 1425
+    "market_corroboration_requires_official_source": 642,
+    "official_policy_corroboration": 1340
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/202606305802i",
+      "title": "반도체 훈풍…용인 클러스터 산단 첫 아파트 공급 '눈길'",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-30T13:51:23+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202606306264i",
+      "title": "'서울 원룸 보증금' 한 달 만에 600만원 올랐다…청년들 '한숨'",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-30T11:45:25+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026063061606",
+      "title": "쌍용건설, 1010억원 규모 동해신항 석탄부두 공사 수주",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-30T10:40:35+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026063058626",
+      "title": "동탄·기흥·구리까지 '3중 규제'…\"집값 단기 진정 기대\" [돈앤톡]",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-30T10:17:31+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202606306058i",
+      "title": "동탄·기흥·구리 '세낀 매매' 5일장…\"4일까지 계약금 입금해야\"",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-30T10:13:14+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026063055347",
+      "title": "'집값 급등' 동탄·기흥·구리 규제지역·토허구역 신규 지정",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-30T08:24:32+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202606305503i",
+      "title": "반도체·GTX로 집값 불타더니…동탄·기흥·구리 '규제폭탄'",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-30T08:18:45+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026063054827",
+      "title": "[속보] 동탄·기흥·구리 규제지역·토지거래허가구역 지정",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-30T08:05:37+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026062941256",
+      "title": "\"집은 클수록 좋다?\"…소형 아파트 몸값 뛴 뜻밖의 이유 [돈앤톡]",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-30T06:30:06+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202606295207i",
+      "title": "검암역자이르네 무순위 청약 150가구…\"분양가 상한제 적용\"",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-29T22:45:47+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026062951376",
+      "title": "\"하이엔드 아파트 뭐가 다를까\"…실수요자 1위 선택은 '르엘'",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-29T20:00:36+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026062949281",
+      "title": "한경 주거문화대상 종합대상, 경기광주역 롯데캐슬·도안자이·더샵 검단레이크파크",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-06-29T17:56:52+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/2026062947717",
       "title": "\"집값 뛰자 세금도 껑충\"…지난해 주택 종부세 1조3000억원 넘어",
@@ -140,126 +260,6 @@
       "title": "모델하우스 탐방 - 경산 '펜타힐즈W 1단지' 1712가구",
       "source_id": "hankyung_realestate",
       "published_at": "2026-06-29T17:16:08+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026062933191",
-      "title": "아세아종합건설은, 의정부·이천·강릉…자연과 도시가 공존하는 미래형 공간 창조",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-29T17:15:52+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026062947461",
-      "title": "독산2동 380 일대…신통기획 2600가구",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-29T17:15:29+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026062947441",
-      "title": "당산현대3차 734가구·강변아파트 209가구 '탈바꿈'",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-29T17:15:00+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026062933231",
-      "title": "도안자이 센텀리체, 대전 도안의 새 '주거 명작'…역세권·트리플 학세권 갖춘 대단지",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-29T17:14:44+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026062947531",
-      "title": "호텔 스위트룸 같은 주거 서비스 제공",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-29T17:14:42+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026062933361",
-      "title": "더샵 검단레이크파크, 검단 첫 더샵 브랜드 대단지…분상제·호수공원·역세권 다 잡았다",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-29T17:10:00+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202606294681i",
-      "title": "자양6지구 가로주택정비사업, 조합설립 동의율 확보",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-29T17:05:20+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026062933261",
-      "title": "송치영 포스코이앤씨 사장 \"수변 입지에 스마트 기술 입주민 삶의 가치 높였죠\"",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-29T17:03:23+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026062933481",
-      "title": "이기동 경남기업 대표 \"최고 입지에 혁신 설계…군산 대표 단지 될 것\"",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-29T16:58:54+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026062933401",
-      "title": "검단 센트레빌 에듀시티, 검단 미래 성장성 품은 삼중 역세권",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-29T16:57:19+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026062933471",
-      "title": "윤진오 동부건설 대표 \"검단 잠재력에 센트레빌의 가치 더했다\"",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-29T16:55:43+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026062933451",
-      "title": "동부건설은, 남다른 설계·디자인으로 '고품질 주택' 내걸어",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-06-29T16:54:59+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
@@ -375,12 +375,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 640,
-      "latest_event_at": "2026-06-29T17:29:47+00:00",
-      "latest_observed_at": "2026-06-29T18:01:54.313750+00:00",
+      "item_count": 642,
+      "latest_event_at": "2026-06-30T13:51:23+00:00",
+      "latest_observed_at": "2026-06-30T17:06:08.821802+00:00",
       "age_days": 0.0,
-      "latest_title": "\"집값 뛰자 세금도 껑충\"…지난해 주택 종부세 1조3000억원 넘어",
-      "latest_url": "https://www.hankyung.com/article/2026062947717"
+      "latest_title": "반도체 훈풍…용인 클러스터 산단 첫 아파트 공급 '눈길'",
+      "latest_url": "https://www.hankyung.com/article/202606305802i"
     },
     {
       "source_id": "korea_policy_news",
@@ -398,12 +398,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 346,
-      "latest_event_at": "2026-06-29T17:11:00+00:00",
-      "latest_observed_at": "2026-06-29T18:01:54.932615+00:00",
-      "age_days": 0.0,
-      "latest_title": "이 대통령 \"반도체·피지컬AI·데이터센터 삼각축으로 초격차 산업강국 대도약\"",
-      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148967301&call_from=rsslink"
+      "item_count": 297,
+      "latest_event_at": "2026-05-29T18:07:00+00:00",
+      "latest_observed_at": "2026-05-31T14:18:10.315123+00:00",
+      "age_days": 31.58,
+      "latest_title": "29~30일 지방선거 사전투표…'신분증만 들고 가까운 투표소로'",
+      "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965476&call_from=rsslink"
     },
     {
       "source_id": "korea_pressrelease_news",
@@ -421,12 +421,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 1079,
-      "latest_event_at": "2026-06-29T17:30:13+00:00",
-      "latest_observed_at": "2026-06-29T18:01:55.384956+00:00",
-      "age_days": 0.0,
-      "latest_title": "[보건복지부]&quot;음료는 잘 드시고 계신가요?&quot; 민관협력 통해 문 앞까지 찾아가는 복지 구현",
-      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156768667&call_from=rsslink"
+      "item_count": 1043,
+      "latest_event_at": "2026-05-31T12:05:00+00:00",
+      "latest_observed_at": "2026-05-31T14:18:11.034643+00:00",
+      "age_days": 29.83,
+      "latest_title": "[보건복지부]통합돌봄 시행, 그냥드림 전국 확대 등 더 따뜻한 복지! 의대정원 증원, 지역의사제 도입 등 더 가까운 의료! 제약&middot;바이오, K-뷰티 역대 최고 수출 등 더 성장하는 K-바이오헬스",
+      "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156764559&call_from=rsslink"
     },
     {
       "source_id": "herald_realestate_all",
@@ -960,6 +960,150 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "반도체 훈풍…용인 클러스터 산단 첫 아파트 공급 '눈길'",
+      "url": "https://www.hankyung.com/article/202606305802i",
+      "published_at": "2026-06-30T13:51:23+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "'서울 원룸 보증금' 한 달 만에 600만원 올랐다…청년들 '한숨'",
+      "url": "https://www.hankyung.com/article/202606306264i",
+      "published_at": "2026-06-30T11:45:25+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "쌍용건설, 1010억원 규모 동해신항 석탄부두 공사 수주",
+      "url": "https://www.hankyung.com/article/2026063061606",
+      "published_at": "2026-06-30T10:40:35+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "동탄·기흥·구리까지 '3중 규제'…\"집값 단기 진정 기대\" [돈앤톡]",
+      "url": "https://www.hankyung.com/article/2026063058626",
+      "published_at": "2026-06-30T10:17:31+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "동탄·기흥·구리 '세낀 매매' 5일장…\"4일까지 계약금 입금해야\"",
+      "url": "https://www.hankyung.com/article/202606306058i",
+      "published_at": "2026-06-30T10:13:14+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "'집값 급등' 동탄·기흥·구리 규제지역·토허구역 신규 지정",
+      "url": "https://www.hankyung.com/article/2026063055347",
+      "published_at": "2026-06-30T08:24:32+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "반도체·GTX로 집값 불타더니…동탄·기흥·구리 '규제폭탄'",
+      "url": "https://www.hankyung.com/article/202606305503i",
+      "published_at": "2026-06-30T08:18:45+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "[속보] 동탄·기흥·구리 규제지역·토지거래허가구역 지정",
+      "url": "https://www.hankyung.com/article/2026063054827",
+      "published_at": "2026-06-30T08:05:37+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "\"집은 클수록 좋다?\"…소형 아파트 몸값 뛴 뜻밖의 이유 [돈앤톡]",
+      "url": "https://www.hankyung.com/article/2026062941256",
+      "published_at": "2026-06-30T06:30:06+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "검암역자이르네 무순위 청약 150가구…\"분양가 상한제 적용\"",
+      "url": "https://www.hankyung.com/article/202606295207i",
+      "published_at": "2026-06-29T22:45:47+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "\"하이엔드 아파트 뭐가 다를까\"…실수요자 1위 선택은 '르엘'",
+      "url": "https://www.hankyung.com/article/2026062951376",
+      "published_at": "2026-06-29T20:00:36+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "한경 주거문화대상 종합대상, 경기광주역 롯데캐슬·도안자이·더샵 검단레이크파크",
+      "url": "https://www.hankyung.com/article/2026062949281",
+      "published_at": "2026-06-29T17:56:52+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "\"집값 뛰자 세금도 껑충\"…지난해 주택 종부세 1조3000억원 넘어",
       "url": "https://www.hankyung.com/article/2026062947717",
       "published_at": "2026-06-29T17:29:47+00:00"
@@ -1047,150 +1191,6 @@
       "title": "모델하우스 탐방 - 경산 '펜타힐즈W 1단지' 1712가구",
       "url": "https://www.hankyung.com/article/2026062947471",
       "published_at": "2026-06-29T17:16:08+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "아세아종합건설은, 의정부·이천·강릉…자연과 도시가 공존하는 미래형 공간 창조",
-      "url": "https://www.hankyung.com/article/2026062933191",
-      "published_at": "2026-06-29T17:15:52+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "독산2동 380 일대…신통기획 2600가구",
-      "url": "https://www.hankyung.com/article/2026062947461",
-      "published_at": "2026-06-29T17:15:29+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "당산현대3차 734가구·강변아파트 209가구 '탈바꿈'",
-      "url": "https://www.hankyung.com/article/2026062947441",
-      "published_at": "2026-06-29T17:15:00+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "도안자이 센텀리체, 대전 도안의 새 '주거 명작'…역세권·트리플 학세권 갖춘 대단지",
-      "url": "https://www.hankyung.com/article/2026062933231",
-      "published_at": "2026-06-29T17:14:44+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "호텔 스위트룸 같은 주거 서비스 제공",
-      "url": "https://www.hankyung.com/article/2026062947531",
-      "published_at": "2026-06-29T17:14:42+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "더샵 검단레이크파크, 검단 첫 더샵 브랜드 대단지…분상제·호수공원·역세권 다 잡았다",
-      "url": "https://www.hankyung.com/article/2026062933361",
-      "published_at": "2026-06-29T17:10:00+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "자양6지구 가로주택정비사업, 조합설립 동의율 확보",
-      "url": "https://www.hankyung.com/article/202606294681i",
-      "published_at": "2026-06-29T17:05:20+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "송치영 포스코이앤씨 사장 \"수변 입지에 스마트 기술 입주민 삶의 가치 높였죠\"",
-      "url": "https://www.hankyung.com/article/2026062933261",
-      "published_at": "2026-06-29T17:03:23+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "이기동 경남기업 대표 \"최고 입지에 혁신 설계…군산 대표 단지 될 것\"",
-      "url": "https://www.hankyung.com/article/2026062933481",
-      "published_at": "2026-06-29T16:58:54+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "검단 센트레빌 에듀시티, 검단 미래 성장성 품은 삼중 역세권",
-      "url": "https://www.hankyung.com/article/2026062933401",
-      "published_at": "2026-06-29T16:57:19+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "윤진오 동부건설 대표 \"검단 잠재력에 센트레빌의 가치 더했다\"",
-      "url": "https://www.hankyung.com/article/2026062933471",
-      "published_at": "2026-06-29T16:55:43+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "동부건설은, 남다른 설계·디자인으로 '고품질 주택' 내걸어",
-      "url": "https://www.hankyung.com/article/2026062933451",
-      "published_at": "2026-06-29T16:54:59+00:00"
     }
   ]
 }
