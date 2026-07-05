@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-07-04T06:58:55.145559+00:00",
+  "generated_at": "2026-07-05T07:38:32.081103+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -38,7 +38,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 1982,
+    "verification_state_count": 1981,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -57,14 +57,54 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 642,
+    "corroboration_only_items": 641,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 642,
+    "market_corroboration_requires_official_source": 641,
     "official_policy_corroboration": 1340
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.hankyung.com/article/2026070559077",
+      "title": "전세가 1억 뛰더니…아파트 못 구한 세입자들 향한 곳은?",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-07-05T09:45:22+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202607022554i",
+      "title": "늦둥이 낳았더니 복덩이…민영주택도 신생아특공 신설",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-07-05T09:04:02+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202607034624i",
+      "title": "같은 섹터, 다른 몸값…상업용 부동산 투자 공식이 바뀐다",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-07-05T09:00:13+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202607019905i",
+      "title": "속도내는 중동 1기 신도시 재건축…7호선 단지에 관심",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-07-05T09:00:07+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.hankyung.com/article/202606294585i",
       "title": "시니어 레지던스 '더클래식500'. 하이엔드 주거 서비스의 교본 되다",
@@ -224,46 +264,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202606197217i",
-      "title": "”조합장 성과급 안돼”…준공 후에도 갈등 겪는 재건축·재개발",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-07-02T18:00:06+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202606245287i",
-      "title": "예상 분양수입만 24조원…압구정3구역, 분담금 다시 보니",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-07-02T18:00:02+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026070226961",
-      "title": "은마아파트 사업시행 인가…5850가구 대단지로",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-07-02T17:59:28+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026070226971",
-      "title": "용적률·높이 완화…성수, 첨단산업 중심지로",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-07-02T17:58:49+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -375,12 +375,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 642,
-      "latest_event_at": "2026-07-04T09:00:24+00:00",
-      "latest_observed_at": "2026-07-04T15:58:49.175468+00:00",
+      "item_count": 641,
+      "latest_event_at": "2026-07-05T09:45:22+00:00",
+      "latest_observed_at": "2026-07-05T16:38:25.784560+00:00",
       "age_days": 0.0,
-      "latest_title": "시니어 레지던스 '더클래식500'. 하이엔드 주거 서비스의 교본 되다",
-      "latest_url": "https://www.hankyung.com/article/202606294585i"
+      "latest_title": "전세가 1억 뛰더니…아파트 못 구한 세입자들 향한 곳은?",
+      "latest_url": "https://www.hankyung.com/article/2026070559077"
     },
     {
       "source_id": "korea_policy_news",
@@ -401,7 +401,7 @@
       "item_count": 297,
       "latest_event_at": "2026-05-29T18:07:00+00:00",
       "latest_observed_at": "2026-05-31T14:18:10.315123+00:00",
-      "age_days": 35.54,
+      "age_days": 36.56,
       "latest_title": "29~30일 지방선거 사전투표…'신분증만 들고 가까운 투표소로'",
       "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965476&call_from=rsslink"
     },
@@ -424,7 +424,7 @@
       "item_count": 1043,
       "latest_event_at": "2026-05-31T12:05:00+00:00",
       "latest_observed_at": "2026-05-31T14:18:11.034643+00:00",
-      "age_days": 33.79,
+      "age_days": 34.81,
       "latest_title": "[보건복지부]통합돌봄 시행, 그냥드림 전국 확대 등 더 따뜻한 복지! 의대정원 증원, 지역의사제 도입 등 더 가까운 의료! 제약&middot;바이오, K-뷰티 역대 최고 수출 등 더 성장하는 K-바이오헬스",
       "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156764559&call_from=rsslink"
     },
@@ -960,6 +960,54 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
+      "title": "전세가 1억 뛰더니…아파트 못 구한 세입자들 향한 곳은?",
+      "url": "https://www.hankyung.com/article/2026070559077",
+      "published_at": "2026-07-05T09:45:22+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "늦둥이 낳았더니 복덩이…민영주택도 신생아특공 신설",
+      "url": "https://www.hankyung.com/article/202607022554i",
+      "published_at": "2026-07-05T09:04:02+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "같은 섹터, 다른 몸값…상업용 부동산 투자 공식이 바뀐다",
+      "url": "https://www.hankyung.com/article/202607034624i",
+      "published_at": "2026-07-05T09:00:13+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "속도내는 중동 1기 신도시 재건축…7호선 단지에 관심",
+      "url": "https://www.hankyung.com/article/202607019905i",
+      "published_at": "2026-07-05T09:00:07+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
       "title": "시니어 레지던스 '더클래식500'. 하이엔드 주거 서비스의 교본 되다",
       "url": "https://www.hankyung.com/article/202606294585i",
       "published_at": "2026-07-04T09:00:24+00:00"
@@ -1143,54 +1191,6 @@
       "title": "반도체 효과…'챔피언스시티' 3216가구",
       "url": "https://www.hankyung.com/article/2026070226901",
       "published_at": "2026-07-02T18:00:07+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "”조합장 성과급 안돼”…준공 후에도 갈등 겪는 재건축·재개발",
-      "url": "https://www.hankyung.com/article/202606197217i",
-      "published_at": "2026-07-02T18:00:06+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "예상 분양수입만 24조원…압구정3구역, 분담금 다시 보니",
-      "url": "https://www.hankyung.com/article/202606245287i",
-      "published_at": "2026-07-02T18:00:02+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "은마아파트 사업시행 인가…5850가구 대단지로",
-      "url": "https://www.hankyung.com/article/2026070226961",
-      "published_at": "2026-07-02T17:59:28+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "용적률·높이 완화…성수, 첨단산업 중심지로",
-      "url": "https://www.hankyung.com/article/2026070226971",
-      "published_at": "2026-07-02T17:58:49+00:00"
     }
   ]
 }
