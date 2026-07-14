@@ -27,7 +27,7 @@
     "hankyung_realestate": 15,
     "korea_policy_news": 10
   },
-  "generated_at": "2026-07-14T13:04:04.772803+09:00",
+  "generated_at": "2026-07-14T15:20:54.847995+09:00",
   "quality_summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -64,7 +64,7 @@
       "reb_subscription",
       "onbid_auction"
     ],
-    "verification_state_count": 1734,
+    "verification_state_count": 1729,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 32,
     "official_primary_status": "blocked_missing_env",
@@ -88,7 +88,7 @@
   },
   "verification_states": {
     "market_corroboration_requires_official_source": 496,
-    "official_policy_corroboration": 1238
+    "official_policy_corroboration": 1233
   },
   "quality_review_items": [
     {
