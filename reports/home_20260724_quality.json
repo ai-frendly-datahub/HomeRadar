@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-07-24T04:13:27.033643+00:00",
+  "generated_at": "2026-07-24T06:38:03.218689+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -378,7 +378,7 @@
       "item_count": 385,
       "latest_event_at": "2026-05-31T00:10:46+00:00",
       "latest_observed_at": "2026-05-31T14:18:08.834046+00:00",
-      "age_days": 54.17,
+      "age_days": 54.27,
       "latest_title": "삼성물산, 신반포 19·25차 재건축 수주...정비사업 '3조 클럽' 진입",
       "latest_url": "https://www.hankyung.com/article/202605308337i"
     },
@@ -401,7 +401,7 @@
       "item_count": 190,
       "latest_event_at": "2026-05-29T18:07:00+00:00",
       "latest_observed_at": "2026-05-31T14:18:10.315123+00:00",
-      "age_days": 55.42,
+      "age_days": 55.52,
       "latest_title": "29~30일 지방선거 사전투표…'신분증만 들고 가까운 투표소로'",
       "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965476&call_from=rsslink"
     },
@@ -424,7 +424,7 @@
       "item_count": 729,
       "latest_event_at": "2026-05-31T12:05:00+00:00",
       "latest_observed_at": "2026-05-31T14:18:11.034643+00:00",
-      "age_days": 53.67,
+      "age_days": 53.77,
       "latest_title": "[보건복지부]통합돌봄 시행, 그냥드림 전국 확대 등 더 따뜻한 복지! 의대정원 증원, 지역의사제 도입 등 더 가까운 의료! 제약&middot;바이오, K-뷰티 역대 최고 수출 등 더 성장하는 K-바이오헬스",
       "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156764559&call_from=rsslink"
     },
