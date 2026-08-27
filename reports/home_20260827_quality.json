@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-08-27T10:56:57.151397+00:00",
+  "generated_at": "2026-08-27T15:05:37.629075+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -38,9 +38,9 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 116,
-    "verification_review_sample_count": 20,
-    "daily_review_item_count": 32,
+    "verification_state_count": 86,
+    "verification_review_sample_count": 15,
+    "daily_review_item_count": 27,
     "official_primary_status": "blocked_missing_env",
     "official_primary_sources": 4,
     "official_primary_fresh_sources": 0,
@@ -57,12 +57,12 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 20,
+    "corroboration_only_items": 15,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 20,
-    "official_policy_corroboration": 96
+    "market_corroboration_requires_official_source": 15,
+    "official_policy_corroboration": 71
   },
   "verification_review_samples": [
     {
@@ -214,56 +214,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605296717i",
-      "title": "LH, 14개 블록 1만 가구 '민간참여사업' 공모",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-29T13:51:27+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/202605296703i",
-      "title": "2026년 한국부동산분석학회 상반기 학술대회",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-29T13:47:04+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052846656",
-      "title": "\"영끌했어요\"…'삼전닉스' 돈잔치에 이 동네 아파트 씨말랐다 [돈앤톡]",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-29T13:30:04+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052964406",
-      "title": "삼성물산, '래미안 원베일리' 넘어서는 5세대 선보인다",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-29T11:26:07+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.hankyung.com/article/2026052963936",
-      "title": "흑석 2구역도 '7부 능선' 넘었다…49층·1045가구로 재탄생",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-29T11:06:34+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -375,10 +325,10 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 20,
+      "item_count": 15,
       "latest_event_at": "2026-05-31T00:10:46+00:00",
-      "latest_observed_at": "2026-05-31T14:18:08.060216+00:00",
-      "age_days": 88.45,
+      "latest_observed_at": "2026-05-31T14:18:07.908020+00:00",
+      "age_days": 88.62,
       "latest_title": "삼성물산, 신반포 19·25차 재건축 수주...정비사업 '3조 클럽' 진입",
       "latest_url": "https://www.hankyung.com/article/202605308337i"
     },
@@ -398,10 +348,10 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 10,
+      "item_count": 9,
       "latest_event_at": "2026-05-29T18:07:00+00:00",
-      "latest_observed_at": "2026-05-31T14:18:09.152995+00:00",
-      "age_days": 89.7,
+      "latest_observed_at": "2026-05-31T14:18:09.122644+00:00",
+      "age_days": 89.87,
       "latest_title": "29~30일 지방선거 사전투표…'신분증만 들고 가까운 투표소로'",
       "latest_url": "https://www.korea.kr/news/policyNewsView.do?newsId=148965476&call_from=rsslink"
     },
@@ -421,10 +371,10 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 86,
+      "item_count": 62,
       "latest_event_at": "2026-05-31T12:05:00+00:00",
       "latest_observed_at": "2026-05-31T14:18:11.034643+00:00",
-      "age_days": 87.95,
+      "age_days": 88.13,
       "latest_title": "[보건복지부]통합돌봄 시행, 그냥드림 전국 확대 등 더 따뜻한 복지! 의대정원 증원, 지역의사제 도입 등 더 가까운 의료! 제약&middot;바이오, K-뷰티 역대 최고 수출 등 더 성장하는 K-바이오헬스",
       "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156764559&call_from=rsslink"
     },
@@ -1131,66 +1081,6 @@
       "title": "성남 신규택지에 6300가구…\"1년 앞당긴 2029년 공급\"",
       "url": "https://www.hankyung.com/article/202605296978i",
       "published_at": "2026-05-29T15:13:53+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "LH, 14개 블록 1만 가구 '민간참여사업' 공모",
-      "url": "https://www.hankyung.com/article/202605296717i",
-      "published_at": "2026-05-29T13:51:27+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "2026년 한국부동산분석학회 상반기 학술대회",
-      "url": "https://www.hankyung.com/article/202605296703i",
-      "published_at": "2026-05-29T13:47:04+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "\"영끌했어요\"…'삼전닉스' 돈잔치에 이 동네 아파트 씨말랐다 [돈앤톡]",
-      "url": "https://www.hankyung.com/article/2026052846656",
-      "published_at": "2026-05-29T13:30:04+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "삼성물산, '래미안 원베일리' 넘어서는 5세대 선보인다",
-      "url": "https://www.hankyung.com/article/2026052964406",
-      "published_at": "2026-05-29T11:26:07+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "흑석 2구역도 '7부 능선' 넘었다…49층·1045가구로 재탄생",
-      "url": "https://www.hankyung.com/article/2026052963936",
-      "published_at": "2026-05-29T11:06:34+00:00"
     }
   ]
 }
