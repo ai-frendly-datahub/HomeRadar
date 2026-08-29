@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-08-28T16:00:45.122278+00:00",
+  "generated_at": "2026-08-29T07:40:40.663076+00:00",
   "summary": {
     "total_sources": 25,
     "enabled_sources": 11,
@@ -38,9 +38,9 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 13,
-    "verification_review_sample_count": 1,
-    "daily_review_item_count": 13,
+    "verification_state_count": 12,
+    "verification_review_sample_count": 0,
+    "daily_review_item_count": 12,
     "official_primary_status": "blocked_missing_env",
     "official_primary_sources": 4,
     "official_primary_fresh_sources": 0,
@@ -57,25 +57,13 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 1,
+    "corroboration_only_items": 0,
     "official_primary_items": 0
   },
   "verification_states": {
-    "market_corroboration_requires_official_source": 1,
     "official_policy_corroboration": 12
   },
-  "verification_review_samples": [
-    {
-      "url": "https://www.hankyung.com/article/202605308337i",
-      "title": "삼성물산, 신반포 19·25차 재건축 수주...정비사업 '3조 클럽' 진입",
-      "source_id": "hankyung_realestate",
-      "published_at": "2026-05-31T00:10:46+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    }
-  ],
+  "verification_review_samples": [],
   "sources": [
     {
       "source_id": "molit_apt_transaction",
@@ -185,12 +173,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 1,
-      "latest_event_at": "2026-05-31T00:10:46+00:00",
-      "latest_observed_at": "2026-05-31T14:18:07.496218+00:00",
-      "age_days": 89.66,
-      "latest_title": "삼성물산, 신반포 19·25차 재건축 수주...정비사업 '3조 클럽' 진입",
-      "latest_url": "https://www.hankyung.com/article/202605308337i"
+      "item_count": 0,
+      "latest_event_at": null,
+      "latest_observed_at": null,
+      "age_days": null,
+      "latest_title": "",
+      "latest_url": ""
     },
     {
       "source_id": "korea_policy_news",
@@ -234,7 +222,7 @@
       "item_count": 12,
       "latest_event_at": "2026-05-31T12:05:00+00:00",
       "latest_observed_at": "2026-05-31T14:18:10.467237+00:00",
-      "age_days": 89.16,
+      "age_days": 89.82,
       "latest_title": "[보건복지부]통합돌봄 시행, 그냥드림 전국 확대 등 더 따뜻한 복지! 의대정원 증원, 지역의사제 도입 등 더 가까운 의료! 제약&middot;바이오, K-뷰티 역대 최고 수출 등 더 성장하는 K-바이오헬스",
       "latest_url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156764559&call_from=rsslink"
     },
@@ -761,18 +749,6 @@
       "verification_role": "backlog_listing_candidate",
       "merge_policy": "backlog_only_until_tos_review",
       "skip_reason": "source disabled"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hankyung_realestate",
-      "source": "hankyung_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "삼성물산, 신반포 19·25차 재건축 수주...정비사업 '3조 클럽' 진입",
-      "url": "https://www.hankyung.com/article/202605308337i",
-      "published_at": "2026-05-31T00:10:46+00:00"
     }
   ]
 }
