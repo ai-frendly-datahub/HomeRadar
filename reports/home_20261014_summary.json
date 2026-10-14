@@ -7,30 +7,30 @@
   "top_entities": [
     {
       "name": "keyword",
-      "count": 224
-    },
-    {
-      "name": "district",
-      "count": 92
+      "count": 179
     },
     {
       "name": "project",
+      "count": 83
+    },
+    {
+      "name": "district",
       "count": 59
     },
     {
       "name": "complex",
-      "count": 9
+      "count": 1
     }
   ],
   "sources": {
-    "housing_economy_news": 35,
-    "housingherald": 14,
-    "hani_economy": 12,
-    "mk_realestate": 30,
+    "housing_economy_news": 44,
+    "housingherald": 16,
+    "hani_economy": 15,
+    "mk_realestate": 13,
     "sedaily_realestate": 4,
-    "hankyung_realestate": 5
+    "hankyung_realestate": 8
   },
-  "generated_at": "2026-10-14T14:49:43.776580+09:00",
+  "generated_at": "2026-10-14T18:25:37.711734+09:00",
   "quality_summary": {
     "total_sources": 30,
     "enabled_sources": 11,
@@ -72,7 +72,7 @@
       "reb_subscription",
       "onbid_auction"
     ],
-    "verification_state_count": 292,
+    "verification_state_count": 329,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 37,
     "official_primary_status": "blocked_missing_env",
@@ -91,13 +91,13 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 242,
+    "corroboration_only_items": 269,
     "official_primary_items": 0
   },
   "verification_states": {
-    "corroboration_requires_official_source": 41,
-    "market_corroboration_requires_official_source": 242,
-    "no_operational_event": 9
+    "corroboration_requires_official_source": 46,
+    "market_corroboration_requires_official_source": 269,
+    "no_operational_event": 14
   },
   "quality_review_items": [
     {
