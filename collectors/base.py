@@ -22,6 +22,11 @@ from resilience import SourceCircuitBreakerManager
 
 
 _DEFAULT_HEALTH_DB_PATH = "data/radar_data.duckdb"
+# Identifying client name. python-requests is rejected by some public feeds
+# (Hankyung returns HTTP 403). This is not a browser impersonation list.
+HOMERADAR_USER_AGENT = (
+    "HomeRadar/0.1 (+https://github.com/ai-frendly-datahub/HomeRadar; public-rss)"
+)
 
 
 def _load_adaptive_controls() -> tuple[type[Any], type[Any]]:
@@ -223,6 +228,13 @@ def resolve_max_workers(max_workers: int | None = None) -> int:
 
 def _create_session() -> requests.Session:
     session = requests.Session()
+    session.verify = True
+    session.headers.update(
+        {
+            "User-Agent": HOMERADAR_USER_AGENT,
+            "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml, */*",
+        }
+    )
     retry_strategy = Retry(
         total=3,
         backoff_factor=1,

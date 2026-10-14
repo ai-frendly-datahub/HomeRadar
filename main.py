@@ -540,6 +540,13 @@ def load_sources(config_path: str = "config/sources.yaml") -> dict[str, Any]:
         raise
 
 
+def emit_missing_secret_warning(source_id: str, env_name: str) -> None:
+    """Warn that a source was skipped. Prints the env var name, never a value."""
+    message = f"{source_id} skipped; required env {env_name}"
+    logger.warning("Skipping %s: %s not set", source_id, env_name)
+    print(f"::warning title=HomeRadar missing secret::{message}", flush=True)
+
+
 def missing_required_env(source: dict[str, Any]) -> str | None:
     """Return the missing env var required for a source, if any."""
     source_id = str(source.get("id", "")).strip()
@@ -596,15 +603,16 @@ def collect_from_sources(
 
     def _collect_for_source(
         source: dict[str, Any],
-    ) -> tuple[str, str, str, list[RawItem], str | None]:
+    ) -> tuple[str, str, str, list[RawItem], str | None, str | None]:
         source_id = source["id"]
         source_name = source.get("name", source_id)
         source_type = source["type"]
         try:
             missing_env = missing_required_env(source)
             if missing_env is not None:
-                logger.warning(f"    Skipping {source_id}: {missing_env} not set")
-                return source_id, source_name, source_type, [], None
+                emit_missing_secret_warning(source_id, missing_env)
+                raw_logger.log_skip(source_name=source_id, required_env=missing_env)
+                return source_id, source_name, source_type, [], None, missing_env
 
             collector = CollectorRegistry.create_collector(source_id, source)
             if source_type == "api" and source_id.startswith("molit"):
@@ -622,9 +630,9 @@ def collect_from_sources(
                     skipped_by_scope,
                     source_id,
                 )
-            return source_id, source_name, source_type, items, None
+            return source_id, source_name, source_type, items, None, None
         except Exception as exc:
-            return source_id, source_name, source_type, [], str(exc)
+            return source_id, source_name, source_type, [], str(exc), None
 
     if workers == 1:
         results = [_collect_for_source(source) for source in filtered_sources]
@@ -635,8 +643,11 @@ def collect_from_sources(
             for future in as_completed(futures):
                 results.append(future.result())
 
-    for source_id, source_name, source_type, items, error in results:
+    for source_id, source_name, source_type, items, error, missing_env in results:
         logger.info(f"  [{source_type}] {source_name} ({source_id})")
+        if missing_env is not None:
+            logger.info("    Skipped %s: %s not set", source_id, missing_env)
+            continue
         if error is not None:
             logger.error(f"    Failed to collect from {source_id}: {error}")
             continue
@@ -667,7 +678,7 @@ def collect_molit(collector: Any, source: dict[str, Any]) -> list[RawItem]:
     if "service_key" not in source:
         service_key = os.environ.get("MOLIT_SERVICE_KEY")
         if not service_key:
-            logger.warning("    Skipping MOLIT: MOLIT_SERVICE_KEY not set")
+            emit_missing_secret_warning(str(source.get("id") or "molit"), "MOLIT_SERVICE_KEY")
             return []
         source["service_key"] = service_key
 
@@ -892,6 +903,13 @@ def run_collection_cycle(
         snapshot_path = date_storage.get("snapshot_path")
         if isinstance(snapshot_path, str) and snapshot_path:
             logger.info("Snapshot saved to %s", snapshot_path)
+        logger.info(
+            "DuckDB compact reason=%s before=%s after=%s rows_deleted=%s",
+            date_storage.get("db_reason"),
+            date_storage.get("db_bytes_before"),
+            date_storage.get("db_bytes"),
+            date_storage.get("db_rows_deleted"),
+        )
 
         cycle_end = datetime.now(tz=UTC)
         duration = (cycle_end - cycle_start).total_seconds()

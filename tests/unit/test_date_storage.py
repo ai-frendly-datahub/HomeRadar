@@ -140,6 +140,105 @@ def test_cleanup_dated_reports_missing_dir(tmp_path: Path) -> None:
     assert removed == 0
 
 
+def test_apply_date_storage_policy_compacts_before_snapshot(tmp_path: Path, monkeypatch) -> None:
+    from date_storage import apply_date_storage_policy
+
+    db_file = tmp_path / "homeradar.duckdb"
+    db_file.write_bytes(b"original-db")
+
+    def fake_compact(path: Path) -> dict[str, object]:
+        assert path == db_file
+        path.write_bytes(b"shrunk")
+        return {
+            "compacted": True,
+            "reason": "compacted",
+            "bytes": len(b"shrunk"),
+            "bytes_before": len(b"original-db"),
+            "rows_deleted": 3,
+        }
+
+    monkeypatch.setattr("date_storage._load_compactor", lambda: fake_compact)
+
+    result = apply_date_storage_policy(
+        database_path=db_file,
+        raw_data_dir=tmp_path / "raw",
+        report_dir=tmp_path / "reports",
+        keep_raw_days=30,
+        keep_report_days=30,
+        snapshot_db=True,
+    )
+
+    snapshot_path = Path(str(result["snapshot_path"]))
+    assert snapshot_path.read_bytes() == b"shrunk"
+    assert result["db_compacted"] is True
+    assert result["db_reason"] == "compacted"
+    assert result["db_rows_deleted"] == 3
+
+
+def test_apply_date_storage_policy_snapshots_when_compaction_fails(
+    tmp_path: Path, monkeypatch
+) -> None:
+    from date_storage import apply_date_storage_policy
+
+    db_file = tmp_path / "homeradar.duckdb"
+    db_file.write_bytes(b"keep-me")
+
+    def broken_compact(path: Path) -> dict[str, object]:
+        raise RuntimeError(f"compact failed for {path.name}")
+
+    monkeypatch.setattr("date_storage._load_compactor", lambda: broken_compact)
+
+    result = apply_date_storage_policy(
+        database_path=db_file,
+        raw_data_dir=tmp_path / "raw",
+        report_dir=tmp_path / "reports",
+        keep_raw_days=30,
+        keep_report_days=30,
+        snapshot_db=True,
+    )
+
+    snapshot_path = Path(str(result["snapshot_path"]))
+    assert snapshot_path.read_bytes() == b"keep-me"
+    assert db_file.read_bytes() == b"keep-me"
+    assert result["db_reason"] == "failed"
+    assert result["db_compacted"] is False
+
+
+def test_root_skip_record_stores_env_name_only(tmp_path: Path, monkeypatch) -> None:
+    import json
+
+    from raw_logger import RawLogger
+
+    monkeypatch.setenv("ONBID_API_KEY", "must-not-appear-in-record")
+    output_path = RawLogger(tmp_path).log_skip(
+        source_name="onbid_auction",
+        required_env="ONBID_API_KEY",
+    )
+    text = output_path.read_text(encoding="utf-8")
+    assert "must-not-appear-in-record" not in text
+    assert json.loads(text) == {
+        "record_type": "skip",
+        "source_id": "onbid_auction",
+        "status": "skipped_missing_env",
+        "required_env": "ONBID_API_KEY",
+        "skip_reason": "ONBID_API_KEY not set",
+    }
+    assert output_path.suffix == ".json"
+    assert output_path.name.endswith(".skip.json")
+
+
+def test_collector_session_identifies_itself_and_verifies_tls() -> None:
+    from collectors.base import HOMERADAR_USER_AGENT, _create_session
+
+    session = _create_session()
+    try:
+        assert session.headers["User-Agent"] == HOMERADAR_USER_AGENT
+        assert "python-requests" not in session.headers["User-Agent"]
+        assert session.verify is True
+    finally:
+        session.close()
+
+
 def test_storage_create_daily_snapshot(tmp_path: Path) -> None:
     from homeradar.storage import RadarStorage
 

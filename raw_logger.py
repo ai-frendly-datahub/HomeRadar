@@ -62,6 +62,35 @@ class RawLogger:
 
         return output_path
 
+    def log_skip(
+        self,
+        *,
+        source_name: str,
+        required_env: str,
+    ) -> Path:
+        """Record a keyless skip. The file stores the env var name only."""
+        env_name = str(required_env).strip()
+        if not env_name or any(char.isspace() for char in env_name):
+            raise ValueError("required_env must be an environment variable name")
+
+        now = datetime.now(UTC)
+        date_dir = self.raw_dir / now.strftime("%Y-%m-%d")
+        date_dir.mkdir(parents=True, exist_ok=True)
+        safe_source_name = source_name.replace("/", "_").replace("\\", "_")
+        output_path = date_dir / f"{safe_source_name}.skip.json"
+        payload = {
+            "record_type": "skip",
+            "source_id": source_name,
+            "status": "skipped_missing_env",
+            "required_env": env_name,
+            "skip_reason": f"{env_name} not set",
+        }
+        output_path.write_text(
+            json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        return output_path
+
     def _normalize_item(self, item: Any) -> dict[str, Any]:
         model_dump = getattr(item, "model_dump", None)
         if callable(model_dump):

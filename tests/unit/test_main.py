@@ -65,6 +65,26 @@ sources:
         assert sources["hankyung_realestate"]["scope_filter"]["mode"] == (
             "require_home_entity"
         )
+        assert sources["mk_realestate"]["enabled"] is True
+        assert sources["mk_realestate"]["url"] == "https://www.mk.co.kr/rss/50300009/"
+        for source_id in (
+            "hankyung_realestate",
+            "sedaily_realestate",
+            "housingherald",
+            "housing_economy_news",
+            "rcnews_housing",
+            "hani_economy",
+        ):
+            assert sources[source_id]["enabled"] is True
+            assert str(sources[source_id]["url"]).startswith("https://")
+        for source_id in (
+            "korea_policy_news",
+            "korea_pressrelease_news",
+            "asiae_realestate",
+            "edaily_realestate",
+            "news1_realestate",
+        ):
+            assert sources[source_id]["enabled"] is False
         assert sources["korea_pressrelease_news"]["scope_filter"] == {
             "mode": "require_home_entity",
             "apply_to_collection": True,
@@ -201,7 +221,7 @@ class TestCollectFromSources:
 
                 mock_logger.log.assert_called_once_with(sample_items, source_name="test_rss")
 
-    def test_collect_skips_subscription_source_without_api_key(self):
+    def test_collect_skips_subscription_source_without_api_key(self, capsys):
         """Official sources without required secrets should be skipped cleanly."""
         sources = [
             {
@@ -213,11 +233,29 @@ class TestCollectFromSources:
         ]
 
         with patch("main.CollectorRegistry.create_collector") as mock_create:
-            with patch.dict("os.environ", {}, clear=True):
-                items = collect_from_sources(sources, enabled_only=True)
+            with patch("main.RawLogger") as mock_logger_class:
+                mock_logger = Mock()
+                mock_logger_class.return_value = mock_logger
+                with patch.dict(
+                    "os.environ",
+                    {"SUBSCRIPTION_API_KEY": "", "DECOY_SECRET": "do-not-print"},
+                    clear=True,
+                ):
+                    items = collect_from_sources(sources, enabled_only=True)
 
         assert items == []
         mock_create.assert_not_called()
+        mock_logger.log.assert_not_called()
+        mock_logger.log_skip.assert_called_once_with(
+            source_name="reb_subscription",
+            required_env="SUBSCRIPTION_API_KEY",
+        )
+        captured = capsys.readouterr().out
+        assert (
+            "::warning title=HomeRadar missing secret::"
+            "reb_subscription skipped; required env SUBSCRIPTION_API_KEY"
+        ) in captured
+        assert "do-not-print" not in captured
 
     def test_collect_applies_home_scope_filter(self):
         """Broad official feeds keep only rows with HomeRadar entities."""
@@ -329,7 +367,7 @@ class TestCollectMOLIT:
 
         mock_collector = Mock()
 
-        with patch.dict("os.environ", {}, clear=True):
+        with patch.dict("os.environ", {"MOLIT_SERVICE_KEY": ""}, clear=True):
             items = collect_molit(mock_collector, source)
 
             # Should return empty list without service key
