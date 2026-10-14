@@ -1,6 +1,6 @@
 # HomeRadar Data Sources Configuration
 # Real estate data sources for collection and analysis
-# Last updated: 2026-04-10
+# Last updated: 2026-10-14
 #
 # NOTE: MOLIT API sources (molit_apt_transaction, molit_apt_rent) require
 # MOLIT_SERVICE_KEY to be configured in GitHub Secrets for CI/CD workflows.
@@ -81,23 +81,23 @@ data_quality:
   verification_matrix:
     transaction_price:
       primary_sources: [molit_apt_transaction]
-      corroborating_sources: [korea_policy_news, korea_pressrelease_news, hankyung_realestate, asiae_realestate, edaily_realestate, news1_realestate, heraldcorp_realestate]
+      corroborating_sources: [korea_policy_news, korea_pressrelease_news, hankyung_realestate, sedaily_realestate, housingherald, housing_economy_news, rcnews_housing, hani_economy, asiae_realestate, edaily_realestate, news1_realestate, heraldcorp_realestate]
       merge_policy: official_primary_required
     rent_transaction:
       primary_sources: [molit_apt_rent]
-      corroborating_sources: [korea_policy_news, korea_pressrelease_news, hankyung_realestate, asiae_realestate, edaily_realestate, news1_realestate, heraldcorp_realestate]
+      corroborating_sources: [korea_policy_news, korea_pressrelease_news, hankyung_realestate, sedaily_realestate, housingherald, housing_economy_news, rcnews_housing, hani_economy, asiae_realestate, edaily_realestate, news1_realestate, heraldcorp_realestate]
       merge_policy: official_primary_required
     subscription_notice:
       primary_sources: [reb_subscription]
-      corroborating_sources: [korea_policy_news, korea_pressrelease_news, hankyung_realestate, asiae_realestate, edaily_realestate, news1_realestate, heraldcorp_realestate]
+      corroborating_sources: [korea_policy_news, korea_pressrelease_news, hankyung_realestate, sedaily_realestate, housingherald, housing_economy_news, rcnews_housing, hani_economy, asiae_realestate, edaily_realestate, news1_realestate, heraldcorp_realestate]
       merge_policy: official_primary_required
     auction_signal:
       primary_sources: [onbid_auction]
-      corroborating_sources: [hankyung_realestate, asiae_realestate, edaily_realestate, news1_realestate, heraldcorp_realestate]
+      corroborating_sources: [hankyung_realestate, sedaily_realestate, housingherald, housing_economy_news, rcnews_housing, hani_economy, asiae_realestate, edaily_realestate, news1_realestate, heraldcorp_realestate]
       merge_policy: official_primary_required
     policy_context:
       primary_sources: [korea_policy_news, korea_pressrelease_news]
-      corroborating_sources: [hankyung_realestate, asiae_realestate, edaily_realestate, news1_realestate, heraldcorp_realestate]
+      corroborating_sources: [hankyung_realestate, sedaily_realestate, housingherald, housing_economy_news, rcnews_housing, hani_economy, asiae_realestate, edaily_realestate, news1_realestate, heraldcorp_realestate]
       merge_policy: official_context_only
     listing_inventory:
       primary_sources: []
@@ -195,9 +195,9 @@ sources:
     trust_tier: T2_professional
     info_purpose: news
     region: korea
-    url: "http://file.mk.co.kr/news/rss/rss_50300009.xml"
+    url: "https://www.mk.co.kr/rss/50300009/"
     description: "Maeil Business Newspaper - Real estate section RSS"
-    notes: "REACTIVATED 2026-05-20: URL probe returned HTTP 200 with text/xml; feed is reachable again. Previously DISABLED for empty-content suspicion (last-modified: 2023-11-02)."
+    notes: "REPLACED 2026-10-14: file.mk.co.kr/news/rss/rss_50300009.xml returns an empty body. The public section feed returns application/xml with real-estate items."
 
   - id: hankyung_realestate
     name: "Korea Economic Daily - Real Estate"
@@ -212,7 +212,7 @@ sources:
     region: korea
     url: "https://www.hankyung.com/feed/realestate"
     description: "Korea Economic Daily - Real estate news"
-    notes: "Covers market analysis, policy, investment trends. HTTPS feed verified in e2e."
+    notes: "Dedicated real-estate feed. The collector sends an identifying HomeRadar User-Agent; the default python-requests agent receives HTTP 403. TLS verification stays on."
     scope_filter:
       mode: require_home_entity
       apply_to_collection: true
@@ -222,7 +222,7 @@ sources:
   - id: korea_policy_news
     name: "Korea Gov - Policy RSS"
     type: rss
-    enabled: true
+    enabled: false
     trust_tier: T1_official
     collection_tier: daily
     event_model: policy_context
@@ -232,7 +232,7 @@ sources:
     region: korea
     url: "https://www.korea.kr/rss/policy.xml"
     description: "Government policy RSS feed (includes land/housing policy updates)"
-    notes: "Official government feed. No authentication. Contains policy/land/housing notices."
+    notes: "DISABLED 2026-10-14: 정책브리핑 RSS ended 2026-07-01 (https://www.korea.kr/etc/noticeView.do?newsId=132038885). https://www.korea.kr/rss/policy.xml returns HTTP 404."
     scope_filter:
       mode: require_home_entity
       apply_to_collection: true
@@ -242,7 +242,7 @@ sources:
   - id: korea_pressrelease_news
     name: "Korea Gov - Press Release RSS"
     type: rss
-    enabled: true
+    enabled: false
     trust_tier: T1_official
     collection_tier: daily
     event_model: policy_context
@@ -252,7 +252,7 @@ sources:
     region: korea
     url: "https://www.korea.kr/rss/pressrelease.xml"
     description: "Government press release RSS feed (official announcements including real estate policy)"
-    notes: "Official government feed. No authentication. Updated from economy.xml which was deprecated."
+    notes: "DISABLED 2026-10-14: 정책브리핑 RSS ended 2026-07-01. https://www.korea.kr/rss/pressrelease.xml returns HTTP 404."
     scope_filter:
       mode: require_home_entity
       apply_to_collection: true
@@ -328,7 +328,7 @@ sources:
   - id: asiae_realestate
     name: "Asia Economy - Real Estate"
     type: rss
-    enabled: true
+    enabled: false
     trust_tier: T2_professional
     collection_tier: daily
     event_model: market_context
@@ -338,12 +338,12 @@ sources:
     region: korea
     url: "https://www.asiae.co.kr/rss/"
     description: "Asia Economy (아시아경제) - Real estate and economy news"
-    notes: "Major Korean economic newspaper covering real estate market trends and policy."
+    notes: "DISABLED 2026-10-14: https://www.asiae.co.kr/rss/ returns HTML and GitHub runners see the connection closed before a feed."
 
   - id: edaily_realestate
     name: "E-Daily - Real Estate"
     type: rss
-    enabled: true
+    enabled: false
     trust_tier: T2_professional
     collection_tier: daily
     event_model: market_context
@@ -353,12 +353,12 @@ sources:
     region: korea
     url: "https://www.edaily.co.kr/rss/RealEstate.xml"
     description: "E-Daily (이데일리) - Real estate section RSS"
-    notes: "Specialized real estate feed from major Korean financial news outlet."
+    notes: "DISABLED 2026-10-14: https://www.edaily.co.kr/rss/RealEstate.xml redirects to an ASPX error HTML page."
 
   - id: news1_realestate
     name: "News1 - Real Estate"
     type: rss
-    enabled: true
+    enabled: false
     trust_tier: T2_professional
     collection_tier: daily
     event_model: market_context
@@ -368,7 +368,92 @@ sources:
     region: korea
     url: "https://www.news1.kr/rss/realestate.xml"
     description: "News1 (뉴스1) - Real estate section RSS"
-    notes: "Major Korean wire service with dedicated real estate news coverage."
+    notes: "DISABLED 2026-10-14: https://www.news1.kr/rss/realestate.xml returns the HTML homepage, not a feed."
+
+  - id: sedaily_realestate
+    name: "Seoul Economic Daily - Real Estate"
+    type: rss
+    enabled: true
+    trust_tier: T2_professional
+    collection_tier: daily
+    event_model: market_context
+    verification_role: market_corroboration
+    merge_policy: cannot_override_official_transaction
+    info_purpose: news
+    region: korea
+    url: "https://www.sedaily.com/rss/realestate"
+    description: "Seoul Economic Daily (서울경제) - real estate section RSS"
+    notes: "Keyless public feed. Probed 2026-10-14: HTTP 200, text/xml, housing items (분양, 정비, 청약)."
+    scope_filter:
+      mode: require_home_entity
+      apply_to_collection: true
+      apply_to_report: true
+      reason: "Section feed can include adjacent business items; keep rows with HomeRadar entities."
+
+  - id: housingherald
+    name: "Housing Herald"
+    type: rss
+    enabled: true
+    trust_tier: T2_professional
+    collection_tier: daily
+    event_model: market_context
+    verification_role: market_corroboration
+    merge_policy: cannot_override_official_transaction
+    info_purpose: news
+    region: korea
+    url: "https://www.housingherald.co.kr/rss/allArticle.xml"
+    description: "Housing Herald (하우징헤럴드) - redevelopment and housing trade press"
+    notes: "Keyless public feed. Probed 2026-10-14: HTTP 200, application/xml, maintenance-project items."
+
+  - id: housing_economy_news
+    name: "Korea Housing Economy Weekly"
+    type: rss
+    enabled: true
+    trust_tier: T2_professional
+    collection_tier: daily
+    event_model: market_context
+    verification_role: market_corroboration
+    merge_policy: cannot_override_official_transaction
+    info_purpose: news
+    region: korea
+    url: "https://www.arunews.com/rss/allArticle.xml"
+    description: "Weekly Korea Housing Economy (한국주택경제신문)"
+    notes: "Keyless public feed. Probed 2026-10-14: HTTP 200, application/xml, redevelopment and housing notices."
+
+  - id: rcnews_housing
+    name: "Residential Environment News"
+    type: rss
+    enabled: true
+    trust_tier: T2_professional
+    collection_tier: daily
+    event_model: market_context
+    verification_role: market_corroboration
+    merge_policy: cannot_override_official_transaction
+    info_purpose: news
+    region: korea
+    url: "https://www.rcnews.co.kr/rss/allArticle.xml"
+    description: "Residential Environment News (주거환경신문)"
+    notes: "Keyless public feed. Probed 2026-10-14: HTTP 200, application/xml, housing supply and remodeling items."
+
+  - id: hani_economy
+    name: "Hankyoreh - Economy"
+    type: rss
+    enabled: true
+    trust_tier: T2_professional
+    collection_tier: daily
+    event_model: policy_context
+    verification_role: market_corroboration
+    merge_policy: official_context_only
+    info_purpose: news
+    region: korea
+    url: "https://www.hani.co.kr/rss/economy"
+    description: "Hankyoreh economy RSS, kept only when a housing entity is present"
+    notes: "Public replacement context after korea.kr RSS ended on 2026-07-01. Not an official primary source."
+    scope_filter:
+      mode: require_home_entity
+      apply_to_collection: true
+      apply_to_report: true
+      reason: "Broad economy feed; keep only housing, construction, policy, transaction, subscription, or development items."
 
   - id: heraldcorp_realestate
     name: "Herald Corp - Real Estate"
