@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-10-18T05:26:24.142606+00:00",
+  "generated_at": "2026-10-18T08:42:58.736935+00:00",
   "summary": {
     "total_sources": 30,
     "enabled_sources": 11,
@@ -43,7 +43,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 653,
+    "verification_state_count": 671,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 37,
     "official_primary_status": "blocked_missing_env",
@@ -62,40 +62,20 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 488,
+    "corroboration_only_items": 497,
     "official_primary_items": 0
   },
   "verification_states": {
-    "corroboration_requires_official_source": 124,
-    "market_corroboration_requires_official_source": 488,
-    "no_operational_event": 41
+    "corroboration_requires_official_source": 129,
+    "market_corroboration_requires_official_source": 497,
+    "no_operational_event": 45
   },
   "verification_review_samples": [
-    {
-      "url": "https://www.hani.co.kr/arti/economy/economy_general/1282680.html",
-      "title": "[단독] 자영업 중 건설업 대출 연체율 ‘최고’...뒤이어 숙박음식업",
-      "source_id": "hani_economy",
-      "published_at": "2026-10-18T14:25:49.346669+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "official_context_only",
-      "event_model": "policy_context"
-    },
-    {
-      "url": "https://www.hani.co.kr/arti/economy/economy_general/1282681.html",
-      "title": "환율 하락에도 9월 수입물가 상승 반전...국제유가 상승 탓",
-      "source_id": "hani_economy",
-      "published_at": "2026-10-18T14:25:49.346669+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "official_context_only",
-      "event_model": "policy_context"
-    },
     {
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1282689.html",
       "title": "9월 취업자 11만3천명 늘어…청년고용률은 29개월 연속 하락",
       "source_id": "hani_economy",
-      "published_at": "2026-10-18T14:25:49.346669+00:00",
+      "published_at": "2026-10-18T17:42:22.684859+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
@@ -105,7 +85,7 @@
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1282694.html",
       "title": "‘전날 폭락’ 코스피, 장 초반 1%대 상승 출발",
       "source_id": "hani_economy",
-      "published_at": "2026-10-18T14:25:49.346669+00:00",
+      "published_at": "2026-10-18T17:42:22.684859+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
@@ -115,7 +95,7 @@
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1282737.html",
       "title": "정부 “견조한 경기 회복 흐름…물가·고용 등 민생 부담은 지속”",
       "source_id": "hani_economy",
-      "published_at": "2026-10-18T14:25:49.346669+00:00",
+      "published_at": "2026-10-18T17:42:22.684859+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
@@ -125,7 +105,7 @@
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1282758.html",
       "title": "이형일, 첫 다자무대서 “G20, 공급망 회복·미래 성장 동력에 투자해야”",
       "source_id": "hani_economy",
-      "published_at": "2026-10-18T14:25:49.346669+00:00",
+      "published_at": "2026-10-18T17:42:22.684859+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
@@ -135,7 +115,7 @@
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1282801.html",
       "title": "석유 최고가격 넉 달째 유지…휘발유 1784원·경유 1773원",
       "source_id": "hani_economy",
-      "published_at": "2026-10-18T14:25:49.346669+00:00",
+      "published_at": "2026-10-18T17:42:22.684859+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
@@ -145,7 +125,7 @@
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1282876.html",
       "title": "자가 소유는 ‘대출이자’ 66% 늘었는데…전세 가구는 144% 올라",
       "source_id": "hani_economy",
-      "published_at": "2026-10-18T14:25:49.346669+00:00",
+      "published_at": "2026-10-18T17:42:22.684859+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
@@ -155,17 +135,7 @@
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1282880.html",
       "title": "공공 이어 민간 건설현장까지…국토부, 경상권 75곳 불법하도급·체불 단속",
       "source_id": "hani_economy",
-      "published_at": "2026-10-18T14:25:49.346669+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "official_context_only",
-      "event_model": "policy_context"
-    },
-    {
-      "url": "https://www.hani.co.kr/arti/economy/finance/1282660.html",
-      "title": "[단독] ‘수요예측 실패’ 서금원, ‘햇살론’ 문턱 확 높여 서민 ‘발 동동’",
-      "source_id": "hani_economy",
-      "published_at": "2026-10-18T14:25:49.346669+00:00",
+      "published_at": "2026-10-18T17:42:22.684859+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
@@ -175,7 +145,7 @@
       "url": "https://www.hani.co.kr/arti/economy/finance/1282728.html",
       "title": "’전날 7% 폭락’ 코스피, 장중 3%대 반등…미 국채금리 하락세 영향",
       "source_id": "hani_economy",
-      "published_at": "2026-10-18T14:25:49.346669+00:00",
+      "published_at": "2026-10-18T17:42:22.684859+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
@@ -185,7 +155,7 @@
       "url": "https://www.hani.co.kr/arti/economy/finance/1282736.html",
       "title": "‘널뛰기’ 코스닥 5% 급등…어제는 매도, 오늘은 매수 사이드카",
       "source_id": "hani_economy",
-      "published_at": "2026-10-18T14:25:49.346669+00:00",
+      "published_at": "2026-10-18T17:42:22.684859+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
@@ -195,7 +165,7 @@
       "url": "https://www.hani.co.kr/arti/economy/finance/1282768.html",
       "title": "2.05% 반등한 코스피, 5660선 마감…7거래일 연속 하락 ‘브레이크’",
       "source_id": "hani_economy",
-      "published_at": "2026-10-18T14:25:49.346669+00:00",
+      "published_at": "2026-10-18T17:42:22.684859+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
@@ -205,7 +175,7 @@
       "url": "https://www.hani.co.kr/arti/economy/finance/1282881.html",
       "title": "[단독] AI 금리인하 자동 신청…감면액은 직접 할 때 절반도 안 돼",
       "source_id": "hani_economy",
-      "published_at": "2026-10-18T14:25:49.346669+00:00",
+      "published_at": "2026-10-18T17:42:22.684859+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
@@ -215,7 +185,7 @@
       "url": "https://www.hani.co.kr/arti/economy/it/1282882.html",
       "title": "“10억불 피해·50명 사상 아니면 놔둬라”…앤트로픽, 미 AI 규제안 제안",
       "source_id": "hani_economy",
-      "published_at": "2026-10-18T14:25:49.346669+00:00",
+      "published_at": "2026-10-18T17:42:22.684859+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
@@ -225,7 +195,7 @@
       "url": "https://www.hani.co.kr/arti/economy/property/1282765.html",
       "title": "수도권 주택 착공물량 연말까지 최대 23만호…정부 목표 대비 88% 수준",
       "source_id": "hani_economy",
-      "published_at": "2026-10-18T14:25:49.346669+00:00",
+      "published_at": "2026-10-18T17:42:22.684859+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
@@ -235,7 +205,7 @@
       "url": "https://www.hani.co.kr/arti/economy/property/1282819.html",
       "title": "내 노후를 지켜줄 아파트는 어디에?…미리 보는 ‘서울 아파트 미래지도’",
       "source_id": "hani_economy",
-      "published_at": "2026-10-18T14:25:49.346669+00:00",
+      "published_at": "2026-10-18T17:42:22.684859+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
@@ -245,7 +215,17 @@
       "url": "https://www.hani.co.kr/arti/economy/property/1282883.html",
       "title": "올해 서울 일반분양 지난해 3배 육박…이월 물량·강남 ‘청약 대어’ 몰려",
       "source_id": "hani_economy",
-      "published_at": "2026-10-18T14:25:49.346669+00:00",
+      "published_at": "2026-10-18T17:42:22.684859+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "official_context_only",
+      "event_model": "policy_context"
+    },
+    {
+      "url": "https://www.hani.co.kr/arti/economy/property/1282904.html",
+      "title": "경기 토허구역 1년…‘과천 빼고’ 11곳서 아파트값 상승폭 커져",
+      "source_id": "hani_economy",
+      "published_at": "2026-10-18T17:42:22.684859+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
@@ -255,21 +235,41 @@
       "url": "https://www.hani.co.kr/arti/economy/stock/1282859.html",
       "title": "‘빚투’ 부메랑…코스피 폭락에 1주일 새 3천억 강제청산",
       "source_id": "hani_economy",
-      "published_at": "2026-10-18T14:25:49.346669+00:00",
+      "published_at": "2026-10-18T17:42:22.684859+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
       "event_model": "policy_context"
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12178762",
-      "title": "오세훈 시장 “10·15 부동산 대책 성적표 참담…정부, 실패 인정해야”",
+      "url": "https://www.mk.co.kr/news/realestate/12179057",
+      "title": "\"신축 매입때만 대출 지원 역부족 기존 빌라도 풀어줘야 공급 가속\"",
       "source_id": "mk_realestate",
-      "published_at": "2026-10-18T13:57:09+00:00",
+      "published_at": "2026-10-18T17:41:30+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
       "event_model": ""
+    },
+    {
+      "url": "https://www.mk.co.kr/news/realestate/12179058",
+      "title": "빌라 1년이면 짓는데 … 고금리·규제에 끊긴 '주거 사다리'",
+      "source_id": "mk_realestate",
+      "published_at": "2026-10-18T17:41:30+00:00",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "event_model": ""
+    },
+    {
+      "url": "https://www.sedaily.com/article/20102961",
+      "title": "인허가 늘고 강남 집값 내려…정부 “중장기적으로 시장 안정”",
+      "source_id": "sedaily_realestate",
+      "published_at": "2026-10-18T17:38:08+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -358,12 +358,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 165,
-      "latest_event_at": "2026-10-18T13:57:09+00:00",
-      "latest_observed_at": "2026-10-18T14:25:50.963933+00:00",
+      "item_count": 174,
+      "latest_event_at": "2026-10-18T17:41:30+00:00",
+      "latest_observed_at": "2026-10-18T17:42:24.654693+00:00",
       "age_days": 0.0,
-      "latest_title": "오세훈 시장 “10·15 부동산 대책 성적표 참담…정부, 실패 인정해야”",
-      "latest_url": "https://www.mk.co.kr/news/realestate/12178762"
+      "latest_title": "빌라 1년이면 짓는데 … 고금리·규제에 끊긴 '주거 사다리'",
+      "latest_url": "https://www.mk.co.kr/news/realestate/12179058"
     },
     {
       "source_id": "hankyung_realestate",
@@ -381,12 +381,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 84,
-      "latest_event_at": "2026-10-18T07:00:04+00:00",
-      "latest_observed_at": "2026-10-18T14:25:52.907953+00:00",
+      "item_count": 90,
+      "latest_event_at": "2026-10-18T17:15:29+00:00",
+      "latest_observed_at": "2026-10-18T17:42:26.455322+00:00",
       "age_days": 0.0,
-      "latest_title": "전세금도 안 올렸는데…'너무한 거 아냐?' 집주인들 '멘붕' [김용우의 각개전투]",
-      "latest_url": "https://www.hankyung.com/article/202610166762i"
+      "latest_title": "고금리에 망설이는 내집 마련…정책대출 활용하세요",
+      "latest_url": "https://www.hankyung.com/article/2026101888091"
     },
     {
       "source_id": "korea_policy_news",
@@ -657,12 +657,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 83,
-      "latest_event_at": "2026-10-17T14:14:07+00:00",
-      "latest_observed_at": "2026-10-18T14:25:54.674045+00:00",
-      "age_days": 0.63,
-      "latest_title": "‘대출 규제 동결·토허구 연장 저울질’…수도권 주택공급 속도전",
-      "latest_url": "https://www.sedaily.com/article/20102767"
+      "item_count": 85,
+      "latest_event_at": "2026-10-18T17:38:08+00:00",
+      "latest_observed_at": "2026-10-18T17:42:28.195027+00:00",
+      "age_days": 0.0,
+      "latest_title": "인허가 늘고 강남 집값 내려…정부 “중장기적으로 시장 안정”",
+      "latest_url": "https://www.sedaily.com/article/20102961"
     },
     {
       "source_id": "housingherald",
@@ -682,8 +682,8 @@
       "observed_date_field": "",
       "item_count": 87,
       "latest_event_at": "2026-10-17T00:43:03+00:00",
-      "latest_observed_at": "2026-10-18T14:25:56.878860+00:00",
-      "age_days": 1.2,
+      "latest_observed_at": "2026-10-18T17:42:30.395624+00:00",
+      "age_days": 1.33,
       "latest_title": "영등포1-12 재정비촉진구역 재개발정비사업 법무사 선정",
       "latest_url": "https://www.housingherald.co.kr/news/articleView.html?idxno=63181"
     },
@@ -705,8 +705,8 @@
       "observed_date_field": "",
       "item_count": 139,
       "latest_event_at": "2026-10-17T06:44:24+00:00",
-      "latest_observed_at": "2026-10-18T14:25:59.081112+00:00",
-      "age_days": 0.95,
+      "latest_observed_at": "2026-10-18T17:42:32.573596+00:00",
+      "age_days": 1.08,
       "latest_title": "천호A1-2구역, 재개발 시공자 현설에 3개사 참석",
       "latest_url": "https://www.arunews.com/news/articleView.html?idxno=68254"
     },
@@ -728,8 +728,8 @@
       "observed_date_field": "",
       "item_count": 50,
       "latest_event_at": "2026-10-09T01:06:40+00:00",
-      "latest_observed_at": "2026-10-18T14:26:01.289756+00:00",
-      "age_days": 9.18,
+      "latest_observed_at": "2026-10-18T17:42:34.716256+00:00",
+      "age_days": 9.32,
       "latest_title": "탄력받는 공동주택 리모델링, 제도개선안 속속 추진",
       "latest_url": "http://www.rcnews.co.kr/news/articleView.html?idxno=33503"
     },
@@ -749,12 +749,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 45,
-      "latest_event_at": "2026-10-18T14:25:49.346669+00:00",
-      "latest_observed_at": "2026-10-18T14:26:01.948146+00:00",
+      "item_count": 46,
+      "latest_event_at": "2026-10-18T17:42:22.684859+00:00",
+      "latest_observed_at": "2026-10-18T17:42:35.433284+00:00",
       "age_days": 0.0,
-      "latest_title": "올해 서울 일반분양 지난해 3배 육박…이월 물량·강남 ‘청약 대어’ 몰려",
-      "latest_url": "https://www.hani.co.kr/arti/economy/property/1282883.html"
+      "latest_title": "경기 토허구역 1년…‘과천 빼고’ 11곳서 아파트값 상승폭 커져",
+      "latest_url": "https://www.hani.co.kr/arti/economy/property/1282904.html"
     },
     {
       "source_id": "heraldcorp_realestate",
@@ -1126,33 +1126,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
-      "title": "[단독] 자영업 중 건설업 대출 연체율 ‘최고’...뒤이어 숙박음식업",
-      "url": "https://www.hani.co.kr/arti/economy/economy_general/1282680.html",
-      "published_at": "2026-10-18T14:25:49.346669+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hani_economy",
-      "source": "hani_economy",
-      "event_model": "policy_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "official_context_only",
-      "title": "환율 하락에도 9월 수입물가 상승 반전...국제유가 상승 탓",
-      "url": "https://www.hani.co.kr/arti/economy/economy_general/1282681.html",
-      "published_at": "2026-10-18T14:25:49.346669+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hani_economy",
-      "source": "hani_economy",
-      "event_model": "policy_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "official_context_only",
       "title": "9월 취업자 11만3천명 늘어…청년고용률은 29개월 연속 하락",
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1282689.html",
-      "published_at": "2026-10-18T14:25:49.346669+00:00"
+      "published_at": "2026-10-18T17:42:22.684859+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1164,7 +1140,7 @@
       "merge_policy": "official_context_only",
       "title": "‘전날 폭락’ 코스피, 장 초반 1%대 상승 출발",
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1282694.html",
-      "published_at": "2026-10-18T14:25:49.346669+00:00"
+      "published_at": "2026-10-18T17:42:22.684859+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1176,7 +1152,7 @@
       "merge_policy": "official_context_only",
       "title": "정부 “견조한 경기 회복 흐름…물가·고용 등 민생 부담은 지속”",
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1282737.html",
-      "published_at": "2026-10-18T14:25:49.346669+00:00"
+      "published_at": "2026-10-18T17:42:22.684859+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1188,7 +1164,7 @@
       "merge_policy": "official_context_only",
       "title": "이형일, 첫 다자무대서 “G20, 공급망 회복·미래 성장 동력에 투자해야”",
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1282758.html",
-      "published_at": "2026-10-18T14:25:49.346669+00:00"
+      "published_at": "2026-10-18T17:42:22.684859+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1200,7 +1176,7 @@
       "merge_policy": "official_context_only",
       "title": "석유 최고가격 넉 달째 유지…휘발유 1784원·경유 1773원",
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1282801.html",
-      "published_at": "2026-10-18T14:25:49.346669+00:00"
+      "published_at": "2026-10-18T17:42:22.684859+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1212,7 +1188,7 @@
       "merge_policy": "official_context_only",
       "title": "자가 소유는 ‘대출이자’ 66% 늘었는데…전세 가구는 144% 올라",
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1282876.html",
-      "published_at": "2026-10-18T14:25:49.346669+00:00"
+      "published_at": "2026-10-18T17:42:22.684859+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1224,19 +1200,7 @@
       "merge_policy": "official_context_only",
       "title": "공공 이어 민간 건설현장까지…국토부, 경상권 75곳 불법하도급·체불 단속",
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1282880.html",
-      "published_at": "2026-10-18T14:25:49.346669+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hani_economy",
-      "source": "hani_economy",
-      "event_model": "policy_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "official_context_only",
-      "title": "[단독] ‘수요예측 실패’ 서금원, ‘햇살론’ 문턱 확 높여 서민 ‘발 동동’",
-      "url": "https://www.hani.co.kr/arti/economy/finance/1282660.html",
-      "published_at": "2026-10-18T14:25:49.346669+00:00"
+      "published_at": "2026-10-18T17:42:22.684859+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1248,7 +1212,7 @@
       "merge_policy": "official_context_only",
       "title": "’전날 7% 폭락’ 코스피, 장중 3%대 반등…미 국채금리 하락세 영향",
       "url": "https://www.hani.co.kr/arti/economy/finance/1282728.html",
-      "published_at": "2026-10-18T14:25:49.346669+00:00"
+      "published_at": "2026-10-18T17:42:22.684859+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1260,7 +1224,7 @@
       "merge_policy": "official_context_only",
       "title": "‘널뛰기’ 코스닥 5% 급등…어제는 매도, 오늘은 매수 사이드카",
       "url": "https://www.hani.co.kr/arti/economy/finance/1282736.html",
-      "published_at": "2026-10-18T14:25:49.346669+00:00"
+      "published_at": "2026-10-18T17:42:22.684859+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1272,7 +1236,7 @@
       "merge_policy": "official_context_only",
       "title": "2.05% 반등한 코스피, 5660선 마감…7거래일 연속 하락 ‘브레이크’",
       "url": "https://www.hani.co.kr/arti/economy/finance/1282768.html",
-      "published_at": "2026-10-18T14:25:49.346669+00:00"
+      "published_at": "2026-10-18T17:42:22.684859+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1284,7 +1248,7 @@
       "merge_policy": "official_context_only",
       "title": "[단독] AI 금리인하 자동 신청…감면액은 직접 할 때 절반도 안 돼",
       "url": "https://www.hani.co.kr/arti/economy/finance/1282881.html",
-      "published_at": "2026-10-18T14:25:49.346669+00:00"
+      "published_at": "2026-10-18T17:42:22.684859+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1296,7 +1260,7 @@
       "merge_policy": "official_context_only",
       "title": "“10억불 피해·50명 사상 아니면 놔둬라”…앤트로픽, 미 AI 규제안 제안",
       "url": "https://www.hani.co.kr/arti/economy/it/1282882.html",
-      "published_at": "2026-10-18T14:25:49.346669+00:00"
+      "published_at": "2026-10-18T17:42:22.684859+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1308,7 +1272,7 @@
       "merge_policy": "official_context_only",
       "title": "수도권 주택 착공물량 연말까지 최대 23만호…정부 목표 대비 88% 수준",
       "url": "https://www.hani.co.kr/arti/economy/property/1282765.html",
-      "published_at": "2026-10-18T14:25:49.346669+00:00"
+      "published_at": "2026-10-18T17:42:22.684859+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1320,7 +1284,7 @@
       "merge_policy": "official_context_only",
       "title": "내 노후를 지켜줄 아파트는 어디에?…미리 보는 ‘서울 아파트 미래지도’",
       "url": "https://www.hani.co.kr/arti/economy/property/1282819.html",
-      "published_at": "2026-10-18T14:25:49.346669+00:00"
+      "published_at": "2026-10-18T17:42:22.684859+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1332,7 +1296,19 @@
       "merge_policy": "official_context_only",
       "title": "올해 서울 일반분양 지난해 3배 육박…이월 물량·강남 ‘청약 대어’ 몰려",
       "url": "https://www.hani.co.kr/arti/economy/property/1282883.html",
-      "published_at": "2026-10-18T14:25:49.346669+00:00"
+      "published_at": "2026-10-18T17:42:22.684859+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hani_economy",
+      "source": "hani_economy",
+      "event_model": "policy_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "official_context_only",
+      "title": "경기 토허구역 1년…‘과천 빼고’ 11곳서 아파트값 상승폭 커져",
+      "url": "https://www.hani.co.kr/arti/economy/property/1282904.html",
+      "published_at": "2026-10-18T17:42:22.684859+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1344,7 +1320,7 @@
       "merge_policy": "official_context_only",
       "title": "‘빚투’ 부메랑…코스피 폭락에 1주일 새 3천억 강제청산",
       "url": "https://www.hani.co.kr/arti/economy/stock/1282859.html",
-      "published_at": "2026-10-18T14:25:49.346669+00:00"
+      "published_at": "2026-10-18T17:42:22.684859+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1354,9 +1330,33 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "오세훈 시장 “10·15 부동산 대책 성적표 참담…정부, 실패 인정해야”",
-      "url": "https://www.mk.co.kr/news/realestate/12178762",
-      "published_at": "2026-10-18T13:57:09+00:00"
+      "title": "\"신축 매입때만 대출 지원 역부족 기존 빌라도 풀어줘야 공급 가속\"",
+      "url": "https://www.mk.co.kr/news/realestate/12179057",
+      "published_at": "2026-10-18T17:41:30+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "mk_realestate",
+      "source": "mk_realestate",
+      "event_model": "",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "title": "빌라 1년이면 짓는데 … 고금리·규제에 끊긴 '주거 사다리'",
+      "url": "https://www.mk.co.kr/news/realestate/12179058",
+      "published_at": "2026-10-18T17:41:30+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "sedaily_realestate",
+      "source": "sedaily_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "인허가 늘고 강남 집값 내려…정부 “중장기적으로 시장 안정”",
+      "url": "https://www.sedaily.com/article/20102961",
+      "published_at": "2026-10-18T17:38:08+00:00"
     }
   ]
 }
