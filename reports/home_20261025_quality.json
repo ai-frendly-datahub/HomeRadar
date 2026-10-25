@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-10-25T05:42:01.804452+00:00",
+  "generated_at": "2026-10-25T09:04:55.792161+00:00",
   "summary": {
     "total_sources": 30,
     "enabled_sources": 11,
@@ -43,7 +43,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 1507,
+    "verification_state_count": 1526,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 37,
     "official_primary_status": "blocked_missing_env",
@@ -62,40 +62,30 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 1097,
+    "corroboration_only_items": 1105,
     "official_primary_items": 0
   },
   "verification_states": {
-    "corroboration_requires_official_source": 289,
-    "market_corroboration_requires_official_source": 1097,
-    "no_operational_event": 121
+    "corroboration_requires_official_source": 295,
+    "market_corroboration_requires_official_source": 1105,
+    "no_operational_event": 126
   },
   "verification_review_samples": [
     {
-      "url": "https://www.hani.co.kr/arti/economy/economy_general/1283819.html",
-      "title": "“석유 최고가격제, 휘발유값 최대 239원 상승 억제”",
-      "source_id": "hani_economy",
-      "published_at": "2026-10-25T14:41:29.846127+00:00",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68572",
+      "title": "삼성물산, 창원 용호1구역 품고 정비사업 첫 ‘10조 클럽’",
+      "source_id": "housing_economy_news",
+      "published_at": "2026-10-26T01:40:45+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
-      "merge_policy": "official_context_only",
-      "event_model": "policy_context"
-    },
-    {
-      "url": "https://www.hani.co.kr/arti/economy/economy_general/1283823.html",
-      "title": "한전, ‘언리시 인재개발상’ 2년 연속 수상",
-      "source_id": "hani_economy",
-      "published_at": "2026-10-25T14:41:29.846127+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "official_context_only",
-      "event_model": "policy_context"
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
     },
     {
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1283833.html",
       "title": "홍지선 국토 “전월세 불안은 공급 부족 탓”…여당서도 ‘실거주 요건’ 완화 목소리",
       "source_id": "hani_economy",
-      "published_at": "2026-10-25T14:41:29.846127+00:00",
+      "published_at": "2026-10-25T18:04:13.360210+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
@@ -105,7 +95,7 @@
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1283946.html",
       "title": "경기도 사회적경제원 사업비 ‘0원’...“사회연대경제 생태계 흔들”",
       "source_id": "hani_economy",
-      "published_at": "2026-10-25T14:41:29.846127+00:00",
+      "published_at": "2026-10-25T18:04:13.360210+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
@@ -115,7 +105,7 @@
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1284001.html",
       "title": "금리변동에도 안정적인 새 지표금리 ‘코파’ 비중 10% 넘어",
       "source_id": "hani_economy",
-      "published_at": "2026-10-25T14:41:29.846127+00:00",
+      "published_at": "2026-10-25T18:04:13.360210+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
@@ -125,7 +115,7 @@
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1284010.html",
       "title": "반도체만 웃는 제조업…자동차·화학 경기회복 기대 꺾였다",
       "source_id": "hani_economy",
-      "published_at": "2026-10-25T14:41:29.846127+00:00",
+      "published_at": "2026-10-25T18:04:13.360210+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
@@ -135,7 +125,7 @@
       "url": "https://www.hani.co.kr/arti/economy/finance/1283895.html",
       "title": "SK하이닉스 4%대 상승 마감…증권가 “중복상장 우려 해소 영향”",
       "source_id": "hani_economy",
-      "published_at": "2026-10-25T14:41:29.846127+00:00",
+      "published_at": "2026-10-25T18:04:13.360210+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
@@ -145,127 +135,137 @@
       "url": "https://www.hani.co.kr/arti/economy/finance/1284007.html",
       "title": "5대 은행 가계대출 다시 증가세…이달 2.6조 늘어",
       "source_id": "hani_economy",
-      "published_at": "2026-10-25T14:41:29.846127+00:00",
+      "published_at": "2026-10-25T18:04:13.360210+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "official_context_only",
       "event_model": "policy_context"
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12185004",
-      "title": "노원구 중계3우성 59.94㎡, 7억 2500만원 `최근 3년 신고가` [MAI부동산]",
+      "url": "https://www.hani.co.kr/arti/economy/finance/1284054.html",
+      "title": "“한방에 본전 찾자”…레버리지ETF 열풍, 하락장에도 안 식었다",
+      "source_id": "hani_economy",
+      "published_at": "2026-10-25T18:04:13.360210+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "official_context_only",
+      "event_model": "policy_context"
+    },
+    {
+      "url": "https://www.hani.co.kr/arti/economy/finance/1284061.html",
+      "title": "높아진 금리, 주식 투자자 대응은?",
+      "source_id": "hani_economy",
+      "published_at": "2026-10-25T18:04:13.360210+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "official_context_only",
+      "event_model": "policy_context"
+    },
+    {
+      "url": "https://www.hani.co.kr/arti/economy/property/1284024.html",
+      "title": "‘반포 현대’ 재초환 부담금 연내 부과 예고…재건축 시장 영향은?",
+      "source_id": "hani_economy",
+      "published_at": "2026-10-25T18:04:13.360210+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "official_context_only",
+      "event_model": "policy_context"
+    },
+    {
+      "url": "https://www.sedaily.com/article/20105818",
+      "title": "‘원형지 분양’ 공공주택법엔 근거 없어 조항 신설해야…“후기 3기 신도시 일부에나 적용 가능”",
+      "source_id": "sedaily_realestate",
+      "published_at": "2026-10-25T17:43:24+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.sedaily.com/article/20105815",
+      "title": "모듈러 주택 기존 공법보다 빨리 짓지만 공사비 30% 비싸…건설사 수주 머뭇",
+      "source_id": "sedaily_realestate",
+      "published_at": "2026-10-25T17:42:49+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.sedaily.com/article/20105810",
+      "title": "李 띄운 모듈러 주택…현실은 통계도 없어",
+      "source_id": "sedaily_realestate",
+      "published_at": "2026-10-25T17:40:37+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.mk.co.kr/news/realestate/12185265",
+      "title": "GDP대비 가계빚 내년 80%로 하락 … 대출규제 풀릴까",
       "source_id": "mk_realestate",
-      "published_at": "2026-10-25T13:18:17+00:00",
+      "published_at": "2026-10-25T17:39:22+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
       "event_model": ""
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12185005",
-      "title": "노원구 중계그린1단지 39.78㎡ 6억원 거래…최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12185152",
+      "title": "집값 뛰는 동탄서 새아파트 … 이번주 전국 5555가구 분양",
       "source_id": "mk_realestate",
-      "published_at": "2026-10-25T13:18:17+00:00",
+      "published_at": "2026-10-25T17:06:34+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
       "event_model": ""
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12185006",
-      "title": "노원구 중계동 현대1(4차) 71.16㎡, 6억 6천만원 거래… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12185153",
+      "title": "오피스텔은 이미 '월세시대'… 신규 임대차 80% 차지",
       "source_id": "mk_realestate",
-      "published_at": "2026-10-25T13:18:17+00:00",
+      "published_at": "2026-10-25T17:06:34+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
       "event_model": ""
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12185007",
-      "title": "노원구 하계동 미성 84.94㎡ 9억 9천만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12185131",
+      "title": "투자 고수들의 '플러스 수익률 비법'… 머니쇼+서 만나세요",
       "source_id": "mk_realestate",
-      "published_at": "2026-10-25T13:18:17+00:00",
+      "published_at": "2026-10-25T16:43:38+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
       "event_model": ""
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12185008",
-      "title": "강서구 가양2단지(성지) 49.56㎡ 10억 8500만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12185126",
+      "title": "재개발 초기 분담금 걱정보다 대지지분 살펴야",
       "source_id": "mk_realestate",
-      "published_at": "2026-10-25T13:18:17+00:00",
+      "published_at": "2026-10-25T16:42:46+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
       "event_model": ""
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12185009",
-      "title": "구로구 고척동 우성,현대아파트 68.7㎡ 8억 1800만원… 최근 3년 신고가 [MAI부동산]",
-      "source_id": "mk_realestate",
-      "published_at": "2026-10-25T13:18:17+00:00",
-      "verification_state": "corroboration_requires_official_source",
-      "verification_role": "",
-      "merge_policy": "",
-      "event_model": ""
+      "url": "https://www.hankyung.com/article/2026102302356",
+      "title": "\"15억원 넘으면 대출 금지\"…SNS 괴담에 금융당국 '경고' [이송렬의 부동산한입]",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-10-25T16:00:03+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12185010",
-      "title": "구로구 오류동 금강 84.96㎡ 5억 7700만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12185070",
+      "title": "“올파포 놓친 것, 땅치고 후회”…‘고분양가 논란’ 단지도 가격 급등했다",
       "source_id": "mk_realestate",
-      "published_at": "2026-10-25T13:18:17+00:00",
-      "verification_state": "corroboration_requires_official_source",
-      "verification_role": "",
-      "merge_policy": "",
-      "event_model": ""
-    },
-    {
-      "url": "https://www.mk.co.kr/news/realestate/12185011",
-      "title": "강동구 명일지에스아파트 84.9㎡ 15억 8천만원… 최근 3년 신고가 [MAI부동산]",
-      "source_id": "mk_realestate",
-      "published_at": "2026-10-25T13:18:17+00:00",
-      "verification_state": "corroboration_requires_official_source",
-      "verification_role": "",
-      "merge_policy": "",
-      "event_model": ""
-    },
-    {
-      "url": "https://www.mk.co.kr/news/realestate/12184998",
-      "title": "동대문구 답십리동 우성그린 59.36㎡ 8억원… 최근 3년 신고가 [MAI부동산]",
-      "source_id": "mk_realestate",
-      "published_at": "2026-10-25T13:18:16+00:00",
-      "verification_state": "corroboration_requires_official_source",
-      "verification_role": "",
-      "merge_policy": "",
-      "event_model": ""
-    },
-    {
-      "url": "https://www.mk.co.kr/news/realestate/12184999",
-      "title": "중랑구 사가정센트럴아이파크 84.87㎡ 15억 9천만원… 최근 3년 신고가 [MAI부동산]",
-      "source_id": "mk_realestate",
-      "published_at": "2026-10-25T13:18:16+00:00",
-      "verification_state": "corroboration_requires_official_source",
-      "verification_role": "",
-      "merge_policy": "",
-      "event_model": ""
-    },
-    {
-      "url": "https://www.mk.co.kr/news/realestate/12185000",
-      "title": "성북구 돈암동 동부센트레빌 80.54㎡ 11억 6천만원… 최근 3년 신고가 [MAI부동산]",
-      "source_id": "mk_realestate",
-      "published_at": "2026-10-25T13:18:16+00:00",
-      "verification_state": "corroboration_requires_official_source",
-      "verification_role": "",
-      "merge_policy": "",
-      "event_model": ""
-    },
-    {
-      "url": "https://www.mk.co.kr/news/realestate/12185001",
-      "title": "성북구 길음뉴타운경남아너스빌 114.63㎡ 11억 6천만원… 최근 3년 신고가 [MAI부동산]",
-      "source_id": "mk_realestate",
-      "published_at": "2026-10-25T13:18:16+00:00",
+      "published_at": "2026-10-25T15:19:25+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
@@ -358,12 +358,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 410,
-      "latest_event_at": "2026-10-25T13:18:17+00:00",
-      "latest_observed_at": "2026-10-25T14:41:31.182917+00:00",
+      "item_count": 421,
+      "latest_event_at": "2026-10-25T17:43:54+00:00",
+      "latest_observed_at": "2026-10-25T18:04:15.681421+00:00",
       "age_days": 0.0,
-      "latest_title": "노원구 중계그린1단지 39.78㎡ 6억원 거래…최근 3년 신고가 [MAI부동산]",
-      "latest_url": "https://www.mk.co.kr/news/realestate/12185005"
+      "latest_title": "“계약했던 금액으론 이제 어림 없습니다”...공사비 40%씩 오른 서울 재건축",
+      "latest_url": "https://www.mk.co.kr/news/realestate/12185267"
     },
     {
       "source_id": "hankyung_realestate",
@@ -381,12 +381,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 204,
-      "latest_event_at": "2026-10-25T12:00:03+00:00",
-      "latest_observed_at": "2026-10-25T14:41:32.800435+00:00",
+      "item_count": 205,
+      "latest_event_at": "2026-10-25T16:00:03+00:00",
+      "latest_observed_at": "2026-10-25T18:04:17.903837+00:00",
       "age_days": 0.0,
-      "latest_title": "\"삼성역 20분대 도착\"…동탄 이어 '집값 급등열차' 예약했나 [철길옆집]",
-      "latest_url": "https://www.hankyung.com/article/2026102167076"
+      "latest_title": "\"15억원 넘으면 대출 금지\"…SNS 괴담에 금융당국 '경고' [이송렬의 부동산한입]",
+      "latest_url": "https://www.hankyung.com/article/2026102302356"
     },
     {
       "source_id": "korea_policy_news",
@@ -657,12 +657,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 183,
-      "latest_event_at": "2026-10-25T09:15:05+00:00",
-      "latest_observed_at": "2026-10-25T14:41:34.383742+00:00",
+      "item_count": 186,
+      "latest_event_at": "2026-10-25T17:43:24+00:00",
+      "latest_observed_at": "2026-10-25T18:04:20.243182+00:00",
       "age_days": 0.0,
-      "latest_title": "서울 정비사업 거래 물꼬 터지나…국토부, 조합원 지위 양도 제한 재검토",
-      "latest_url": "https://www.sedaily.com/article/20105687"
+      "latest_title": "‘원형지 분양’ 공공주택법엔 근거 없어 조항 신설해야…“후기 3기 신도시 일부에나 적용 가능”",
+      "latest_url": "https://www.sedaily.com/article/20105818"
     },
     {
       "source_id": "housingherald",
@@ -682,8 +682,8 @@
       "observed_date_field": "",
       "item_count": 166,
       "latest_event_at": "2026-10-24T02:51:39+00:00",
-      "latest_observed_at": "2026-10-25T14:41:36.191445+00:00",
-      "age_days": 1.12,
+      "latest_observed_at": "2026-10-25T18:04:23.011204+00:00",
+      "age_days": 1.26,
       "latest_title": "시흥 목감1구역 조합설립 임박했다",
       "latest_url": "https://www.housingherald.co.kr/news/articleView.html?idxno=63247"
     },
@@ -703,12 +703,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 408,
-      "latest_event_at": "2026-10-23T22:08:51+00:00",
-      "latest_observed_at": "2026-10-25T14:41:37.964960+00:00",
-      "age_days": 1.31,
-      "latest_title": "명서1 재개발조합 경관용역업체 선정 입찰공고",
-      "latest_url": "https://www.arunews.com/news/articleView.html?idxno=68571"
+      "item_count": 409,
+      "latest_event_at": "2026-10-26T01:40:45+00:00",
+      "latest_observed_at": "2026-10-25T18:04:25.682321+00:00",
+      "age_days": 0.0,
+      "latest_title": "삼성물산, 창원 용호1구역 품고 정비사업 첫 ‘10조 클럽’",
+      "latest_url": "https://www.arunews.com/news/articleView.html?idxno=68572"
     },
     {
       "source_id": "rcnews_housing",
@@ -728,8 +728,8 @@
       "observed_date_field": "",
       "item_count": 50,
       "latest_event_at": "2026-10-09T01:06:40+00:00",
-      "latest_observed_at": "2026-10-25T14:41:39.680180+00:00",
-      "age_days": 16.19,
+      "latest_observed_at": "2026-10-25T18:04:29.500653+00:00",
+      "age_days": 16.33,
       "latest_title": "탄력받는 공동주택 리모델링, 제도개선안 속속 추진",
       "latest_url": "http://www.rcnews.co.kr/news/articleView.html?idxno=33503"
     },
@@ -749,12 +749,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 86,
-      "latest_event_at": "2026-10-25T14:41:29.846127+00:00",
-      "latest_observed_at": "2026-10-25T14:41:39.883876+00:00",
+      "item_count": 89,
+      "latest_event_at": "2026-10-25T18:04:13.360210+00:00",
+      "latest_observed_at": "2026-10-25T18:04:29.876320+00:00",
       "age_days": 0.0,
-      "latest_title": "반도체만 웃는 제조업…자동차·화학 경기회복 기대 꺾였다",
-      "latest_url": "https://www.hani.co.kr/arti/economy/economy_general/1284010.html"
+      "latest_title": "높아진 금리, 주식 투자자 대응은?",
+      "latest_url": "https://www.hani.co.kr/arti/economy/finance/1284061.html"
     },
     {
       "source_id": "heraldcorp_realestate",
@@ -1120,27 +1120,15 @@
     },
     {
       "reason": "home_verification_requires_official_primary",
-      "source_id": "hani_economy",
-      "source": "hani_economy",
-      "event_model": "policy_context",
+      "source_id": "housing_economy_news",
+      "source": "housing_economy_news",
+      "event_model": "market_context",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
-      "merge_policy": "official_context_only",
-      "title": "“석유 최고가격제, 휘발유값 최대 239원 상승 억제”",
-      "url": "https://www.hani.co.kr/arti/economy/economy_general/1283819.html",
-      "published_at": "2026-10-25T14:41:29.846127+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "hani_economy",
-      "source": "hani_economy",
-      "event_model": "policy_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "official_context_only",
-      "title": "한전, ‘언리시 인재개발상’ 2년 연속 수상",
-      "url": "https://www.hani.co.kr/arti/economy/economy_general/1283823.html",
-      "published_at": "2026-10-25T14:41:29.846127+00:00"
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "삼성물산, 창원 용호1구역 품고 정비사업 첫 ‘10조 클럽’",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68572",
+      "published_at": "2026-10-26T01:40:45+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1152,7 +1140,7 @@
       "merge_policy": "official_context_only",
       "title": "홍지선 국토 “전월세 불안은 공급 부족 탓”…여당서도 ‘실거주 요건’ 완화 목소리",
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1283833.html",
-      "published_at": "2026-10-25T14:41:29.846127+00:00"
+      "published_at": "2026-10-25T18:04:13.360210+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1164,7 +1152,7 @@
       "merge_policy": "official_context_only",
       "title": "경기도 사회적경제원 사업비 ‘0원’...“사회연대경제 생태계 흔들”",
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1283946.html",
-      "published_at": "2026-10-25T14:41:29.846127+00:00"
+      "published_at": "2026-10-25T18:04:13.360210+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1176,7 +1164,7 @@
       "merge_policy": "official_context_only",
       "title": "금리변동에도 안정적인 새 지표금리 ‘코파’ 비중 10% 넘어",
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1284001.html",
-      "published_at": "2026-10-25T14:41:29.846127+00:00"
+      "published_at": "2026-10-25T18:04:13.360210+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1188,7 +1176,7 @@
       "merge_policy": "official_context_only",
       "title": "반도체만 웃는 제조업…자동차·화학 경기회복 기대 꺾였다",
       "url": "https://www.hani.co.kr/arti/economy/economy_general/1284010.html",
-      "published_at": "2026-10-25T14:41:29.846127+00:00"
+      "published_at": "2026-10-25T18:04:13.360210+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1200,7 +1188,7 @@
       "merge_policy": "official_context_only",
       "title": "SK하이닉스 4%대 상승 마감…증권가 “중복상장 우려 해소 영향”",
       "url": "https://www.hani.co.kr/arti/economy/finance/1283895.html",
-      "published_at": "2026-10-25T14:41:29.846127+00:00"
+      "published_at": "2026-10-25T18:04:13.360210+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1212,7 +1200,79 @@
       "merge_policy": "official_context_only",
       "title": "5대 은행 가계대출 다시 증가세…이달 2.6조 늘어",
       "url": "https://www.hani.co.kr/arti/economy/finance/1284007.html",
-      "published_at": "2026-10-25T14:41:29.846127+00:00"
+      "published_at": "2026-10-25T18:04:13.360210+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hani_economy",
+      "source": "hani_economy",
+      "event_model": "policy_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "official_context_only",
+      "title": "“한방에 본전 찾자”…레버리지ETF 열풍, 하락장에도 안 식었다",
+      "url": "https://www.hani.co.kr/arti/economy/finance/1284054.html",
+      "published_at": "2026-10-25T18:04:13.360210+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hani_economy",
+      "source": "hani_economy",
+      "event_model": "policy_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "official_context_only",
+      "title": "높아진 금리, 주식 투자자 대응은?",
+      "url": "https://www.hani.co.kr/arti/economy/finance/1284061.html",
+      "published_at": "2026-10-25T18:04:13.360210+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hani_economy",
+      "source": "hani_economy",
+      "event_model": "policy_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "official_context_only",
+      "title": "‘반포 현대’ 재초환 부담금 연내 부과 예고…재건축 시장 영향은?",
+      "url": "https://www.hani.co.kr/arti/economy/property/1284024.html",
+      "published_at": "2026-10-25T18:04:13.360210+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "sedaily_realestate",
+      "source": "sedaily_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "‘원형지 분양’ 공공주택법엔 근거 없어 조항 신설해야…“후기 3기 신도시 일부에나 적용 가능”",
+      "url": "https://www.sedaily.com/article/20105818",
+      "published_at": "2026-10-25T17:43:24+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "sedaily_realestate",
+      "source": "sedaily_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "모듈러 주택 기존 공법보다 빨리 짓지만 공사비 30% 비싸…건설사 수주 머뭇",
+      "url": "https://www.sedaily.com/article/20105815",
+      "published_at": "2026-10-25T17:42:49+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "sedaily_realestate",
+      "source": "sedaily_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "李 띄운 모듈러 주택…현실은 통계도 없어",
+      "url": "https://www.sedaily.com/article/20105810",
+      "published_at": "2026-10-25T17:40:37+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1222,9 +1282,9 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "노원구 중계3우성 59.94㎡, 7억 2500만원 `최근 3년 신고가` [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12185004",
-      "published_at": "2026-10-25T13:18:17+00:00"
+      "title": "GDP대비 가계빚 내년 80%로 하락 … 대출규제 풀릴까",
+      "url": "https://www.mk.co.kr/news/realestate/12185265",
+      "published_at": "2026-10-25T17:39:22+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1234,9 +1294,9 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "노원구 중계그린1단지 39.78㎡ 6억원 거래…최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12185005",
-      "published_at": "2026-10-25T13:18:17+00:00"
+      "title": "집값 뛰는 동탄서 새아파트 … 이번주 전국 5555가구 분양",
+      "url": "https://www.mk.co.kr/news/realestate/12185152",
+      "published_at": "2026-10-25T17:06:34+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1246,9 +1306,9 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "노원구 중계동 현대1(4차) 71.16㎡, 6억 6천만원 거래… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12185006",
-      "published_at": "2026-10-25T13:18:17+00:00"
+      "title": "오피스텔은 이미 '월세시대'… 신규 임대차 80% 차지",
+      "url": "https://www.mk.co.kr/news/realestate/12185153",
+      "published_at": "2026-10-25T17:06:34+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1258,9 +1318,9 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "노원구 하계동 미성 84.94㎡ 9억 9천만원… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12185007",
-      "published_at": "2026-10-25T13:18:17+00:00"
+      "title": "투자 고수들의 '플러스 수익률 비법'… 머니쇼+서 만나세요",
+      "url": "https://www.mk.co.kr/news/realestate/12185131",
+      "published_at": "2026-10-25T16:43:38+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1270,9 +1330,21 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "강서구 가양2단지(성지) 49.56㎡ 10억 8500만원… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12185008",
-      "published_at": "2026-10-25T13:18:17+00:00"
+      "title": "재개발 초기 분담금 걱정보다 대지지분 살펴야",
+      "url": "https://www.mk.co.kr/news/realestate/12185126",
+      "published_at": "2026-10-25T16:42:46+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "\"15억원 넘으면 대출 금지\"…SNS 괴담에 금융당국 '경고' [이송렬의 부동산한입]",
+      "url": "https://www.hankyung.com/article/2026102302356",
+      "published_at": "2026-10-25T16:00:03+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1282,81 +1354,9 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "구로구 고척동 우성,현대아파트 68.7㎡ 8억 1800만원… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12185009",
-      "published_at": "2026-10-25T13:18:17+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "mk_realestate",
-      "source": "mk_realestate",
-      "event_model": "",
-      "verification_state": "corroboration_requires_official_source",
-      "verification_role": "",
-      "merge_policy": "",
-      "title": "구로구 오류동 금강 84.96㎡ 5억 7700만원… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12185010",
-      "published_at": "2026-10-25T13:18:17+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "mk_realestate",
-      "source": "mk_realestate",
-      "event_model": "",
-      "verification_state": "corroboration_requires_official_source",
-      "verification_role": "",
-      "merge_policy": "",
-      "title": "강동구 명일지에스아파트 84.9㎡ 15억 8천만원… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12185011",
-      "published_at": "2026-10-25T13:18:17+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "mk_realestate",
-      "source": "mk_realestate",
-      "event_model": "",
-      "verification_state": "corroboration_requires_official_source",
-      "verification_role": "",
-      "merge_policy": "",
-      "title": "동대문구 답십리동 우성그린 59.36㎡ 8억원… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12184998",
-      "published_at": "2026-10-25T13:18:16+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "mk_realestate",
-      "source": "mk_realestate",
-      "event_model": "",
-      "verification_state": "corroboration_requires_official_source",
-      "verification_role": "",
-      "merge_policy": "",
-      "title": "중랑구 사가정센트럴아이파크 84.87㎡ 15억 9천만원… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12184999",
-      "published_at": "2026-10-25T13:18:16+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "mk_realestate",
-      "source": "mk_realestate",
-      "event_model": "",
-      "verification_state": "corroboration_requires_official_source",
-      "verification_role": "",
-      "merge_policy": "",
-      "title": "성북구 돈암동 동부센트레빌 80.54㎡ 11억 6천만원… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12185000",
-      "published_at": "2026-10-25T13:18:16+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "mk_realestate",
-      "source": "mk_realestate",
-      "event_model": "",
-      "verification_state": "corroboration_requires_official_source",
-      "verification_role": "",
-      "merge_policy": "",
-      "title": "성북구 길음뉴타운경남아너스빌 114.63㎡ 11억 6천만원… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12185001",
-      "published_at": "2026-10-25T13:18:16+00:00"
+      "title": "“올파포 놓친 것, 땅치고 후회”…‘고분양가 논란’ 단지도 가격 급등했다",
+      "url": "https://www.mk.co.kr/news/realestate/12185070",
+      "published_at": "2026-10-25T15:19:25+00:00"
     }
   ]
 }
