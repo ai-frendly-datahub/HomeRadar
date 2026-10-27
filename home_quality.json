@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-10-26T09:54:49.482343+00:00",
+  "generated_at": "2026-10-27T09:45:19.823982+00:00",
   "summary": {
     "total_sources": 30,
     "enabled_sources": 11,
@@ -43,7 +43,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 1669,
+    "verification_state_count": 1790,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 37,
     "official_primary_status": "blocked_missing_env",
@@ -62,210 +62,210 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 1222,
+    "corroboration_only_items": 1322,
     "official_primary_items": 0
   },
   "verification_states": {
-    "corroboration_requires_official_source": 306,
-    "market_corroboration_requires_official_source": 1222,
-    "no_operational_event": 141
+    "corroboration_requires_official_source": 317,
+    "market_corroboration_requires_official_source": 1322,
+    "no_operational_event": 151
   },
   "verification_review_samples": [
     {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68649",
-      "title": "목동6단지, 사업시행인가 신청… 내년 초 고시 예상",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68716",
+      "title": "IPARK현산, 올해 수주 목표액 정비사업 포함 10조원으로 상향",
       "source_id": "housing_economy_news",
-      "published_at": "2026-10-27T02:06:27+00:00",
+      "published_at": "2026-10-28T01:30:09+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.housingherald.co.kr/news/articleView.html?idxno=63252",
-      "title": "삼성물산, 창원 용호1구역 재건축 수주…경남 첫 래미안 입성",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68715",
+      "title": "국토부, 2026년 3분기 전국 지가 0.62% 상승",
+      "source_id": "housing_economy_news",
+      "published_at": "2026-10-28T01:05:03+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68714",
+      "title": "대치우성1차·쌍용2차, 시공자 현설에 삼성물산만",
+      "source_id": "housing_economy_news",
+      "published_at": "2026-10-28T00:44:38+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68713",
+      "title": "상계보람아파트 재건축조합 추진위원회 설계자 선정 입찰공고",
+      "source_id": "housing_economy_news",
+      "published_at": "2026-10-28T00:28:14+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68712",
+      "title": "중구 우정1 재개발조합 측량조사 협력업체 선정 입찰공고",
+      "source_id": "housing_economy_news",
+      "published_at": "2026-10-28T00:26:40+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68711",
+      "title": "중구 우정1 재개발조합 지질 및 지반조사(보고서 포함) 협력업체 선정 입찰공고",
+      "source_id": "housing_economy_news",
+      "published_at": "2026-10-28T00:25:07+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68708",
+      "title": "롯데건설, 보바스기념병원에 치유 정원 조성",
+      "source_id": "housing_economy_news",
+      "published_at": "2026-10-28T00:24:02+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68710",
+      "title": "상계보람아파트 재건축조합 추진위원회 정비사업전문관리업자 선정 입찰공고",
+      "source_id": "housing_economy_news",
+      "published_at": "2026-10-28T00:23:14+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68709",
+      "title": "중구 우정1 재개발조합 물건 기초조사 협력업체 선정 입찰공고",
+      "source_id": "housing_economy_news",
+      "published_at": "2026-10-28T00:21:27+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68707",
+      "title": "중구 우정1 재개발조합 도시계획 및 교통영향평가 협력업체 선정 입찰공고",
+      "source_id": "housing_economy_news",
+      "published_at": "2026-10-28T00:19:40+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68706",
+      "title": "중구 우정1 재개발조합 소음·진동 측정조사(예측소음) 협력업체 선정 입찰공고",
+      "source_id": "housing_economy_news",
+      "published_at": "2026-10-28T00:17:44+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68705",
+      "title": "여의도 공작아파트 재건축사업 토지등소유자 분양신청 대행 협력업체 선정 입찰공고",
+      "source_id": "housing_economy_news",
+      "published_at": "2026-10-28T00:15:35+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68704",
+      "title": "중구 우정1 재개발조합 문화유산 영향평가(현상변경) 선정 입찰공고",
+      "source_id": "housing_economy_news",
+      "published_at": "2026-10-28T00:13:46+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68703",
+      "title": "여의도 공작아파트 재건축사업 매도청구, 명도소송 등 협력업체 선정 입찰공고",
+      "source_id": "housing_economy_news",
+      "published_at": "2026-10-28T00:11:29+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68702",
+      "title": "신상진 시장 “국토부, 분당 재건축 발목 잡아” 성토",
+      "source_id": "housing_economy_news",
+      "published_at": "2026-10-28T00:04:50+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68701",
+      "title": "서울시, 2026 신속통합기획 관계자 워크숍 개최",
+      "source_id": "housing_economy_news",
+      "published_at": "2026-10-28T00:02:29+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68698",
+      "title": "신월시영아파트 재건축사업 시공자 선정 입찰공고",
+      "source_id": "housing_economy_news",
+      "published_at": "2026-10-27T23:09:03+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.housingherald.co.kr/news/articleView.html?idxno=63281",
+      "title": "구산역세권(역촌동) 재개발사업 설계자·정비사업전문관리업자·세무·회계 업체 선정",
       "source_id": "housingherald",
-      "published_at": "2026-10-27T01:53:22+00:00",
+      "published_at": "2026-10-27T23:06:26+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.housingherald.co.kr/news/articleView.html?idxno=63251",
-      "title": "현대건설, 목동10단지 재건축 수주…목동 첫 시공권 확보",
-      "source_id": "housingherald",
-      "published_at": "2026-10-27T01:52:02+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.housingherald.co.kr/news/articleView.html?idxno=63250",
-      "title": "성북동 3-38번지 재개발, 지상 22층 1,070가구 규모 신통기획 확정",
-      "source_id": "housingherald",
-      "published_at": "2026-10-27T01:50:22+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68648",
-      "title": "의정부시, 재건축·재개발 맞춤형 주민설명회 개최",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68696",
+      "title": "‘대우 단독 참여’ 신월시영, 시공자 재입찰 나서",
       "source_id": "housing_economy_news",
-      "published_at": "2026-10-27T01:47:57+00:00",
+      "published_at": "2026-10-27T23:03:42+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68647",
-      "title": "장안구청역 서측, 교보자산신탁과 민간도심복합개발 MOU",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68695",
+      "title": "구산역세권(역촌동) 장기전세주택 도시정비형재개발조합 추진위원회 세무·회계 협력업체 선정 입찰공고",
       "source_id": "housing_economy_news",
-      "published_at": "2026-10-27T01:35:08+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68646",
-      "title": "신가동 재개발조합 정비사업전문관리업자 선정 입찰공고",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-10-27T01:16:21+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68645",
-      "title": "퇴계원1구역 재개발사업 정비기반시설 도로설계 용역업체 선정 입찰공고",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-10-27T01:15:02+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68644",
-      "title": "철산주공13단지, 재건축 시공자 현설에 현대·롯데·제일",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-10-27T01:07:10+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68643",
-      "title": "대구시, 정비사업 통합심의 확대… 인허가 기간 단축 추진",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-10-27T00:45:36+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68642",
-      "title": "하계한신동성아파트, 동의율 77.45%로 재건축 추진위원회 승인",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-10-27T00:15:44+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68624",
-      "title": "HS화성, 성주군 고립 취약계층 주거환경 봉사 실시",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-10-27T00:05:16+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68641",
-      "title": "퇴계원1구역 재개발조합 전기·소방설계 용역업체 선정 입찰공고",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-10-26T23:58:51+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68640",
-      "title": "수영2구역 재개발조합 추진위원회 설계자 선정 입찰공고",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-10-26T23:57:09+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68639",
-      "title": "내동한화아파트 가로주택조합 초기사업비 금융 업무대행업체 선정 입찰공고",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-10-26T23:55:43+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68638",
-      "title": "송내1-1구역 재건축조합 보류지 매각 공고",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-10-26T23:54:01+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68637",
-      "title": "대흥4구역 재개발조합 건설사업관리 협력업체 선정 입찰공고",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-10-26T23:52:14+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68636",
-      "title": "중곡아파트 공공재건축조합 매도청구&명도소송 등 법무법인(변호사) 협력업체 선정 입찰공고",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-10-26T23:50:19+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68635",
-      "title": "‘공사비 약 5,019억원’ 가락우성1차, 시공자 선정 재도전",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-10-26T23:49:00+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68634",
-      "title": "상봉13구역 재개발조합 협력업체(석면사전조사) 선정 입찰공고",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-10-26T23:48:37+00:00",
+      "published_at": "2026-10-27T22:19:37+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
@@ -358,12 +358,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 447,
-      "latest_event_at": "2026-10-26T18:48:51+00:00",
-      "latest_observed_at": "2026-10-26T18:54:12.486733+00:00",
+      "item_count": 468,
+      "latest_event_at": "2026-10-27T18:20:51+00:00",
+      "latest_observed_at": "2026-10-27T18:44:42.420382+00:00",
       "age_days": 0.0,
-      "latest_title": "도시정비사업 전문 플랫폼 ‘도시정비파트너스그룹’ 운영 돌입",
-      "latest_url": "https://www.mk.co.kr/news/realestate/12186173"
+      "latest_title": "[단독] 용산 금싸라기땅 333평 전시관, 관람객은 1명…공공기여 부실논란",
+      "latest_url": "https://www.mk.co.kr/news/realestate/12187461"
     },
     {
       "source_id": "hankyung_realestate",
@@ -381,12 +381,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 224,
-      "latest_event_at": "2026-10-26T17:20:52+00:00",
-      "latest_observed_at": "2026-10-26T18:54:14.211157+00:00",
+      "item_count": 239,
+      "latest_event_at": "2026-10-27T17:51:02+00:00",
+      "latest_observed_at": "2026-10-27T18:44:44.002953+00:00",
       "age_days": 0.0,
-      "latest_title": "\"설마 지금이 꼭대기?\"…서울 집주인들 심상찮은 움직임",
-      "latest_url": "https://www.hankyung.com/article/2026102659001"
+      "latest_title": "'출퇴근 혁명' 잠실까지 27분 시대 열었더니…집값 '2억 쑥'",
+      "latest_url": "https://www.hankyung.com/article/202610230917i"
     },
     {
       "source_id": "korea_policy_news",
@@ -657,12 +657,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 201,
-      "latest_event_at": "2026-10-26T17:59:17+00:00",
-      "latest_observed_at": "2026-10-26T18:54:16.350835+00:00",
+      "item_count": 216,
+      "latest_event_at": "2026-10-27T18:38:27+00:00",
+      "latest_observed_at": "2026-10-27T18:44:46.228505+00:00",
       "age_days": 0.0,
-      "latest_title": "서울시, 정비가능구역 5곳 추가…‘오류·응암’ 구도심 재개발 가속",
-      "latest_url": "https://www.sedaily.com/article/20106299"
+      "latest_title": "김철훈 여의도공작 운영위원장 “퇴근하면 꼭 안아주는 집…‘쉼’을 모토로 재건축 차별화”",
+      "latest_url": "https://www.sedaily.com/article/20106837"
     },
     {
       "source_id": "housingherald",
@@ -680,12 +680,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 172,
-      "latest_event_at": "2026-10-27T01:53:22+00:00",
-      "latest_observed_at": "2026-10-26T18:54:18.917328+00:00",
+      "item_count": 180,
+      "latest_event_at": "2026-10-27T23:06:26+00:00",
+      "latest_observed_at": "2026-10-27T18:44:49.067838+00:00",
       "age_days": 0.0,
-      "latest_title": "삼성물산, 창원 용호1구역 재건축 수주…경남 첫 래미안 입성",
-      "latest_url": "https://www.housingherald.co.kr/news/articleView.html?idxno=63252"
+      "latest_title": "구산역세권(역촌동) 재개발사업 설계자·정비사업전문관리업자·세무·회계 업체 선정",
+      "latest_url": "https://www.housingherald.co.kr/news/articleView.html?idxno=63281"
     },
     {
       "source_id": "housing_economy_news",
@@ -703,12 +703,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 475,
-      "latest_event_at": "2026-10-27T02:06:27+00:00",
-      "latest_observed_at": "2026-10-26T18:54:21.152357+00:00",
+      "item_count": 529,
+      "latest_event_at": "2026-10-28T01:30:09+00:00",
+      "latest_observed_at": "2026-10-27T18:44:51.244743+00:00",
       "age_days": 0.0,
-      "latest_title": "목동6단지, 사업시행인가 신청… 내년 초 고시 예상",
-      "latest_url": "https://www.arunews.com/news/articleView.html?idxno=68649"
+      "latest_title": "IPARK현산, 올해 수주 목표액 정비사업 포함 10조원으로 상향",
+      "latest_url": "https://www.arunews.com/news/articleView.html?idxno=68716"
     },
     {
       "source_id": "rcnews_housing",
@@ -728,8 +728,8 @@
       "observed_date_field": "",
       "item_count": 50,
       "latest_event_at": "2026-10-09T01:06:40+00:00",
-      "latest_observed_at": "2026-10-26T18:54:23.884747+00:00",
-      "age_days": 17.37,
+      "latest_observed_at": "2026-10-27T18:44:54.046304+00:00",
+      "age_days": 18.36,
       "latest_title": "탄력받는 공동주택 리모델링, 제도개선안 속속 추진",
       "latest_url": "http://www.rcnews.co.kr/news/articleView.html?idxno=33503"
     },
@@ -749,12 +749,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 100,
-      "latest_event_at": "2026-10-26T18:54:10.066715+00:00",
-      "latest_observed_at": "2026-10-26T18:54:24.269572+00:00",
+      "item_count": 108,
+      "latest_event_at": "2026-10-27T18:44:39.521297+00:00",
+      "latest_observed_at": "2026-10-27T18:44:54.422870+00:00",
       "age_days": 0.0,
-      "latest_title": "“뭐라도 하려니 계약직만”…숙련도 쌓을 기회 업어 ‘이직 장벽’",
-      "latest_url": "https://www.hani.co.kr/arti/economy/economy_general/1284264.html"
+      "latest_title": "금감원 “JYP 공개매수 의사 표명 이례적…법위반 여부 예의주시”",
+      "latest_url": "https://www.hani.co.kr/arti/economy/finance/1284440.html"
     },
     {
       "source_id": "heraldcorp_realestate",
@@ -1126,9 +1126,201 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "목동6단지, 사업시행인가 신청… 내년 초 고시 예상",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68649",
-      "published_at": "2026-10-27T02:06:27+00:00"
+      "title": "IPARK현산, 올해 수주 목표액 정비사업 포함 10조원으로 상향",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68716",
+      "published_at": "2026-10-28T01:30:09+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "housing_economy_news",
+      "source": "housing_economy_news",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "국토부, 2026년 3분기 전국 지가 0.62% 상승",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68715",
+      "published_at": "2026-10-28T01:05:03+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "housing_economy_news",
+      "source": "housing_economy_news",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "대치우성1차·쌍용2차, 시공자 현설에 삼성물산만",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68714",
+      "published_at": "2026-10-28T00:44:38+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "housing_economy_news",
+      "source": "housing_economy_news",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "상계보람아파트 재건축조합 추진위원회 설계자 선정 입찰공고",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68713",
+      "published_at": "2026-10-28T00:28:14+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "housing_economy_news",
+      "source": "housing_economy_news",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "중구 우정1 재개발조합 측량조사 협력업체 선정 입찰공고",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68712",
+      "published_at": "2026-10-28T00:26:40+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "housing_economy_news",
+      "source": "housing_economy_news",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "중구 우정1 재개발조합 지질 및 지반조사(보고서 포함) 협력업체 선정 입찰공고",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68711",
+      "published_at": "2026-10-28T00:25:07+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "housing_economy_news",
+      "source": "housing_economy_news",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "롯데건설, 보바스기념병원에 치유 정원 조성",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68708",
+      "published_at": "2026-10-28T00:24:02+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "housing_economy_news",
+      "source": "housing_economy_news",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "상계보람아파트 재건축조합 추진위원회 정비사업전문관리업자 선정 입찰공고",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68710",
+      "published_at": "2026-10-28T00:23:14+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "housing_economy_news",
+      "source": "housing_economy_news",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "중구 우정1 재개발조합 물건 기초조사 협력업체 선정 입찰공고",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68709",
+      "published_at": "2026-10-28T00:21:27+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "housing_economy_news",
+      "source": "housing_economy_news",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "중구 우정1 재개발조합 도시계획 및 교통영향평가 협력업체 선정 입찰공고",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68707",
+      "published_at": "2026-10-28T00:19:40+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "housing_economy_news",
+      "source": "housing_economy_news",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "중구 우정1 재개발조합 소음·진동 측정조사(예측소음) 협력업체 선정 입찰공고",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68706",
+      "published_at": "2026-10-28T00:17:44+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "housing_economy_news",
+      "source": "housing_economy_news",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "여의도 공작아파트 재건축사업 토지등소유자 분양신청 대행 협력업체 선정 입찰공고",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68705",
+      "published_at": "2026-10-28T00:15:35+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "housing_economy_news",
+      "source": "housing_economy_news",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "중구 우정1 재개발조합 문화유산 영향평가(현상변경) 선정 입찰공고",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68704",
+      "published_at": "2026-10-28T00:13:46+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "housing_economy_news",
+      "source": "housing_economy_news",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "여의도 공작아파트 재건축사업 매도청구, 명도소송 등 협력업체 선정 입찰공고",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68703",
+      "published_at": "2026-10-28T00:11:29+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "housing_economy_news",
+      "source": "housing_economy_news",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "신상진 시장 “국토부, 분당 재건축 발목 잡아” 성토",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68702",
+      "published_at": "2026-10-28T00:04:50+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "housing_economy_news",
+      "source": "housing_economy_news",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "서울시, 2026 신속통합기획 관계자 워크숍 개최",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68701",
+      "published_at": "2026-10-28T00:02:29+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "housing_economy_news",
+      "source": "housing_economy_news",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "신월시영아파트 재건축사업 시공자 선정 입찰공고",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68698",
+      "published_at": "2026-10-27T23:09:03+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1138,33 +1330,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "삼성물산, 창원 용호1구역 재건축 수주…경남 첫 래미안 입성",
-      "url": "https://www.housingherald.co.kr/news/articleView.html?idxno=63252",
-      "published_at": "2026-10-27T01:53:22+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housingherald",
-      "source": "housingherald",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "현대건설, 목동10단지 재건축 수주…목동 첫 시공권 확보",
-      "url": "https://www.housingherald.co.kr/news/articleView.html?idxno=63251",
-      "published_at": "2026-10-27T01:52:02+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housingherald",
-      "source": "housingherald",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "성북동 3-38번지 재개발, 지상 22층 1,070가구 규모 신통기획 확정",
-      "url": "https://www.housingherald.co.kr/news/articleView.html?idxno=63250",
-      "published_at": "2026-10-27T01:50:22+00:00"
+      "title": "구산역세권(역촌동) 재개발사업 설계자·정비사업전문관리업자·세무·회계 업체 선정",
+      "url": "https://www.housingherald.co.kr/news/articleView.html?idxno=63281",
+      "published_at": "2026-10-27T23:06:26+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1174,9 +1342,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "의정부시, 재건축·재개발 맞춤형 주민설명회 개최",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68648",
-      "published_at": "2026-10-27T01:47:57+00:00"
+      "title": "‘대우 단독 참여’ 신월시영, 시공자 재입찰 나서",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68696",
+      "published_at": "2026-10-27T23:03:42+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1186,177 +1354,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "장안구청역 서측, 교보자산신탁과 민간도심복합개발 MOU",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68647",
-      "published_at": "2026-10-27T01:35:08+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "신가동 재개발조합 정비사업전문관리업자 선정 입찰공고",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68646",
-      "published_at": "2026-10-27T01:16:21+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "퇴계원1구역 재개발사업 정비기반시설 도로설계 용역업체 선정 입찰공고",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68645",
-      "published_at": "2026-10-27T01:15:02+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "철산주공13단지, 재건축 시공자 현설에 현대·롯데·제일",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68644",
-      "published_at": "2026-10-27T01:07:10+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "대구시, 정비사업 통합심의 확대… 인허가 기간 단축 추진",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68643",
-      "published_at": "2026-10-27T00:45:36+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "하계한신동성아파트, 동의율 77.45%로 재건축 추진위원회 승인",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68642",
-      "published_at": "2026-10-27T00:15:44+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "HS화성, 성주군 고립 취약계층 주거환경 봉사 실시",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68624",
-      "published_at": "2026-10-27T00:05:16+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "퇴계원1구역 재개발조합 전기·소방설계 용역업체 선정 입찰공고",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68641",
-      "published_at": "2026-10-26T23:58:51+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "수영2구역 재개발조합 추진위원회 설계자 선정 입찰공고",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68640",
-      "published_at": "2026-10-26T23:57:09+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "내동한화아파트 가로주택조합 초기사업비 금융 업무대행업체 선정 입찰공고",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68639",
-      "published_at": "2026-10-26T23:55:43+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "송내1-1구역 재건축조합 보류지 매각 공고",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68638",
-      "published_at": "2026-10-26T23:54:01+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "대흥4구역 재개발조합 건설사업관리 협력업체 선정 입찰공고",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68637",
-      "published_at": "2026-10-26T23:52:14+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "중곡아파트 공공재건축조합 매도청구&명도소송 등 법무법인(변호사) 협력업체 선정 입찰공고",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68636",
-      "published_at": "2026-10-26T23:50:19+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "‘공사비 약 5,019억원’ 가락우성1차, 시공자 선정 재도전",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68635",
-      "published_at": "2026-10-26T23:49:00+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "상봉13구역 재개발조합 협력업체(석면사전조사) 선정 입찰공고",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=68634",
-      "published_at": "2026-10-26T23:48:37+00:00"
+      "title": "구산역세권(역촌동) 장기전세주택 도시정비형재개발조합 추진위원회 세무·회계 협력업체 선정 입찰공고",
+      "url": "https://www.arunews.com/news/articleView.html?idxno=68695",
+      "published_at": "2026-10-27T22:19:37+00:00"
     }
   ]
 }
