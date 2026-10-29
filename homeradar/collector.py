@@ -6,14 +6,14 @@ import threading
 import time
 from collections.abc import Mapping
 from concurrent.futures import Future, ThreadPoolExecutor
-from datetime import UTC, datetime
-from email.utils import parsedate_to_datetime
+from datetime import datetime
 from typing import Any
 from urllib.parse import urlparse
 
 import feedparser
 import requests
 from pybreaker import CircuitBreakerError
+from radar_core.dates import parse_feed_entry, resolve_default_timezone
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
@@ -291,7 +291,7 @@ def _collect_single(
         items: list[Article] = []
 
         for entry in feed.entries[:limit]:
-            published = _extract_datetime(entry)
+            published = _extract_datetime(entry, source)
             summary = _entry_text(entry, "summary") or _entry_text(entry, "description")
             if not summary:
                 _content = entry.get("content", [])
@@ -318,27 +318,23 @@ def _collect_single(
         raise ParseError(f"Failed to parse feed from {source.name}: {exc}") from exc
 
 
-def _extract_datetime(entry: Mapping[str, Any]) -> datetime | None:
-    """Parse a feed entry date into a timezone-aware datetime."""
-    published_parsed = entry.get("published_parsed")
-    if isinstance(published_parsed, time.struct_time):
-        return datetime.fromtimestamp(time.mktime(published_parsed), tz=UTC)
+def _extract_datetime(entry: Mapping[str, Any], source: Source | None = None) -> datetime | None:
+    """Parse a feed entry date into a timezone-aware datetime.
 
-    updated_parsed = entry.get("updated_parsed")
-    if isinstance(updated_parsed, time.struct_time):
-        return datetime.fromtimestamp(time.mktime(updated_parsed), tz=UTC)
-
-    for key in ("published", "updated", "date"):
-        raw = entry.get(key)
-        if raw:
-            try:
-                dt = parsedate_to_datetime(str(raw))
-                if dt and dt.tzinfo is None:
-                    dt = dt.replace(tzinfo=UTC)
-                return dt
-            except Exception:
-                continue
-    return None
+    feedparser ``*_parsed`` values are UTC. ``radar_core.dates`` converts them
+    with ``calendar.timegm``. Offset strings keep their offset. Zone-less
+    strings use the source timezone, otherwise ``.kr`` hosts use Asia/Seoul
+    and every other host uses UTC. Missing dates stay ``None``; collection
+    time is not a publish time.
+    """
+    source_url = source.url if source is not None else ""
+    configured = source.default_timezone if source is not None else ""
+    default_timezone = resolve_default_timezone(
+        source_url=source_url,
+        default_timezone=configured,
+    )
+    published, _published_raw = parse_feed_entry(entry, default_timezone=default_timezone)
+    return published
 
 
 def _entry_text(entry: Mapping[str, Any], key: str) -> str:

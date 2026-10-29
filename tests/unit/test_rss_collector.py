@@ -280,7 +280,10 @@ class TestRSSCollectorIntegration:
         assert len(items) > 0
         assert all(item.url for item in items)
         assert all(item.title for item in items)
-        assert all(item.published_at for item in items)
+        assert all(item.collected_at is not None for item in items)
+        assert all(
+            item.published_at is None or isinstance(item.published_at, datetime) for item in items
+        )
 
 
 class TestRSSCollectorContentExtraction:
@@ -506,7 +509,7 @@ class TestRSSCollectorDateParsing:
         assert items[0].published_at.day == 20
 
     def test_parse_missing_date_uses_current_time(self, source_config):
-        """Test that missing date falls back to current time."""
+        """A feed entry with no date leaves published_at empty."""
         feed = b"""<?xml version="1.0" encoding="UTF-8"?>
         <rss version="2.0">
           <channel>
@@ -521,9 +524,8 @@ class TestRSSCollectorDateParsing:
         collector = RSSCollector("test_source", source_config, fetcher=mock_fetcher)
         items = collector.collect()
 
-        # Should have a published_at date (current time)
-        assert items[0].published_at is not None
-        assert isinstance(items[0].published_at, datetime)
+        assert items[0].published_at is None
+        assert isinstance(items[0].collected_at, datetime)
 
     def test_parse_updated_date_when_published_missing(self, source_config):
         """Test that updated date is used when published is missing."""

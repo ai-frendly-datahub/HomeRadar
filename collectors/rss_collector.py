@@ -7,13 +7,13 @@ and converts them to RawItem format.
 
 from __future__ import annotations
 
-import calendar
 from collections.abc import Callable
 from datetime import UTC, datetime
 from typing import Any
 
 import feedparser
 import requests
+from radar_core.dates import parse_feed_entry, resolve_default_timezone
 
 from collectors.base import BaseCollector, RawItem
 
@@ -69,8 +69,8 @@ class RSSCollector(BaseCollector):
             now = datetime.now(UTC)
 
             for entry in feed.entries:
-                # Parse publication date
-                published_at = self._parse_published_date(entry) or now
+                # A missing feed date stays NULL. collected_at holds the run time.
+                published_at = self._parse_published_date(entry)
                 category = self._item_category()
 
                 # Build RawItem
@@ -80,6 +80,7 @@ class RSSCollector(BaseCollector):
                     summary=self._extract_summary(entry),
                     source_id=self.source_id,
                     published_at=published_at,
+                    collected_at=now,
                     property_type=category,
                     raw_data={
                         "entry_id": entry.get("id", ""),
@@ -116,14 +117,15 @@ class RSSCollector(BaseCollector):
         Returns:
             datetime object or None if not found
         """
-        # Try multiple date fields
-        published = entry.get("published_parsed") or entry.get("updated_parsed")
-
-        if published:
-            # Convert time.struct_time to datetime
-            return datetime.fromtimestamp(calendar.timegm(published), tz=UTC)
-
-        return None
+        configured = self.source_config.get("default_timezone")
+        explicit = configured if isinstance(configured, str) else ""
+        default_timezone = resolve_default_timezone(
+            source_url=str(self.url or ""),
+            default_timezone=explicit,
+            config=self.source_config,
+        )
+        published, _published_raw = parse_feed_entry(entry, default_timezone=default_timezone)
+        return published
 
     def _item_category(self) -> str:
         for key in ("event_model", "info_purpose", "type"):

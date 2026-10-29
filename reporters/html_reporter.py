@@ -12,6 +12,7 @@ from typing import Any
 from urllib.request import urlopen
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+from radar_core.dates import daily_partition_date
 
 from graph.graph_store import GraphStore
 
@@ -150,6 +151,8 @@ class HtmlReporter:
                 "entities": len(entity_counts),
             }
 
+        generated_at = datetime.now(UTC)
+
         # Load and render template
         template = self.env.get_template("daily_report.html")
         rendered = template.render(
@@ -164,12 +167,11 @@ class HtmlReporter:
             regional_distribution_fallback=regional_distribution_fallback,
             cross_reference_html=cross_reference_html,
             quality_report=quality_report or {},
-            generated_at=datetime.now(UTC),
+            generated_at=generated_at,
             stats=stats,
         )
 
-        now = datetime.now(UTC)
-        date_stamp = now.strftime("%Y%m%d")
+        date_stamp = daily_partition_date(generated_at).strftime("%Y%m%d")
         category_name = output_path.stem.split("_")[0] or "daily"
         dated_path = output_path.parent / f"{category_name}_{date_stamp}.html"
 

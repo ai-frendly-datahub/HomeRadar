@@ -5,6 +5,8 @@ from collections.abc import Iterable
 from datetime import UTC, datetime
 from pathlib import Path
 
+from radar_core.dates import daily_partition_date
+
 from .models import Article
 
 
@@ -20,7 +22,7 @@ class RawLogger:
         run_id: str | None = None,
     ) -> Path:
         now = datetime.now(UTC)
-        date_dir = self.raw_dir / now.date().isoformat()
+        date_dir = self.raw_dir / daily_partition_date(now).isoformat()
         safe_source_name = source_name.replace("/", "_").replace("\\", "_")
 
         if run_id is not None:

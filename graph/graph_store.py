@@ -11,7 +11,7 @@ import json
 import logging
 import os
 from dataclasses import dataclass
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Optional, Any
 
@@ -22,6 +22,23 @@ from exceptions import StorageError
 
 
 logger = logging.getLogger(__name__)
+
+
+def _as_utc_wall(value: datetime | None) -> datetime | None:
+    """Store DuckDB TIMESTAMP as UTC wall time, without changing the column type.
+
+    Naive values are already UTC wall time. Aware values keep their instant
+    and drop the offset after conversion to UTC.
+    """
+    if value is None:
+        return None
+    if value.tzinfo is None or value.tzinfo.utcoffset(value) is None:
+        return value.replace(tzinfo=None)
+    return value.astimezone(UTC).replace(tzinfo=None)
+
+
+def _utc_wall_now() -> datetime:
+    return datetime.now(UTC).replace(tzinfo=None)
 
 
 DB_ENV_VAR = "HOMERADAR_DB_PATH"
@@ -251,13 +268,10 @@ def dedupe_items_by_url(items: list[RawItem]) -> list[RawItem]:
 
 def _raw_item_from_url_row(row: dict[str, Any]) -> RawItem:
     """Build a RawItem from an existing urls row for articles backfill."""
-    fallback_time = (
-        row.get("published_at")
-        or row.get("last_seen_at")
-        or row.get("updated_at")
-        or row.get("created_at")
-        or datetime.now()
-    )
+    published_value = row.get("published_at")
+    published_at = published_value if isinstance(published_value, datetime) else None
+    observed = row.get("last_seen_at") or row.get("updated_at") or row.get("created_at")
+    collected_at = observed if isinstance(observed, datetime) else datetime.now(UTC)
     raw_data = {
         "district": row.get("district"),
         "trust_tier": row.get("trust_tier"),
@@ -274,8 +288,8 @@ def _raw_item_from_url_row(row: dict[str, Any]) -> RawItem:
         title=str(row.get("title") or ""),
         summary=str(row.get("summary") or ""),
         source_id=str(row.get("source_id") or "unknown"),
-        published_at=fallback_time,
-        collected_at=row.get("last_seen_at") or row.get("updated_at") or fallback_time,
+        published_at=published_at,
+        collected_at=collected_at,
         raw_data=raw_data,
         region=_text_or_none(row.get("region")),
         property_type=_text_or_none(row.get("property_type")),
@@ -312,8 +326,8 @@ def _upsert_article_row(
             item.title,
             item.summary,
             item.source_id,
-            item.published_at,
-            collected_at,
+            _as_utc_wall(item.published_at),
+            _as_utc_wall(collected_at),
             event_model_id,
             ontology_json,
         ],
@@ -484,7 +498,7 @@ class GraphStore:
                     existing = conn.execute(
                         "SELECT url FROM urls WHERE url = ?", [item.url]
                     ).fetchone()
-                    now = datetime.now()
+                    now = _utc_wall_now()
 
                     if existing:
                         conn.execute("DELETE FROM url_entities WHERE url = ?", [item.url])
@@ -512,7 +526,7 @@ class GraphStore:
                                 item.title,
                                 item.summary,
                                 item.source_id,
-                                item.published_at,
+                                _as_utc_wall(item.published_at),
                                 item.region,
                                 item.raw_data.get("district"),
                                 item.property_type,
@@ -543,7 +557,7 @@ class GraphStore:
                                 item.title,
                                 item.summary,
                                 item.source_id,
-                                item.published_at,
+                                _as_utc_wall(item.published_at),
                                 item.region,
                                 item.raw_data.get("district"),
                                 item.property_type,
@@ -628,7 +642,7 @@ class GraphStore:
                         row.get("last_seen_at")
                         or row.get("updated_at")
                         or row.get("created_at")
-                        or item.published_at
+                        or datetime.now(UTC)
                     )
                     _upsert_article_row(conn, item, collected_at=collected_at)
                     if existing:
@@ -655,7 +669,7 @@ class GraphStore:
             Number of entity relationships added
         """
         count = 0
-        now = datetime.now()
+        now = _utc_wall_now()
 
         try:
             with self._connection() as conn:
@@ -847,7 +861,7 @@ class GraphStore:
             }
 
     def delete_older_than(self, days: int) -> int:
-        cutoff = datetime.now(timezone.utc).replace(tzinfo=None) - timedelta(days=days)
+        cutoff = _utc_wall_now() - timedelta(days=days)
         try:
             with self._connection() as conn:
                 count_row = conn.execute(

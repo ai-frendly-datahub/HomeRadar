@@ -5,6 +5,8 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import cast
 
+from radar_core.dates import daily_partition_date
+
 from homeradar.models import Article
 from homeradar.raw_logger import RawLogger
 
@@ -27,7 +29,7 @@ def test_log_creates_yyyy_mm_dd_directory_and_jsonl_file(tmp_path: Path) -> None
 
     output_path = logger.log([article], source_name="MySource")
 
-    assert output_path.parent.name == datetime.now(UTC).date().isoformat()
+    assert output_path.parent.name == daily_partition_date().isoformat()
     assert output_path.name == "MySource.jsonl"
     assert output_path.exists()
 

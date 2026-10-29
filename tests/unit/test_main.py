@@ -9,6 +9,7 @@ from types import SimpleNamespace
 from unittest.mock import Mock, mock_open, patch
 
 import pytest
+from radar_core.dates import daily_partition_date
 
 from collectors.base import RawItem
 from main import (
@@ -651,7 +652,7 @@ class TestRunCollectionCycle:
         assert latest_report_path == settings.report_dir / "daily_report.html"
         assert latest_report_path.exists()
         assert snapshot_path.exists()
-        assert snapshot_path.parent.name == datetime.now(UTC).date().isoformat()
+        assert snapshot_path.parent.name == daily_partition_date().isoformat()
         assert quality_path == settings.report_dir / "home_quality.json"
         assert quality_path.exists()
         assert dated_quality_path.exists()

@@ -10,6 +10,7 @@ class Source:
     name: str
     type: str
     url: str
+    default_timezone: str = ""
 
 
 @dataclass
