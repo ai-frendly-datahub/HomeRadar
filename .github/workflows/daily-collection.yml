@@ -65,10 +65,25 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update home radar data [skip ci]"
-          file_pattern: "data/ reports/ :(exclude)data/search_index.db*"
+          # data/ also commits data/daily when that directory has files.
+          # A standalone data/daily pathspec fails the add if the directory is absent.
+          file_pattern: "data/*.duckdb data/ reports/ :(exclude)data/search_index.db*"
           add_options: "-f"
           skip_fetch: false
           skip_checkout: false
+
+      - name: Verify report output
+        run: test -f reports/index.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./reports
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com
+          commit_message: "docs: update radar reports"
 
       - name: Archive Quality Report
         if: always()

@@ -2,7 +2,7 @@
 
 **🌐 Live Report**: https://ai-frendly-datahub.github.io/HomeRadar/
 
-[![GitHub Actions](https://github.com/ai-frendly-datahub/HomeRadar/workflows/HomeRadar%20Crawler/badge.svg)](https://github.com/ai-frendly-datahub/HomeRadar/actions)
+[![GitHub Actions](https://github.com/ai-frendly-datahub/HomeRadar/workflows/HomeRadar%20Daily%20Collection/badge.svg)](https://github.com/ai-frendly-datahub/HomeRadar/actions)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -283,7 +283,7 @@ MIT License – 자세한 내용은 [LICENSE](LICENSE)를 참고하세요.
 <!-- DATAHUB-OPS-AUDIT:START -->
 ## DataHub Operations
 
-- CI/CD workflows: `daily-collection.yml`, `deploy-pages.yml`, `pr-checks.yml`, `radar-crawler.yml`, `release.yml`.
+- CI/CD workflows: `daily-collection.yml`, `pr-checks.yml`, `release.yml`.
 - GitHub Pages visualization: `reports/index.html` (valid HTML); https://ai-frendly-datahub.github.io/HomeRadar/.
 - Latest remote Pages check: HTTP 200, HTML.
 - Local workspace audit: 98 Python files parsed, 0 syntax errors.
