@@ -37,6 +37,7 @@ from collectors.base import resolve_max_workers
 from config_loader import load_notification_config
 from date_storage import apply_date_storage_policy
 from graph import GraphStore
+from graph.graph_store import dedupe_items_by_url
 from graph.search_index import SearchIndex
 from homeradar.config_loader import load_settings
 from homeradar.common.validators import (
@@ -707,6 +708,7 @@ def store_and_extract(items: list[RawItem], store: GraphStore) -> dict[str, int]
         logger.info("No items to store")
         return {"stored": 0, "entities": 0, "matched": 0}
 
+    items = dedupe_items_by_url(items)
     logger.info(f"Storing {len(items)} items...")
 
     # Store items

@@ -427,6 +427,37 @@ class TestStoreAndExtract:
             assert stats["matched"] == 1
             mock_store.add_items.assert_called_once_with(sample_items)
 
+    @pytest.mark.unit
+    def test_store_and_extract_dedupes_by_url_before_insert(self, sample_items):
+        """Duplicate URLs are collapsed before GraphStore.add_items."""
+        original = sample_items[0]
+        duplicate = RawItem(
+            url=original.url,
+            title="같은 URL의 뒤쪽 항목",
+            summary="중복",
+            source_id=original.source_id,
+            published_at=original.published_at,
+        )
+        mock_store = Mock()
+        mock_store.add_items.return_value = {"inserted": 1, "updated": 0}
+        mock_store.add_entities.return_value = 0
+
+        with (
+            patch("main.EntityExtractor") as mock_extractor_class,
+            patch("main.SearchIndex"),
+        ):
+            mock_extractor = Mock()
+            mock_extractor.extract_from_item.return_value = {}
+            mock_extractor_class.return_value = mock_extractor
+
+            stats = store_and_extract([original, duplicate], mock_store)
+
+        passed_items = mock_store.add_items.call_args[0][0]
+        assert len(passed_items) == 1
+        assert passed_items[0].title == "같은 URL의 뒤쪽 항목"
+        assert stats["stored"] == 1
+        mock_extractor.extract_from_item.assert_called_once()
+
     def test_store_and_extract_empty_items(self):
         """Test with empty items list."""
         mock_store = Mock()

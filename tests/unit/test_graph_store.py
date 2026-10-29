@@ -119,6 +119,47 @@ class TestGraphStoreAddItems:
         items = store.get_recent_items(limit=10)
         assert len(items) == 2
 
+    @pytest.mark.unit
+    def test_add_items_dedupes_same_url_before_insert(self, store):
+        """A repeated URL in one batch is inserted once, not updated in place."""
+        now = datetime.now(UTC)
+        first = RawItem(
+            url="https://example.com/news/same-day",
+            title="First copy",
+            summary="Earlier payload.",
+            source_id="test_news",
+            published_at=now,
+            region="서울",
+        )
+        second = RawItem(
+            url="https://example.com/news/same-day",
+            title="Later copy",
+            summary="Later payload.",
+            source_id="test_news",
+            published_at=now,
+            region="서울",
+        )
+        other = RawItem(
+            url="https://example.com/news/other",
+            title="Other item",
+            summary="Distinct URL.",
+            source_id="test_news",
+            published_at=now,
+            region="경기",
+        )
+
+        result = store.add_items([first, second, other])
+
+        assert result == {"inserted": 2, "updated": 0}
+        with store._connection() as conn:
+            rows = conn.execute("SELECT url, title FROM urls ORDER BY url").fetchall()
+            article_count = conn.execute("SELECT COUNT(*) FROM articles").fetchone()[0]
+        assert rows == [
+            ("https://example.com/news/other", "Other item"),
+            ("https://example.com/news/same-day", "Later copy"),
+        ]
+        assert article_count == 2
+
     def test_add_duplicate_updates(self, store, sample_items):
         """Test that adding duplicate URL updates existing item."""
         # Add first time

@@ -236,6 +236,19 @@ def _build_homeradar_ontology_json(item: RawItem) -> str:
     return json.dumps(payload, ensure_ascii=False)
 
 
+def dedupe_items_by_url(items: list[RawItem]) -> list[RawItem]:
+    """Keep one item per URL before insert.
+
+    A repeated URL in the same batch is stored once. The last item wins so
+    a later copy of the same URL replaces the earlier payload without a
+    second insert.
+    """
+    deduped: dict[str, RawItem] = {}
+    for item in items:
+        deduped[item.url] = item
+    return list(deduped.values())
+
+
 def _raw_item_from_url_row(row: dict[str, Any]) -> RawItem:
     """Build a RawItem from an existing urls row for articles backfill."""
     fallback_time = (
@@ -450,6 +463,12 @@ class GraphStore:
         """
         if not items:
             return {"inserted": 0, "updated": 0}
+
+        unique_items = dedupe_items_by_url(items)
+        dropped = len(items) - len(unique_items)
+        if dropped:
+            logger.info("Skipped %s same-URL duplicate(s) before insert", dropped)
+        items = unique_items
 
         inserted = 0
         updated = 0
