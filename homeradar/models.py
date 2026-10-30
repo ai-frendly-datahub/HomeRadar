@@ -10,6 +10,7 @@ class Source:
     name: str
     type: str
     url: str
+    default_timezone: str = ""
 
 
 @dataclass
@@ -30,6 +31,7 @@ class Article:
     matched_entities: dict[str, list[str]] = field(default_factory=dict)
     collected_at: datetime | None = None
     ontology: dict[str, object] = field(default_factory=dict)
+    published_raw: str | None = None
 
 
 @dataclass

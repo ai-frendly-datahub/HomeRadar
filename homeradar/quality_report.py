@@ -8,6 +8,8 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+from radar_core.dates import daily_partition_date
+
 
 def build_quality_report(
     *,
@@ -83,7 +85,7 @@ def write_quality_report(
 ) -> dict[str, Path]:
     output_dir.mkdir(parents=True, exist_ok=True)
     generated_at = _parse_datetime(str(report.get("generated_at") or "")) or datetime.now(UTC)
-    date_stamp = _as_utc(generated_at).strftime("%Y%m%d")
+    date_stamp = daily_partition_date(_as_utc(generated_at)).strftime("%Y%m%d")
     latest_path = output_dir / f"{category_name}_quality.json"
     dated_path = output_dir / f"{category_name}_{date_stamp}_quality.json"
     encoded = json.dumps(report, ensure_ascii=False, indent=2, default=str)

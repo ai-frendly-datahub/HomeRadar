@@ -29,6 +29,7 @@ from typing import Any
 import duckdb
 import yaml
 
+from radar_core.dates import daily_partition_date
 from radar_core.ontology import build_event_model_payload, build_summary_ontology_metadata
 
 from analyzers import EntityExtractor
@@ -68,7 +69,7 @@ logger = logging.getLogger(__name__)
 
 def _daily_report_path(cycle_start: datetime, report_dir: Path) -> Path:
     """Return the date-stamped daily report path for a collection cycle."""
-    stamp = cycle_start.astimezone(UTC).strftime("%Y%m%d")
+    stamp = daily_partition_date(cycle_start).strftime("%Y%m%d")
     return report_dir / f"daily_report_{stamp}.html"
 
 

@@ -72,7 +72,7 @@ class BrowserCollector(BaseCollector):
                 title=article.title,
                 summary=article.summary,
                 source_id=self.source_id,
-                published_at=article.published or now,
+                published_at=article.published,
                 collected_at=now,
                 region=None,
                 property_type=None,

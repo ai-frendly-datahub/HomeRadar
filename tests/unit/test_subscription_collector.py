@@ -2,7 +2,6 @@
 Unit tests for SubscriptionCollector.
 """
 
-from datetime import UTC, datetime
 from unittest.mock import patch
 
 import pytest
@@ -324,18 +323,16 @@ class TestSubscriptionCollectorDateParsing:
         assert result.day == 1
 
     def test_parse_date_with_empty_string(self, collector):
-        """Test parsing empty date string returns current time."""
+        """An empty notice date is not a publish time."""
         result = collector._parse_date("")
 
-        assert isinstance(result, datetime)
-        assert result.tzinfo == UTC
+        assert result is None
 
     def test_parse_date_with_invalid_format(self, collector):
-        """Test parsing invalid date format returns current time."""
+        """An unparseable notice date is not replaced with the collection time."""
         result = collector._parse_date("invalid_date")
 
-        assert isinstance(result, datetime)
-        assert result.tzinfo == UTC
+        assert result is None
 
 
 class TestSubscriptionCollectorAreaParsing:

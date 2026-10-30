@@ -2,9 +2,10 @@ from __future__ import annotations
 
 import json
 from collections.abc import Iterable
-from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
+
+from radar_core.dates import daily_partition_date
 
 
 def _payload_url(payload: dict[str, Any]) -> str:
@@ -35,8 +36,7 @@ class RawLogger:
         on the same day and repeats inside a single batch. The last payload
         for a URL in the batch is the one that is eligible to be appended.
         """
-        now = datetime.now(UTC)
-        date_dir = self.raw_dir / now.strftime("%Y-%m-%d")
+        date_dir = self.raw_dir / daily_partition_date().isoformat()
         date_dir.mkdir(parents=True, exist_ok=True)
         safe_source_name = source_name.replace("/", "_").replace("\\", "_")
         output_path = (
@@ -100,8 +100,7 @@ class RawLogger:
         if not env_name or any(char.isspace() for char in env_name):
             raise ValueError("required_env must be an environment variable name")
 
-        now = datetime.now(UTC)
-        date_dir = self.raw_dir / now.strftime("%Y-%m-%d")
+        date_dir = self.raw_dir / daily_partition_date().isoformat()
         date_dir.mkdir(parents=True, exist_ok=True)
         safe_source_name = source_name.replace("/", "_").replace("\\", "_")
         output_path = date_dir / f"{safe_source_name}.skip.json"

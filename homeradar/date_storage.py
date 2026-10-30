@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import shutil
-from datetime import UTC, date, datetime, timedelta
+from datetime import date, timedelta
 from pathlib import Path
+
+from radar_core.dates import daily_partition_date
 
 
 def snapshot_database(
@@ -14,7 +16,7 @@ def snapshot_database(
     if not db_path.exists():
         return None
 
-    target_date = snapshot_date or datetime.now(UTC).date()
+    target_date = snapshot_date or daily_partition_date()
     target_root = snapshot_root or db_path.parent / "daily"
     target_root.mkdir(parents=True, exist_ok=True)
 
@@ -27,7 +29,7 @@ def cleanup_date_directories(base_dir: Path, *, keep_days: int, today: date | No
     if keep_days < 0 or not base_dir.exists():
         return 0
 
-    cutoff = (today or datetime.now(UTC).date()) - timedelta(days=keep_days)
+    cutoff = (today or daily_partition_date()) - timedelta(days=keep_days)
     removed = 0
     for child in base_dir.iterdir():
         if not child.is_dir():
@@ -47,7 +49,7 @@ def cleanup_dated_reports(report_dir: Path, *, keep_days: int, today: date | Non
     if keep_days < 0 or not report_dir.exists():
         return 0
 
-    cutoff = (today or datetime.now(UTC).date()) - timedelta(days=keep_days)
+    cutoff = (today or daily_partition_date()) - timedelta(days=keep_days)
     removed = 0
     for html_file in report_dir.glob("*.html"):
         if html_file.name == "index.html":

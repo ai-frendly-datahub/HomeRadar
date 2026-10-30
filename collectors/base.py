@@ -9,7 +9,7 @@ import os
 import threading
 import time
 from abc import ABC, abstractmethod
-from datetime import datetime
+from datetime import UTC, datetime
 from typing import Any
 from urllib.parse import urlparse
 
@@ -46,8 +46,14 @@ class RawItem(BaseModel):
     title: str = Field(..., description="Title or heading")
     summary: str = Field(default="", description="Summary or description")
     source_id: str = Field(..., description="Source identifier from config")
-    published_at: datetime = Field(..., description="Publication/transaction date")
-    collected_at: datetime = Field(default_factory=datetime.now, description="Collection timestamp")
+    published_at: datetime | None = Field(
+        default=None,
+        description="Publication or transaction date when the source provides one",
+    )
+    collected_at: datetime = Field(
+        default_factory=lambda: datetime.now(UTC),
+        description="Collection timestamp",
+    )
     raw_data: dict[str, Any] = Field(
         default_factory=dict, description="Original raw data from source"
     )

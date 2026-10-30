@@ -224,7 +224,7 @@ class NaverLandCollector(BaseCollector):
             title=title,
             summary=summary,
             source_id=self.source_id,
-            published_at=datetime.now(UTC),
+            published_at=None,
             collected_at=datetime.now(UTC),
             region=region if region else None,
             property_type=property_type if property_type else None,

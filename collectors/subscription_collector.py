@@ -257,18 +257,18 @@ class SubscriptionCollector(BaseCollector):
         except (ValueError, TypeError):
             return None
 
-    def _parse_date(self, date_str: Any) -> datetime:
+    def _parse_date(self, date_str: Any) -> datetime | None:
         """
-        Parse date string from API response.
+        Parse a notice date from the API response.
 
         Args:
             date_str: Date string (various formats possible)
 
         Returns:
-            datetime object in UTC
+            UTC datetime when the source provides a date, otherwise None
         """
         if not date_str:
-            return datetime.now(UTC)
+            return None
 
         date_str_str = str(date_str).strip()
 
@@ -288,8 +288,7 @@ class SubscriptionCollector(BaseCollector):
             except ValueError:
                 continue
 
-        # If no format matches, return current time
-        return datetime.now(UTC)
+        return None
 
     def collect_by_region(self, region: str) -> list[RawItem]:
         """
