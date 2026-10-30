@@ -70,8 +70,16 @@ class RSSCollector(BaseCollector):
 
             for entry in feed.entries:
                 # A missing feed date stays NULL. collected_at holds the run time.
-                published_at = self._parse_published_date(entry)
+                published_at, published_raw = self._parse_published(entry)
                 category = self._item_category()
+                raw_data = {
+                    "entry_id": entry.get("id", ""),
+                    "author": entry.get("author", ""),
+                    "category": category,
+                    "tags": [tag.get("term", "") for tag in entry.get("tags", [])],
+                }
+                if published_raw:
+                    raw_data["published_raw"] = published_raw
 
                 # Build RawItem
                 raw_item = RawItem(
@@ -82,12 +90,7 @@ class RSSCollector(BaseCollector):
                     published_at=published_at,
                     collected_at=now,
                     property_type=category,
-                    raw_data={
-                        "entry_id": entry.get("id", ""),
-                        "author": entry.get("author", ""),
-                        "category": category,
-                        "tags": [tag.get("term", "") for tag in entry.get("tags", [])],
-                    },
+                    raw_data=raw_data,
                 )
 
                 # Skip entries without valid URL
@@ -117,6 +120,11 @@ class RSSCollector(BaseCollector):
         Returns:
             datetime object or None if not found
         """
+        published, _published_raw = self._parse_published(entry)
+        return published
+
+    def _parse_published(self, entry: Any) -> tuple[datetime | None, str | None]:
+        """Return the UTC instant and the original date string from one entry."""
         configured = self.source_config.get("default_timezone")
         explicit = configured if isinstance(configured, str) else ""
         default_timezone = resolve_default_timezone(
@@ -124,8 +132,7 @@ class RSSCollector(BaseCollector):
             default_timezone=explicit,
             config=self.source_config,
         )
-        published, _published_raw = parse_feed_entry(entry, default_timezone=default_timezone)
-        return published
+        return parse_feed_entry(entry, default_timezone=default_timezone)
 
     def _item_category(self) -> str:
         for key in ("event_model", "info_purpose", "type"):

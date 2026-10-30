@@ -1,0 +1,89 @@
+{
+  "repo": "HomeRadar",
+  "category": "home",
+  "ontology_version": "0.1.0",
+  "event_model_mappings": {
+    "transaction_price": "home.transaction_price",
+    "rent_transaction": "home.rent_transaction",
+    "subscription_notice": "home.subscription_notice",
+    "auction_signal": "home.auction_signal",
+    "policy_context": "home.policy_context",
+    "market_context": "home.market_context",
+    "listing_inventory": "home.listing_inventory"
+  },
+  "event_model_field_specs": {
+    "transaction_price": {
+      "ontology_id": "home.transaction_price",
+      "required_fields": ["lawd_cd", "deal_date", "source_url"],
+      "optional_fields": [],
+      "field_enums": {}
+    },
+    "rent_transaction": {
+      "ontology_id": "home.rent_transaction",
+      "required_fields": ["lawd_cd", "deal_date", "source_url"],
+      "optional_fields": [],
+      "field_enums": {}
+    },
+    "subscription_notice": {
+      "ontology_id": "home.subscription_notice",
+      "required_fields": ["prjNo", "noticeDate", "source_url"],
+      "optional_fields": ["prjNm", "location"],
+      "field_enums": {}
+    },
+    "auction_signal": {
+      "ontology_id": "home.auction_signal",
+      "required_fields": ["cltrNo", "bidDate", "source_url"],
+      "optional_fields": ["cltrNm", "location"],
+      "field_enums": {}
+    },
+    "policy_context": {
+      "ontology_id": "home.policy_context",
+      "required_fields": ["title", "published_date", "source_url"],
+      "optional_fields": [],
+      "field_enums": {}
+    },
+    "market_context": {
+      "ontology_id": "home.market_context",
+      "required_fields": ["title", "published_date", "source_url"],
+      "optional_fields": [],
+      "field_enums": {}
+    },
+    "listing_inventory": {
+      "ontology_id": "home.listing_inventory",
+      "required_fields": ["platform", "region_code", "observed_at"],
+      "optional_fields": [],
+      "field_enums": {}
+    }
+  },
+  "entity_type_hints": ["complex", "district", "project", "keyword"],
+  "source_role_mappings": {
+    "molit_apt_transaction": "official_primary_transaction",
+    "molit_apt_rent": "official_primary_transaction",
+    "reb_subscription": "official_primary_subscription",
+    "hankyung_realestate": "market_corroboration",
+    "korea_policy_news": "official_policy_corroboration",
+    "korea_pressrelease_news": "official_policy_corroboration",
+    "asiae_realestate": "market_corroboration",
+    "edaily_realestate": "market_corroboration",
+    "news1_realestate": "market_corroboration",
+    "sedaily_realestate": "market_corroboration",
+    "housingherald": "market_corroboration",
+    "housing_economy_news": "market_corroboration",
+    "rcnews_housing": "market_corroboration",
+    "hani_economy": "market_corroboration",
+    "heraldcorp_realestate": "market_corroboration",
+    "kb_kbland": "backlog_operational_candidate",
+    "naver_land": "backlog_listing_candidate",
+    "r114": "backlog_listing_candidate",
+    "zigbang": "backlog_listing_candidate",
+    "zigbang_browser": "backlog_listing_candidate",
+    "dabang": "backlog_listing_candidate",
+    "onbid_auction": "official_primary_auction",
+    "naver_land_main": "backlog_listing_candidate"
+  },
+  "evidence_policy_ids": [
+    "traceable_url_required",
+    "official_primary_required",
+    "market_context_cannot_override_official"
+  ]
+}

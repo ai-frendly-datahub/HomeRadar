@@ -291,7 +291,7 @@ def _collect_single(
         items: list[Article] = []
 
         for entry in feed.entries[:limit]:
-            published = _extract_datetime(entry, source)
+            published, published_raw = _extract_published(entry, source)
             summary = _entry_text(entry, "summary") or _entry_text(entry, "description")
             if not summary:
                 _content = entry.get("content", [])
@@ -310,6 +310,7 @@ def _collect_single(
                     published=published,
                     source=source.name,
                     category=category,
+                    published_raw=published_raw,
                 )
             )
 
@@ -318,14 +319,16 @@ def _collect_single(
         raise ParseError(f"Failed to parse feed from {source.name}: {exc}") from exc
 
 
-def _extract_datetime(entry: Mapping[str, Any], source: Source | None = None) -> datetime | None:
-    """Parse a feed entry date into a timezone-aware datetime.
+def _extract_published(
+    entry: Mapping[str, Any], source: Source | None = None
+) -> tuple[datetime | None, str | None]:
+    """Parse a feed entry into a UTC instant and the original date string.
 
     feedparser ``*_parsed`` values are UTC. ``radar_core.dates`` converts them
     with ``calendar.timegm``. Offset strings keep their offset. Zone-less
     strings use the source timezone, otherwise ``.kr`` hosts use Asia/Seoul
     and every other host uses UTC. Missing dates stay ``None``; collection
-    time is not a publish time.
+    time is not a publish time. The original string is ``published_raw``.
     """
     source_url = source.url if source is not None else ""
     configured = source.default_timezone if source is not None else ""
@@ -333,7 +336,12 @@ def _extract_datetime(entry: Mapping[str, Any], source: Source | None = None) ->
         source_url=source_url,
         default_timezone=configured,
     )
-    published, _published_raw = parse_feed_entry(entry, default_timezone=default_timezone)
+    return parse_feed_entry(entry, default_timezone=default_timezone)
+
+
+def _extract_datetime(entry: Mapping[str, Any], source: Source | None = None) -> datetime | None:
+    """Return the UTC instant from a feed entry, ignoring the raw string."""
+    published, _published_raw = _extract_published(entry, source)
     return published
 
 
