@@ -1,0 +1,7 @@
+{
+  "record_type": "skip",
+  "source_id": "reb_subscription",
+  "status": "skipped_missing_env",
+  "required_env": "SUBSCRIPTION_API_KEY",
+  "skip_reason": "SUBSCRIPTION_API_KEY not set"
+}
