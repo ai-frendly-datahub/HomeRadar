@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-11-13T07:39:31.270098+00:00",
+  "generated_at": "2026-11-14T07:23:39.534287+00:00",
   "summary": {
     "total_sources": 30,
     "enabled_sources": 11,
@@ -43,7 +43,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 3767,
+    "verification_state_count": 3789,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 37,
     "official_primary_status": "blocked_missing_env",
@@ -62,15 +62,145 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 2691,
+    "corroboration_only_items": 2700,
     "official_primary_items": 0
   },
   "verification_states": {
-    "corroboration_requires_official_source": 743,
-    "market_corroboration_requires_official_source": 2691,
-    "no_operational_event": 333
+    "corroboration_requires_official_source": 755,
+    "market_corroboration_requires_official_source": 2700,
+    "no_operational_event": 334
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.mk.co.kr/news/realestate/12208864",
+      "title": "“60억 반포 아파트도 ‘미달 흑역사’ 있었다”…청약 부진 단지들 다시볼까",
+      "source_id": "mk_realestate",
+      "published_at": "2026-11-14T05:44:56+00:00",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "event_model": ""
+    },
+    {
+      "url": "https://www.sedaily.com/article/20114304",
+      "title": "서울 토허제·규제지역 풀리나…정부 “12월 중 최종 결론”",
+      "source_id": "sedaily_realestate",
+      "published_at": "2026-11-14T01:51:19+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.mk.co.kr/news/realestate/12208826",
+      "title": "성북구 정릉2차e-편한세상 59.37㎡ 10억 8천만원… 최근 3년 신고가 [MAI부동산]",
+      "source_id": "mk_realestate",
+      "published_at": "2026-11-14T01:45:20+00:00",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "event_model": ""
+    },
+    {
+      "url": "https://www.mk.co.kr/news/realestate/12208827",
+      "title": "도봉구 쌍문동 한양1차 50.58㎡ 6억 5천만원… 최근 3년 신고가 [MAI부동산]",
+      "source_id": "mk_realestate",
+      "published_at": "2026-11-14T01:45:20+00:00",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "event_model": ""
+    },
+    {
+      "url": "https://www.mk.co.kr/news/realestate/12208828",
+      "title": "도봉구 창동주공3단지 79.07㎡ 10억 6천만원… 최근 3년 신고가 [MAI부동산]",
+      "source_id": "mk_realestate",
+      "published_at": "2026-11-14T01:45:20+00:00",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "event_model": ""
+    },
+    {
+      "url": "https://www.mk.co.kr/news/realestate/12208829",
+      "title": "노원구 공릉동 풍림아파트B 31.32㎡, 3억 7천만원에 거래… 최근 3년 신고가 [MAI부동산]",
+      "source_id": "mk_realestate",
+      "published_at": "2026-11-14T01:45:20+00:00",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "event_model": ""
+    },
+    {
+      "url": "https://www.mk.co.kr/news/realestate/12208830",
+      "title": "서대문구 동부센트레빌 59.86㎡ 10억 9천만원 거래… 최근 3년 신고가 [MAI부동산]",
+      "source_id": "mk_realestate",
+      "published_at": "2026-11-14T01:45:20+00:00",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "event_model": ""
+    },
+    {
+      "url": "https://www.mk.co.kr/news/realestate/12208831",
+      "title": "양천구 목동신시가지7 전용 74.12㎡ 28억 7천만원… 최근 3년 신고가 [MAI부동산]",
+      "source_id": "mk_realestate",
+      "published_at": "2026-11-14T01:45:20+00:00",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "event_model": ""
+    },
+    {
+      "url": "https://www.mk.co.kr/news/realestate/12208832",
+      "title": "금천구 무지개 53.75㎡ 5억 5천만원… 최근 3년 신고가 [MAI부동산]",
+      "source_id": "mk_realestate",
+      "published_at": "2026-11-14T01:45:20+00:00",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "event_model": ""
+    },
+    {
+      "url": "https://www.mk.co.kr/news/realestate/12208833",
+      "title": "강동구 천호동 동아하이빌아파트 84.97㎡ 11억 7500만원 최근 3년 신고가 [MAI부동산]",
+      "source_id": "mk_realestate",
+      "published_at": "2026-11-14T01:45:20+00:00",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "event_model": ""
+    },
+    {
+      "url": "https://www.mk.co.kr/news/realestate/12208825",
+      "title": "압구정동 한양2 65억 5천만원·현대14차 54억원… 서울 아파트 고가 거래 [MAI부동산]",
+      "source_id": "mk_realestate",
+      "published_at": "2026-11-14T01:45:19+00:00",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "event_model": ""
+    },
+    {
+      "url": "https://www.sedaily.com/article/20114227",
+      "title": "“철도 다녀야 경제 살고 집값 오른다”…지자체 유치 경쟁 치열 [집슐랭]",
+      "source_id": "sedaily_realestate",
+      "published_at": "2026-11-13T22:04:05+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.sedaily.com/article/20114228",
+      "title": "신월·중화동 모아주택 2741가구 공급…2028년 착공 목표",
+      "source_id": "sedaily_realestate",
+      "published_at": "2026-11-13T20:56:05+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.arunews.com/news/articleView.html?idxno=69512",
       "title": "서울 집값 상승폭 둔화·매물은 증가… 내년 1분기 수도권 4만호 이상 입주",
@@ -136,136 +266,6 @@
       "title": "신월동 144-20 가로주택정비 A1구역, 354세대 공급",
       "source_id": "housing_economy_news",
       "published_at": "2026-11-13T13:31:28+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69503",
-      "title": "선거사무원에게 건넨 조합원명부, 개인정보 유출일까?",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-11-13T13:04:42+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69502",
-      "title": "서울시, 금천·영등포 등 신통기획 후보지 6곳 추가 선정",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-11-13T12:47:01+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69499",
-      "title": "국토부-서울시, 공공재개발 이어 이번엔 도심복합사업 ‘네 탓’ 공방",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-11-13T12:04:15+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69500",
-      "title": "백마3·4·5·6단지, 재건축 추진위원회 구성 신청… 연내 승인",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-11-13T12:03:06+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69498",
-      "title": "주례1구역, 재건축 시공자 현설에 4개사",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-11-13T10:53:33+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69471",
-      "title": "정비사업 수주전 막바지… 아직 20조원 남아",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-11-13T10:13:15+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69472",
-      "title": "주택공급에는 흑백논리 없어야",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-11-13T10:13:15+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69486",
-      "title": "이촌동 반도아파트, 재건축 추정비례율 88.47%로 추산",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-11-13T10:13:15+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69488",
-      "title": "대치선경, 최고 49층 아파트 1,570세대로 재건축",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-11-13T10:13:15+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69493",
-      "title": "신길13구역, 최고 35층 아파트 586세대로 공공재건축",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-11-13T10:13:15+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69467",
-      "title": "[4분기 정비사업 수주 판도 분석] 연말 수주 성적표 윤곽… 대형사, 곳곳서 시공권 확보 박차",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-11-13T10:10:00+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69430",
-      "title": "연말 수주전 막바지 아직 20조원 남았다",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-11-13T10:00:29+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.sedaily.com/article/20114108",
-      "title": "“매일 호캉스 하는 기분이라더니”…요즘 아파트 커뮤니티 수준에 ‘깜짝’",
-      "source_id": "sedaily_realestate",
-      "published_at": "2026-11-13T07:31:44+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
@@ -358,12 +358,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 1076,
-      "latest_event_at": "2026-11-13T07:23:08+00:00",
-      "latest_observed_at": "2026-11-13T07:38:45.043252+00:00",
-      "age_days": 0.01,
-      "latest_title": "“용산 포트폴리오 확장”…IPARK현산, 용산정비창 전면1구역 다음은 이촌 강변강서",
-      "latest_url": "https://www.mk.co.kr/news/realestate/12208138"
+      "item_count": 1089,
+      "latest_event_at": "2026-11-14T05:44:56+00:00",
+      "latest_observed_at": "2026-11-14T07:23:07.483702+00:00",
+      "age_days": 0.07,
+      "latest_title": "“60억 반포 아파트도 ‘미달 흑역사’ 있었다”…청약 부진 단지들 다시볼까",
+      "latest_url": "https://www.mk.co.kr/news/realestate/12208864"
     },
     {
       "source_id": "hankyung_realestate",
@@ -384,7 +384,7 @@
       "item_count": 523,
       "latest_event_at": "2026-11-13T02:18:32+00:00",
       "latest_observed_at": "2026-11-13T07:38:47.470838+00:00",
-      "age_days": 0.22,
+      "age_days": 1.21,
       "latest_title": "\"80억 벌고 또 한남동으로\"…BTS 진, 이번엔 빌딩 샀다 [집코노미-핫!부동산]",
       "latest_url": "https://www.hankyung.com/article/202611134765H"
     },
@@ -657,12 +657,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 413,
-      "latest_event_at": "2026-11-13T07:31:44+00:00",
-      "latest_observed_at": "2026-11-13T07:38:49.477198+00:00",
-      "age_days": 0.01,
-      "latest_title": "“매일 호캉스 하는 기분이라더니”…요즘 아파트 커뮤니티 수준에 ‘깜짝’",
-      "latest_url": "https://www.sedaily.com/article/20114108"
+      "item_count": 418,
+      "latest_event_at": "2026-11-14T01:51:19+00:00",
+      "latest_observed_at": "2026-11-14T07:23:09.311503+00:00",
+      "age_days": 0.23,
+      "latest_title": "서울 토허제·규제지역 풀리나…정부 “12월 중 최종 결론”",
+      "latest_url": "https://www.sedaily.com/article/20114304"
     },
     {
       "source_id": "housingherald",
@@ -682,8 +682,8 @@
       "observed_date_field": "",
       "item_count": 327,
       "latest_event_at": "2026-11-12T05:19:57+00:00",
-      "latest_observed_at": "2026-11-13T07:38:52.956470+00:00",
-      "age_days": 1.1,
+      "latest_observed_at": "2026-11-14T07:23:11.967545+00:00",
+      "age_days": 2.09,
       "latest_title": "성북구 삼선3구역 재개발, 신통기획 확정…최고 18층·870가구 탈바꿈",
       "latest_url": "https://www.housingherald.co.kr/news/articleView.html?idxno=63446"
     },
@@ -705,8 +705,8 @@
       "observed_date_field": "",
       "item_count": 1134,
       "latest_event_at": "2026-11-13T15:12:46+00:00",
-      "latest_observed_at": "2026-11-13T07:38:55.371099+00:00",
-      "age_days": 0.0,
+      "latest_observed_at": "2026-11-14T07:23:14.566449+00:00",
+      "age_days": 0.67,
       "latest_title": "서울 집값 상승폭 둔화·매물은 증가… 내년 1분기 수도권 4만호 이상 입주",
       "latest_url": "https://www.arunews.com/news/articleView.html?idxno=69512"
     },
@@ -728,8 +728,8 @@
       "observed_date_field": "",
       "item_count": 81,
       "latest_event_at": "2026-11-06T07:51:34+00:00",
-      "latest_observed_at": "2026-11-13T07:38:58.798150+00:00",
-      "age_days": 6.99,
+      "latest_observed_at": "2026-11-14T07:23:17.112530+00:00",
+      "age_days": 7.98,
       "latest_title": "정비구역 권한이양, 서울시와 구청간 힘겨루기 ‘점입가경’",
       "latest_url": "http://www.rcnews.co.kr/news/articleView.html?idxno=33534"
     },
@@ -749,12 +749,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 213,
+      "item_count": 217,
       "latest_event_at": "2026-10-30T15:49:28.044073+00:00",
-      "latest_observed_at": "2026-11-13T07:38:59.211207+00:00",
-      "age_days": 13.66,
-      "latest_title": "금리 대신 ‘쓰임’ 고르는 예금...가치금융신협 설립 첫발",
-      "latest_url": "https://www.hani.co.kr/arti/economy/economy_general/1287002.html"
+      "latest_observed_at": "2026-11-14T07:23:17.428570+00:00",
+      "age_days": 14.65,
+      "latest_title": "‘젠슨 황 스캔들’ 여파에 국내 증시도 휘청…코스피 5342 하락 마감",
+      "latest_url": "https://www.hani.co.kr/arti/economy/economy_general/1287027.html"
     },
     {
       "source_id": "heraldcorp_realestate",
@@ -1120,6 +1120,162 @@
     },
     {
       "reason": "home_verification_requires_official_primary",
+      "source_id": "mk_realestate",
+      "source": "mk_realestate",
+      "event_model": "",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "title": "“60억 반포 아파트도 ‘미달 흑역사’ 있었다”…청약 부진 단지들 다시볼까",
+      "url": "https://www.mk.co.kr/news/realestate/12208864",
+      "published_at": "2026-11-14T05:44:56+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "sedaily_realestate",
+      "source": "sedaily_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "서울 토허제·규제지역 풀리나…정부 “12월 중 최종 결론”",
+      "url": "https://www.sedaily.com/article/20114304",
+      "published_at": "2026-11-14T01:51:19+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "mk_realestate",
+      "source": "mk_realestate",
+      "event_model": "",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "title": "성북구 정릉2차e-편한세상 59.37㎡ 10억 8천만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12208826",
+      "published_at": "2026-11-14T01:45:20+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "mk_realestate",
+      "source": "mk_realestate",
+      "event_model": "",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "title": "도봉구 쌍문동 한양1차 50.58㎡ 6억 5천만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12208827",
+      "published_at": "2026-11-14T01:45:20+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "mk_realestate",
+      "source": "mk_realestate",
+      "event_model": "",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "title": "도봉구 창동주공3단지 79.07㎡ 10억 6천만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12208828",
+      "published_at": "2026-11-14T01:45:20+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "mk_realestate",
+      "source": "mk_realestate",
+      "event_model": "",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "title": "노원구 공릉동 풍림아파트B 31.32㎡, 3억 7천만원에 거래… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12208829",
+      "published_at": "2026-11-14T01:45:20+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "mk_realestate",
+      "source": "mk_realestate",
+      "event_model": "",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "title": "서대문구 동부센트레빌 59.86㎡ 10억 9천만원 거래… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12208830",
+      "published_at": "2026-11-14T01:45:20+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "mk_realestate",
+      "source": "mk_realestate",
+      "event_model": "",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "title": "양천구 목동신시가지7 전용 74.12㎡ 28억 7천만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12208831",
+      "published_at": "2026-11-14T01:45:20+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "mk_realestate",
+      "source": "mk_realestate",
+      "event_model": "",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "title": "금천구 무지개 53.75㎡ 5억 5천만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12208832",
+      "published_at": "2026-11-14T01:45:20+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "mk_realestate",
+      "source": "mk_realestate",
+      "event_model": "",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "title": "강동구 천호동 동아하이빌아파트 84.97㎡ 11억 7500만원 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12208833",
+      "published_at": "2026-11-14T01:45:20+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "mk_realestate",
+      "source": "mk_realestate",
+      "event_model": "",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "title": "압구정동 한양2 65억 5천만원·현대14차 54억원… 서울 아파트 고가 거래 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12208825",
+      "published_at": "2026-11-14T01:45:19+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "sedaily_realestate",
+      "source": "sedaily_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "“철도 다녀야 경제 살고 집값 오른다”…지자체 유치 경쟁 치열 [집슐랭]",
+      "url": "https://www.sedaily.com/article/20114227",
+      "published_at": "2026-11-13T22:04:05+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "sedaily_realestate",
+      "source": "sedaily_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "신월·중화동 모아주택 2741가구 공급…2028년 착공 목표",
+      "url": "https://www.sedaily.com/article/20114228",
+      "published_at": "2026-11-13T20:56:05+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
       "source_id": "housing_economy_news",
       "source": "housing_economy_news",
       "event_model": "market_context",
@@ -1201,162 +1357,6 @@
       "title": "신월동 144-20 가로주택정비 A1구역, 354세대 공급",
       "url": "https://www.arunews.com/news/articleView.html?idxno=69504",
       "published_at": "2026-11-13T13:31:28+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "선거사무원에게 건넨 조합원명부, 개인정보 유출일까?",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69503",
-      "published_at": "2026-11-13T13:04:42+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "서울시, 금천·영등포 등 신통기획 후보지 6곳 추가 선정",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69502",
-      "published_at": "2026-11-13T12:47:01+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "국토부-서울시, 공공재개발 이어 이번엔 도심복합사업 ‘네 탓’ 공방",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69499",
-      "published_at": "2026-11-13T12:04:15+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "백마3·4·5·6단지, 재건축 추진위원회 구성 신청… 연내 승인",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69500",
-      "published_at": "2026-11-13T12:03:06+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "주례1구역, 재건축 시공자 현설에 4개사",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69498",
-      "published_at": "2026-11-13T10:53:33+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "정비사업 수주전 막바지… 아직 20조원 남아",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69471",
-      "published_at": "2026-11-13T10:13:15+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "주택공급에는 흑백논리 없어야",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69472",
-      "published_at": "2026-11-13T10:13:15+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "이촌동 반도아파트, 재건축 추정비례율 88.47%로 추산",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69486",
-      "published_at": "2026-11-13T10:13:15+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "대치선경, 최고 49층 아파트 1,570세대로 재건축",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69488",
-      "published_at": "2026-11-13T10:13:15+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "신길13구역, 최고 35층 아파트 586세대로 공공재건축",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69493",
-      "published_at": "2026-11-13T10:13:15+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "[4분기 정비사업 수주 판도 분석] 연말 수주 성적표 윤곽… 대형사, 곳곳서 시공권 확보 박차",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69467",
-      "published_at": "2026-11-13T10:10:00+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "연말 수주전 막바지 아직 20조원 남았다",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=69430",
-      "published_at": "2026-11-13T10:00:29+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "sedaily_realestate",
-      "source": "sedaily_realestate",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "“매일 호캉스 하는 기분이라더니”…요즘 아파트 커뮤니티 수준에 ‘깜짝’",
-      "url": "https://www.sedaily.com/article/20114108",
-      "published_at": "2026-11-13T07:31:44+00:00"
     }
   ]
 }
