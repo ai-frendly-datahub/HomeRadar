@@ -1,0 +1,7 @@
+{
+  "record_type": "skip",
+  "source_id": "molit_apt_rent",
+  "status": "skipped_missing_env",
+  "required_env": "MOLIT_SERVICE_KEY",
+  "skip_reason": "MOLIT_SERVICE_KEY not set"
+}
