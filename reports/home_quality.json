@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-11-21T08:02:51.470535+00:00",
+  "generated_at": "2026-11-22T07:48:49.696427+00:00",
   "summary": {
     "total_sources": 30,
     "enabled_sources": 11,
@@ -43,7 +43,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 4606,
+    "verification_state_count": 4636,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 37,
     "official_primary_status": "blocked_missing_env",
@@ -62,210 +62,210 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 3256,
+    "corroboration_only_items": 3262,
     "official_primary_items": 0
   },
   "verification_states": {
-    "corroboration_requires_official_source": 929,
-    "market_corroboration_requires_official_source": 3256,
-    "no_operational_event": 421
+    "corroboration_requires_official_source": 950,
+    "market_corroboration_requires_official_source": 3262,
+    "no_operational_event": 424
   },
   "verification_review_samples": [
     {
-      "url": "https://www.mk.co.kr/news/realestate/12215266",
-      "title": "“재건축 대신 얼죽신?”…재초환 쇼크에 서울 아파트 매수세 어디로 튈까",
+      "url": "https://www.mk.co.kr/news/realestate/12215577",
+      "title": "[부동산 손품노트] 재건축·재개발 투자… '공급 시간표' 보면 향방 보인다",
       "source_id": "mk_realestate",
-      "published_at": "2026-11-21T06:15:11+00:00",
+      "published_at": "2026-11-22T07:30:54+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
       "event_model": ""
     },
     {
-      "url": "https://www.hankyung.com/article/202611209077i",
-      "title": "\"20년 살았는데 3억 내라니\"… 강남 재건축 아파트에 무슨 일이 [고인선의 택스인사이트]",
+      "url": "https://www.mk.co.kr/news/realestate/12215576",
+      "title": "[부동산 손자병법] \"월세 올렸다가 권리금 배상\"… 건물주 마음대로 안되는 게 있다",
+      "source_id": "mk_realestate",
+      "published_at": "2026-11-22T07:30:53+00:00",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "event_model": ""
+    },
+    {
+      "url": "https://www.mk.co.kr/news/realestate/12215476",
+      "title": "잠실 ‘20억’ 로또 청약 등장…영등포·종로서도 분양",
+      "source_id": "mk_realestate",
+      "published_at": "2026-11-22T04:29:45+00:00",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "event_model": ""
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026112090646",
+      "title": "\"강남 집값 떨어지니 이런 일이\"…30억 아래 매물 속속 등장 [이송렬의 부동산한입]",
       "source_id": "hankyung_realestate",
-      "published_at": "2026-11-21T05:00:02+00:00",
+      "published_at": "2026-11-22T03:00:01+00:00",
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12215233",
-      "title": "중랑구 신내9진흥 39.84㎡ 4억 7700만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215457",
+      "title": "“서울만 문제가 아니다” 광명·수원에도 억대 재초환 통보",
       "source_id": "mk_realestate",
-      "published_at": "2026-11-21T02:55:20+00:00",
+      "published_at": "2026-11-22T02:33:26+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
       "event_model": ""
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12215234",
-      "title": "성북구 석관동 래미안아트리치 59.98㎡ 12억 7500만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.hankyung.com/article/202611221938i",
+      "title": "서울 옥인동에 140억원 투입…주차장·돌봄시설 확충",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-11-22T02:15:01+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.hankyung.com/article/202611221966i",
+      "title": "HS화성, 건설안전관리 평가 최고등급 SA1 획득",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-11-22T01:02:01+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.mk.co.kr/news/realestate/12215418",
+      "title": "송파구 위례24단지(꿈에그린) 84.93㎡ 22억 7천만원… 최근 3년 신고가 [MAI부동산]",
       "source_id": "mk_realestate",
-      "published_at": "2026-11-21T02:55:20+00:00",
+      "published_at": "2026-11-22T00:37:38+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
       "event_model": ""
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12215232",
-      "title": "강동구 둔촌하이츠 59.79㎡ 12억 6천만원 거래… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215419",
+      "title": "송파구 풍납동 신성노바빌아파트 84.96㎡ 16억 4천만원… 최근 3년 신고가 [MAI부동산]",
       "source_id": "mk_realestate",
-      "published_at": "2026-11-21T02:54:50+00:00",
+      "published_at": "2026-11-22T00:37:38+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
       "event_model": ""
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12215231",
-      "title": "강동구 길동우성 전용 40.36㎡ 10억원 거래… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215420",
+      "title": "강동구 롯데캐슬퍼스트 84.81㎡ 19억 7500만원… 최근 3년 신고가 [MAI부동산]",
       "source_id": "mk_realestate",
-      "published_at": "2026-11-21T02:54:40+00:00",
+      "published_at": "2026-11-22T00:37:38+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
       "event_model": ""
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12215225",
-      "title": "구로구 개봉동 현대 59.94㎡ 10억 7천만원 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215417",
+      "title": "양천구 래미안목동아델리체 59.82㎡ 16억 8천만원… 최근 3년 신고가 [MAI부동산]",
       "source_id": "mk_realestate",
-      "published_at": "2026-11-21T02:54:39+00:00",
+      "published_at": "2026-11-22T00:37:37+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
       "event_model": ""
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12215226",
-      "title": "금천구 금천롯데캐슬골드파크1차 59.9384㎡ 11억 9천만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215410",
+      "title": "성북구 정릉힐스테이트3차 59.98㎡ 8억 3천만원… 최근 3년 신고가 [MAI부동산]",
       "source_id": "mk_realestate",
-      "published_at": "2026-11-21T02:54:39+00:00",
+      "published_at": "2026-11-22T00:37:27+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
       "event_model": ""
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12215227",
-      "title": "영등포구 양평현대6차 59.98㎡ 14억 7천만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215411",
+      "title": "성북구 월곡두산위브 59.855㎡ 10억 9900만원… 최근 3년 신고가 [MAI부동산]",
       "source_id": "mk_realestate",
-      "published_at": "2026-11-21T02:54:39+00:00",
+      "published_at": "2026-11-22T00:37:27+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
       "event_model": ""
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12215228",
-      "title": "관악구 신림현대 119.49㎡ 10억 4천만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215412",
+      "title": "노원구 중계동 상아 84.97㎡ 10억 6천만원… 최근 3년 신고가 [MAI부동산]",
       "source_id": "mk_realestate",
-      "published_at": "2026-11-21T02:54:39+00:00",
+      "published_at": "2026-11-22T00:37:27+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
       "event_model": ""
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12215229",
-      "title": "서초동 서초현대 53.01㎡ 17억 4500만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215413",
+      "title": "노원구 하계2현대 75.35㎡, 9억 1500만원 `최근 3년 신고가` [MAI부동산]",
       "source_id": "mk_realestate",
-      "published_at": "2026-11-21T02:54:39+00:00",
+      "published_at": "2026-11-22T00:37:27+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
       "event_model": ""
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12215230",
-      "title": "강남구 자곡동 강남자곡아이파크 59.96㎡ 20억원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215414",
+      "title": "은평구 백련산힐스테이트1차 59.63㎡ 9억 3천만원… 최근 3년 신고가 [MAI부동산]",
       "source_id": "mk_realestate",
-      "published_at": "2026-11-21T02:54:39+00:00",
+      "published_at": "2026-11-22T00:37:27+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
       "event_model": ""
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12215219",
-      "title": "양천구 목동신시가지8단지 105.35㎡ 28억 9천만원 거래… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215416",
+      "title": "마포구 DMC상암센트럴파크2단지 36.69㎡ 6억9천만원… 최근 3년 신고가 [MAI부동산]",
       "source_id": "mk_realestate",
-      "published_at": "2026-11-21T02:54:29+00:00",
+      "published_at": "2026-11-22T00:37:27+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
       "event_model": ""
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12215220",
-      "title": "양천구 신정동 신트리1 59.73㎡ 11억 1500만원 거래… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215406",
+      "title": "광진구 광장동 신동아파밀리에 84.78㎡ 20억원… 최근 3년 신고가 [MAI부동산]",
       "source_id": "mk_realestate",
-      "published_at": "2026-11-21T02:54:29+00:00",
+      "published_at": "2026-11-22T00:37:17+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
       "event_model": ""
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12215221",
-      "title": "양천구 신정동 쌍용 84.63㎡ 14억 8천만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215407",
+      "title": "동대문구 답십리동 청계한신휴플러스 84.73㎡ 15억 9500만원… 최근 3년 신고가 [MAI부동산]",
       "source_id": "mk_realestate",
-      "published_at": "2026-11-21T02:54:29+00:00",
+      "published_at": "2026-11-22T00:37:17+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
       "event_model": ""
     },
     {
-      "url": "https://www.mk.co.kr/news/realestate/12215222",
-      "title": "강서구 서광등촌마을아파트 59.67㎡ 11억 5천만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215408",
+      "title": "동대문구 이문동 중앙하이츠빌 59.4㎡, 10억 7천만원 거래… 최근 3년 신고가 [MAI부동산]",
       "source_id": "mk_realestate",
-      "published_at": "2026-11-21T02:54:29+00:00",
-      "verification_state": "corroboration_requires_official_source",
-      "verification_role": "",
-      "merge_policy": "",
-      "event_model": ""
-    },
-    {
-      "url": "https://www.mk.co.kr/news/realestate/12215223",
-      "title": "강서구 방화5단지 39.6㎡ 6억 5500만원… 최근 3년 신고가 [MAI부동산]",
-      "source_id": "mk_realestate",
-      "published_at": "2026-11-21T02:54:29+00:00",
-      "verification_state": "corroboration_requires_official_source",
-      "verification_role": "",
-      "merge_policy": "",
-      "event_model": ""
-    },
-    {
-      "url": "https://www.mk.co.kr/news/realestate/12215224",
-      "title": "구로구 개봉동 한마을 123.46㎡ 12억원 거래…최근 3년 신고가 [MAI부동산]",
-      "source_id": "mk_realestate",
-      "published_at": "2026-11-21T02:54:29+00:00",
-      "verification_state": "corroboration_requires_official_source",
-      "verification_role": "",
-      "merge_policy": "",
-      "event_model": ""
-    },
-    {
-      "url": "https://www.mk.co.kr/news/realestate/12215218",
-      "title": "노원구 중계무지개 39.82㎡, 5억 9천만원 `최근 3년 신고가` [MAI부동산]",
-      "source_id": "mk_realestate",
-      "published_at": "2026-11-21T02:54:28+00:00",
-      "verification_state": "corroboration_requires_official_source",
-      "verification_role": "",
-      "merge_policy": "",
-      "event_model": ""
-    },
-    {
-      "url": "https://www.mk.co.kr/news/realestate/12215213",
-      "title": "종로구 창신쌍용1 전용 54.7㎡ 9억 500만원… 최근 3년 신고가 [MAI부동산]",
-      "source_id": "mk_realestate",
-      "published_at": "2026-11-21T02:54:18+00:00",
+      "published_at": "2026-11-22T00:37:17+00:00",
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
@@ -358,12 +358,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 1350,
-      "latest_event_at": "2026-11-21T06:15:11+00:00",
-      "latest_observed_at": "2026-11-21T08:01:57.787754+00:00",
-      "age_days": 0.07,
-      "latest_title": "“재건축 대신 얼죽신?”…재초환 쇼크에 서울 아파트 매수세 어디로 튈까",
-      "latest_url": "https://www.mk.co.kr/news/realestate/12215266"
+      "item_count": 1374,
+      "latest_event_at": "2026-11-22T07:30:54+00:00",
+      "latest_observed_at": "2026-11-22T07:48:00.970223+00:00",
+      "age_days": 0.01,
+      "latest_title": "[부동산 손품노트] 재건축·재개발 투자… '공급 시간표' 보면 향방 보인다",
+      "latest_url": "https://www.mk.co.kr/news/realestate/12215577"
     },
     {
       "source_id": "hankyung_realestate",
@@ -381,12 +381,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 640,
-      "latest_event_at": "2026-11-21T05:00:02+00:00",
-      "latest_observed_at": "2026-11-21T08:02:00.764049+00:00",
-      "age_days": 0.13,
-      "latest_title": "\"20년 살았는데 3억 내라니\"… 강남 재건축 아파트에 무슨 일이 [고인선의 택스인사이트]",
-      "latest_url": "https://www.hankyung.com/article/202611209077i"
+      "item_count": 643,
+      "latest_event_at": "2026-11-22T03:00:01+00:00",
+      "latest_observed_at": "2026-11-22T07:48:04.082055+00:00",
+      "age_days": 0.2,
+      "latest_title": "\"강남 집값 떨어지니 이런 일이\"…30억 아래 매물 속속 등장 [이송렬의 부동산한입]",
+      "latest_url": "https://www.hankyung.com/article/2026112090646"
     },
     {
       "source_id": "korea_policy_news",
@@ -660,7 +660,7 @@
       "item_count": 506,
       "latest_event_at": "2026-11-21T01:34:01+00:00",
       "latest_observed_at": "2026-11-21T08:02:03.413664+00:00",
-      "age_days": 0.27,
+      "age_days": 1.26,
       "latest_title": "재초환·보유세 ‘이중 충격’…강남3구 매물 3만 건 돌파",
       "latest_url": "https://www.sedaily.com/article/20117198"
     },
@@ -682,8 +682,8 @@
       "observed_date_field": "",
       "item_count": 383,
       "latest_event_at": "2026-11-20T01:58:56+00:00",
-      "latest_observed_at": "2026-11-21T08:02:07.250389+00:00",
-      "age_days": 1.25,
+      "latest_observed_at": "2026-11-22T07:48:07.891994+00:00",
+      "age_days": 2.24,
       "latest_title": "시공자 입찰 45일의 기다림은 미학인가, 낭비인가",
       "latest_url": "https://www.housingherald.co.kr/news/articleView.html?idxno=63437"
     },
@@ -705,8 +705,8 @@
       "observed_date_field": "",
       "item_count": 1354,
       "latest_event_at": "2026-11-20T14:25:08+00:00",
-      "latest_observed_at": "2026-11-21T08:02:11.866163+00:00",
-      "age_days": 0.73,
+      "latest_observed_at": "2026-11-22T07:48:11.644952+00:00",
+      "age_days": 1.72,
       "latest_title": "법제처 “정비구역 밖에 거주하던 조합원, 근무상 이주해도 지위양도 불가”",
       "latest_url": "https://www.arunews.com/news/articleView.html?idxno=69623"
     },
@@ -728,8 +728,8 @@
       "observed_date_field": "",
       "item_count": 112,
       "latest_event_at": "2026-11-20T08:48:00+00:00",
-      "latest_observed_at": "2026-11-21T08:02:13.695052+00:00",
-      "age_days": 0.97,
+      "latest_observed_at": "2026-11-22T07:48:15.343053+00:00",
+      "age_days": 1.96,
       "latest_title": "주거환경연합, ‘정비사업 정책변화와 재건축·재개발의 미래’ 정책 아카데미 개최",
       "latest_url": "http://www.rcnews.co.kr/news/articleView.html?idxno=33565"
     },
@@ -749,12 +749,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 261,
+      "item_count": 264,
       "latest_event_at": "2026-10-30T15:49:28.044073+00:00",
-      "latest_observed_at": "2026-11-21T08:02:14.204931+00:00",
-      "age_days": 21.68,
-      "latest_title": "서울 7개구 아파트값 하락세로…강남3구 이어 한강벨트도 약세",
-      "latest_url": "https://www.hani.co.kr/arti/economy/property/1288152.html"
+      "latest_observed_at": "2026-11-22T07:48:15.923027+00:00",
+      "age_days": 22.67,
+      "latest_title": "10월 생산자물가 0.1% 내려…석달 만에 하락세로 돌아서",
+      "latest_url": "https://www.hani.co.kr/arti/economy/economy_general/1288265.html"
     },
     {
       "source_id": "heraldcorp_realestate",
@@ -1126,9 +1126,33 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "“재건축 대신 얼죽신?”…재초환 쇼크에 서울 아파트 매수세 어디로 튈까",
-      "url": "https://www.mk.co.kr/news/realestate/12215266",
-      "published_at": "2026-11-21T06:15:11+00:00"
+      "title": "[부동산 손품노트] 재건축·재개발 투자… '공급 시간표' 보면 향방 보인다",
+      "url": "https://www.mk.co.kr/news/realestate/12215577",
+      "published_at": "2026-11-22T07:30:54+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "mk_realestate",
+      "source": "mk_realestate",
+      "event_model": "",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "title": "[부동산 손자병법] \"월세 올렸다가 권리금 배상\"… 건물주 마음대로 안되는 게 있다",
+      "url": "https://www.mk.co.kr/news/realestate/12215576",
+      "published_at": "2026-11-22T07:30:53+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "mk_realestate",
+      "source": "mk_realestate",
+      "event_model": "",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "title": "잠실 ‘20억’ 로또 청약 등장…영등포·종로서도 분양",
+      "url": "https://www.mk.co.kr/news/realestate/12215476",
+      "published_at": "2026-11-22T04:29:45+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1138,9 +1162,9 @@
       "verification_state": "market_corroboration_requires_official_source",
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
-      "title": "\"20년 살았는데 3억 내라니\"… 강남 재건축 아파트에 무슨 일이 [고인선의 택스인사이트]",
-      "url": "https://www.hankyung.com/article/202611209077i",
-      "published_at": "2026-11-21T05:00:02+00:00"
+      "title": "\"강남 집값 떨어지니 이런 일이\"…30억 아래 매물 속속 등장 [이송렬의 부동산한입]",
+      "url": "https://www.hankyung.com/article/2026112090646",
+      "published_at": "2026-11-22T03:00:01+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1150,9 +1174,33 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "중랑구 신내9진흥 39.84㎡ 4억 7700만원… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12215233",
-      "published_at": "2026-11-21T02:55:20+00:00"
+      "title": "“서울만 문제가 아니다” 광명·수원에도 억대 재초환 통보",
+      "url": "https://www.mk.co.kr/news/realestate/12215457",
+      "published_at": "2026-11-22T02:33:26+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "서울 옥인동에 140억원 투입…주차장·돌봄시설 확충",
+      "url": "https://www.hankyung.com/article/202611221938i",
+      "published_at": "2026-11-22T02:15:01+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "HS화성, 건설안전관리 평가 최고등급 SA1 획득",
+      "url": "https://www.hankyung.com/article/202611221966i",
+      "published_at": "2026-11-22T01:02:01+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1162,9 +1210,9 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "성북구 석관동 래미안아트리치 59.98㎡ 12억 7500만원… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12215234",
-      "published_at": "2026-11-21T02:55:20+00:00"
+      "title": "송파구 위례24단지(꿈에그린) 84.93㎡ 22억 7천만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215418",
+      "published_at": "2026-11-22T00:37:38+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1174,9 +1222,9 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "강동구 둔촌하이츠 59.79㎡ 12억 6천만원 거래… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12215232",
-      "published_at": "2026-11-21T02:54:50+00:00"
+      "title": "송파구 풍납동 신성노바빌아파트 84.96㎡ 16억 4천만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215419",
+      "published_at": "2026-11-22T00:37:38+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1186,9 +1234,9 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "강동구 길동우성 전용 40.36㎡ 10억원 거래… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12215231",
-      "published_at": "2026-11-21T02:54:40+00:00"
+      "title": "강동구 롯데캐슬퍼스트 84.81㎡ 19억 7500만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215420",
+      "published_at": "2026-11-22T00:37:38+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1198,9 +1246,9 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "구로구 개봉동 현대 59.94㎡ 10억 7천만원 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12215225",
-      "published_at": "2026-11-21T02:54:39+00:00"
+      "title": "양천구 래미안목동아델리체 59.82㎡ 16억 8천만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215417",
+      "published_at": "2026-11-22T00:37:37+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1210,9 +1258,9 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "금천구 금천롯데캐슬골드파크1차 59.9384㎡ 11억 9천만원… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12215226",
-      "published_at": "2026-11-21T02:54:39+00:00"
+      "title": "성북구 정릉힐스테이트3차 59.98㎡ 8억 3천만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215410",
+      "published_at": "2026-11-22T00:37:27+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1222,9 +1270,9 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "영등포구 양평현대6차 59.98㎡ 14억 7천만원… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12215227",
-      "published_at": "2026-11-21T02:54:39+00:00"
+      "title": "성북구 월곡두산위브 59.855㎡ 10억 9900만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215411",
+      "published_at": "2026-11-22T00:37:27+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1234,9 +1282,9 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "관악구 신림현대 119.49㎡ 10억 4천만원… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12215228",
-      "published_at": "2026-11-21T02:54:39+00:00"
+      "title": "노원구 중계동 상아 84.97㎡ 10억 6천만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215412",
+      "published_at": "2026-11-22T00:37:27+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1246,9 +1294,9 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "서초동 서초현대 53.01㎡ 17억 4500만원… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12215229",
-      "published_at": "2026-11-21T02:54:39+00:00"
+      "title": "노원구 하계2현대 75.35㎡, 9억 1500만원 `최근 3년 신고가` [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215413",
+      "published_at": "2026-11-22T00:37:27+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1258,9 +1306,9 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "강남구 자곡동 강남자곡아이파크 59.96㎡ 20억원… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12215230",
-      "published_at": "2026-11-21T02:54:39+00:00"
+      "title": "은평구 백련산힐스테이트1차 59.63㎡ 9억 3천만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215414",
+      "published_at": "2026-11-22T00:37:27+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1270,9 +1318,9 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "양천구 목동신시가지8단지 105.35㎡ 28억 9천만원 거래… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12215219",
-      "published_at": "2026-11-21T02:54:29+00:00"
+      "title": "마포구 DMC상암센트럴파크2단지 36.69㎡ 6억9천만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215416",
+      "published_at": "2026-11-22T00:37:27+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1282,9 +1330,9 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "양천구 신정동 신트리1 59.73㎡ 11억 1500만원 거래… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12215220",
-      "published_at": "2026-11-21T02:54:29+00:00"
+      "title": "광진구 광장동 신동아파밀리에 84.78㎡ 20억원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215406",
+      "published_at": "2026-11-22T00:37:17+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1294,9 +1342,9 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "양천구 신정동 쌍용 84.63㎡ 14억 8천만원… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12215221",
-      "published_at": "2026-11-21T02:54:29+00:00"
+      "title": "동대문구 답십리동 청계한신휴플러스 84.73㎡ 15억 9500만원… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215407",
+      "published_at": "2026-11-22T00:37:17+00:00"
     },
     {
       "reason": "home_verification_requires_official_primary",
@@ -1306,57 +1354,9 @@
       "verification_state": "corroboration_requires_official_source",
       "verification_role": "",
       "merge_policy": "",
-      "title": "강서구 서광등촌마을아파트 59.67㎡ 11억 5천만원… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12215222",
-      "published_at": "2026-11-21T02:54:29+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "mk_realestate",
-      "source": "mk_realestate",
-      "event_model": "",
-      "verification_state": "corroboration_requires_official_source",
-      "verification_role": "",
-      "merge_policy": "",
-      "title": "강서구 방화5단지 39.6㎡ 6억 5500만원… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12215223",
-      "published_at": "2026-11-21T02:54:29+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "mk_realestate",
-      "source": "mk_realestate",
-      "event_model": "",
-      "verification_state": "corroboration_requires_official_source",
-      "verification_role": "",
-      "merge_policy": "",
-      "title": "구로구 개봉동 한마을 123.46㎡ 12억원 거래…최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12215224",
-      "published_at": "2026-11-21T02:54:29+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "mk_realestate",
-      "source": "mk_realestate",
-      "event_model": "",
-      "verification_state": "corroboration_requires_official_source",
-      "verification_role": "",
-      "merge_policy": "",
-      "title": "노원구 중계무지개 39.82㎡, 5억 9천만원 `최근 3년 신고가` [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12215218",
-      "published_at": "2026-11-21T02:54:28+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "mk_realestate",
-      "source": "mk_realestate",
-      "event_model": "",
-      "verification_state": "corroboration_requires_official_source",
-      "verification_role": "",
-      "merge_policy": "",
-      "title": "종로구 창신쌍용1 전용 54.7㎡ 9억 500만원… 최근 3년 신고가 [MAI부동산]",
-      "url": "https://www.mk.co.kr/news/realestate/12215213",
-      "published_at": "2026-11-21T02:54:18+00:00"
+      "title": "동대문구 이문동 중앙하이츠빌 59.4㎡, 10억 7천만원 거래… 최근 3년 신고가 [MAI부동산]",
+      "url": "https://www.mk.co.kr/news/realestate/12215408",
+      "published_at": "2026-11-22T00:37:17+00:00"
     }
   ]
 }
