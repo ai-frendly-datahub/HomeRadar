@@ -1,0 +1,889 @@
+{
+  "date": "2026-11-23",
+  "category": "home",
+  "article_count": 100,
+  "source_count": 5,
+  "matched_count": 100,
+  "top_entities": [
+    {
+      "name": "keyword",
+      "count": 181
+    },
+    {
+      "name": "project",
+      "count": 73
+    },
+    {
+      "name": "district",
+      "count": 43
+    },
+    {
+      "name": "complex",
+      "count": 10
+    }
+  ],
+  "sources": {
+    "housing_economy_news": 50,
+    "hani_economy": 11,
+    "hankyung_realestate": 19,
+    "mk_realestate": 12,
+    "sedaily_realestate": 8
+  },
+  "generated_at": "2026-11-23T08:38:05.990084+00:00",
+  "articles": [
+    {
+      "event_model_payload": {
+        "title": "2026년 제10차 수요강좌 | “평면 특화가 가치 가른다”… 조합원 자산가치 극대화 전략",
+        "published_date": "2026-11-23T15:41:54",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69899"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "‘목동8단지 정조준’ 대우건설, 홍보관 오픈",
+        "published_date": "2026-11-23T15:37:49",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69898"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "양평동 신동아, 재건축 사업시행인가 임박",
+        "published_date": "2026-11-23T14:53:05",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69897"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "응암동 700번지 일대 재개발조합 측량분야 용역업체 선정 입찰공고",
+        "published_date": "2026-11-23T14:19:38",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69896"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "응암동 700번지 일대 재개발조합 정비기반시설 공사비 산출, 임대주택 매매가격 산정 및 매각 협의, 국·공유지 무상양도 및 매수 협의 용역업체 선정 입찰공고",
+        "published_date": "2026-11-23T14:17:59",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69895"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "응암동 700번지 일대 재개발조합 정비계획 결정(변경) 용역업체 선정 입찰공고",
+        "published_date": "2026-11-23T14:15:14",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69894"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "응암동 700번지 일대 재개발조합 석면 사전조사 및 농도측정(비산측정 포함) 용역업체 선정 입찰공고",
+        "published_date": "2026-11-23T14:13:19",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69893"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "응암동700번지 일대 재개발조합 시공자 선정 입찰공고",
+        "published_date": "2026-11-23T14:11:19",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69892"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "송월아파트구역 재개발조합 시공자 선정 입찰공고(2차)",
+        "published_date": "2026-11-23T14:09:32",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69891"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "구월4동구역 재개발조합 추진위원회 세무·회계법인 선정 입찰공고",
+        "published_date": "2026-11-23T14:07:52",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69890"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "수서한아름, 추진위원회 구성 앞당긴다… 내년 3월 목표",
+        "published_date": "2026-11-23T14:07:29",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69889"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "구월4동구역 재개발조합 추진위원회 정비계획수립 및 정비구역 지정 용역을 위한 협력업체(도시계획분야) 선정 입찰공고",
+        "published_date": "2026-11-23T14:05:04",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69888"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "구월4동구역 재개발조합 추진위원회 건축설계자 선정 입찰공고",
+        "published_date": "2026-11-23T14:03:00",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69887"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "구월4동구역 재개발조합 추진위원회 정비사업전문관리업자 선정 입찰공고",
+        "published_date": "2026-11-23T14:00:44",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69886"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "도봉제2구역 재개발조합 보류지 입찰공고",
+        "published_date": "2026-11-23T13:52:20",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69885"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "IPARK현산, 하안주공6·7 수주… 누적액 4조2,500억원 돌파",
+        "published_date": "2026-11-23T13:49:30",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69884"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "방학신동아아파트 재건축사업 법무사 선정 입찰공고",
+        "published_date": "2026-11-23T13:40:45",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69883"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "대치우성1차쌍용2차아파트 재건축조합 상가 사업관리 용역업체 선정 입찰공고",
+        "published_date": "2026-11-23T13:38:27",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69882"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "GS건설, 데이터센터 구축 기간 단축",
+        "published_date": "2026-11-23T13:16:56",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69881"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "상일동빌라단지 통합재건축사업 추진위원회 설계자 선정 입찰공고",
+        "published_date": "2026-11-23T13:06:18",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69879"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "우만가구역 재개발사업 전체회의 대행업체 선정 입찰공고",
+        "published_date": "2026-11-23T13:04:48",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69878"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "부곡2구역 재개발조합 현곡초등학교 별동 증축(기존 교사동 재배치 포함)을 위한 설계업체 선정 입찰공고",
+        "published_date": "2026-11-23T13:03:19",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69877"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "부곡2구역 재개발조합 교통영향평가(변경)심의를 위한 협력업체 선정 입찰공고",
+        "published_date": "2026-11-23T13:01:34",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69876"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "정릉골구역 재개발조합 토목분야 용역 선정 입찰공고",
+        "published_date": "2026-11-23T12:59:59",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69875"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "정릉골구역 재개발조합 친환경분야 협력업체 선정 입찰공고",
+        "published_date": "2026-11-23T12:58:35",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69874"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "정릉골구역 재개발조합 소방 및 전기설계 협력업체 선정 입찰공고",
+        "published_date": "2026-11-23T12:55:56",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69873"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "정릉골구역 재개발조합 교통영향평가업체 선정 입찰공고",
+        "published_date": "2026-11-23T12:54:19",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69872"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "성산시영아파트 재건축조합 계단실을 이용한 부속실 제연시스템 심의 및 인허가 협력업체 선정 입찰공고",
+        "published_date": "2026-11-23T12:52:01",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69871"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "성산시영아파트 재건축조합 정비기반시설 공사비 산출 및 임대주택 매매가격 산정·협의 협력업체 선정 입찰공고",
+        "published_date": "2026-11-23T12:49:57",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69870"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "성산시영아파트 재건축조합 전력계통영향평가 협력업체 선정 입찰공고",
+        "published_date": "2026-11-23T12:47:49",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69869"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "정릉골구역 재개발조합 정비기반시설공사 감리 용역 협력업체 선정 입찰공고",
+        "published_date": "2026-11-23T12:41:38",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69868"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "괴안3D구역 재개발조합 법인세/부가가치세 절감(환급) 등을 위한 용역업체 선정 입찰공고",
+        "published_date": "2026-11-23T12:39:47",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69867"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "건대입구역 성장거점형 민간도심복합개발사업 추진위원회 신탁사(예비신탁사) 선정 입찰공고",
+        "published_date": "2026-11-23T12:37:16",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69866"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "서울 가든아파트 재건축추진위원회 협력업체(도시계획분야) 선정 입찰공고",
+        "published_date": "2026-11-23T12:34:48",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69865"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "신림1재정비촉진구역 재개발조합 광고홍부 업무 대행업체 선정 입찰공고",
+        "published_date": "2026-11-23T12:33:06",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69864"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "청담삼익아파트 재건축조합 보류지 매각 분양대행 용역업체 선정 입찰공고",
+        "published_date": "2026-11-23T12:29:31",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69863"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "나운주공3단지 재건축조합 정비기반시설(도로,녹지,신호등) 공사업체 선정 입찰공고",
+        "published_date": "2026-11-23T12:26:09",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69862"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "삼성물산 건설부문, 최영재 사장 발탁",
+        "published_date": "2026-11-23T12:21:32",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69861"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "IPARK현대산업개발, ‘3,763억원’ 부산 수안1구역 수주",
+        "published_date": "2026-11-23T12:14:46",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69859"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "여의도 수정아파트 재건축조합 설계자 선정 입찰공고",
+        "published_date": "2026-11-23T12:14:37",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69860"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "신촌2구역 재건축조합  통신관련 원인자부담금 감면용역 입찰공고",
+        "published_date": "2026-11-23T12:13:13",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69858"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "불광5구역, 사업시행변경인가 임박",
+        "published_date": "2026-11-23T11:11:59",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69814"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "총회 온라인 병행했더니… 참석률 올라가고 비용은 줄고",
+        "published_date": "2026-11-23T11:10:47",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69820"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "여의도 수정아파트 재건축조합 정비사업전문관리업자 선정 입찰공고",
+        "published_date": "2026-11-23T10:52:53",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69856"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "범일동 가로주택조합 교통영향평가 분야 협력업체 선정 입찰공고",
+        "published_date": "2026-11-23T10:50:32",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69855"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "범일동 가로주택조합 지반조사,흙막이,기초,지하안전평가 분야 협력업체 선정 입찰공고",
+        "published_date": "2026-11-23T10:49:28",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69854"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "범일동 가로주택조합 친환경 분야 협력업체 선정 입찰공고",
+        "published_date": "2026-11-23T10:47:37",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69853"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "중구 우정1 재개발조합 지질 및 지반조사(보고서포함) 협력업체 선정 입찰공고",
+        "published_date": "2026-11-23T10:46:08",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69852"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "임원의 해임 또는 선임을 일괄하여 의결하는 것은 여전히 위험하다",
+        "published_date": "2026-11-23T10:45:33",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69847"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "사업시행계획인가의 신청 및 공람",
+        "published_date": "2026-11-23T10:44:09",
+        "source_url": "https://www.arunews.com/news/articleView.html?idxno=69846"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "전력 전문가, 수요 전망·원전 찬반 갈려도…‘전력 유연성’ 해법 일치",
+        "source_url": "https://www.hani.co.kr/arti/economy/economy_general/1288563.html"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "코스피 장 초반 3% 하락…증안펀드 ‘검은 월요일’ 막을까",
+        "source_url": "https://www.hani.co.kr/arti/economy/finance/1288573.html"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "12월 전국 아파트 1만6천가구 입주…인천 계양 ‘3기 신도시’ 첫 입주",
+        "source_url": "https://www.hani.co.kr/arti/economy/property/1288596.html"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "코스피 5% 폭락에 매도 사이드카…장중 4500선까지",
+        "source_url": "https://www.hani.co.kr/arti/economy/finance/1288618.html"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "서울 강북·경기 남부 공시가 상승…강남 고가주택 보유세도 껑충",
+        "source_url": "https://www.hani.co.kr/arti/economy/property/1288654.html"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "세계적 자동차 디자이너 ‘동커볼케’ 아카이브 전시회 열린다",
+        "source_url": "https://www.hani.co.kr/arti/economy/car/1288659.html"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "증시 급랭에도…한은 금통위 점도표 예상 ‘금리 추가 인상’에  무게",
+        "source_url": "https://www.hani.co.kr/arti/economy/economy_general/1288662.html"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "‘칩플레이션’ 청구서 어디까지 가나…서버값도 계약금액보다 45%↑",
+        "source_url": "https://www.hani.co.kr/arti/economy/marketing/1288665.html"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "“50%+1주 매수로는 의무공개매수 취지 실현 안돼”",
+        "source_url": "https://www.hani.co.kr/arti/economy/economy_general/1288669.html"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "반도체 급락, IT 거품 붕괴와 유사…“코스피 4200 열려 있어”",
+        "source_url": "https://www.hani.co.kr/arti/economy/finance/1288681.html"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "모듈러 주택, ‘닥공’ 돌파구 될까…“2030년까지 2만가구 발주”",
+        "source_url": "https://www.hani.co.kr/arti/economy/economy_general/1288696.html"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "정비사업 19곳 영향…'한양도성 유산등재' 철회 검토",
+        "published_date": "2026-11-23T08:23:24",
+        "source_url": "https://www.hankyung.com/article/2026112349011"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "운용손실·재원감소·지출증가…주택기금 '3중고'",
+        "published_date": "2026-11-23T08:22:04",
+        "source_url": "https://www.hankyung.com/article/2026112349021"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "DL 성수2지구·GS 목동12단지…'압여목성' 시공사 속속 선정",
+        "published_date": "2026-11-23T08:21:11",
+        "source_url": "https://www.hankyung.com/article/2026112349031"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "준공업지 임대비율 조정…재건축 사업성 높아지나",
+        "published_date": "2026-11-23T08:20:01",
+        "source_url": "https://www.hankyung.com/article/2026112349041"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "강남3구·용산에 청약 '절반' 몰렸다",
+        "published_date": "2026-11-23T08:19:20",
+        "source_url": "https://www.hankyung.com/article/2026112349051"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "내달 1.6만가구 집들이…3기신도시 계양 첫 입주",
+        "published_date": "2026-11-23T08:19:00",
+        "source_url": "https://www.hankyung.com/article/2026112349061"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "부산 북항 옆 초량3구역 '호반써밋 초량' 236가구",
+        "published_date": "2026-11-23T08:18:13",
+        "source_url": "https://www.hankyung.com/article/2026112349081"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "해외건설협회·외교부, 해외건설 수주 지원 강화한다",
+        "published_date": "2026-11-23T07:56:07",
+        "source_url": "https://www.sedaily.com/article/20117874"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "상계3구역 공공재개발 시공사에 포스코이앤씨·두산건설…2550가구 '더샵 위브 상계원'",
+        "published_date": "2026-11-23T07:55:44",
+        "source_url": "https://www.hankyung.com/article/202611234866i"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "\"성수 중심에 아크로 세운다\"…DL이앤씨, 성수 2지구 수주",
+        "published_date": "2026-11-23T07:20:13",
+        "source_url": "https://www.hankyung.com/article/2026112346986"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "이헌욱 부동산원장 \"공시가격 신뢰, 정확한 현장 조사에서 출발\"",
+        "published_date": "2026-11-23T07:09:24",
+        "source_url": "https://www.hankyung.com/article/202611234677i"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "GS건설, 데이터센터 구축 속도 높인다…통합엔지니어링 추진",
+        "published_date": "2026-11-23T06:40:56",
+        "source_url": "https://www.sedaily.com/article/20117823"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "GS건설, LS일렉트릭·LG유플러스 등과 데이터센터 구축 기간 단축 추진",
+        "published_date": "2026-11-23T06:16:53",
+        "source_url": "https://www.hankyung.com/article/202611234506i"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "삼성물산 건설부문 새 수장에 최영재…경영관리·하이테크 두루 거쳐",
+        "published_date": "2026-11-23T05:54:26",
+        "source_url": "https://www.hankyung.com/article/202611234298i"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "목동8단지 수주 나선 대우건설 “분담금 최대 6년 유예”",
+        "published_date": "2026-11-23T05:39:45",
+        "source_url": "https://www.sedaily.com/article/20117762"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "GS건설, 1조7887억원 목동12단지 재건축 수주…목동 첫 자이 들어선다",
+        "published_date": "2026-11-23T05:37:46",
+        "source_url": "https://www.hankyung.com/article/202611234328i"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "자유기업원 “韓 부동산 보유·거래세 비중 11.5%…OECD 평균 2.2배”",
+        "published_date": "2026-11-23T05:32:07",
+        "source_url": "https://www.sedaily.com/article/20117758"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "박남춘 인천공항 사장 취임…\"임기 내 취항도시 200개·여객 9000만명\"",
+        "published_date": "2026-11-23T05:28:37",
+        "source_url": "https://www.hankyung.com/article/202611234323i"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "GS건설, 목동12단지 재건축 시공사 선정…첫 ‘10조 클럽’ 눈앞",
+        "published_date": "2026-11-23T05:25:34",
+        "source_url": "https://www.sedaily.com/article/20117752"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "'구미 파크원 데시앙' 견본주택에 사흘간 1만7000명…23일 특별공급",
+        "published_date": "2026-11-23T05:24:01",
+        "source_url": "https://www.hankyung.com/article/202611234306i"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "IPARK현대산업개발, 광명·부산서 1조5193억 수주…올해 정비사업 4조 돌파",
+        "published_date": "2026-11-23T05:08:14",
+        "source_url": "https://www.sedaily.com/article/20117737"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "대우건설, 목동8단지에 홍보관 열어…'써밋 디아보 목동' 제안",
+        "published_date": "2026-11-23T05:00:02",
+        "source_url": "https://www.hankyung.com/article/202611233496i"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "롯데건설, 베트남 건설현장에 국내 스타트업 기술 도입 추진",
+        "published_date": "2026-11-23T04:59:04",
+        "source_url": "https://www.sedaily.com/article/20117725"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "쌍용건설, 부산 거제2구역 재건축 수주…2381억 원 규모",
+        "published_date": "2026-11-23T04:56:52",
+        "source_url": "https://www.sedaily.com/article/20117724"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "계양신도시 첫 민간분양 '카이브 유보라' 1110가구, 23일부터 정당계약",
+        "published_date": "2026-11-23T04:33:44",
+        "source_url": "https://www.hankyung.com/article/202611234120i"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "롯데건설, 베트남 투티엠 현장서 스타트업 기술 실증",
+        "published_date": "2026-11-23T04:29:25",
+        "source_url": "https://www.hankyung.com/article/202611234114i"
+      }
+    },
+    {
+      "event_model_payload": {
+        "title": "19.4억 주고 산 마포 아파트, 한 달 만에…집주인들 '술렁' [시장톡]",
+        "published_date": "2026-11-23T04:25:01",
+        "source_url": "https://www.hankyung.com/article/2026111977766"
+      }
+    }
+  ],
+  "ontology": {
+    "repo": "HomeRadar",
+    "category": "home",
+    "ontology_version": "0.1.0",
+    "event_model_ids": [
+      "home.auction_signal",
+      "home.listing_inventory",
+      "home.market_context",
+      "home.policy_context",
+      "home.rent_transaction",
+      "home.subscription_notice",
+      "home.transaction_price"
+    ],
+    "event_model_mappings": {
+      "transaction_price": "home.transaction_price",
+      "rent_transaction": "home.rent_transaction",
+      "subscription_notice": "home.subscription_notice",
+      "auction_signal": "home.auction_signal",
+      "policy_context": "home.policy_context",
+      "market_context": "home.market_context",
+      "listing_inventory": "home.listing_inventory"
+    },
+    "entity_type_hints": [
+      "complex",
+      "district",
+      "project",
+      "keyword"
+    ],
+    "source_role_ids": [
+      "backlog_listing_candidate",
+      "backlog_operational_candidate",
+      "market_corroboration",
+      "official_policy_corroboration",
+      "official_primary_auction",
+      "official_primary_subscription",
+      "official_primary_transaction"
+    ],
+    "source_role_mappings": {
+      "molit_apt_transaction": "official_primary_transaction",
+      "molit_apt_rent": "official_primary_transaction",
+      "reb_subscription": "official_primary_subscription",
+      "hankyung_realestate": "market_corroboration",
+      "korea_policy_news": "official_policy_corroboration",
+      "korea_pressrelease_news": "official_policy_corroboration",
+      "asiae_realestate": "market_corroboration",
+      "edaily_realestate": "market_corroboration",
+      "news1_realestate": "market_corroboration",
+      "sedaily_realestate": "market_corroboration",
+      "housingherald": "market_corroboration",
+      "housing_economy_news": "market_corroboration",
+      "rcnews_housing": "market_corroboration",
+      "hani_economy": "market_corroboration",
+      "heraldcorp_realestate": "market_corroboration",
+      "kb_kbland": "backlog_operational_candidate",
+      "naver_land": "backlog_listing_candidate",
+      "r114": "backlog_listing_candidate",
+      "zigbang": "backlog_listing_candidate",
+      "zigbang_browser": "backlog_listing_candidate",
+      "dabang": "backlog_listing_candidate",
+      "onbid_auction": "official_primary_auction",
+      "naver_land_main": "backlog_listing_candidate"
+    },
+    "evidence_policy_ids": [
+      "traceable_url_required",
+      "official_primary_required",
+      "market_context_cannot_override_official"
+    ]
+  },
+  "quality_summary": {
+    "total_sources": 30,
+    "enabled_sources": 11,
+    "tracked_sources": 4,
+    "fresh_sources": 0,
+    "stale_sources": 0,
+    "stale_source_ids": [],
+    "missing_sources": 0,
+    "missing_source_ids": [],
+    "unknown_event_date_sources": 0,
+    "unknown_event_date_source_ids": [],
+    "skipped_sources": 23,
+    "skipped_disabled_sources": 19,
+    "skipped_disabled_source_ids": [
+      "korea_policy_news",
+      "korea_pressrelease_news",
+      "herald_realestate_all",
+      "herald_realestate_policy",
+      "herald_realestate_investment",
+      "herald_realestate_market",
+      "chosunbiz_realestate",
+      "newsdaily_realestate",
+      "asiae_realestate",
+      "edaily_realestate",
+      "news1_realestate",
+      "heraldcorp_realestate",
+      "kb_kbland",
+      "naver_land",
+      "r114",
+      "zigbang",
+      "zigbang_browser",
+      "dabang",
+      "naver_land_main"
+    ],
+    "skipped_missing_env_sources": 4,
+    "skipped_missing_env_source_ids": [
+      "molit_apt_transaction",
+      "molit_apt_rent",
+      "reb_subscription",
+      "onbid_auction"
+    ],
+    "verification_state_count": 4786,
+    "verification_review_sample_count": 20,
+    "daily_review_item_count": 37,
+    "official_primary_status": "blocked_missing_env",
+    "official_primary_sources": 4,
+    "official_primary_fresh_sources": 0,
+    "official_primary_credentialed_sources": 0,
+    "official_primary_blocked_sources": 4,
+    "official_primary_blocked_source_ids": [
+      "molit_apt_transaction",
+      "molit_apt_rent",
+      "reb_subscription",
+      "onbid_auction"
+    ],
+    "official_primary_required_env": [
+      "MOLIT_SERVICE_KEY",
+      "ONBID_API_KEY",
+      "SUBSCRIPTION_API_KEY"
+    ],
+    "corroboration_only_items": 3381,
+    "official_primary_items": 0
+  },
+  "verification_states": {
+    "corroboration_requires_official_source": 962,
+    "market_corroboration_requires_official_source": 3381,
+    "no_operational_event": 443
+  },
+  "quality_review_items": [
+    {
+      "reason": "official_primary_missing_env",
+      "source_id": "molit_apt_transaction",
+      "source": "MOLIT Apartment Transaction",
+      "event_model": "transaction_price",
+      "required_env": "MOLIT_SERVICE_KEY",
+      "skip_reason": "MOLIT_SERVICE_KEY not set",
+      "detail": "Credentialed official source is skipped until the required environment variable is set."
+    },
+    {
+      "reason": "official_primary_missing_env",
+      "source_id": "molit_apt_rent",
+      "source": "MOLIT Apartment Rent",
+      "event_model": "rent_transaction",
+      "required_env": "MOLIT_SERVICE_KEY",
+      "skip_reason": "MOLIT_SERVICE_KEY not set",
+      "detail": "Credentialed official source is skipped until the required environment variable is set."
+    },
+    {
+      "reason": "official_primary_missing_env",
+      "source_id": "reb_subscription",
+      "source": "Korea Real Estate Board - Subscription Info",
+      "event_model": "subscription_notice",
+      "required_env": "SUBSCRIPTION_API_KEY",
+      "skip_reason": "SUBSCRIPTION_API_KEY not set",
+      "detail": "Credentialed official source is skipped until the required environment variable is set."
+    },
+    {
+      "reason": "disabled_source_gate",
+      "source_id": "korea_policy_news",
+      "source": "Korea Gov - Policy RSS",
+      "event_model": "policy_context",
+      "verification_role": "official_policy_corroboration",
+      "merge_policy": "official_context_only",
+      "skip_reason": "source disabled"
+    },
+    {
+      "reason": "disabled_source_gate",
+      "source_id": "korea_pressrelease_news",
+      "source": "Korea Gov - Press Release RSS",
+      "event_model": "policy_context",
+      "verification_role": "official_policy_corroboration",
+      "merge_policy": "official_context_only",
+      "skip_reason": "source disabled"
+    },
+    {
+      "reason": "disabled_source_gate",
+      "source_id": "asiae_realestate",
+      "source": "Asia Economy - Real Estate",
+      "event_model": "market_context",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "skip_reason": "source disabled"
+    },
+    {
+      "reason": "disabled_source_gate",
+      "source_id": "edaily_realestate",
+      "source": "E-Daily - Real Estate",
+      "event_model": "market_context",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "skip_reason": "source disabled"
+    },
+    {
+      "reason": "disabled_source_gate",
+      "source_id": "news1_realestate",
+      "source": "News1 - Real Estate",
+      "event_model": "market_context",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "skip_reason": "source disabled"
+    },
+    {
+      "reason": "disabled_source_gate",
+      "source_id": "heraldcorp_realestate",
+      "source": "Herald Corp - Real Estate",
+      "event_model": "market_context",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "skip_reason": "source disabled"
+    },
+    {
+      "reason": "disabled_source_gate",
+      "source_id": "kb_kbland",
+      "source": "KB Kookmin Bank - Real Estate Data Hub",
+      "event_model": "listing_inventory",
+      "verification_role": "backlog_operational_candidate",
+      "merge_policy": "backlog_only_until_source_adapter",
+      "skip_reason": "source disabled"
+    },
+    {
+      "reason": "disabled_source_gate",
+      "source_id": "naver_land",
+      "source": "Naver Land",
+      "event_model": "listing_inventory",
+      "verification_role": "backlog_listing_candidate",
+      "merge_policy": "backlog_only_until_tos_review",
+      "skip_reason": "source disabled"
+    },
+    {
+      "reason": "disabled_source_gate",
+      "source_id": "r114",
+      "source": "R114 (부동산114)",
+      "event_model": "listing_inventory",
+      "verification_role": "backlog_listing_candidate",
+      "merge_policy": "backlog_only_until_tos_review",
+      "skip_reason": "source disabled"
+    }
+  ],
+  "warnings": [
+    "official primary HomeRadar sources blocked by missing env (molit_apt_transaction, molit_apt_rent, reb_subscription, onbid_auction; required: MOLIT_SERVICE_KEY, ONBID_API_KEY, SUBSCRIPTION_API_KEY)"
+  ]
+}
