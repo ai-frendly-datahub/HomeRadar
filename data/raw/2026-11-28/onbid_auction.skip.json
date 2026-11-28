@@ -1,0 +1,7 @@
+{
+  "record_type": "skip",
+  "source_id": "onbid_auction",
+  "status": "skipped_missing_env",
+  "required_env": "ONBID_API_KEY",
+  "skip_reason": "ONBID_API_KEY not set"
+}
