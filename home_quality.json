@@ -1,6 +1,6 @@
 {
   "category": "home",
-  "generated_at": "2026-11-27T09:29:26.712966+00:00",
+  "generated_at": "2026-11-28T08:45:00.864724+00:00",
   "summary": {
     "total_sources": 30,
     "enabled_sources": 11,
@@ -43,7 +43,7 @@
       "onbid_auction"
     ],
     "not_tracked_sources": 7,
-    "verification_state_count": 5358,
+    "verification_state_count": 5373,
     "verification_review_sample_count": 20,
     "daily_review_item_count": 37,
     "official_primary_status": "blocked_missing_env",
@@ -62,15 +62,95 @@
       "ONBID_API_KEY",
       "SUBSCRIPTION_API_KEY"
     ],
-    "corroboration_only_items": 3804,
+    "corroboration_only_items": 3814,
     "official_primary_items": 0
   },
   "verification_states": {
-    "corroboration_requires_official_source": 1060,
-    "market_corroboration_requires_official_source": 3804,
-    "no_operational_event": 494
+    "corroboration_requires_official_source": 1063,
+    "market_corroboration_requires_official_source": 3814,
+    "no_operational_event": 496
   },
   "verification_review_samples": [
+    {
+      "url": "https://www.housingherald.co.kr/news/articleView.html?idxno=63598",
+      "title": "IPARK현대산업개발, 광주 사고 이후, 산수2구역 수주 확정… 지역 사회 신뢰 굳힌다",
+      "source_id": "housingherald",
+      "published_at": "2026-11-28T07:13:39+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.mk.co.kr/news/realestate/12220683",
+      "title": "아파트 매매 계약 칼같이 딱 14.9억 맞췄는데…“주담대는 왜 4억만?”",
+      "source_id": "mk_realestate",
+      "published_at": "2026-11-28T04:27:20+00:00",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "event_model": ""
+    },
+    {
+      "url": "https://www.hankyung.com/article/2026112738476",
+      "title": "\"새 아파트에 4억까지 받는다고?\"…집주인들 조용히 웃는 동네 [이슬기의 새집다오]",
+      "source_id": "hankyung_realestate",
+      "published_at": "2026-11-28T01:30:01+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.mk.co.kr/news/realestate/12220640",
+      "title": "“반도체 산단 옆 브랜드타운”…‘용인반도체클러스터 동일하이빌 파크밸리 2단지’ 내달 4일 견본주택 개관",
+      "source_id": "mk_realestate",
+      "published_at": "2026-11-28T00:14:20+00:00",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "event_model": ""
+    },
+    {
+      "url": "https://www.mk.co.kr/news/realestate/12220636",
+      "title": "“계약금 2억9천만원 날릴 순 없잖아요”…잔금 마련 실패 매수인, 위약금 5천만원 제안했지만",
+      "source_id": "mk_realestate",
+      "published_at": "2026-11-27T23:54:26+00:00",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "event_model": ""
+    },
+    {
+      "url": "https://www.sedaily.com/article/20120089",
+      "title": "매입확약 전면 확대해 민간 공급 살린다…LH가 미분양 위험 부담[집슐랭]",
+      "source_id": "sedaily_realestate",
+      "published_at": "2026-11-27T21:34:05+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.sedaily.com/article/20120091",
+      "title": "[분양캘린더] 왕숙 공공분양 379가구 등 전국 4215가구 청약",
+      "source_id": "sedaily_realestate",
+      "published_at": "2026-11-27T21:09:52+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
+    {
+      "url": "https://www.sedaily.com/article/20120090",
+      "title": "대우건설, 12월 부산 사하 ‘괴정역 푸르지오 더 센트럴’ 분양",
+      "source_id": "sedaily_realestate",
+      "published_at": "2026-11-27T21:08:00+00:00",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "event_model": "market_context"
+    },
     {
       "url": "https://www.arunews.com/news/articleView.html?idxno=70130",
       "title": "평촌 관악타운·부영·성원, 신한자산신탁과 통합재건축 추진",
@@ -190,86 +270,6 @@
       "verification_role": "market_corroboration",
       "merge_policy": "cannot_override_official_transaction",
       "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=70118",
-      "title": "전농15구역, 재개발 추진위원회 승인",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-11-27T13:09:09+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=70116",
-      "title": "사직3구역 재개발조합 임대주택 포괄양수자 선정 입찰공고",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-11-27T12:58:13+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=70115",
-      "title": "세경아파트 재건축조합 정비기반시설 설치공사 용역업체 선정 입찰공고",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-11-27T12:56:39+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=70114",
-      "title": "개포현대2차아파트 200동·220동 소규모재건축조합 시공자 선정 입찰공고",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-11-27T12:54:39+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=70113",
-      "title": "잠실미성크로바 재건축조합 잠실르엘 그린생활시설(상가) 보류지 매각 공고",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-11-27T12:52:32+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=70112",
-      "title": "현대건설, AI·BIM 앞세워 스마트건설 혁신… 6년간 15회 수상",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-11-27T12:48:23+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=70111",
-      "title": "하계미성·하계장미·하계현대우성, 신속통합기획 자문 완료",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-11-27T12:40:24+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
-    },
-    {
-      "url": "https://www.arunews.com/news/articleView.html?idxno=70110",
-      "title": "일원 한솔아파트, 최고 25층 아파트 957세대로 재건축",
-      "source_id": "housing_economy_news",
-      "published_at": "2026-11-27T12:27:43+00:00",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "event_model": "market_context"
     }
   ],
   "sources": [
@@ -358,12 +358,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 1554,
-      "latest_event_at": "2026-11-27T08:46:17+00:00",
-      "latest_observed_at": "2026-11-27T09:28:35.964207+00:00",
-      "age_days": 0.03,
-      "latest_title": "92억 집 팔려고 60억 빌려준 집주인",
-      "latest_url": "https://www.mk.co.kr/news/realestate/12220418"
+      "item_count": 1559,
+      "latest_event_at": "2026-11-28T04:27:20+00:00",
+      "latest_observed_at": "2026-11-28T08:44:10.388026+00:00",
+      "age_days": 0.18,
+      "latest_title": "아파트 매매 계약 칼같이 딱 14.9억 맞췄는데…“주담대는 왜 4억만?”",
+      "latest_url": "https://www.mk.co.kr/news/realestate/12220683"
     },
     {
       "source_id": "hankyung_realestate",
@@ -381,12 +381,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 745,
-      "latest_event_at": "2026-11-27T08:11:35+00:00",
-      "latest_observed_at": "2026-11-27T09:28:37.681428+00:00",
-      "age_days": 0.05,
-      "latest_title": "불암산 아래 1만 가구…속도 내는 상계뉴타운",
-      "latest_url": "https://www.hankyung.com/article/2026112752511"
+      "item_count": 747,
+      "latest_event_at": "2026-11-28T01:30:01+00:00",
+      "latest_observed_at": "2026-11-28T08:44:12.593976+00:00",
+      "age_days": 0.3,
+      "latest_title": "\"새 아파트에 4억까지 받는다고?\"…집주인들 조용히 웃는 동네 [이슬기의 새집다오]",
+      "latest_url": "https://www.hankyung.com/article/2026112738476"
     },
     {
       "source_id": "korea_policy_news",
@@ -657,12 +657,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 568,
-      "latest_event_at": "2026-11-27T07:55:48+00:00",
-      "latest_observed_at": "2026-11-27T09:28:40.100135+00:00",
-      "age_days": 0.07,
-      "latest_title": "현대건설, 공공지원 민간임대 ‘힐스테이트 회룡역파크뷰’ 공급",
-      "latest_url": "https://www.sedaily.com/article/20119960"
+      "item_count": 572,
+      "latest_event_at": "2026-11-27T21:34:05+00:00",
+      "latest_observed_at": "2026-11-28T08:44:14.582732+00:00",
+      "age_days": 0.47,
+      "latest_title": "매입확약 전면 확대해 민간 공급 살린다…LH가 미분양 위험 부담[집슐랭]",
+      "latest_url": "https://www.sedaily.com/article/20120089"
     },
     {
       "source_id": "housingherald",
@@ -680,12 +680,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 466,
-      "latest_event_at": "2026-11-27T07:06:26+00:00",
-      "latest_observed_at": "2026-11-27T09:28:44.092192+00:00",
-      "age_days": 0.1,
-      "latest_title": "단구동14통 재개발정비사업 입주관리 협력업체 선정",
-      "latest_url": "https://www.housingherald.co.kr/news/articleView.html?idxno=63597"
+      "item_count": 469,
+      "latest_event_at": "2026-11-28T07:13:39+00:00",
+      "latest_observed_at": "2026-11-28T08:44:17.882029+00:00",
+      "age_days": 0.06,
+      "latest_title": "IPARK현대산업개발, 광주 사고 이후, 산수2구역 수주 확정… 지역 사회 신뢰 굳힌다",
+      "latest_url": "https://www.housingherald.co.kr/news/articleView.html?idxno=63598"
     },
     {
       "source_id": "housing_economy_news",
@@ -705,8 +705,8 @@
       "observed_date_field": "",
       "item_count": 1604,
       "latest_event_at": "2026-11-27T15:09:07+00:00",
-      "latest_observed_at": "2026-11-27T09:28:44.878007+00:00",
-      "age_days": 0.0,
+      "latest_observed_at": "2026-11-28T08:44:21.068854+00:00",
+      "age_days": 0.73,
       "latest_title": "평촌 관악타운·부영·성원, 신한자산신탁과 통합재건축 추진",
       "latest_url": "https://www.arunews.com/news/articleView.html?idxno=70130"
     },
@@ -728,8 +728,8 @@
       "observed_date_field": "",
       "item_count": 112,
       "latest_event_at": "2026-11-20T08:48:00+00:00",
-      "latest_observed_at": "2026-11-27T09:28:48.916201+00:00",
-      "age_days": 7.03,
+      "latest_observed_at": "2026-11-28T08:44:24.187924+00:00",
+      "age_days": 8.0,
       "latest_title": "주거환경연합, ‘정비사업 정책변화와 재건축·재개발의 미래’ 정책 아카데미 개최",
       "latest_url": "http://www.rcnews.co.kr/news/articleView.html?idxno=33565"
     },
@@ -749,12 +749,12 @@
       "freshness_sla_days": null,
       "event_date_field": "",
       "observed_date_field": "",
-      "item_count": 309,
+      "item_count": 310,
       "latest_event_at": "2026-10-30T15:49:28.044073+00:00",
-      "latest_observed_at": "2026-11-27T09:28:49.383082+00:00",
-      "age_days": 27.74,
-      "latest_title": "“자녀 교육 때문에”…국세청장 후보자, 비거주 1주택 논란에 사과",
-      "latest_url": "https://www.hani.co.kr/arti/economy/economy_general/1289242.html"
+      "latest_observed_at": "2026-11-28T08:44:24.714129+00:00",
+      "age_days": 28.71,
+      "latest_title": "서울 아파트값 떨어지나? 한강벨트까지 하락세 전환",
+      "latest_url": "https://www.hani.co.kr/arti/economy/property/1289263.html"
     },
     {
       "source_id": "heraldcorp_realestate",
@@ -1120,6 +1120,102 @@
     },
     {
       "reason": "home_verification_requires_official_primary",
+      "source_id": "housingherald",
+      "source": "housingherald",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "IPARK현대산업개발, 광주 사고 이후, 산수2구역 수주 확정… 지역 사회 신뢰 굳힌다",
+      "url": "https://www.housingherald.co.kr/news/articleView.html?idxno=63598",
+      "published_at": "2026-11-28T07:13:39+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "mk_realestate",
+      "source": "mk_realestate",
+      "event_model": "",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "title": "아파트 매매 계약 칼같이 딱 14.9억 맞췄는데…“주담대는 왜 4억만?”",
+      "url": "https://www.mk.co.kr/news/realestate/12220683",
+      "published_at": "2026-11-28T04:27:20+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "hankyung_realestate",
+      "source": "hankyung_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "\"새 아파트에 4억까지 받는다고?\"…집주인들 조용히 웃는 동네 [이슬기의 새집다오]",
+      "url": "https://www.hankyung.com/article/2026112738476",
+      "published_at": "2026-11-28T01:30:01+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "mk_realestate",
+      "source": "mk_realestate",
+      "event_model": "",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "title": "“반도체 산단 옆 브랜드타운”…‘용인반도체클러스터 동일하이빌 파크밸리 2단지’ 내달 4일 견본주택 개관",
+      "url": "https://www.mk.co.kr/news/realestate/12220640",
+      "published_at": "2026-11-28T00:14:20+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "mk_realestate",
+      "source": "mk_realestate",
+      "event_model": "",
+      "verification_state": "corroboration_requires_official_source",
+      "verification_role": "",
+      "merge_policy": "",
+      "title": "“계약금 2억9천만원 날릴 순 없잖아요”…잔금 마련 실패 매수인, 위약금 5천만원 제안했지만",
+      "url": "https://www.mk.co.kr/news/realestate/12220636",
+      "published_at": "2026-11-27T23:54:26+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "sedaily_realestate",
+      "source": "sedaily_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "매입확약 전면 확대해 민간 공급 살린다…LH가 미분양 위험 부담[집슐랭]",
+      "url": "https://www.sedaily.com/article/20120089",
+      "published_at": "2026-11-27T21:34:05+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "sedaily_realestate",
+      "source": "sedaily_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "[분양캘린더] 왕숙 공공분양 379가구 등 전국 4215가구 청약",
+      "url": "https://www.sedaily.com/article/20120091",
+      "published_at": "2026-11-27T21:09:52+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
+      "source_id": "sedaily_realestate",
+      "source": "sedaily_realestate",
+      "event_model": "market_context",
+      "verification_state": "market_corroboration_requires_official_source",
+      "verification_role": "market_corroboration",
+      "merge_policy": "cannot_override_official_transaction",
+      "title": "대우건설, 12월 부산 사하 ‘괴정역 푸르지오 더 센트럴’ 분양",
+      "url": "https://www.sedaily.com/article/20120090",
+      "published_at": "2026-11-27T21:08:00+00:00"
+    },
+    {
+      "reason": "home_verification_requires_official_primary",
       "source_id": "housing_economy_news",
       "source": "housing_economy_news",
       "event_model": "market_context",
@@ -1261,102 +1357,6 @@
       "title": "LH, 영주귀국 사할린 동포에 임대주택 지원",
       "url": "https://www.arunews.com/news/articleView.html?idxno=70119",
       "published_at": "2026-11-27T13:17:23+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "전농15구역, 재개발 추진위원회 승인",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=70118",
-      "published_at": "2026-11-27T13:09:09+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "사직3구역 재개발조합 임대주택 포괄양수자 선정 입찰공고",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=70116",
-      "published_at": "2026-11-27T12:58:13+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "세경아파트 재건축조합 정비기반시설 설치공사 용역업체 선정 입찰공고",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=70115",
-      "published_at": "2026-11-27T12:56:39+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "개포현대2차아파트 200동·220동 소규모재건축조합 시공자 선정 입찰공고",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=70114",
-      "published_at": "2026-11-27T12:54:39+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "잠실미성크로바 재건축조합 잠실르엘 그린생활시설(상가) 보류지 매각 공고",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=70113",
-      "published_at": "2026-11-27T12:52:32+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "현대건설, AI·BIM 앞세워 스마트건설 혁신… 6년간 15회 수상",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=70112",
-      "published_at": "2026-11-27T12:48:23+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "하계미성·하계장미·하계현대우성, 신속통합기획 자문 완료",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=70111",
-      "published_at": "2026-11-27T12:40:24+00:00"
-    },
-    {
-      "reason": "home_verification_requires_official_primary",
-      "source_id": "housing_economy_news",
-      "source": "housing_economy_news",
-      "event_model": "market_context",
-      "verification_state": "market_corroboration_requires_official_source",
-      "verification_role": "market_corroboration",
-      "merge_policy": "cannot_override_official_transaction",
-      "title": "일원 한솔아파트, 최고 25층 아파트 957세대로 재건축",
-      "url": "https://www.arunews.com/news/articleView.html?idxno=70110",
-      "published_at": "2026-11-27T12:27:43+00:00"
     }
   ]
 }
